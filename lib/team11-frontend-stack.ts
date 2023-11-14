@@ -1,22 +1,24 @@
-import { Stack, StackProps, aws_s3, RemovalPolicy} from 'aws-cdk-lib';
+import { Stack, StackProps, aws_s3, RemovalPolicy, aws_s3_deployment} from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
-export class Team11FrontendStack extends Stack {
 
-  s3Bucket: aws_s3.Bucket;
+export class Team11FrontendStack extends Stack {
 
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    this.s3Bucket = new aws_s3.Bucket(this, 'FrontendBucket', {
-      blockPublicAccess: aws_s3.BlockPublicAccess.BLOCK_ALL,
-      encryption: aws_s3.BucketEncryption.S3_MANAGED,
+    const frontEndBucket = new aws_s3.Bucket(this, 'FrontEndBucket', {
       enforceSSL: true,
       versioned: true,
+      websiteIndexDocument: "index.html",
+      publicReadAccess: true,
       removalPolicy: RemovalPolicy.RETAIN,
     });
 
-
+    const deployment = new aws_s3_deployment.BucketDeployment(this, "FrontEndBucketDeployment", {
+      sources: [aws_s3_deployment.Source.asset(`website/build`)],
+      destinationBucket: frontEndBucket,
+    });
   }
 
   
