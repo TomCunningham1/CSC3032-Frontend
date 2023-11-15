@@ -1,4 +1,14 @@
-import { Stack, StackProps, aws_s3, RemovalPolicy, aws_s3_deployment, aws_iam, aws_cloudfront, aws_cloudfront_origins} from 'aws-cdk-lib';
+import { 
+  Stack, 
+  StackProps, 
+  aws_s3, 
+  RemovalPolicy, 
+  aws_s3_deployment, 
+  aws_iam, 
+  aws_cloudfront,
+  aws_cloudfront_origins,
+  aws_apigateway
+} from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 
