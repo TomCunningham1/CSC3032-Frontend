@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import BackendService from "./services/backend-service.mjs"
+import { useEffect, useState } from "react";
+import BackendService from "../services/backend-service"
 
-export const Login = (props) => {
+
+const Login = (): React.ReactElement => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [valid, setValid] = useState(false);
@@ -10,19 +11,8 @@ export const Login = (props) => {
         BackendService.getHealth();
     }, []);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await BackendService.getLogin(email, pass)
-            .then((response) => {
-                console.log(response.data);
-                setValid(response.data.login);
-            });
-        if (valid) {
-            await BackendService.getDatabaseConnectivity()
-            .then((r) => {console.log(r)})
-            .catch((e) => {console.log(e)});
-            alert("Success");
-        }
+    const handleSubmit = async () => {
+
     }
 
     return (
@@ -35,7 +25,10 @@ export const Login = (props) => {
                 <input data-testid='password-input' value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                 <button type="submit">Log In</button>
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>First time? Register here.</button>
+            <button className="link-btn" onClick={handleSubmit}>First time? Register here.</button>
         </div>
     )
 }
+
+
+export default Login;
