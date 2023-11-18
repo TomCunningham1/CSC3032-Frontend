@@ -8,5 +8,6 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-    }
+    },
+    "ignorePatterns": ["node_modules", "website", "cdk.out", "website/node_modules", "dist", "website/build", "website/coverage", "website/public"]
 }
