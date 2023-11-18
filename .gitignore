@@ -4,7 +4,8 @@
 node_modules
 
 ./website/node_modules
-
+./website/dist
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+dist
