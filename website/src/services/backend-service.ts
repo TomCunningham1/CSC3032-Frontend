@@ -1,38 +1,40 @@
 import { BACKEND_IP } from '../config/constants'
-import axios from 'axios'
+import axios from 'axios';
 
 class BackendServiceClass {
   getHealth = async () => {
-    await axios
+    return await axios
       .get(`${BACKEND_IP}/health`)
-      .then((x) => {
-        console.log(x.status)
-      })
-      .catch((x) => {
-        console.log('error', x.status)
-      })
   }
 
-  getLogin = async (username: string, password: string) => {
+  loginUser = async (
+    email: string, 
+    password: string
+  ) => {
+    const data = {
+      email: email,
+      password: password
+    };
     return await axios
-      .get(`${BACKEND_IP}/login?username=${username}&password=${password}`)
-      .then((r) => {
-        return r
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
+      .post(`${BACKEND_IP}/login`, data, { withCredentials: false }
+    );
+  };
 
-  getDatabaseConnectivity = async () => {
+  registerUser = async (
+    username: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    email: string
+  ) => {
     return await axios
-      .get(`${BACKEND_IP}/database`)
-      .then((r) => {
-        return r
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+      .post(`${BACKEND_IP}/register`, {
+        username: username,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        email: email
+      });
   }
 }
 
