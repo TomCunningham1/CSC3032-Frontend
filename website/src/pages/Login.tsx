@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import React from 'react';
 import BackendService from "../services/backend-service"
 import { useNavigate } from "react-router-dom";
+import User from "../types/User";
 
 
 const Login = () => {
@@ -11,8 +12,12 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const getHealth = async () => {
+        await BackendService.getHealth().then((r:any) => {console.log(r.data)});
+    }
+
     useEffect(() => {
-        BackendService.getHealth();
+        getHealth();
     }, []);
 
     const handleRegister = () => {
@@ -20,19 +25,31 @@ const Login = () => {
     }
 
     const handleLogin = () => {
-        navigate('/home');
+        BackendService.loginUser(email, pass)
+            .then((value: any) => {
+                const user = value.data as User;
+                if (user) {
+                    navigate('/home');
+                }
+            })
+            .catch(
+                (err: any) => 
+                {
+                    console.log(err);
+                    alert('Invalid Login');
+                });
     }
 
     return (
         <div className="auth-form-container">
             <h2>Login</h2>
-            <form className="login-form" onSubmit={handleLogin}>
+            {/* <form className="login-form"> */}
                 <label htmlFor="email">Email</label>
                 <input data-testid='email-input' value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@mail.com" id="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input data-testid='password-input' value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                 <button type="submit" onClick={handleLogin}>Log In</button>
-            </form>
+            {/* </form> */}
             <button className="link-btn" onClick={handleRegister}>First time? Register here.</button>
         </div>
     )
