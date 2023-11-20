@@ -7,6 +7,8 @@ format_test_stack:
   script:
     - node -v
     - npm install -g prettier
+    - prettier --check  "lib/**/*.ts"
+    - prettier --check  "bin/**/*.ts"
 
 
 format_test_website:
@@ -14,6 +16,8 @@ format_test_website:
   script:
     - cd website
     - npm install -g prettier
+    - prettier --check  "src/**/*.ts"
+    - prettier --check  "src/**/*.tsx"
 
 
 unit_test_stack:
