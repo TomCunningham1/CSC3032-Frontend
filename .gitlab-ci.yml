@@ -4,12 +4,14 @@ stages:
 
 format_test_stack:
   stage: test
+  script:
     - node -v
     - npm install -g prettier
 
 
 format_test_website:
   stage: test
+  script:
     - cd website
     - npm install -g prettier
 
