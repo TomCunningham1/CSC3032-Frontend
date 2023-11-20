@@ -23,5 +23,5 @@
   },
   "include": [
     "src"
-, "tests/pages/login.test.ts", "tests/pages/register.test.ts", "setupTests.ts"  ]
+, "tests/pages/Login.test.tsxx", "tests/pages/register.test.ts", "setupTests.ts"  ]
 }

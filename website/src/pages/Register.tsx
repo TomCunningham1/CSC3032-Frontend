@@ -39,9 +39,9 @@ const Register = () => {
                 <h2>Register</h2>
                 {/* <form className="register-form" onSubmit={handleLogin}> */}
                 <label htmlFor="name">First Name</label>
-                <input value={firstName} name="name" onChange={(e) => setFirstName(e.target.value)} id="name" placeholder="First Name" />
+                <input data-testid='first-name-input' value={firstName} name="name" onChange={(e) => setFirstName(e.target.value)} id="name" placeholder="First Name" />
                 <label htmlFor="name">Last Name</label>
-                <input value={lastName} name="name" onChange={(e) => setLastName(e.target.value)} id="name" placeholder="Last Name" />
+                <input data-testid='last-name-input' value={lastName} name="name" onChange={(e) => setLastName(e.target.value)} id="name" placeholder="Last Name" />
                 <label htmlFor="email">Email</label>
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@mail.com" id="email" name="email" />
                 <label htmlFor="name">Username</label>
