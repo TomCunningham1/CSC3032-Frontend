@@ -1,33 +1,29 @@
 image: ubuntu:18.04
 stages: 
   - test
-unit_test:
+
+format_test_stack:
+  stage: test
+    - node -v
+    - npm install -g prettier
+
+
+format_test_website:
+  stage: test
+    - cd website
+    - npm install -g prettier
+
+
+unit_test_stack:
   stage: test
   script:
-    - apt-get update -qy
-    - echo Y | apt-get install curl
-    - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-    - source ~/.bashrc
-    - source ~/.nvm/nvm.sh
-    - nvm install 16
-    - node -v
-    - cd src
     - npm install
     - npm run test
-# newman_test:
-#   stage: test
-#   script:
-#     - apt-get update -qy
-#     - echo Y | apt-get install curl
-#     - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-#     - source ~/.bashrc
-#     - source ~/.nvm/nvm.sh
-#     - nvm install 16
-#     - node -v
-#     - npm install -g newman
-#     - npm install -g forever
-#     - cd src
-#     - npm install
-#     - forever start -c npm start
-#     - newman run postman_tests.postman_collection.json
-#     - forever stop start
+
+
+unit_test_website:
+  stage: test
+  script:
+    - cd website
+    - npm install
+    - npm run test
