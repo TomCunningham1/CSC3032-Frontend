@@ -1,10 +1,5 @@
-
 const Splash = () => {
-    return (
-        <>
-        </>
-    )
-};
+  return <></>
+}
 
-
-export default Splash;
+export default Splash

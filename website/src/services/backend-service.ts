@@ -1,24 +1,20 @@
 import { BACKEND_IP } from '../config/constants'
-import axios from 'axios';
+import axios from 'axios'
 
 class BackendServiceClass {
   getHealth = async () => {
-    return await axios
-      .get(`${BACKEND_IP}/health`)
+    return await axios.get(`${BACKEND_IP}/health`)
   }
 
-  loginUser = async (
-    email: string, 
-    password: string
-  ) => {
+  loginUser = async (email: string, password: string) => {
     const data = {
       email: email,
-      password: password
-    };
-    return await axios
-      .post(`${BACKEND_IP}/login`, data, { withCredentials: false }
-    );
-  };
+      password: password,
+    }
+    return await axios.post(`${BACKEND_IP}/login`, data, {
+      withCredentials: false,
+    })
+  }
 
   registerUser = async (
     username: string,
@@ -27,14 +23,13 @@ class BackendServiceClass {
     lastName: string,
     email: string
   ) => {
-    return await axios
-      .post(`${BACKEND_IP}/register`, {
-        username: username,
-        password: password,
-        firstName: firstName,
-        lastName: lastName,
-        email: email
-      });
+    return await axios.post(`${BACKEND_IP}/register`, {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    })
   }
 }
 

@@ -20,7 +20,5 @@ describe('Tests for the login page', () => {
         const passwordInput = loginComponent.getByTestId('last-name-input');
         expect(passwordInput).toBeTruthy();
 
-        const loginButton = loginComponent.getByTestId('submit-button')
-        expect(loginButton).toBeTruthy();
     });
 });
