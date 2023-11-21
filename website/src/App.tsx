@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import CustomClockLoader from './components/LoadingClock'
+import CustomClockLoader from './components/LoadingClock/LoadingClock'
 import Login from './pages/Login'
 
 function App() {
