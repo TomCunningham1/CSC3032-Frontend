@@ -3,36 +3,33 @@ import axios from 'axios'
 
 class BackendServiceClass {
   getHealth = async () => {
-    await axios
-      .get(`${BACKEND_IP}/health`)
-      .then((x) => {
-        console.log(x.status)
-      })
-      .catch((x) => {
-        console.log('error', x.status)
-      })
+    return await axios.get(`${BACKEND_IP}/health`)
   }
 
-  getLogin = async (username: string, password: string) => {
-    return await axios
-      .get(`${BACKEND_IP}/login?username=${username}&password=${password}`)
-      .then((r) => {
-        return r
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+  loginUser = async (email: string, password: string) => {
+    const data = {
+      email: email,
+      password: password,
+    }
+    return await axios.post(`${BACKEND_IP}/login`, data, {
+      withCredentials: false,
+    })
   }
 
-  getDatabaseConnectivity = async () => {
-    return await axios
-      .get(`${BACKEND_IP}/database`)
-      .then((r) => {
-        return r
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+  registerUser = async (
+    username: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    email: string
+  ) => {
+    return await axios.post(`${BACKEND_IP}/register`, {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    })
   }
 }
 
