@@ -1,6 +1,7 @@
 image: ubuntu:18.04
 stages: 
   - build
+  - lint
   - test
   - deploy
 
@@ -14,7 +15,7 @@ build_stack:
     - npm run build
 
 format_test_stack:
-  stage: test
+  stage: lint
   script:
     - node -v
     - npm install -g prettier
@@ -22,7 +23,7 @@ format_test_stack:
     - prettier --check  "bin/**/*.ts"
 
 format_test_website:
-  stage: test
+  stage: lint
   script:
     - cd website
     - npm install -g prettier
