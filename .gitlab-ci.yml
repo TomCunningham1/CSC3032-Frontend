@@ -1,7 +1,17 @@
 image: ubuntu:18.04
 stages: 
+  - build
   - test
   - deploy
+
+build_stack:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - cd website
+    - npm install
+    - npm run build
 
 format_test_stack:
   stage: test
