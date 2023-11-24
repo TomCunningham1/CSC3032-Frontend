@@ -21,7 +21,6 @@ format_test_stack:
     - prettier --check  "lib/**/*.ts"
     - prettier --check  "bin/**/*.ts"
 
-
 format_test_website:
   stage: test
   script:
@@ -30,13 +29,11 @@ format_test_website:
     - prettier --check  "src/**/*.ts"
     - prettier --check  "src/**/*.tsx"
 
-
 unit_test_stack:
   stage: test
   script:
     - npm install
     - npm run test
-
 
 unit_test_website:
   stage: test
@@ -48,5 +45,6 @@ unit_test_website:
 deployment:
   stage: deploy
   script:
+    - npm install
     - cdk synth
     - cdk deploy
