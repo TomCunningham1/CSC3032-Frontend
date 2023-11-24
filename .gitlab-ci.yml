@@ -48,6 +48,5 @@ unit_test_website:
 deployment:
   stage: deploy
   script:
-    - tsc
     - cdk synth
     - cdk deploy
