@@ -1,6 +1,7 @@
 image: ubuntu:18.04
 stages: 
   - test
+  - deploy
 
 format_test_stack:
   stage: test
