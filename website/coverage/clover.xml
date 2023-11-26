@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700609116717" clover="3.2.0">
-  <project timestamp="1700609116717" name="All files">
-    <metrics statements="107" coveredstatements="82" conditionals="10" coveredconditionals="4" methods="36" coveredmethods="16" elements="153" coveredelements="102" complexity="0" loc="107" ncloc="107" packages="6" files="8" classes="8"/>
+<coverage generated="1701025787316" clover="3.2.0">
+  <project timestamp="1701025787316" name="All files">
+    <metrics statements="110" coveredstatements="85" conditionals="10" coveredconditionals="4" methods="36" coveredmethods="16" elements="156" coveredelements="105" complexity="0" loc="110" ncloc="110" packages="6" files="8" classes="8"/>
     <package name="components.DropDownMenu">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="DropDownMenu.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Submission2\team11-frontend\website\src\components\DropDownMenu\DropDownMenu.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="13" count="9" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
         <line num="15" count="9" type="stmt"/>
-        <line num="32" count="27" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="18" count="9" type="stmt"/>
+        <line num="35" count="27" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.LoadingClock">
@@ -36,8 +39,8 @@
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="42" count="2" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
       </file>
       <file name="TitleBarDropDown.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Submission2\team11-frontend\website\src\components\TitleBar\TitleBarDropDown.tsx">
         <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
@@ -46,21 +49,21 @@
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
         <line num="10" count="9" type="stmt"/>
         <line num="12" count="9" type="stmt"/>
-        <line num="14" count="9" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="34" count="9" type="stmt"/>
-        <line num="35" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="42" count="9" type="stmt"/>
-        <line num="43" count="5" type="stmt"/>
-        <line num="46" count="9" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="34" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="41" count="9" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="45" count="9" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
       </file>
     </package>
     <package name="config">
