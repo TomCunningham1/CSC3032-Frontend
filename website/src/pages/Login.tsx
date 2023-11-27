@@ -55,7 +55,11 @@ const Login = () => {
         Log In
       </button>
       {/* </form> */}
-      <button data-testid="nav-register" className="link-btn" onClick={handleRegister}>
+      <button
+        data-testid="nav-register"
+        className="link-btn"
+        onClick={handleRegister}
+      >
         First time? Register here.
       </button>
     </div>
