@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import BackendService from '../services/backend-service'
 import { useNavigate } from 'react-router-dom'
 import User from '../types/User'

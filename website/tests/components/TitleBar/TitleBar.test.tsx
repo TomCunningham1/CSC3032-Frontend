@@ -1,7 +1,7 @@
 import React from 'react';
 import { RenderResult, fireEvent, render } from '@testing-library/react';
 import TitleBar from '../../../src/components/TitleBar/TitleBar';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('Tests for the TitleBar', () => {
 
