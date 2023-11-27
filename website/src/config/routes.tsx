@@ -1,21 +1,33 @@
-import Login from '../pages/Login'
 import { createBrowserRouter } from 'react-router-dom'
 import Register from '../pages/Register'
 import Home from '../pages/Home'
 import App from '../App'
+import TitleBar from '../components/TitleBar/TitleBar'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <TitleBar>
+        <App />
+      </TitleBar>
+    ),
   },
   {
     path: '/register',
-    element: <Register />,
+    element: (
+      <TitleBar>
+        <Register />
+      </TitleBar>
+    ),
   },
   {
     path: '/home',
-    element: <Home />,
+    element: (
+      <TitleBar>
+        <Home />
+      </TitleBar>
+    ),
   },
 ])
 

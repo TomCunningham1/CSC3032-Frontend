@@ -1,8 +1,8 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+// import React from 'react'
+// import { useNavigate } from 'react-router-dom'
 
 const ScenarioPopUp = ({ open, onClose }: any) => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const chooseSQLInjection = () => {
     //navigate('/SQL')

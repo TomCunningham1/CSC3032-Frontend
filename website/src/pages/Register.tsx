@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
 import BackendService from '../services/backend-service'
@@ -59,6 +59,7 @@ const Register = () => {
         />
         <label htmlFor="email">Email</label>
         <input
+          data-testid="email-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -68,6 +69,7 @@ const Register = () => {
         />
         <label htmlFor="name">Username</label>
         <input
+          data-testid="username-input"
           value={username}
           name="name"
           onChange={(e) => setUsername(e.target.value)}
@@ -76,6 +78,7 @@ const Register = () => {
         />
         <label htmlFor="password">Password</label>
         <input
+          data-testid="password-input"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           type="password"
