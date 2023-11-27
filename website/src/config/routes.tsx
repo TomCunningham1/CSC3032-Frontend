@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Register from '../pages/Register'
+import Home from '../pages/Home'
 import App from '../App'
 import TitleBar from '../components/TitleBar/TitleBar'
 
@@ -22,16 +23,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/home',
-    element: <TitleBar>Home</TitleBar>,
-  },
-  {
-    path: '/settings',
-    element: <TitleBar>Settings</TitleBar>,
-  },
-  {
-    path: '/help',
-    element: <TitleBar>Help</TitleBar>,
-  },
+    element: <TitleBar><Home /></TitleBar>,
+  }
 ])
 
 export default router
