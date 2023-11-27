@@ -23,8 +23,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/home',
-    element: <TitleBar><Home /></TitleBar>,
-  }
+    element: (
+      <TitleBar>
+        <Home />
+      </TitleBar>
+    ),
+  },
 ])
 
 export default router
