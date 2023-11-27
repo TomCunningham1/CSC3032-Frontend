@@ -1,0 +1,43 @@
+import React, { useRef, useState } from 'react'
+
+const SettingsPopUp = ({ open, onClose }: any) => {
+  const [listOpen, setListOpen] = useState(false)
+  const dropDownRef = useRef<HTMLDivElement>(null)
+  const handleDropDownFocus = (state: boolean) => {
+    setListOpen(!state)
+  }
+  const handleClickOutside = (e: any) => {
+    if (listOpen && !dropDownRef.current?.contains(e.target as Node))
+      setListOpen(false)
+  }
+
+  window.addEventListener('click', handleClickOutside)
+
+  if (!open) return null
+  return (
+    <div className="popup">
+      <button onClick={onClose}>X</button>
+      <h1>Settings</h1>
+      <div className="dropDownContainer" ref={dropDownRef}>
+        <button onClick={(e) => handleDropDownFocus(listOpen)}>
+          Pick Text Size
+        </button>
+        {listOpen && (
+          <ul>
+            <li>Small</li>
+            <li>Medium</li>
+            <li>Large</li>
+          </ul>
+        )}
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" />
+          Text to Speech
+        </label>
+      </div>
+    </div>
+  )
+}
+
+export default SettingsPopUp
