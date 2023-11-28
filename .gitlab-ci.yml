@@ -5,30 +5,47 @@ stages:
   - test
   - deploy
 
+build_stack:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - cd website
+    - npm install
+    - npm run build
 
-stack_tests:
+format_test_stack:
+  stage: lint
+  script:
+    - node -v
+    - npm install -g prettier
+    - prettier --check  "lib/**/*.ts"
+    - prettier --check  "bin/**/*.ts"
+
+format_test_website:
+  stage: lint
+  script:
+    - cd website
+    - npm install -g prettier
+    - prettier --check  "src/**/*.ts"
+    - prettier --check  "src/**/*.tsx"
+
+unit_test_stack:
   stage: test
   script:
-    - apt-get update -qy
-    - echo Y | apt-get install curl
-    - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-    - source ~/.bashrc
-    - source ~/.nvm/nvm.sh
-    - nvm install 16
-    - node -v
     - npm install
     - npm run test
 
-
-website_tests:
+unit_test_website:
   stage: test
   script:
-    - apt-get update -qy
-    - echo Y | apt-get install curl
-    - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-    - source ~/.bashrc
-    - source ~/.nvm/nvm.sh
-    - nvm install 16
-    - node -v
+    - cd website
     - npm install
     - npm run test
+  
+deployment:
+  stage: deploy
+  script:
+    - npm install
+    - cdk synth
+    - cdk deploy
