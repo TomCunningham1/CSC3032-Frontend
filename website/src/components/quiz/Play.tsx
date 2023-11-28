@@ -8,14 +8,17 @@ import correctNotification from '../../assets/audio/correct-answer.mp3';
 import wrongNotification from '../../assets/audio/wrong-answer.mp3';
 import buttonSound from '../../assets/audio/button-sound.mp3';
 import "../../styles/styles.scss";
+import withRouter from '../Router';
+
 
 interface PlayPropsInterface {
-    state: any;
-    history: any;
+    state?: any;
+    history?: any;
+    router?: any;
 }
 
 interface PlayStateInterface {
-    questions: any;
+    questions: any[];
     currentQuestion: any;
     nextQuestion: any;
     previousQuestion: any;
@@ -37,7 +40,6 @@ interface PlayStateInterface {
 }
 
 class Play extends Component<PlayPropsInterface, PlayStateInterface> {
-
     correctSound: any;
     correctTimeout: any;
     wrongTimeout: any;
@@ -365,7 +367,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             hintsUsed: 5 - state.hints
         };
         setTimeout(() => {
-            this.props.history.push('/play/quizSummary', playerStats);
+            console.log(playerStats);
+            this.props.router.navigate('/play/quizSummary', { state: playerStats});
         }, 1000);
     }
 
@@ -443,4 +446,4 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     }
 }
 
-export default Play;
+export default withRouter(Play);

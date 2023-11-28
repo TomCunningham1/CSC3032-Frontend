@@ -1,9 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import withRouter from '../Router';
 
 interface QuizSummaryProps {
-    location: any
+    router?: any;
+    location: any;
+    data: any;
 }
 
 interface QuizSummaryState {
@@ -31,7 +34,8 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
     }
 
     componentDidMount () {
-        const { state } = this.props.location;
+        const { state }:any = this.props.router.location;
+        console.log(state);
         if (state) {
             this.setState({
                 score: (state.score / state.numberOfQuestions) * 100,
@@ -46,7 +50,7 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
     }
 
     render () {
-        const { state } = this.props.location;
+        const { state } = this.props.router.location;
         let stats, remark;
         const userScore = this.state.score;
 
@@ -128,4 +132,4 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
     }
 }
 
-export default QuizSummary;
+export default withRouter(QuizSummary);
