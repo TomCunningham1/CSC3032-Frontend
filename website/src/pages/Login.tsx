@@ -1,42 +1,70 @@
-import { useEffect, useState } from "react";
-import React from 'react';
-import BackendService from "../services/backend-service"
-import { useNavigate } from "react-router-dom";
 
+import { useState } from 'react'
+import BackendService from '../services/backend-service'
+import { useNavigate } from 'react-router-dom'
+import User from '../types/User'
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [valid, setValid] = useState(false);
+  const [email, setEmail] = useState('')
+  const [pass, setPass] = useState('')
 
-    const navigate = useNavigate();
+  const navigate = useNavigate()
 
-    useEffect(() => {
-        BackendService.getHealth();
-    }, []);
+  const handleRegister = () => {
+    navigate('/register')
+  }
 
-    const handleRegister = () => {
-        navigate('/register');
-    }
+  const handleLogin = () => {
+    BackendService.loginUser(email, pass)
+      .then((value: any) => {
+        const user = value.data as User
+        if (user) {
+          navigate('/home')
+        }
+      })
+      .catch((err: any) => {
+        console.log(err)
+        alert('Invalid Login')
+      })
+  }
 
-    const handleLogin = () => {
-        navigate('/home');
-    }
-
-    return (
-        <div className="auth-form-container">
-            <h2>Login</h2>
-            <form className="login-form" onSubmit={handleLogin}>
-                <label htmlFor="email">Email</label>
-                <input data-testid='email-input' value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@mail.com" id="email" name="email" />
-                <label htmlFor="password">Password</label>
-                <input data-testid='password-input' value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <button type="submit" onClick={handleLogin}>Log In</button>
-            </form>
-            <button className="link-btn" onClick={handleRegister}>First time? Register here.</button>
-        </div>
-    )
+  return (
+    <div className="auth-form-container" data-testid="auth-form-container">
+      <h2>Login</h2>
+      {/* <form className="login-form"> */}
+      <label htmlFor="email">Email</label>
+      <input
+        data-testid="email-input"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        type="email"
+        placeholder="youremail@mail.com"
+        id="email"
+        name="email"
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        data-testid="password-input"
+        value={pass}
+        onChange={(e) => setPass(e.target.value)}
+        type="password"
+        placeholder="********"
+        id="password"
+        name="password"
+      />
+      <button type="submit" data-testid="submit-button" onClick={handleLogin}>
+        Log In
+      </button>
+      {/* </form> */}
+      <button
+        data-testid="nav-register"
+        className="link-btn"
+        onClick={handleRegister}
+      >
+        First time? Register here.
+      </button>
+    </div>
+  )
 }
 
-
-export default Login;
+export default Login

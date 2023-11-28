@@ -16,7 +16,7 @@ export class Team11FrontendStack extends Stack {
     super(scope, id, props)
 
     const frontEndBucket = new aws_s3.Bucket(this, 'FrontEndBucket', {
-      removalPolicy: RemovalPolicy.RETAIN_ON_UPDATE_OR_DELETE,
+      removalPolicy: RemovalPolicy.DESTROY,
     })
 
     const accessPolicy = new aws_iam.PolicyStatement({
