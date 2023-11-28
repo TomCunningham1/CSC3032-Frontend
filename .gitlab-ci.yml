@@ -42,7 +42,7 @@ unit_test_website:
     - cd website
     - npm install
     - npm run test
-
+  
 deployment:
   stage: deploy
   script:

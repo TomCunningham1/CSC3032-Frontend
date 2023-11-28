@@ -1,9 +1,9 @@
-import React from 'react';
 import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
 import Login from '../../src/pages/Login';
 import { MemoryRouter } from 'react-router-dom';
 import * as router from 'react-router';
 import axios from 'axios';
+import React from 'react';
 
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
