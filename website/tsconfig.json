@@ -17,11 +17,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "typeRoots": [
+      "assets.d.ts"
+    ],
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
   },
   "include": [
     "src"
-, "tests/pages/Login.test.tsxx", "tests/pages/register.test.ts", "setupTests.ts"  ]
+, "tests/pages/Login.test.tsxx", "tests/pages/register.test.ts", "setupTests.ts", "assets.d.ts"  ]
 }

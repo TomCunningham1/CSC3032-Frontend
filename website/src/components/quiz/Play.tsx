@@ -2,16 +2,51 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import M from 'materialize-css';
 import classnames from 'classnames';
-
-import questions from '../../questions.json';
+import questions from '../../utils/questions.json';
 import isEmpty from '../../utils/is-empty';
-
 import correctNotification from '../../assets/audio/correct-answer.mp3';
 import wrongNotification from '../../assets/audio/wrong-answer.mp3';
 import buttonSound from '../../assets/audio/button-sound.mp3';
+import "../../styles/styles.scss";
 
-class Play extends Component {
-    constructor (props) {
+interface PlayPropsInterface {
+    state: any;
+    history: any;
+}
+
+interface PlayStateInterface {
+    questions: any;
+    currentQuestion: any;
+    nextQuestion: any;
+    previousQuestion: any;
+    answer: string;
+    numberOfQuestions: number;
+    numberOfAnsweredQuestions: number;
+    currentQuestionIndex: number;
+    score: number;
+    correctAnswers: number;
+    wrongAnswers: number;
+    hints: number;
+    fiftyFifty: number;
+    usedFiftyFifty: boolean;
+    nextButtonDisabled: boolean;
+    previousButtonDisabled: boolean;
+    previousRandomNumbers: any;
+    time: any;
+    state: any;
+}
+
+class Play extends Component<PlayPropsInterface, PlayStateInterface> {
+
+    correctSound: any;
+    correctTimeout: any;
+    wrongTimeout: any;
+    state: any;
+    interval: any;
+    wrongSound: any;
+    buttonSound: any;
+
+    constructor (props: PlayPropsInterface) {
         super(props);
         this.state = {
             questions,
@@ -49,7 +84,7 @@ class Play extends Component {
         clearInterval(this.interval);
     }
 
-    displayQuestions = (questions = this.state.questions, currentQuestion, nextQuestion, previousQuestion) => {
+    displayQuestions = (questions = this.state.questions, currentQuestion: any, nextQuestion: any, previousQuestion: any) => {
         let { currentQuestionIndex } = this.state;   
         if (!isEmpty(this.state.questions)) {
             questions = this.state.questions;
@@ -71,7 +106,7 @@ class Play extends Component {
         }     
     };
 
-    handleOptionClick = (e) => {
+    handleOptionClick = (e: any) => {
         if (e.target.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
             this.correctTimeout = setTimeout(() => {
                 this.correctSound.current.play();
@@ -114,7 +149,7 @@ class Play extends Component {
         }
     };
 
-    handleButtonClick = (e) => {
+    handleButtonClick = (e: any) => {
         switch (e.target.id) {
             case 'next-button':
                 this.handleNextButtonClick();
@@ -181,7 +216,7 @@ class Play extends Component {
     showOptions = () => {
         const options = Array.from(document.querySelectorAll('.option'));
 
-        options.forEach(option => {
+        options.forEach((option: any) => {
             option.style.visibility = 'visible';
         });
 
@@ -204,7 +239,7 @@ class Play extends Component {
             while (true) {
                 const randomNumber = Math.round(Math.random() * 3);
                 if (randomNumber !== indexOfAnswer && !this.state.previousRandomNumbers.includes(randomNumber)) {
-                    options.forEach((option, index) => {
+                    options.forEach((option: any, index) => {
                         if (index === randomNumber) {
                             option.style.visibility = 'hidden';
                             this.setState((prevState) => ({
@@ -223,7 +258,7 @@ class Play extends Component {
     handleFiftyFifty = () => {
         if (this.state.fiftyFifty > 0 && this.state.usedFiftyFifty === false) {
             const options = document.querySelectorAll('.option');
-            const randomNumbers = [];
+            const randomNumbers: any[] = [];
             let indexOfAnswer;
 
             options.forEach((option, index) => {
@@ -252,7 +287,7 @@ class Play extends Component {
                 }
             } while (count < 2);
 
-            options.forEach((option, index) => {
+            options.forEach((option: any, index) => {
                 if (randomNumbers.includes(index)) {
                     option.style.visibility = 'hidden';
                 }
@@ -267,7 +302,7 @@ class Play extends Component {
     startTimer = () => {
         const countDownTime = Date.now() + 180000;
         this.interval = setInterval(() => {
-            const now = new Date();
+            const now = Date.now();
             const distance = countDownTime - now;
 
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));

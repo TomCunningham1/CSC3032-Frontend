@@ -2,8 +2,22 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
-class QuizSummary extends Component {
-    constructor (props) {
+interface QuizSummaryProps {
+    location: any
+}
+
+interface QuizSummaryState {
+    score: number,
+    numberOfQuestions: number,
+    numberOfAnsweredQuestions: number,
+    correctAnswers: number,
+    wrongAnswers: number,
+    hintsUsed: number,
+    fiftyFiftyUsed: number
+}
+
+class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
+    constructor (props: QuizSummaryProps) {
         super(props);
         this.state = {
             score: 0,
