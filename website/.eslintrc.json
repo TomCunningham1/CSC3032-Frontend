@@ -8,7 +8,6 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "react-hooks/rules-of-hooks": "0"
     },
     "ignorePatterns": ["node_modules", "website", "cdk.out", "website/node_modules", "dist", "website/build", "website/coverage", "website/public"]
 }
