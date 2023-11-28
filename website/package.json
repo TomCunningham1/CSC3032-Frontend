@@ -5,7 +5,11 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-syntax-jsx": "^7.22.5",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
+    "@mui/styled-engine": "^5.14.18",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -33,7 +37,7 @@
     "build": "react-scripts build",
     "test": "jest --coverage",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.tsx\""
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +62,7 @@
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@types/jest": "^29.5.8",
+    "@types/jest": "^29.5.10",
     "@types/materialize-css": "^1.0.14",
     "@types/react-helmet": "^6.1.9",
     "identity-obj-proxy": "^3.0.0",

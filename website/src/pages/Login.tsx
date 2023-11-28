@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import React from 'react'
+
+import { useState } from 'react'
 import BackendService from '../services/backend-service'
 import { useNavigate } from 'react-router-dom'
 import User from '../types/User'
@@ -9,16 +9,6 @@ const Login = () => {
   const [pass, setPass] = useState('')
 
   const navigate = useNavigate()
-
-  const getHealth = async () => {
-    await BackendService.getHealth().then((r: any) => {
-      console.log(r.data)
-    })
-  }
-
-  useEffect(() => {
-    getHealth()
-  }, [])
 
   const handleRegister = () => {
     navigate('/register')
@@ -66,7 +56,11 @@ const Login = () => {
         Log In
       </button>
       {/* </form> */}
-      <button className="link-btn" onClick={handleRegister}>
+      <button
+        data-testid="nav-register"
+        className="link-btn"
+        onClick={handleRegister}
+      >
         First time? Register here.
       </button>
     </div>

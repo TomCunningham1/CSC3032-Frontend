@@ -14,10 +14,19 @@ describe('Tests for the login page', () => {
         const loginBox = loginComponent.getByTestId('auth-form-container');
         expect(loginBox.classList).toContain('auth-form-container');
 
-        const emailInput = loginComponent.getByTestId('first-name-input');
-        expect(emailInput).toBeTruthy();
+        const firstNameInput = loginComponent.getByTestId('first-name-input');
+        expect(firstNameInput).toBeTruthy();
         
-        const passwordInput = loginComponent.getByTestId('last-name-input');
+        const lastNameInput = loginComponent.getByTestId('last-name-input');
+        expect(lastNameInput).toBeTruthy();
+
+        const emailInput = loginComponent.getByTestId('email-input');
+        expect(emailInput).toBeTruthy();
+
+        const usernameInput = loginComponent.getByTestId('username-input');
+        expect(usernameInput).toBeTruthy();
+
+        const passwordInput = loginComponent.getByTestId('password-input');
         expect(passwordInput).toBeTruthy();
 
     });
