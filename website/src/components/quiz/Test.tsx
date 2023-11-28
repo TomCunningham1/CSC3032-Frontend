@@ -1,14 +1,14 @@
-import { useLocation } from "react-router"
-import QuizSummary from "./QuizSummary";
+import { useLocation } from 'react-router'
+import QuizSummary from './QuizSummary'
 
 const Data = () => {
-    const {state} = useLocation()
-    console.log(state);
-    return (
-        <>
-            <QuizSummary data={state}/>
-        </>
-    )
+  const { state } = useLocation()
+  console.log(state)
+  return (
+    <>
+      <QuizSummary data={state} />
+    </>
+  )
 }
 
-export default Data;
+export default Data
