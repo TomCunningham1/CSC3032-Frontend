@@ -35,15 +35,27 @@ const router = createBrowserRouter([
   },
   {
     path: '/play/instructions',
-    element: <TitleBar><QuizInstructions /></TitleBar>
+    element: (
+      <TitleBar>
+        <QuizInstructions />
+      </TitleBar>
+    ),
   },
   {
     path: '/play/quiz',
-    element: <TitleBar><Play /></TitleBar>
+    element: (
+      <TitleBar>
+        <Play />
+      </TitleBar>
+    ),
   },
   {
     path: 'play/quizSummary',
-    element: <TitleBar><QuizSummary /></TitleBar>
+    element: (
+      <TitleBar>
+        <QuizSummary />
+      </TitleBar>
+    ),
   },
 ])
 
