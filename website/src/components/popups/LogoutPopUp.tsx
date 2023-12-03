@@ -13,8 +13,12 @@ const LogoutPopUp = ({ open, onClose }: any) => {
     <div className="popup">
       <h1>Logout</h1>
       <p>Are you sure you want to log out?</p>
-      <button onClick={logout}>Yes</button>
-      <button onClick={onClose}>No</button>
+      <button className="home-btn" onClick={logout}>
+        Yes
+      </button>
+      <button className="home-btn" onClick={onClose}>
+        No
+      </button>
     </div>
   )
 }
