@@ -17,9 +17,14 @@ const SettingsPopUp = ({ open, onClose }: any) => {
   return (
     <div className="popup">
       <h1>Settings</h1>
-      <button className="close-btn" onClick={onClose}>X</button>
+      <button className="close-btn" onClick={onClose}>
+        X
+      </button>
       <div className="dropDownContainer" ref={dropDownRef}>
-        <button className="dropdown-btn" onClick={(e) => handleDropDownFocus(listOpen)}>
+        <button
+          className="dropdown-btn"
+          onClick={(e) => handleDropDownFocus(listOpen)}
+        >
           Pick Text Size
         </button>
         {listOpen && (

@@ -28,7 +28,9 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
   return (
     <div className="popup">
       <h1>Scenario Selection</h1>
-      <button className="close-btn" onClick={onClose}>X</button>
+      <button className="close-btn" onClick={onClose}>
+        X
+      </button>
       <button className="home-btn" onClick={chooseSQLInjection}>
         SQL Injection
       </button>
