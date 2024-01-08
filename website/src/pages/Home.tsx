@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../App.css'
 import ScenarioPopUp from '../components/popups/ScenarioPopUp'
 import HelpPopUp from '../components/popups/HelpPopUp'
