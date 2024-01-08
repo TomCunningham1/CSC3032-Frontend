@@ -12,7 +12,8 @@ const Home = () => {
   const [openLogoutPopUp, setOpenLogoutPopUp] = useState(false)
 
   return (
-    <div className="App">
+    // TODO - Rename App class
+    <div className="App" data-testid={"app-wrapper"}>
       <ScenarioPopUp
         open={openScenarioPopUp}
         onClose={() => setOpenScenarioPopUp(false)}
@@ -26,28 +27,32 @@ const Home = () => {
         open={openLogoutPopUp}
         onClose={() => setOpenLogoutPopUp(false)}
       />
-      <div className="auth-form-container">
+      <div className="main-menu-wrapper" data-testid={"main-menu-wrapper"}>
         <h2>Hack Attack</h2>
         <button
           className="home-btn"
+          data-testid={"scenarios-button"}
           onClick={() => {
             setOpenScenarioPopUp(true)
           }}
         >
           Scenarios
         </button>
-        <button className="home-btn" onClick={() => setOpenHelpPopUp(true)}>
+        <button className="home-btn" data-testid={'help-button'}
+        onClick={() => setOpenHelpPopUp(true)}>
           Help
         </button>
-        <button className="home-btn" onClick={() => setOpenSettingsPopUp(true)}>
+        <button className="home-btn" data-testid={'settings-button'}
+        onClick={() => setOpenSettingsPopUp(true)}>
           Settings
         </button>
-        <button className="home-btn" onClick={() => setOpenLogoutPopUp(true)}>
+        <button className="home-btn" data-testid={'logout-button'}
+        onClick={() => setOpenLogoutPopUp(true)}>
           Logout
         </button>
       </div>
     </div>
-  )
+  ) // TODO - Rename home-btn class
 }
 
 export default Home

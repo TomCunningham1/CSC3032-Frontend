@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 
+const componentId = 'settings-popup';
+
 const SettingsPopUp = ({ open, onClose }: any) => {
   const [listOpen, setListOpen] = useState(false)
   const dropDownRef = useRef<HTMLDivElement>(null)
@@ -15,9 +17,11 @@ const SettingsPopUp = ({ open, onClose }: any) => {
 
   if (!open) return null
   return (
-    <div className="popup">
-      <button onClick={onClose}>X</button>
+    <div className="popup" data-testid={componentId}>
       <h1>Settings</h1>
+      <button className="close-btn" onClick={onClose} data-testid={`${componentId}-close-button`}>
+        X
+      </button>
       <div className="dropDownContainer" ref={dropDownRef}>
         <button onClick={(e) => handleDropDownFocus(listOpen)}>
           Pick Text Size
