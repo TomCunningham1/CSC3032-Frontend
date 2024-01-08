@@ -12,7 +12,6 @@ const Home = () => {
   const [openLogoutPopUp, setOpenLogoutPopUp] = useState(false)
 
   return (
-    // TODO - Rename App class
     <div className="App" data-testid={"app-wrapper"}>
       <ScenarioPopUp
         open={openScenarioPopUp}
@@ -52,7 +51,7 @@ const Home = () => {
         </button>
       </div>
     </div>
-  ) // TODO - Rename home-btn class
+  )
 }
 
 export default Home
