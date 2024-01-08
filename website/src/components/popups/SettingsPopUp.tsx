@@ -23,7 +23,10 @@ const SettingsPopUp = ({ open, onClose }: any) => {
         X
       </button>
       <div className="dropDownContainer" ref={dropDownRef}>
-        <button onClick={(e) => handleDropDownFocus(listOpen)}>
+        <button
+          className="dropdown-btn"
+          onClick={(e) => handleDropDownFocus(listOpen)}
+        >
           Pick Text Size
         </button>
         {listOpen && (

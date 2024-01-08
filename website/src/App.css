@@ -43,14 +43,21 @@ button {
   color: #14228c;
 }
 
-.home-btn, .close-btn {
+.home-btn {
   border: none;
   background-color: white;
   padding: 20px;
   margin-bottom: 10px;
   border-radius: 10px;
+  height: 65px;
+  width: 150px;
   cursor: pointer;
   color: #14228c;
+}
+
+.close-btn, .dropdown-btn{
+  background: none;
+  color: white;
 }
 
 .link-btn {
@@ -67,7 +74,7 @@ button {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.75);
   position: fixed;
   height: 100%;
   width: 100%;
