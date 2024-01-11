@@ -33,7 +33,7 @@ describe('Tests for the login page', () => {
         const comp = output.getByTestId('app-wrapper');
 
         expect(comp).toBeTruthy();
-        expect(comp.className).toBe("App")
+        expect(comp.className).toBe("background")
     });
 
     it('Form exists', () => {
@@ -42,7 +42,7 @@ describe('Tests for the login page', () => {
         const comp = output.getByTestId('main-menu-wrapper');
 
         expect(comp).toBeTruthy();
-        expect(comp.className).toBe('main-menu-wrapper');
+        expect(comp.className).toBe('menu-container');
     });
 
     it('Scenarios Button should open pop up on click', () => {

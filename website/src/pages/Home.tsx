@@ -12,7 +12,7 @@ const Home = () => {
   const [openLogoutPopUp, setOpenLogoutPopUp] = useState(false)
 
   return (
-    <div className="App" data-testid={"app-wrapper"}>
+    <div className="background" data-testid={"app-wrapper"}>
       <ScenarioPopUp
         open={openScenarioPopUp}
         onClose={() => setOpenScenarioPopUp(false)}
@@ -26,7 +26,7 @@ const Home = () => {
         open={openLogoutPopUp}
         onClose={() => setOpenLogoutPopUp(false)}
       />
-      <div className="main-menu-wrapper" data-testid={"main-menu-wrapper"}>
+      <div className="menu-container" data-testid={"main-menu-wrapper"}>
         <h2>Hack Attack</h2>
         <button
           className="home-btn"
