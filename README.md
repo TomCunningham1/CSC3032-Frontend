@@ -1,9 +1,22 @@
-# Welcome to your CDK TypeScript project
+# Team 11 - Frontend
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`Team11FrontendStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+The "Hack-Attack" (working title) application is a web-based game wfocused on educating developers on the technical aspects of cyber-security, such as DDOS Attacks or SQL Injection.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This service has been created to provide the frontend stack of the the "Hack-Attack" Web application.
+
+The Cloudformation Stack creates a s3 bucket and cloudfront distribution to host the application. 
+
+The website folder contains a React application which once built is deployed into the s3 bucket.
+
+## Technology Used
+
+* Node JS - https://nodejs.org/en/
+* Typescript - https://www.typescriptlang.org/
+* AWS CDK - https://aws.amazon.com/cdk/
+* AWS IAM - https://aws.amazon.com/iam/
+* AWS S3 - https://aws.amazon.com/s3/
+* Material UI - https://mui.com/
+* AXIOS-HTTP - https://axios-http.com/docs/intro
 
 ## Useful commands
 
@@ -13,5 +26,15 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk deploy`      deploy this stack to your default AWS account/region
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
+
+## Website Application
+Inside the /website folder
+
+## Useful commands
+
+* `npm run build`   react build script
+* `npm run test`    perform the jest unit tests
+* `npm run start`   starts the react development server
+
 
 https://www.npmjs.com/package/aws-cdk

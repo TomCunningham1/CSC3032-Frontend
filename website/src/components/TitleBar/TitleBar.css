@@ -1,0 +1,9 @@
+.TitleBarBox {
+    flex-grow: 1;
+}
+
+.Typography {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
