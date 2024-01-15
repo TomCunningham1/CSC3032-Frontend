@@ -4,12 +4,15 @@ import ScenarioPopUp from '../components/popups/ScenarioPopUp'
 import HelpPopUp from '../components/popups/HelpPopUp'
 import SettingsPopUp from '../components/popups/SettingsPopUp'
 import LogoutPopUp from '../components/popups/LogoutPopUp'
+import { useNavigate } from 'react-router'
 
 const Home = () => {
   const [openScenarioPopUp, setOpenScenarioPopUp] = useState(false)
   const [openHelpPopUp, setOpenHelpPopUp] = useState(false)
   const [openSettingsPopUp, setOpenSettingsPopUp] = useState(false)
   const [openLogoutPopUp, setOpenLogoutPopUp] = useState(false)
+
+  const navigate = useNavigate()
 
   return (
     <div className="App">
@@ -42,8 +45,11 @@ const Home = () => {
         <button className="home-btn" onClick={() => setOpenSettingsPopUp(true)}>
           Settings
         </button>
-        <button className="home-btn" onClick={() => setOpenLogoutPopUp(true)}>
+        {/*<button className="home-btn" onClick={() => setOpenLogoutPopUp(true)}>
           Logout
+        </button>*/}
+        <button className="home-btn" onClick={() => navigate('/leaderboard')}>
+          Leaderboard
         </button>
       </div>
     </div>

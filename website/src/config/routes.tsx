@@ -2,7 +2,9 @@ import Login from '../pages/Login'
 import { createBrowserRouter } from 'react-router-dom'
 import Register from '../pages/Register'
 import Home from '../pages/Home'
+import Leaderboard from '../pages/Leaderboard'
 import App from '../App'
+
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/leaderboard',
+    element: <Leaderboard />,
   },
 ])
 
