@@ -1,5 +1,6 @@
-// import React from 'react'
 import { useNavigate } from 'react-router-dom'
+
+const componentId = 'scenario-popup';
 
 const ScenarioPopUp = ({ open, onClose }: any) => {
   const navigate = useNavigate()
@@ -22,12 +23,12 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
 
   if (!open) return null
   return (
-    <div className="popup">
+    <div className="popup" data-testid={componentId}>
       <h1>Scenario Selection</h1>
-      <button className="close-btn" onClick={onClose}>
+      <button className="close-btn" onClick={onClose} data-testid={`${componentId}-close-button`}>
         X
       </button>
-      <button className="home-btn" onClick={chooseSQLInjection}>
+      <button className="home-btn" onClick={chooseSQLInjection} data-testid={`${componentId}-sql`}>
         SQL Injection
       </button>
       <button className="home-btn" onClick={chooseBufferOverflow}>

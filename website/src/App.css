@@ -1,4 +1,4 @@
-.App {
+.background {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -8,13 +8,13 @@
   background-image: linear-gradient(65deg, #2934c4, #4e78d9 40%, #2989c4);
 }
 
-.auth-form-container, .login-form, .register-form {
+.menu-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (min-width: 600px) {
-  .auth-form-container {
+  .menu-container {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
