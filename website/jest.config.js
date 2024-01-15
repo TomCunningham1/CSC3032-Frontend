@@ -4,4 +4,8 @@ module.exports = {
     moduleNameMapper: {
       '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     },
+    collectCoverageFrom: [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**"
+    ],  
   };

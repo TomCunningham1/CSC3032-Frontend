@@ -14,7 +14,7 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className="background">
       {loading ? <CustomClockLoader loading={loading} /> : <Login />}
     </div>
   )

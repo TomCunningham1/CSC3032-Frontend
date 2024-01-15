@@ -30,7 +30,6 @@ const Login = () => {
   return (
     <div className="auth-form-container" data-testid="auth-form-container">
       <h2>Login</h2>
-      {/* <form className="login-form"> */}
       <label htmlFor="email">Email</label>
       <input
         data-testid="email-input"
@@ -54,7 +53,6 @@ const Login = () => {
       <button type="submit" data-testid="submit-button" onClick={handleLogin}>
         Log In
       </button>
-      {/* </form> */}
       <button
         data-testid="nav-register"
         className="link-btn"
