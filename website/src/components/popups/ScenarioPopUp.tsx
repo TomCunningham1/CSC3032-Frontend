@@ -7,22 +7,18 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
 
   const chooseSQLInjection = () => {
     navigate('/play/instructions')
-    alert('You have chosen SQL Injection')
   }
 
   const chooseBufferOverflow = () => {
     //navigate('/BufferOverflow')
-    alert('You have chosen Buffer Overflow')
   }
 
   const chooseXSS = () => {
     //navigate('/XSS')
-    alert('You have chosen Cross Site Scripting')
   }
 
   const chooseDDoS = () => {
     //navigate('/DDoS')
-    alert('You have chosen Distributed Denial of Service')
   }
 
   if (!open) return null
