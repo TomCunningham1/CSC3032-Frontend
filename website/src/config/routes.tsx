@@ -14,7 +14,8 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <TitleBar>
+      <TitleBar hideOptions>
+      
         <App />
       </TitleBar>
     ),
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: (
-      <TitleBar>
+      <TitleBar hideOptions>
         <Register />
       </TitleBar>
     ),
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: (
-      <TitleBar>
+      <TitleBar hideOptions>
         <Home />
       </TitleBar>
     ),

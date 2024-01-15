@@ -7,13 +7,15 @@ import './TitleBar.css'
 import { Avatar, Tooltip } from '@mui/material'
 import TitleBarDropDown from './TitleBarDropDown'
 
-const ButtonAppBar = ({ children }: any) => {
+const ButtonAppBar = ({ children, hideOptions }: any) => {
   return (
     <>
       <Box className={'TitleBarBox'}>
         <AppBar position="fixed">
           <Toolbar>
-            <TitleBarDropDown />
+          {
+              !hideOptions && <TitleBarDropDown />
+            }
 
             <Typography
               variant="h6"
