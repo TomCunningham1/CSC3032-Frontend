@@ -25,7 +25,11 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
         }
 
         return (
-          <button className="home-btn" onClick={navigateToQuiz}>
+          <button
+            key={`scenario-option-${playthrough.title}`}
+            data-testid={`scenario-option-${playthrough.title}`} 
+            className="home-btn" 
+            onClick={navigateToQuiz}>
             {playthrough.title}
           </button>
         )
