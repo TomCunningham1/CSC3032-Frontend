@@ -2,6 +2,8 @@ import { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import withRouter from '../Router'
+import { Button, TextField } from '@mui/material'
+import BackendService from '../../services/backend-service'
 
 interface QuizSummaryProps {
   router?: any
@@ -33,6 +35,21 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
     }
   }
 
+  handleEmail() {
+
+
+    BackendService.emailResults(
+      "tom.c22@hotmail.co.uk",
+      this.state.score,
+      this.state.numberOfQuestions,
+      this.state.numberOfAnsweredQuestions,
+      this.state.correctAnswers,
+      this.state.wrongAnswers,
+      this.state.hintsUsed,
+      this.state.fiftyFiftyUsed
+    )
+  }
+
   componentDidMount() {
     const { state }: any = this.props.router.location
     console.log(state)
@@ -53,6 +70,20 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
     const { state } = this.props.router.location
     let stats, remark
     const userScore = this.state.score
+
+    const x = () => {
+      BackendService.emailResults(
+        "tom.c22@hotmail.co.uk",
+        this.state.score,
+        this.state.numberOfQuestions,
+        this.state.numberOfAnsweredQuestions,
+        this.state.correctAnswers,
+        this.state.wrongAnswers,
+        this.state.hintsUsed,
+        this.state.fiftyFiftyUsed
+      )
+    }
+    
 
     if (userScore <= 30) {
       remark = 'You need a lot more practice'
@@ -97,6 +128,9 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
           </div>
           <section>
             <ul>
+              <li>
+                Enter Email<TextField></TextField><Button onClick={x}>Send Results</Button>
+              </li>
               <li>
                 <Link to="/play/quiz">Play Again</Link>
               </li>
