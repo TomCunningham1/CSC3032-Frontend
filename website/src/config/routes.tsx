@@ -6,6 +6,7 @@ import QuizSummary from '../components/quiz/QuizSummary'
 import Home from '../pages/Home'
 import Leaderboard from '../pages/Leaderboard'
 import TitleBar from '../components/TitleBar/TitleBar'
+import Data from '../components/quiz/Test'
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     path: '/leaderboard',
     element: <Leaderboard />,
   },
+  {
+    path: '/test',
+    element: <Data />
+  }
 ])
 
 export default router

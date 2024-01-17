@@ -1,8 +1,17 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Fragment } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-const QuizInstructions = () => (
+const QuizInstructions = () => {
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const toQuiz = () => {
+    navigate('/test', location.state)
+  }
+
+  return (
   <Fragment>
     <Helmet>
       <title>Quiz Instructions - Quiz App</title>
@@ -56,11 +65,12 @@ const QuizInstructions = () => (
           <Link to="/">Take me back to the main menu</Link>
         </span>
         <span className="right">
-          <Link to="/play/quiz">Play Quiz</Link>
+          <Link to={'/play/quiz'} state={location.state} >Play Quiz</Link>
         </span>
       </div>
     </div>
   </Fragment>
-)
+  )
+}
 
 export default QuizInstructions

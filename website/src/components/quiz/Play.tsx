@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import M from 'materialize-css'
 import classnames from 'classnames'
-import questions from '../../utils/questions.json'
 import isEmpty from '../../utils/is-empty'
 import correctNotification from '../../assets/audio/correct-answer.mp3'
 import wrongNotification from '../../assets/audio/wrong-answer.mp3'
@@ -14,6 +13,7 @@ interface PlayPropsInterface {
   state?: any
   history?: any
   router?: any
+  location: any
 }
 
 interface PlayStateInterface {
@@ -48,9 +48,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   buttonSound: any
 
   constructor(props: PlayPropsInterface) {
+
+
     super(props)
     this.state = {
-      questions,
+      questions: this.props.router.location.state,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
@@ -176,7 +178,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   handleQuitButtonClick = () => {
     this.playButtonSound()
     if (window.confirm('Are you sure you want to quit?')) {
-      this.props.history.push('/')
+      this.props.router.navigate('/')
     }
   }
 
