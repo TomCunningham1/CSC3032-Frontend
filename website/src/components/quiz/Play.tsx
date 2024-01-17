@@ -48,8 +48,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   buttonSound: any
 
   constructor(props: PlayPropsInterface) {
-
-
     super(props)
     this.state = {
       questions: this.props.router.location.state,

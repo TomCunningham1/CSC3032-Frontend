@@ -8,7 +8,6 @@ import Leaderboard from '../pages/Leaderboard'
 import TitleBar from '../components/TitleBar/TitleBar'
 import Data from '../components/quiz/Test'
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -56,8 +55,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/test',
-    element: <Data />
-  }
+    element: <Data />,
+  },
 ])
 
 export default router
