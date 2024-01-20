@@ -7,7 +7,6 @@ import Home from '../pages/Home'
 import Leaderboard from '../pages/Leaderboard'
 import data from '../data.json'
 import TitleBar from '../components/TitleBar/TitleBar'
-import LeaderboardRedo from '../pages/LeaderboardRedo'
 
 
 const router = createBrowserRouter([

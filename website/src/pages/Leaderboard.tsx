@@ -6,9 +6,6 @@ type Data = typeof data
 type SortKeys = keyof Data[0]
 type SortOrder = 'ascending' | 'descending'
 
-const [sortKey, setSortKey] = useState<SortKeys>("score")
-const [sortOrder, setSortOrder] = useState<SortOrder>("descending")
-
 const Leaderboard = ({data}:{data:Data}) => {
 
         const headers: {key: SortKeys, label: string}[] = [
@@ -17,8 +14,40 @@ const Leaderboard = ({data}:{data:Data}) => {
         {key: "timeTaken", label: "Time Taken (seconds)"},
         {key: "scenario", label: "Scenario"}
     ]
-
+    const [sortKey, setSortKey] = useState<SortKeys>("score")
+    const [sortOrder, setSortOrder] = useState<SortOrder>("descending")
     const sortedData = useCallback(() => sortData({tableData: data, sortKey, reverse: sortOrder === 'descending'}), [data, sortKey, sortOrder])
+
+    function changeSort(key: SortKeys){
+        setSortOrder(sortOrder === "ascending" ? "descending": "ascending")
+        setSortKey(key)
+    }
+
+    function sortData({tableData, sortKey, reverse}:{
+        tableData: Data,
+        sortKey: SortKeys,
+        reverse: boolean
+    }){
+        if(!sortKey) return tableData
+        const sortedData = data.sort((a, b) =>{
+            return a[sortKey]>b[sortKey] ? 1 : -1
+        })
+
+        if(reverse){
+            return sortedData.reverse()
+        }
+        return sortedData
+    }
+
+    function SortButton({sortOrder, columnKey, sortKey, onClick}:
+    {
+            sortOrder: SortOrder
+            columnKey: SortKeys
+            sortKey: SortKeys
+            onClick: MouseEventHandler<HTMLButtonElement>
+    }){
+        return <button onClick={onClick}>V</button>
+    }
     
     return(
         <div className="background"  data-testid={"app-wrapper"}>
@@ -57,35 +86,4 @@ const Leaderboard = ({data}:{data:Data}) => {
         </div> 
     )         
 }
-
-    function sortData({tableData, sortKey, reverse}:{
-        tableData: Data,
-        sortKey: SortKeys,
-        reverse: boolean
-    }){
-        if(!sortKey) return tableData
-        const sortedData = data.sort((a, b) =>{
-            return a[sortKey]>b[sortKey] ? 1 : -1
-        })
-
-        if(reverse){
-            return sortedData.reverse()
-        }
-        return sortedData
-    }
-
-    function SortButton({sortOrder, columnKey, sortKey, onClick}:
-    {
-            sortOrder: SortOrder
-            columnKey: SortKeys
-            sortKey: SortKeys
-            onClick: MouseEventHandler<HTMLButtonElement>
-    }){
-        return <button onClick={onClick}>V</button>
-    }
-
-    function changeSort(key: SortKeys){
-        setSortOrder(sortOrder === "ascending" ? "descending": "ascending")
-        setSortKey(key)
-    }
 export default Leaderboard
