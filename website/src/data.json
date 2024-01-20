@@ -1,0 +1,14 @@
+[
+    {
+        "nickname": "Bob",
+        "score": 7,
+        "timeTaken": 45,
+        "scenario": "SQL"
+    },
+    {
+        "nickname": "Sam",
+        "score": 4,
+        "timeTaken": 60,
+        "scenario": "DDos"
+    }
+]
