@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     path: '/leaderboard',
     element: (
       <TitleBar>
-        <Leaderboard data={[]} />
+        <Leaderboard />
       </TitleBar>
     ),
   },

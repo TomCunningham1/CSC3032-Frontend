@@ -6,7 +6,7 @@ type Data = typeof data
 type SortKeys = keyof Data[0]
 type SortOrder = 'ascending' | 'descending'
 
-const Leaderboard = ({data}:{data:Data}) => {
+const Leaderboard = () => {
 
         const headers: {key: SortKeys, label: string}[] = [
         {key: "nickname", label: "Nickname"},
