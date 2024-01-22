@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1705511223048" clover="3.2.0">
-  <project timestamp="1705511223048" name="All files">
-    <metrics statements="457" coveredstatements="153" conditionals="95" coveredconditionals="11" methods="112" coveredmethods="36" elements="664" coveredelements="200" complexity="0" loc="457" ncloc="457" packages="13" files="29" classes="29"/>
+<coverage generated="1705937763813" clover="3.2.0">
+  <project timestamp="1705937763813" name="All files">
+    <metrics statements="486" coveredstatements="170" conditionals="97" coveredconditionals="11" methods="119" coveredmethods="37" elements="702" coveredelements="218" complexity="0" loc="486" ncloc="486" packages="13" files="30" classes="30"/>
     <package name="website">
       <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="assets.d.ts" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\assets.d.ts">
+      <file name="assets.d.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/assets.d.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="setupTests.ts" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\setupTests.ts">
+      <file name="setupTests.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/setupTests.ts">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
       </file>
     </package>
     <package name="website.src">
       <metrics statements="18" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="App.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\App.tsx">
+      <file name="App.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/App.tsx">
         <metrics statements="11" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -28,7 +28,7 @@
         <line num="16" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
       </file>
-      <file name="index.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\index.tsx">
+      <file name="index.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/index.tsx">
         <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -41,7 +41,7 @@
     </package>
     <package name="website.src.components">
       <metrics statements="22" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
-      <file name="Home.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\Home.tsx">
+      <file name="Home.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/Home.tsx">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -49,7 +49,7 @@
         <line num="5" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
       </file>
-      <file name="QuestionCard.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\QuestionCard.tsx">
+      <file name="QuestionCard.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/QuestionCard.tsx">
         <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -62,7 +62,7 @@
         <line num="26" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
       </file>
-      <file name="Router.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\Router.tsx">
+      <file name="Router.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/Router.tsx">
         <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -75,7 +75,7 @@
     </package>
     <package name="website.src.components.DropDownMenu">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="DropDownMenu.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\DropDownMenu\DropDownMenu.tsx">
+      <file name="DropDownMenu.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/DropDownMenu/DropDownMenu.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
@@ -89,7 +89,7 @@
     </package>
     <package name="website.src.components.LoadingClock">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="LoadingClock.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\LoadingClock\LoadingClock.tsx">
+      <file name="LoadingClock.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/LoadingClock/LoadingClock.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
@@ -99,7 +99,7 @@
     </package>
     <package name="website.src.components.TextInput">
       <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="TextInput.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\TextInput\TextInput.tsx">
+      <file name="TextInput.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TextInput/TextInput.tsx">
         <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -117,7 +117,7 @@
     </package>
     <package name="website.src.components.TitleBar">
       <metrics statements="31" coveredstatements="31" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
-      <file name="TitleBar.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\TitleBar\TitleBar.tsx">
+      <file name="TitleBar.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBar.tsx">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -131,7 +131,7 @@
         <line num="11" count="4" type="stmt"/>
         <line num="41" count="2" type="stmt"/>
       </file>
-      <file name="TitleBarDropDown.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\TitleBar\TitleBarDropDown.tsx">
+      <file name="TitleBarDropDown.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarDropDown.tsx">
         <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -157,7 +157,7 @@
     </package>
     <package name="website.src.components.popups">
       <metrics statements="40" coveredstatements="37" conditionals="13" coveredconditionals="6" methods="10" coveredmethods="8"/>
-      <file name="HelpPopUp.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\popups\HelpPopUp.tsx">
+      <file name="HelpPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/HelpPopUp.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="13" type="stmt"/>
@@ -165,7 +165,7 @@
         <line num="5" count="3" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
       </file>
-      <file name="LogoutPopUp.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\popups\LogoutPopUp.tsx">
+      <file name="LogoutPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/LogoutPopUp.tsx">
         <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="2" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -177,7 +177,7 @@
         <line num="14" count="3" type="stmt"/>
         <line num="36" count="2" type="stmt"/>
       </file>
-      <file name="ScenarioPopUp.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\popups\ScenarioPopUp.tsx">
+      <file name="ScenarioPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/ScenarioPopUp.tsx">
         <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -185,13 +185,13 @@
         <line num="7" count="14" type="stmt"/>
         <line num="8" count="14" type="stmt"/>
         <line num="10" count="14" type="cond" truecount="1" falsecount="0"/>
-        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
         <line num="23" count="16" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="27" count="16" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
       </file>
-      <file name="SettingsPopUp.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\popups\SettingsPopUp.tsx">
+      <file name="SettingsPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/SettingsPopUp.tsx">
         <metrics statements="15" coveredstatements="12" conditionals="10" coveredconditionals="3" methods="4" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
@@ -211,8 +211,8 @@
       </file>
     </package>
     <package name="website.src.components.quiz">
-      <metrics statements="212" coveredstatements="0" conditionals="67" coveredconditionals="0" methods="48" coveredmethods="0"/>
-      <file name="Play.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\quiz\Play.tsx">
+      <metrics statements="238" coveredstatements="16" conditionals="67" coveredconditionals="0" methods="53" coveredmethods="1"/>
+      <file name="Play.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/quiz/Play.tsx">
         <metrics statements="166" coveredstatements="0" conditionals="48" coveredconditionals="0" methods="41" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -381,7 +381,7 @@
         <line num="544" count="0" type="stmt"/>
         <line num="546" count="0" type="stmt"/>
       </file>
-      <file name="QuizInstructions.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\quiz\QuizInstructions.tsx">
+      <file name="QuizInstructions.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/quiz/QuizInstructions.tsx">
         <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -394,40 +394,69 @@
         <line num="13" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
       </file>
-      <file name="QuizSummary.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\quiz\QuizSummary.tsx">
-        <metrics statements="30" coveredstatements="0" conditionals="19" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="QuizSummary.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/quiz/QuizSummary.tsx">
+        <metrics statements="36" coveredstatements="0" conditionals="19" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="111" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="134" count="0" type="stmt"/>
-        <line num="136" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="88" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="92" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="98" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="167" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="178" count="0" type="stmt"/>
       </file>
-      <file name="Test.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\components\quiz\Test.tsx">
+      <file name="SendEmail.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/quiz/SendEmail.tsx">
+        <metrics statements="20" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+      <file name="Test.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/quiz/Test.tsx">
         <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -439,12 +468,12 @@
     </package>
     <package name="website.src.config">
       <metrics statements="13" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="constants.ts" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\config\constants.ts">
+      <file name="constants.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/src/config/constants.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
       </file>
-      <file name="routes.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\config\routes.tsx">
+      <file name="routes.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/config/routes.tsx">
         <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -455,13 +484,13 @@
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
       </file>
     </package>
     <package name="website.src.pages">
       <metrics statements="76" coveredstatements="54" conditionals="2" coveredconditionals="0" methods="28" coveredmethods="15"/>
-      <file name="Home.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\pages\Home.tsx">
+      <file name="Home.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Home.tsx">
         <metrics statements="23" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -487,14 +516,14 @@
         <line num="57" count="0" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
       </file>
-      <file name="Leaderboard.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\pages\Leaderboard.tsx">
+      <file name="Leaderboard.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Leaderboard.tsx">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
-      <file name="Login.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\pages\Login.tsx">
+      <file name="Login.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Login.tsx">
         <metrics statements="20" coveredstatements="18" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -517,7 +546,7 @@
         <line num="47" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
       </file>
-      <file name="Register.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\pages\Register.tsx">
+      <file name="Register.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Register.tsx">
         <metrics statements="26" coveredstatements="15" conditionals="1" coveredconditionals="0" methods="10" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -546,7 +575,7 @@
         <line num="83" count="0" type="stmt"/>
         <line num="101" count="1" type="stmt"/>
       </file>
-      <file name="Splash.tsx" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\pages\Splash.tsx">
+      <file name="Splash.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Splash.tsx">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -555,7 +584,7 @@
     </package>
     <package name="website.src.questions">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="QuizQuestions.ts" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\questions\QuizQuestions.ts">
+      <file name="QuizQuestions.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/src/questions/QuizQuestions.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -566,23 +595,26 @@
       </file>
     </package>
     <package name="website.src.services">
-      <metrics statements="14" coveredstatements="11" conditionals="5" coveredconditionals="1" methods="6" coveredmethods="3"/>
-      <file name="backend-service.ts" path="C:\Users\Tom\Documents\School\QUB - Year 4\Software Engineering in Teams\Semester 2\team11-frontend\website\src\services\backend-service.ts">
-        <metrics statements="14" coveredstatements="11" conditionals="5" coveredconditionals="1" methods="6" coveredmethods="3"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
+      <metrics statements="17" coveredstatements="12" conditionals="7" coveredconditionals="1" methods="8" coveredmethods="3"/>
+      <file name="backend-service.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/src/services/backend-service.ts">
+        <metrics statements="17" coveredstatements="12" conditionals="7" coveredconditionals="1" methods="8" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
         <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="2" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="56" count="3" type="stmt"/>
+        <line num="58" count="3" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
       </file>
     </package>
   </project>

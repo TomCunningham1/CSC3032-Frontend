@@ -8,6 +8,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
   const navigate = useNavigate()
 
   if (!open) return null
+
   return (
     <div className="popup" data-testid={componentId}>
       <h1>Scenario Selection</h1>
@@ -18,7 +19,6 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
       >
         X
       </button>
-
       {questions.map((playthrough: { title: string; questions: object }) => {
         const navigateToQuiz = () => {
           navigate('/play/instructions', { state: playthrough.questions })
