@@ -15,7 +15,7 @@ const Home = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="background" data-testid={"app-wrapper"}>
+    <div className="background" data-testid={'app-wrapper'}>
       <ScenarioPopUp
         open={openScenarioPopUp}
         onClose={() => setOpenScenarioPopUp(false)}
@@ -29,23 +29,29 @@ const Home = () => {
         open={openLogoutPopUp}
         onClose={() => setOpenLogoutPopUp(false)}
       />
-      <div className="menu-container" data-testid={"main-menu-wrapper"}>
+      <div className="menu-container" data-testid={'main-menu-wrapper'}>
         <h2>Hack Attack</h2>
         <button
           className="home-btn"
-          data-testid={"scenarios-button"}
+          data-testid={'scenarios-button'}
           onClick={() => {
             setOpenScenarioPopUp(true)
           }}
         >
           Scenarios
         </button>
-        <button className="home-btn" data-testid={'help-button'}
-        onClick={() => setOpenHelpPopUp(true)}>
+        <button
+          className="home-btn"
+          data-testid={'help-button'}
+          onClick={() => setOpenHelpPopUp(true)}
+        >
           Help
         </button>
-        <button className="home-btn" data-testid={'settings-button'}
-        onClick={() => setOpenSettingsPopUp(true)}>
+        <button
+          className="home-btn"
+          data-testid={'settings-button'}
+          onClick={() => setOpenSettingsPopUp(true)}
+        >
           Settings
         </button>
         <button className="home-btn" onClick={() => navigate('/leaderboard')}>

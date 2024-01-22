@@ -37,10 +37,8 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
   }
 
   handleEmail() {
-
-
     BackendService.emailResults(
-      "tom.c22@hotmail.co.uk",
+      'tom.c22@hotmail.co.uk',
       this.state.score,
       this.state.numberOfQuestions,
       this.state.numberOfAnsweredQuestions,
@@ -74,7 +72,7 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
 
     const x = () => {
       BackendService.emailResults(
-        "tom.c22@hotmail.co.uk",
+        'tom.c22@hotmail.co.uk',
         this.state.score,
         this.state.numberOfQuestions,
         this.state.numberOfAnsweredQuestions,
@@ -84,7 +82,6 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
         this.state.fiftyFiftyUsed
       )
     }
-    
 
     if (userScore <= 30) {
       remark = 'You need a lot more practice'
@@ -130,15 +127,17 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
           <section>
             <ul>
               <li>
-                <SendEmail 
-                  score={this.state.score} 
+                <SendEmail
+                  score={this.state.score}
                   numberOfQuestions={this.state.numberOfQuestions}
-                  numberOfAnsweredQuestions={this.state.numberOfAnsweredQuestions}
+                  numberOfAnsweredQuestions={
+                    this.state.numberOfAnsweredQuestions
+                  }
                   correctAnswers={this.state.correctAnswers}
                   wrongAnswers={this.state.wrongAnswers}
                   hintsUsed={this.state.hintsUsed}
                   fiftyFiftyUsed={this.state.fiftyFiftyUsed}
-                  />
+                />
               </li>
               <li>
                 <Link to="/play/quiz">Play Again</Link>

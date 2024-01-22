@@ -7,7 +7,6 @@ import Home from '../pages/Home'
 import Leaderboard from '../pages/Leaderboard'
 import TitleBar from '../components/TitleBar/TitleBar'
 
-
 const router = createBrowserRouter([
   {
     path: '/',

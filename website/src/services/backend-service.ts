@@ -43,15 +43,15 @@ class BackendServiceClass {
     fiftyFiftyUsed: number
   ) => {
     return await axios.post(`${BACKEND_IP}/send-email`, {
-      "target": target,
-      "score": score,
-      "numberOfQuestions": numberOfQuestions,
-      "numberOfAnsweredQuestions": numberOfAnsweredQuestions,
-      "correctAnswers": correctAnswers,
-      "wrongAnswers": wrongAnswers,
-      "hintsUsed": hintsUsed,
-      "fiftyFiftyUsed": fiftyFiftyUsed
-  })
+      target: target,
+      score: score,
+      numberOfQuestions: numberOfQuestions,
+      numberOfAnsweredQuestions: numberOfAnsweredQuestions,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers,
+      hintsUsed: hintsUsed,
+      fiftyFiftyUsed: fiftyFiftyUsed,
+    })
   }
 }
 
