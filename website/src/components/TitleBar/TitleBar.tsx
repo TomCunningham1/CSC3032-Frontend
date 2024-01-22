@@ -13,9 +13,7 @@ const ButtonAppBar = ({ children, hideOptions }: any) => {
       <Box className={'TitleBarBox'}>
         <AppBar position="fixed">
           <Toolbar>
-          {
-              !hideOptions && <TitleBarDropDown />
-            }
+            {!hideOptions && <TitleBarDropDown />}
 
             <Typography
               variant="h6"

@@ -1,0 +1,13 @@
+{
+    "title": "Distributed Denial Of Service",
+    "questions": [
+        {
+            "question": "This is a sample DDOS Question",
+            "optionA": "When user is asked for input username",
+            "optionB": "When user is asked for input captcha",
+            "optionC": "When user is asked for input password",
+            "optionD": "When user is asked to logout",
+            "answer": "When user is asked for input username"
+        }
+    ]
+}
