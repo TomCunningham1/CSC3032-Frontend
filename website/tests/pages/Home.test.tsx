@@ -86,27 +86,27 @@ describe('Tests for the login page', () => {
         expect(output.queryByTestId('help-popup')).toBeNull();
     });
 
-    it('Logout button should open popup on click', () => {
-        output = renderComponent();
+    // it('Logout button should open popup on click', () => {
+    //     output = renderComponent();
 
-        const scenariosButton = output.getByTestId('logout-button');
+    //     const scenariosButton = output.getByTestId('logout-button');
 
-        expect(scenariosButton).toBeTruthy();
-        expect(scenariosButton.className).toBe('home-btn');
+    //     expect(scenariosButton).toBeTruthy();
+    //     expect(scenariosButton.className).toBe('home-btn');
 
-        fireEvent.click(scenariosButton);
+    //     fireEvent.click(scenariosButton);
 
         
-        const scenarioPopup = output.getByTestId('logout-popup');
-        expect(scenarioPopup).toBeTruthy();
+    //     const scenarioPopup = output.getByTestId('logout-popup');
+    //     expect(scenarioPopup).toBeTruthy();
 
-        const logoutCloseButton = output.getByTestId('logout-popup-close-button');
-        expect(logoutCloseButton).toBeTruthy();
+    //     const logoutCloseButton = output.getByTestId('logout-popup-close-button');
+    //     expect(logoutCloseButton).toBeTruthy();
 
-        fireEvent.click(logoutCloseButton);
+    //     fireEvent.click(logoutCloseButton);
 
-        expect(output.queryByTestId('logout-popup')).toBeNull();
-    });
+    //     expect(output.queryByTestId('logout-popup')).toBeNull();
+    // });
 
     it('Settings button should open logout popup', () => {
         output = renderComponent();

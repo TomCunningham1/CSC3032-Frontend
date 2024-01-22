@@ -22,6 +22,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
   }
 
   if (!open) return null
+  
   return (
     <div className="popup" data-testid={componentId}>
       <h1>Scenario Selection</h1>

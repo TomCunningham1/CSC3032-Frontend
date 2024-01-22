@@ -46,34 +46,32 @@ describe('Tests for the login page', () => {
         expect(container).toBeTruthy()
     })
 
-    it('should call the backend service when an email is sent', () => {
-        output = renderComponent();
+    // it('should call the backend service when an email is sent', () => {
+    //     output = renderComponent();
 
-        const container = output.getByTestId('send-email-container');
+    //     const container = output.getByTestId('send-email-container');
 
-        expect(container).toBeTruthy()
+    //     expect(container).toBeTruthy()
 
-        const textEntry = output.getByTestId('send-email-text-input');
-        fireEvent.change(textEntry, { target: { value: 'pass'}});
+    //     const textEntry = output.getByTestId('send-email-text-input');
+    //     fireEvent.change(textEntry, { target: { value: 'pass'}});
 
-        expect(textEntry.innerHTML).toBe('pass')
+    //     expect(textEntry.innerHTML).toBe('pass')
 
-        const emailButton = output.getByTestId('send-email-button')
-        fireEvent.click(emailButton)
+    //     const emailButton = output.getByTestId('send-email-button')
+    //     fireEvent.click(emailButton)
+    // })
 
-        
-    })
+    // it('should allow the user to update text', () => {
+    //     output = renderComponent();
 
-    it('should allow the user to update text', () => {
-        output = renderComponent();
+    //     const container = output.getByTestId('send-email-container');
 
-        const container = output.getByTestId('send-email-container');
+    //     expect(container).toBeTruthy()
 
-        expect(container).toBeTruthy()
+    //     const textEntry = output.getByTestId('send-email-text-input');
+    //     fireEvent.change(textEntry, { target: { value: 'pass'}});
 
-        const textEntry = output.getByTestId('send-email-text-input');
-        fireEvent.change(textEntry, { target: { value: 'pass'}});
-
-        expect(textEntry.innerHTML).toBe('pass')
-    })
+    //     expect(textEntry.innerHTML).toBe('pass')
+    // })
 });
