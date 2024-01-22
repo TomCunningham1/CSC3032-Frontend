@@ -4,8 +4,6 @@ import * as router from 'react-router';
 import axios from 'axios';
 import React from 'react';
 import Home from '../../src/pages/Home';
-import ScenarioPopUp from '../../src/components/popups/ScenarioPopUp';
-
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 jest.mock('axios');

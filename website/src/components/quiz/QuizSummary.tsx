@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import withRouter from '../Router'
 import { Button, TextField } from '@mui/material'
 import BackendService from '../../services/backend-service'
+import SendEmail from './SendEmail'
 
 interface QuizSummaryProps {
   router?: any
@@ -129,7 +130,15 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
           <section>
             <ul>
               <li>
-                Enter Email<TextField></TextField><Button onClick={x}>Send Results</Button>
+                <SendEmail 
+                  score={this.state.score} 
+                  numberOfQuestions={this.state.numberOfQuestions}
+                  numberOfAnsweredQuestions={this.state.numberOfAnsweredQuestions}
+                  correctAnswers={this.state.correctAnswers}
+                  wrongAnswers={this.state.wrongAnswers}
+                  hintsUsed={this.state.hintsUsed}
+                  fiftyFiftyUsed={this.state.fiftyFiftyUsed}
+                  />
               </li>
               <li>
                 <Link to="/play/quiz">Play Again</Link>
