@@ -40,6 +40,10 @@ deployment:
   stage: deploy
   script:
     - npm install
+    - cd website
+    - npm install
+    - npm run build
+    - cd ..
     - cdk synth
     - cdk deploy
   
