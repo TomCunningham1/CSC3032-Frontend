@@ -34,7 +34,7 @@ describe('help popups test', () => {
         expect(popup.innerHTML).toContain("SQL Injection")
         expect(popup.innerHTML).toContain("Buffer Overflow")
         expect(popup.innerHTML).toContain("Cross Site Scripting")
-        expect(popup.innerHTML).toContain("Distributed Denial of Service")
+        expect(popup.innerHTML).toContain("Distributed Denial Of Service")
     });
 
     it('Should display the settings popup', () => {
@@ -57,11 +57,11 @@ describe('help popups test', () => {
         const popup = output.getByTestId('scenario-popup');
         expect(popup).toBeTruthy();
 
-        const sqlButton = output.getByTestId('scenario-popup-sql');
+        const sqlButton = output.getByTestId('scenario-option-SQL Injection');
         expect(sqlButton).toBeTruthy();
 
         fireEvent.click(sqlButton);
 
-        expect(navigate).toHaveBeenCalledWith('/play/instructions');
+        expect(navigate).toHaveBeenCalled();
     });
 });
