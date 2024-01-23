@@ -15,7 +15,7 @@ export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const environment = process.env.ENVIRONMENT || 'test';
+    const environment = process.env.ENVIRONMENT || 'test'
 
     const frontEndBucket = new aws_s3.Bucket(
       this,
