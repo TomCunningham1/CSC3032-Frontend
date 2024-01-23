@@ -43,6 +43,7 @@ deployment_test:
   except:
     - main
   script:
+    - echo "Deploying to '$ENVIRONMENT' Environment"
     - npm install
     - cd website
     - npm install
@@ -58,5 +59,12 @@ deployment_production:
   only:
     - main
   script:
-    - echo '$ENVIRONMENT'
+    - echo "Deploying to '$ENVIRONMENT' Environment"
+    - npm install
+    - cd website
+    - npm install
+    - npm run build
+    - cd ..
+    - cdk synth
+    - cdk deploy
   
