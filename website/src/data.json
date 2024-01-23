@@ -10,5 +10,29 @@
         "score": 4,
         "timeTaken": 60,
         "scenario": "DDos"
+    },
+    {
+        "nickname": "Mary",
+        "score": 11,
+        "timeTaken": 35,
+        "scenario": "Cross Site Scripting"
+    },
+    {
+        "nickname": "Sophie",
+        "score": 3,
+        "timeTaken": 100,
+        "scenario": "Buffer Overflow"
+    },
+    {
+        "nickname": "Claire",
+        "score": 10,
+        "timeTaken": 55,
+        "scenario": "SQL"
+    },
+    {
+        "nickname": "Mark",
+        "score": 8,
+        "timeTaken": 80,
+        "scenario": "DDos"
     }
 ]

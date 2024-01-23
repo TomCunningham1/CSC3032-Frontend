@@ -11,7 +11,7 @@ const Leaderboard = () => {
         const headers: {key: SortKeys, label: string}[] = [
         {key: "nickname", label: "Nickname"},
         {key: "score", label: "Score"},
-        {key: "timeTaken", label: "Time Taken (seconds)"},
+        {key: "timeTaken", label: "Time (seconds)"},
         {key: "scenario", label: "Scenario"}
     ]
     const [sortKey, setSortKey] = useState<SortKeys>("score")
@@ -46,7 +46,7 @@ const Leaderboard = () => {
             sortKey: SortKeys
             onClick: MouseEventHandler<HTMLButtonElement>
     }){
-        return <button onClick={onClick}>V</button>
+        return <button onClick={onClick} className={`${sortKey === columnKey && sortOrder === 'ascending' ? "sort-button sort-reverse" : "sort-button"}`}>v</button>
     }
     
     return(
