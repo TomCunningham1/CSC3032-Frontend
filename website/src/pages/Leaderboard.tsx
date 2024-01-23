@@ -10,9 +10,16 @@ const Leaderboard = () => {
 
         const headers: {key: SortKeys, label: string}[] = [
         {key: "nickname", label: "Nickname"},
+        {key: "scenario", label: "Scenario"},
         {key: "score", label: "Score"},
-        {key: "timeTaken", label: "Time (seconds)"},
-        {key: "scenario", label: "Scenario"}
+        {key: "numberOfQuestions", label: "Total Questions"},
+        {key: "numberOfAnsweredQuestions", label: "Number Answered"},
+        {key: "correctAnswers", label: "Correct Answers"},
+        {key: "wrongAnswers", label: "Wrong Answers"},
+        {key: "hintsUsed", label: "Hints Used"},
+        {key: "fiftyFiftyUsed", label: "50/50s Used"},
+        
+        
     ]
     const [sortKey, setSortKey] = useState<SortKeys>("score")
     const [sortOrder, setSortOrder] = useState<SortOrder>("descending")
@@ -74,9 +81,15 @@ const Leaderboard = () => {
                             return (
                                 <tr key={user.score}>
                                     <td>{user.nickname}</td>
-                                    <td>{user.score}</td>
-                                    <td>{user.timeTaken}</td>
                                     <td>{user.scenario}</td>
+                                    <td>{user.score}</td>
+                                    <td>{user.numberOfQuestions}</td>
+                                    <td>{user.numberOfAnsweredQuestions}</td>
+                                    <td>{user.correctAnswers}</td>
+                                    <td>{user.wrongAnswers}</td>
+                                    <td>{user.hintsUsed}</td>
+                                    <td>{user.fiftyFiftyUsed}</td>
+                                    
                                 </tr>
                             )
                         })}
