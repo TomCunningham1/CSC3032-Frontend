@@ -36,8 +36,12 @@ unit_test_job:
     - npm run test
 
   
-deployment:
+deployment_test:
   stage: deploy
+  variables:
+    ENVIRONMENT: "test"
+  except:
+    - main
   script:
     - npm install
     - cd website
@@ -46,4 +50,13 @@ deployment:
     - cd ..
     - cdk synth
     - cdk deploy
+
+deployment_production:
+  stage: deploy
+  variables:
+    ENVIRONMENT: "production"
+  only:
+    - main
+  script:
+    - echo '$ENVIRONMENT'
   
