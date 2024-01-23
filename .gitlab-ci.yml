@@ -50,7 +50,7 @@ deployment_test:
     - npm run build
     - cd ..
     - cdk synth
-    - cdk deploy
+    - cdk deploy --require-approval never
 
 deployment_production:
   stage: deploy
@@ -66,5 +66,5 @@ deployment_production:
     - npm run build
     - cd ..
     - cdk synth
-    - cdk deploy
+    - cdk deploy --require-approval never
   
