@@ -1,19 +1,23 @@
-const environment = process.env.ENVIRONMENT || 'test'
+import { NON_PRODUCTION_ENVIRONMENT, PRODUCTION_ENVIRONMENT } from './constants'
 
-interface EnvironmentConfigInterface {
+class Environment {
   environmentName: string
+  databaseName: string
+
+  constructor(env: string) {
+    switch (env) {
+      case 'non-prod': {
+        this.environmentName = NON_PRODUCTION_ENVIRONMENT.environmentName
+        this.databaseName = NON_PRODUCTION_ENVIRONMENT.databaseName
+      }
+      case 'prod': {
+        this.environmentName = PRODUCTION_ENVIRONMENT.environmentName
+        this.databaseName = PRODUCTION_ENVIRONMENT.databaseName
+      }
+    }
+  }
 }
 
-const testEnvironment: EnvironmentConfigInterface = {
-  environmentName: 'test',
-}
+const environment = new Environment(process.env.ENVIRONMENT || 'non-prod')
 
-const productionEnvironment: EnvironmentConfigInterface = {
-  environmentName: 'production',
-}
-
-class EnvironmentConfig {
-  public constructor(envType: string) {}
-}
-
-export default new EnvironmentConfig(process.env.ENVIRONMENT || 'test')
+export default environment

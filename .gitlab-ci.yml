@@ -39,7 +39,7 @@ unit_test_job:
 deployment_test:
   stage: deploy
   variables:
-    ENVIRONMENT: "test"
+    ENVIRONMENT: "non-prod"
   except:
     - main
   script:
@@ -55,7 +55,7 @@ deployment_test:
 deployment_production:
   stage: deploy
   variables:
-    ENVIRONMENT: "production"
+    ENVIRONMENT: "prod"
   only:
     - main
   script:
