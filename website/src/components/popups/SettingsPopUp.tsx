@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-const componentId = 'settings-popup';
+const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
   const [listOpen, setListOpen] = useState(false)
@@ -19,7 +19,11 @@ const SettingsPopUp = ({ open, onClose }: any) => {
   return (
     <div className="popup" data-testid={componentId}>
       <h1>Settings</h1>
-      <button className="close-btn" onClick={onClose} data-testid={`${componentId}-close-button`}>
+      <button
+        className="close-btn"
+        onClick={onClose}
+        data-testid={`${componentId}-close-button`}
+      >
         X
       </button>
       <div className="dropDownContainer" ref={dropDownRef}>
