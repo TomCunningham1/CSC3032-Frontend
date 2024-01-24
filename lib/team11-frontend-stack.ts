@@ -17,7 +17,7 @@ export class Team11FrontendStack extends Stack {
 
     const frontEndBucket = new aws_s3.Bucket(
       this,
-      `team11-${environment}-s3-bucket`,
+      `team11-s3-bucket`,
       {
         removalPolicy: RemovalPolicy.DESTROY,
       }
