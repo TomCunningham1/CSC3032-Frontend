@@ -35,7 +35,7 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
       fiftyFiftyUsed: 0,
     }
   }
-  
+
   componentDidMount() {
     const { state }: any = this.props.router.location
     if (state) {
