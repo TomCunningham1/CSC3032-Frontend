@@ -5,15 +5,11 @@ class Environment {
   databaseName: string
 
   constructor(env: string) {
-    switch (env) {
-      case 'non-prod': {
-        this.environmentName = NON_PRODUCTION_ENVIRONMENT.environmentName
-        this.databaseName = NON_PRODUCTION_ENVIRONMENT.databaseName
-      }
-      case 'prod': {
-        this.environmentName = PRODUCTION_ENVIRONMENT.environmentName
-        this.databaseName = PRODUCTION_ENVIRONMENT.databaseName
-      }
+    if (env === 'non-prod') {
+      this.environmentName = NON_PRODUCTION_ENVIRONMENT.environmentName
+    }
+    if (env === 'prod') {
+      this.environmentName = PRODUCTION_ENVIRONMENT.environmentName
     }
   }
 }
