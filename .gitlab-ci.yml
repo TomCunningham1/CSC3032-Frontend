@@ -40,6 +40,7 @@ deployment_test:
   stage: deploy
   variables:
     ENVIRONMENT: "non-prod"
+    BACKEND_URL: "https://txmsvbvz70.execute-api.eu-west-1.amazonaws.com/prod"
   except:
     - main
   script:
@@ -56,6 +57,7 @@ deployment_production:
   stage: deploy
   variables:
     ENVIRONMENT: "prod"
+    BACKEND_URL: "https://tycus2kfid.execute-api.eu-west-1.amazonaws.com/prod"
   only:
     - main
   script:
