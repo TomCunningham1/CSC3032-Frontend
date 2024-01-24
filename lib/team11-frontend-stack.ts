@@ -7,15 +7,15 @@ import {
   aws_iam,
   aws_cloudfront,
   aws_cloudfront_origins,
-  aws_apigateway,
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
+import environment from './config/environment'
 
 export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const frontEndBucket = new aws_s3.Bucket(this, 'FrontEndBucket', {
+    const frontEndBucket = new aws_s3.Bucket(this, `team11-${environment.environmentName}-s3-bucket`, {
       removalPolicy: RemovalPolicy.DESTROY,
     })
 
@@ -27,7 +27,7 @@ export class Team11FrontendStack extends Stack {
       resources: [`${frontEndBucket.bucketArn}/*`],
     })
 
-    const dist = new aws_cloudfront.Distribution(this, 'FrontEndDist', {
+    const dist = new aws_cloudfront.Distribution(this, `team11-${environment.environmentName}-cloudfront-distribution`, {
       defaultBehavior: {
         origin: new aws_cloudfront_origins.S3Origin(frontEndBucket),
         viewerProtocolPolicy:
@@ -39,7 +39,7 @@ export class Team11FrontendStack extends Stack {
 
     const deployment = new aws_s3_deployment.BucketDeployment(
       this,
-      'FrontEndBucketDeployment',
+      `team11-${environment.environmentName}-s3-deployment`,
       {
         sources: [aws_s3_deployment.Source.asset(`website/build`)],
         destinationBucket: frontEndBucket,
