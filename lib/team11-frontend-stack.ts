@@ -15,10 +15,13 @@ export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const frontEndBucket = new aws_s3.Bucket(this, `team11-${environment.environmentName}-s3-bucket`, {
-
-      removalPolicy: RemovalPolicy.DESTROY,
-    })
+    const frontEndBucket = new aws_s3.Bucket(
+      this,
+      `team11-${environment.environmentName}-s3-bucket`,
+      {
+        removalPolicy: RemovalPolicy.DESTROY,
+      }
+    )
 
     const accessPolicy = new aws_iam.PolicyStatement({
       sid: 'PublicRead',
@@ -28,15 +31,19 @@ export class Team11FrontendStack extends Stack {
       resources: [`${frontEndBucket.bucketArn}/*`],
     })
 
-    const dist = new aws_cloudfront.Distribution(this, `team11-${environment.environmentName}-cloudfront-distribution`, {
-      defaultBehavior: {
-        origin: new aws_cloudfront_origins.S3Origin(frontEndBucket),
-        viewerProtocolPolicy:
-          aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
-      },
-      defaultRootObject: 'index.html',
-    })
+    const dist = new aws_cloudfront.Distribution(
+      this,
+      `team11-${environment.environmentName}-cloudfront-distribution`,
+      {
+        defaultBehavior: {
+          origin: new aws_cloudfront_origins.S3Origin(frontEndBucket),
+          viewerProtocolPolicy:
+            aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+          allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
+        },
+        defaultRootObject: 'index.html',
+      }
+    )
 
     const deployment = new aws_s3_deployment.BucketDeployment(
       this,
