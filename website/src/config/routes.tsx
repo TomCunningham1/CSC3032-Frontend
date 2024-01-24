@@ -9,7 +9,6 @@ import data from '../data.json'
 import TitleBar from '../components/TitleBar/TitleBar'
 import Data from '../components/quiz/Test'
 
-
 const router = createBrowserRouter([
   {
     path: '/',
