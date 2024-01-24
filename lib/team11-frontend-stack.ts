@@ -15,13 +15,9 @@ export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const frontEndBucket = new aws_s3.Bucket(
-      this,
-      `team11-s3-bucket`,
-      {
-        removalPolicy: RemovalPolicy.DESTROY,
-      }
-    )
+    const frontEndBucket = new aws_s3.Bucket(this, `team11-s3-bucket`, {
+      removalPolicy: RemovalPolicy.DESTROY,
+    })
 
     const accessPolicy = new aws_iam.PolicyStatement({
       sid: 'PublicRead',

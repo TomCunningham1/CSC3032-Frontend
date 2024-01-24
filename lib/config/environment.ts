@@ -1,22 +1,19 @@
-
 const environment = process.env.ENVIRONMENT || 'test'
 
 interface EnvironmentConfigInterface {
-    environmentName: string;
+  environmentName: string
 }
 
 const testEnvironment: EnvironmentConfigInterface = {
-    environmentName: "test"
+  environmentName: 'test',
 }
 
 const productionEnvironment: EnvironmentConfigInterface = {
-    environmentName: "production"
+  environmentName: 'production',
 }
 
 class EnvironmentConfig {
-    public constructor(envType: string) {
-
-    }
+  public constructor(envType: string) {}
 }
 
-export default new EnvironmentConfig(process.env.ENVIRONMENT || 'test');
+export default new EnvironmentConfig(process.env.ENVIRONMENT || 'test')
