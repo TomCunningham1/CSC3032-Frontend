@@ -3,13 +3,13 @@ import { useState } from 'react'
 import BackendService from '../../services/backend-service'
 
 interface SaveResultsInterface {
-    score: number
-    numberOfQuestions: number
-    numberOfAnsweredQuestions: number
-    correctAnswers: number
-    wrongAnswers: number
-    hintsUsed: number
-    fiftyFiftyUsed: number
+  score: number
+  numberOfQuestions: number
+  numberOfAnsweredQuestions: number
+  correctAnswers: number
+  wrongAnswers: number
+  hintsUsed: number
+  fiftyFiftyUsed: number
 }
 
 const SaveResults = ({
@@ -50,7 +50,8 @@ const SaveResults = ({
 
   return (
     <div data-testid={'send-email-container'}>
-      <TextField placeholder='Enter Username'
+      <TextField
+        placeholder="Enter Username"
         onChange={handleChange}
         data-testid={'send-email-text-input'}
       ></TextField>

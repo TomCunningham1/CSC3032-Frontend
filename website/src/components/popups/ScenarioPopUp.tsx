@@ -25,7 +25,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
           navigate('/play/instructions', { state: playthrough.questions })
         }
 
-        scenarioName.scenario=playthrough.title
+        scenarioName.scenario = playthrough.title
 
         return (
           <button

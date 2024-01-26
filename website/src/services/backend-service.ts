@@ -56,7 +56,7 @@ class BackendServiceClass {
 
   saveResults = async (
     username: string,
-    scenarioName : string,
+    scenarioName: string,
     score: number,
     numberOfQuestions: number,
     numberOfAnsweredQuestions: number,

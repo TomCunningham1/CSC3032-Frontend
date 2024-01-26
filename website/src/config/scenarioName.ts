@@ -1,3 +1,3 @@
-export default{
-    scenario: ' '
+export default {
+  scenario: ' ',
 }
