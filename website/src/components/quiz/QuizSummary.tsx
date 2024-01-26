@@ -5,6 +5,8 @@ import withRouter from '../Router'
 import { Button, TextField } from '@mui/material'
 import BackendService from '../../services/backend-service'
 import SendEmail from './SendEmail'
+import SaveResults from './SaveResults'
+import scenarioName from '../../config/scenarioName'
 
 interface QuizSummaryProps {
   router?: any
@@ -39,6 +41,20 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
   handleEmail() {
     BackendService.emailResults(
       'tom.c22@hotmail.co.uk',
+      this.state.score,
+      this.state.numberOfQuestions,
+      this.state.numberOfAnsweredQuestions,
+      this.state.correctAnswers,
+      this.state.wrongAnswers,
+      this.state.hintsUsed,
+      this.state.fiftyFiftyUsed
+    )
+  }
+
+  handleResults() {
+    BackendService.saveResults(
+      ' ',
+      scenarioName.scenario,
       this.state.score,
       this.state.numberOfQuestions,
       this.state.numberOfAnsweredQuestions,
@@ -128,6 +144,19 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
             <ul>
               <li>
                 <SendEmail
+                  score={this.state.score}
+                  numberOfQuestions={this.state.numberOfQuestions}
+                  numberOfAnsweredQuestions={
+                    this.state.numberOfAnsweredQuestions
+                  }
+                  correctAnswers={this.state.correctAnswers}
+                  wrongAnswers={this.state.wrongAnswers}
+                  hintsUsed={this.state.hintsUsed}
+                  fiftyFiftyUsed={this.state.fiftyFiftyUsed}
+                />
+              </li>
+              <li>
+                <SaveResults
                   score={this.state.score}
                   numberOfQuestions={this.state.numberOfQuestions}
                   numberOfAnsweredQuestions={

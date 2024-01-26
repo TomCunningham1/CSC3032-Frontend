@@ -53,6 +53,29 @@ class BackendServiceClass {
       fiftyFiftyUsed: fiftyFiftyUsed,
     })
   }
+
+  saveResults = async (
+    username: string,
+    scenarioName : string,
+    score: number,
+    numberOfQuestions: number,
+    numberOfAnsweredQuestions: number,
+    correctAnswers: number,
+    wrongAnswers: number,
+    hintsUsed: number,
+    fiftyFiftyUsed: number
+  ) => {
+    return await axios.post(`${BACKEND_IP}/save-results`, {
+      username: username,
+      score: score,
+      numberOfQuestions: numberOfQuestions,
+      numberOfAnsweredQuestions: numberOfAnsweredQuestions,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers,
+      hintsUsed: hintsUsed,
+      fiftyFiftyUsed: fiftyFiftyUsed,
+    })
+  }
 }
 
 const BackendService = new BackendServiceClass()

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import questions from '../../questions/QuizQuestions'
 import { Button } from '@mui/material'
+import scenarioName from '../../config/scenarioName'
 
 const componentId = 'scenario-popup'
 
@@ -24,6 +25,8 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
           navigate('/play/instructions', { state: playthrough.questions })
         }
 
+        scenarioName.scenario=playthrough.title
+
         return (
           <button
             key={`scenario-option-${playthrough.title}`}
@@ -31,7 +34,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
             className="home-btn"
             onClick={navigateToQuiz}
           >
-            {playthrough.title}
+            {scenarioName.scenario}
           </button>
         )
       })}
