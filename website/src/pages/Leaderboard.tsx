@@ -1,6 +1,8 @@
-import React, { MouseEventHandler, useCallback, useState } from 'react'
+import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
 import '../App.css'
 import data from '../data.json'
+import BackendService from '../services/backend-service'
+import scenarioName from '../config/scenarioName'
 
 type Data = typeof data
 type SortKeys = keyof Data[0]
@@ -9,7 +11,6 @@ type SortOrder = 'ascending' | 'descending'
 const Leaderboard = () => {
   const headers: { key: SortKeys; label: string }[] = [
     { key: 'nickname', label: 'Nickname' },
-    { key: 'scenario', label: 'Scenario' },
     { key: 'score', label: 'Score' },
     { key: 'numberOfQuestions', label: 'Total Questions' },
     { key: 'numberOfAnsweredQuestions', label: 'Number Answered' },
@@ -18,6 +19,20 @@ const Leaderboard = () => {
     { key: 'hintsUsed', label: 'Hints Used' },
     { key: 'fiftyFiftyUsed', label: '50/50s Used' },
   ]
+
+  const [results, setResults] = useState('');
+  const callBackend = async () => {
+    console.log(scenarioName.scenario)
+      const results = await BackendService.getResults(scenarioName.scenario);
+      console.log(results)
+      setResults(results.data)
+  }
+
+  useEffect(() => {    
+    callBackend();
+}, []);
+
+
   const [sortKey, setSortKey] = useState<SortKeys>('score')
   const [sortOrder, setSortOrder] = useState<SortOrder>('descending')
   const sortedData = useCallback(
@@ -80,10 +95,37 @@ const Leaderboard = () => {
     )
   }
 
+  function sqlButton(){
+    scenarioName.scenario="SQL Injection"
+    callBackend()    
+  }
+
+  function ddosButton(){
+    scenarioName.scenario="Distributed Denial of Service"
+    callBackend()    
+    
+  }
+
+  function xssButton(){
+    scenarioName.scenario="Cross Site Scripting"
+    callBackend()   
+    
+  }
+
+  function boButton(){
+    scenarioName.scenario="Buffer Overflow"
+    callBackend()    
+    
+  }
+
   return (
     <div className="background" data-testid={'app-wrapper'}>
       <div>
         <h2>Leaderboard</h2>
+        <button onClick={sqlButton}>SQL Injection</button>
+        <button onClick={ddosButton}>DDoS</button>
+        <button onClick={xssButton}>Cross Site Scripting</button>
+        <button onClick={boButton}>Buffer Overflow</button>
         <table>
           <thead>
             <tr>
@@ -107,7 +149,6 @@ const Leaderboard = () => {
               return (
                 <tr key={user.score}>
                   <td>{user.nickname}</td>
-                  <td>{user.scenario}</td>
                   <td>{user.score}</td>
                   <td>{user.numberOfQuestions}</td>
                   <td>{user.numberOfAnsweredQuestions}</td>

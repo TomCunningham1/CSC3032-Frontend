@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material'
 import { useState } from 'react'
 import BackendService from '../../services/backend-service'
+import scenarioName from '../../config/scenarioName'
 
 interface SaveResultsInterface {
   score: number
@@ -21,7 +22,6 @@ const SaveResults = ({
   hintsUsed,
   fiftyFiftyUsed,
 }: SaveResultsInterface) => {
-  const scenarioName = 'SQL'
   const [username, setUsername] = useState('')
 
   const handleChange = (
@@ -37,7 +37,7 @@ const SaveResults = ({
 
     BackendService.saveResults(
       username,
-      scenarioName,
+      scenarioName.scenario,
       score,
       numberOfQuestions,
       numberOfAnsweredQuestions,

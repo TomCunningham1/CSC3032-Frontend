@@ -76,6 +76,12 @@ class BackendServiceClass {
       fiftyFiftyUsed: fiftyFiftyUsed,
     })
   }
+
+  getResults = async (
+    scenarioName: string,  
+  ) => {
+    return await axios.post(`${BACKEND_IP}/get-results?scenarioName=${scenarioName}`, )
+  }
 }
 
 const BackendService = new BackendServiceClass()

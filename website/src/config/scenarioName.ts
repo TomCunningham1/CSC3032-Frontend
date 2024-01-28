@@ -1,3 +1,3 @@
 export default {
-  scenario: ' ',
+  scenario: 'SQL Injection',
 }
