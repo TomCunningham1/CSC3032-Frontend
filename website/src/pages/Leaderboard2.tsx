@@ -1,15 +1,14 @@
 import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
 import '../App.css'
-import data from '../data.json'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
 
-const Leaderboard = () => {
+const Leaderboard2 = () => {
     const [results, setResults] = useState('');
     const callBackend = async () => {
       console.log(scenarioName.scenario)
         const results = await BackendService.getResults(scenarioName.scenario);
-        console.log(results)
+        console.log(results.data)
         setResults(results.data)
     }
 
@@ -17,11 +16,7 @@ const Leaderboard = () => {
       callBackend();
   }, []);
 
-  type Data = typeof data
-  type SortKeys = keyof Data[0]
-  type SortOrder = 'ascending' | 'descending'
-
-  const headers: { key: SortKeys; label: string }[] = [
+  const headers = [] = [
     { key: 'nickname', label: 'Nickname' },
     { key: 'score', label: 'Score' },
     { key: 'numberOfQuestions', label: 'Total Questions' },
@@ -31,68 +26,66 @@ const Leaderboard = () => {
     { key: 'hintsUsed', label: 'Hints Used' },
     { key: 'fiftyFiftyUsed', label: '50/50s Used' },
   ]
+  
+//   const sortedData = useCallback(
+//     () =>
+//       sortData({
+//         tableData: data,
+//         sortKey,
+//         reverse: sortOrder === 'descending',
+//       }),
+//     [data, sortKey, sortOrder]
+//   )
 
-  const [sortKey, setSortKey] = useState<SortKeys>('score')
-  const [sortOrder, setSortOrder] = useState<SortOrder>('descending')
-  const sortedData = useCallback(
-    () =>
-      sortData({
-        tableData: data,
-        sortKey,
-        reverse: sortOrder === 'descending',
-      }),
-    [data, sortKey, sortOrder]
-  )
+//   function changeSort(key: SortKeys) {
+//     setSortOrder(sortOrder === 'ascending' ? 'descending' : 'ascending')
+//     setSortKey(key)
+//   }
 
-  function changeSort(key: SortKeys) {
-    setSortOrder(sortOrder === 'ascending' ? 'descending' : 'ascending')
-    setSortKey(key)
-  }
+//   function sortData({
+//     tableData,
+//     sortKey,
+//     reverse,
+//   }: {
+//     tableData: Data
+//     sortKey: SortKeys
+//     reverse: boolean
+//   }) {
+//     if (!sortKey) return tableData
+//     const sortedData = data.sort((a, b) => {
+//       return a[sortKey] > b[sortKey] ? 1 : -1
+//     })
 
-  function sortData({
-    tableData,
-    sortKey,
-    reverse,
-  }: {
-    tableData: Data
-    sortKey: SortKeys
-    reverse: boolean
-  }) {
-    if (!sortKey) return tableData
-    const sortedData = data.sort((a, b) => {
-      return a[sortKey] > b[sortKey] ? 1 : -1
-    })
+//     if (reverse) {
+//       return sortedData.reverse()
+//     }
+//     return sortedData
+//   }
 
-    if (reverse) {
-      return sortedData.reverse()
-    }
-    return sortedData
-  }
-
-  function SortButton({
-    sortOrder,
-    columnKey,
-    sortKey,
-    onClick,
-  }: {
-    sortOrder: SortOrder
-    columnKey: SortKeys
-    sortKey: SortKeys
-    onClick: MouseEventHandler<HTMLButtonElement>
-  }) {
-    return (
-      <button
-        onClick={onClick}
-        className={`${
-          sortKey === columnKey && sortOrder === 'ascending'
-            ? 'sort-button sort-reverse'
-            : 'sort-button'
-        }`}
-      >
-        v
-      </button>
-    )
-  }
+//   function SortButton({
+//     sortOrder,
+//     columnKey,
+//     sortKey,
+//     onClick,
+//   }: {
+//     sortOrder: SortOrder
+//     columnKey: SortKeys
+//     sortKey: SortKeys
+//     onClick: MouseEventHandler<HTMLButtonElement>
+//   }) {
+//     return (
+//       <button
+//         onClick={onClick}
+//         className={`${
+//           sortKey === columnKey && sortOrder === 'ascending'
+//             ? 'sort-button sort-reverse'
+//             : 'sort-button'
+//         }`}
+//       >
+//         v
+//       </button>
+//     )
+//   }
 
   function sqlButton(){
     scenarioName.scenario="SQL Injection"
@@ -132,19 +125,13 @@ const Leaderboard = () => {
                 return (
                   <td key={row.key}>
                     {row.label}
-                    <SortButton
-                      columnKey={row.key}
-                      onClick={() => changeSort(row.key)}
-                      sortOrder={sortOrder}
-                      sortKey={sortKey}
-                    />
                   </td>
                 )
               })}
             </tr>
           </thead>
           <tbody>
-            {sortedData().map((user: any) => {
+            {headers.map((user: any) => {
               return (
                 <tr key={user.score}>
                   <td>{user.nickname}</td>
@@ -164,4 +151,4 @@ const Leaderboard = () => {
     </div>
   )
 }
-export default Leaderboard
+export default Leaderboard2

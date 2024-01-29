@@ -4,7 +4,7 @@ import Play from '../components/quiz/Play'
 import QuizInstructions from '../components/quiz/QuizInstructions'
 import QuizSummary from '../components/quiz/QuizSummary'
 import Home from '../pages/Home'
-import Leaderboard from '../pages/Leaderboard'
+import Leaderboard2 from '../pages/Leaderboard2'
 import data from '../data.json'
 import TitleBar from '../components/TitleBar/TitleBar'
 import Data from '../components/quiz/Test'
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     path: '/leaderboard',
     element: (
       <TitleBar>
-        <Leaderboard />
+        <Leaderboard2 />
       </TitleBar>
     ),
   },

@@ -65,6 +65,7 @@ class BackendServiceClass {
     hintsUsed: number,
     fiftyFiftyUsed: number
   ) => {
+    console.log(BACKEND_IP)
     return await axios.post(`${BACKEND_IP}/save-results`, {
       username: username,
       score: score,
