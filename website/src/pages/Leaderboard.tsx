@@ -4,40 +4,54 @@ import data from '../data.json'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
 
+interface ResultsTypes {
+  Username: String;
+  Score: number;
+  NumberOfQuestions: number;
+  NumberOfAnsweredQuestions: number;
+  CorrectAnswers: number;
+  WrongAnswers: number;
+  HintsUsed:number;
+  FiftyFiftyUsed:number;
+}
+
 const Leaderboard = () => {
-    const [results, setResults] = useState('');
+    const [results, setResults] = useState([]);
+    const [loading, isLoading] = useState(true);
+
+
     const callBackend = async () => {
+      isLoading(true);
       console.log(scenarioName.scenario)
-        const results = await BackendService.getResults(scenarioName.scenario);
-        console.log(results)
-        setResults(results.data)
+      const results = await BackendService.getResults(scenarioName.scenario);
+      setResults(results.data)
+      isLoading(false);
     }
 
     useEffect(() => {    
       callBackend();
   }, []);
 
-  type Data = typeof data
-  type SortKeys = keyof Data[0]
+  type SortKeys = keyof ResultsTypes
   type SortOrder = 'ascending' | 'descending'
 
   const headers: { key: SortKeys; label: string }[] = [
-    { key: 'nickname', label: 'Nickname' },
-    { key: 'score', label: 'Score' },
-    { key: 'numberOfQuestions', label: 'Total Questions' },
-    { key: 'numberOfAnsweredQuestions', label: 'Number Answered' },
-    { key: 'correctAnswers', label: 'Correct Answers' },
-    { key: 'wrongAnswers', label: 'Wrong Answers' },
-    { key: 'hintsUsed', label: 'Hints Used' },
-    { key: 'fiftyFiftyUsed', label: '50/50s Used' },
+    { key: 'Username', label: 'Nickname' },
+    { key: 'Score', label: 'Score' },
+    { key: 'NumberOfQuestions', label: 'Total Questions' },
+    { key: 'NumberOfAnsweredQuestions', label: 'Number Answered' },
+    { key: 'CorrectAnswers', label: 'Correct Answers' },
+    { key: 'WrongAnswers', label: 'Wrong Answers' },
+    { key: 'HintsUsed', label: 'Hints Used' },
+    { key: 'FiftyFiftyUsed', label: '50/50s Used' },
   ]
 
-  const [sortKey, setSortKey] = useState<SortKeys>('score')
+  const [sortKey, setSortKey] = useState<SortKeys>('Score')
   const [sortOrder, setSortOrder] = useState<SortOrder>('descending')
   const sortedData = useCallback(
     () =>
       sortData({
-        tableData: data,
+        tableData: results,
         sortKey,
         reverse: sortOrder === 'descending',
       }),
@@ -54,12 +68,12 @@ const Leaderboard = () => {
     sortKey,
     reverse,
   }: {
-    tableData: Data
+    tableData: ResultsTypes[]
     sortKey: SortKeys
     reverse: boolean
   }) {
     if (!sortKey) return tableData
-    const sortedData = data.sort((a, b) => {
+    const sortedData = results.sort((a, b) => {
       return a[sortKey] > b[sortKey] ? 1 : -1
     })
 
@@ -118,6 +132,7 @@ const Leaderboard = () => {
   }
 
   return (
+    loading ? <>Test</> :
     <div className="background" data-testid={'app-wrapper'}>
       <div>
         <h2>Leaderboard</h2>
@@ -145,23 +160,26 @@ const Leaderboard = () => {
           </thead>
           <tbody>
             {sortedData().map((user: any) => {
+
+              console.log(user);
+
               return (
                 <tr key={user.score}>
-                  <td>{user.nickname}</td>
-                  <td>{user.score}</td>
-                  <td>{user.numberOfQuestions}</td>
-                  <td>{user.numberOfAnsweredQuestions}</td>
-                  <td>{user.correctAnswers}</td>
-                  <td>{user.wrongAnswers}</td>
-                  <td>{user.hintsUsed}</td>
-                  <td>{user.fiftyFiftyUsed}</td>
+                  <td>{user.Username}</td>
+                  <td>{user.Score}</td>
+                  <td>{user.NumberOfQuestions}</td>
+                  <td>{user.NumberOfAnsweredQuestions}</td>
+                  <td>{user.CorrectAnswers}</td>
+                  <td>{user.WrongAnswers}</td>
+                  <td>{user.HintsUsed}</td>
+                  <td>{user.FiftyFiftyUsed}</td>
                 </tr>
               )
             })}
           </tbody>
         </table>
       </div>
-    </div>
+    </div>    
   )
 }
 export default Leaderboard
