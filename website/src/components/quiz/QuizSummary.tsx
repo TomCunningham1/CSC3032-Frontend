@@ -50,10 +50,9 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
       this.state.fiftyFiftyUsed
     )
   }
-
   handleResults() {
     BackendService.saveResults(
-      ' ',
+      'TestNew',
       scenarioName.scenario,
       this.state.score,
       this.state.numberOfQuestions,

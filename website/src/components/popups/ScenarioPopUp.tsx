@@ -23,9 +23,8 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
       {questions.map((playthrough: { title: string; questions: object }) => {
         const navigateToQuiz = () => {
           navigate('/play/instructions', { state: playthrough.questions })
+          scenarioName.scenario = playthrough.title
         }
-
-        scenarioName.scenario = playthrough.title
 
         return (
           <button
@@ -34,7 +33,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
             className="home-btn"
             onClick={navigateToQuiz}
           >
-            {scenarioName.scenario}
+            {playthrough.title}
           </button>
         )
       })}
