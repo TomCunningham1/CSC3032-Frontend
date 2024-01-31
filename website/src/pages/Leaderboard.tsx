@@ -1,6 +1,5 @@
 import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
 import '../App.css'
-import data from '../data.json'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
 
@@ -55,7 +54,7 @@ const Leaderboard = () => {
         sortKey,
         reverse: sortOrder === 'descending',
       }),
-    [data, sortKey, sortOrder]
+    [results, sortKey, sortOrder]
   )
 
   function changeSort(key: SortKeys) {
