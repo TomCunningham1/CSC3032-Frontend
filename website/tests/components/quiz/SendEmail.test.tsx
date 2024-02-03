@@ -1,4 +1,4 @@
-import { RenderResult, fireEvent, render } from '@testing-library/react';
+import { RenderResult, render } from '@testing-library/react';
 import SendEmail from '../../../src/components/quiz/SendEmail';
 import axios from 'axios';
 import React from 'react';
