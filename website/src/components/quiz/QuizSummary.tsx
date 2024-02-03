@@ -2,8 +2,6 @@ import { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import withRouter from '../Router'
-import { Button, TextField } from '@mui/material'
-import BackendService from '../../services/backend-service'
 import SendEmail from './SendEmail'
 
 interface QuizSummaryProps {
