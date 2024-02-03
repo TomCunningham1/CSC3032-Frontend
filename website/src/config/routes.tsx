@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         <Leaderboard />
       </TitleBar>
     ),
-  }
+  },
 ])
 
 export default router
