@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
-import '../App.css'
+import '../styles/styles.scss'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
 
@@ -16,15 +16,32 @@ interface ResultsTypes {
 
 const Leaderboard = () => {
     const [results, setResults] = useState([]);
+    const [top10, setTop10] = useState([]); //actually top 3 atm
     const [loading, isLoading] = useState(true);
 
 
     const callBackend = async () => {
       isLoading(true);
-      console.log(scenarioName.scenario)
-      const results = await BackendService.getResults(scenarioName.scenario);
-      setResults(results.data)
+      const allResults = await BackendService.getResults(scenarioName.scenario);
+      setResults(allResults.data)
       isLoading(false);
+      console.log(results.length)
+      if(results.length>=3){
+        for (let index = 0; index < 3; index++) {
+          top10[index] = results[index];     
+        }
+        setTop10(top10)
+      }
+      else if(results.length==0){
+        setTop10([])
+      }
+      else{
+        for (let index = 0; index < results.length; index++) {
+          top10[index] = results[index];         
+        }
+        setTop10(top10)
+      }
+      console.log(top10)
     }
 
     useEffect(() => {    
@@ -50,11 +67,11 @@ const Leaderboard = () => {
   const sortedData = useCallback(
     () =>
       sortData({
-        tableData: results,
+        tableData: top10,
         sortKey,
         reverse: sortOrder === 'descending',
       }),
-    [results, sortKey, sortOrder]
+    [top10, sortKey, sortOrder]
   )
 
   function changeSort(key: SortKeys) {
@@ -72,7 +89,7 @@ const Leaderboard = () => {
     reverse: boolean
   }) {
     if (!sortKey) return tableData
-    const sortedData = results.sort((a, b) => {
+    const sortedData = top10.sort((a, b) => {
       return a[sortKey] > b[sortKey] ? 1 : -1
     })
 
@@ -135,10 +152,10 @@ const Leaderboard = () => {
     <div className="background" data-testid={'app-wrapper'}>
       <div>
         <h2>Leaderboard</h2>
-        <button onClick={sqlButton}>SQL Injection</button>
-        <button onClick={ddosButton}>DDoS</button>
-        <button onClick={xssButton}>Cross Site Scripting</button>
-        <button onClick={boButton}>Buffer Overflow</button>
+        <button className='scenario-button' onClick={sqlButton}>SQL Injection</button>
+        <button className='scenario-button' onClick={ddosButton}>Distributed Denial of Service</button>
+        <button className='scenario-button' onClick={xssButton}>Cross Site Scripting</button>
+        <button className='scenario-button' onClick={boButton}>Buffer Overflow</button>
         <table>
           <thead>
             <tr>
@@ -159,9 +176,6 @@ const Leaderboard = () => {
           </thead>
           <tbody>
             {sortedData().map((user: any) => {
-
-              console.log(user);
-
               return (
                 <tr key={user.score}>
                   <td>{user.Username}</td>
