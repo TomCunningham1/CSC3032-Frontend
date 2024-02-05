@@ -18,14 +18,14 @@ interface ResultsTypes {
 }
 
 const Leaderboard = () => {
-    const [top10, setTop10] = useState([]); //actually top 3 atm
+    const [top10, setTop10] = useState([]); 
     const [loading, isLoading] = useState(true);
 
 
     const callBackend = async () => {
       isLoading(true);
       const allResults = await BackendService.getResults(scenarioName.scenario);
-      setTop10(allResults.data.slice(0,3))
+      setTop10(allResults.data.slice(0,10))
       isLoading(false);
     }
 
