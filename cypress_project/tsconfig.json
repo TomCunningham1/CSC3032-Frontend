@@ -26,9 +26,8 @@
     ]
   },
   "exclude": [
-    "cypress_project",
     "node_modules",
     "cdk.out",
-    "website"
+    "website",
   ]
 }
