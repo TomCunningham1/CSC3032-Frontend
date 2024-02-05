@@ -1,6 +1,6 @@
 # Team 11 - Frontend
 
-The "Hack-Attack" (working title) application is a web-based game wfocused on educating developers on the technical aspects of cyber-security, such as DDOS Attacks or SQL Injection.
+The "Hack-Attack" (working title) application is a web-based game focused on educating developers on the technical aspects of cyber-security, such as DDOS Attacks or SQL Injection.
 
 This service has been created to provide the frontend stack of the the "Hack-Attack" Web application.
 

@@ -1,4 +1,4 @@
-import { RenderResult, render } from '@testing-library/react';
+import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
 import SendEmail from '../../../src/components/quiz/SendEmail';
 import axios from 'axios';
 import React from 'react';
@@ -46,32 +46,37 @@ describe('Tests for the login page', () => {
         expect(container).toBeTruthy()
     })
 
-    // it('should call the backend service when an email is sent', () => {
-    //     output = renderComponent();
+    it('should call the backend service when an email is sent', async () => {
+        output = renderComponent();
 
-    //     const container = output.getByTestId('send-email-container');
+        const container = output.getByTestId('send-email-container');
 
-    //     expect(container).toBeTruthy()
+        expect(container).toBeTruthy()
 
-    //     const textEntry = output.getByTestId('send-email-text-input');
-    //     fireEvent.change(textEntry, { target: { value: 'pass'}});
+        const textEntry = output.getByTestId('send-email-text-input') as HTMLInputElement;
 
-    //     expect(textEntry.innerHTML).toBe('pass')
+        fireEvent.change(textEntry, { target: { value: 'Pass' }})
 
-    //     const emailButton = output.getByTestId('send-email-button')
-    //     fireEvent.click(emailButton)
-    // })
+        expect(textEntry.value).toBe('Pass')
 
-    // it('should allow the user to update text', () => {
-    //     output = renderComponent();
+        const emailButton = output.getByTestId('send-email-button')
 
-    //     const container = output.getByTestId('send-email-container');
+        fireEvent.click(emailButton)
 
-    //     expect(container).toBeTruthy()
+        expect(mockPost).toHaveBeenCalled()
+    })
 
-    //     const textEntry = output.getByTestId('send-email-text-input');
-    //     fireEvent.change(textEntry, { target: { value: 'pass'}});
+    it('should allow the user to update text', () => {
+        output = renderComponent();
 
-    //     expect(textEntry.innerHTML).toBe('pass')
-    // })
+        const container = output.getByTestId('send-email-container');
+
+        expect(container).toBeTruthy()
+
+        const textEntry = output.getByTestId('send-email-text-input') as HTMLInputElement;
+
+        fireEvent.change(textEntry, { target: { value: 'Pass' }})
+
+        expect(textEntry.value).toBe('Pass')
+    })
 });
