@@ -1,7 +1,10 @@
 import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
 import '../styles/styles.scss'
+import '../App.css'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
+import LoadingClock from '../components/LoadingClock/LoadingClock';
+import CustomClockLoader from '../components/LoadingClock/LoadingClock';
 
 interface ResultsTypes {
   Username: String;
@@ -15,7 +18,6 @@ interface ResultsTypes {
 }
 
 const Leaderboard = () => {
-    const [results, setResults] = useState([]);
     const [top10, setTop10] = useState([]); //actually top 3 atm
     const [loading, isLoading] = useState(true);
 
@@ -23,25 +25,8 @@ const Leaderboard = () => {
     const callBackend = async () => {
       isLoading(true);
       const allResults = await BackendService.getResults(scenarioName.scenario);
-      setResults(allResults.data)
+      setTop10(allResults.data.slice(0,3))
       isLoading(false);
-      console.log(results.length)
-      if(results.length>=3){
-        for (let index = 0; index < 3; index++) {
-          top10[index] = results[index];     
-        }
-        setTop10(top10)
-      }
-      else if(results.length==0){
-        setTop10([])
-      }
-      else{
-        for (let index = 0; index < results.length; index++) {
-          top10[index] = results[index];         
-        }
-        setTop10(top10)
-      }
-      console.log(top10)
     }
 
     useEffect(() => {    
@@ -131,25 +116,21 @@ const Leaderboard = () => {
 
   function ddosButton(){
     scenarioName.scenario="Distributed Denial of Service"
-    callBackend()    
-    
+    callBackend()   
   }
 
   function xssButton(){
     scenarioName.scenario="Cross Site Scripting"
-    callBackend()   
-    
+    callBackend() 
   }
 
   function boButton(){
     scenarioName.scenario="Buffer Overflow"
-    callBackend()    
-    
+    callBackend() 
   }
 
   return (
-    loading ? <>Test</> :
-    <div className="background" data-testid={'app-wrapper'}>
+    loading ? <CustomClockLoader loading={loading}/> : <div className="background" data-testid={'app-wrapper'}>
       <div>
         <h2>Leaderboard</h2>
         <button className='scenario-button' onClick={sqlButton}>SQL Injection</button>

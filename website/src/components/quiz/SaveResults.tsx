@@ -11,6 +11,7 @@ interface SaveResultsInterface {
   wrongAnswers: number
   hintsUsed: number
   fiftyFiftyUsed: number
+  time: number
 }
 
 const SaveResults = ({
@@ -21,6 +22,7 @@ const SaveResults = ({
   wrongAnswers,
   hintsUsed,
   fiftyFiftyUsed,
+  time
 }: SaveResultsInterface) => {
   const [username, setUsername] = useState('')
 
@@ -44,8 +46,8 @@ const SaveResults = ({
       correctAnswers,
       wrongAnswers,
       hintsUsed,
-      fiftyFiftyUsed
-    )
+      fiftyFiftyUsed,
+      time)
   }
 
   return (

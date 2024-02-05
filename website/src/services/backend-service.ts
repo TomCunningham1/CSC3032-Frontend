@@ -63,7 +63,8 @@ class BackendServiceClass {
     correctAnswers: number,
     wrongAnswers: number,
     hintsUsed: number,
-    fiftyFiftyUsed: number
+    fiftyFiftyUsed: number,
+    time: number
   ) => {
     return await axios.post(`${BACKEND_IP}/save-results`, {
       username: username,
@@ -75,6 +76,7 @@ class BackendServiceClass {
       wrongAnswers: wrongAnswers,
       hintsUsed: hintsUsed,
       fiftyFiftyUsed: fiftyFiftyUsed,
+      time: time
     })
   }
 
