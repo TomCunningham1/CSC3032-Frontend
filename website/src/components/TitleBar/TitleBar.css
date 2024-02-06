@@ -1,9 +1,79 @@
+/* Container for the title bar */
 .TitleBarBox {
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
 }
 
-.Typography {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+/* Container for the title and buttons */
+.TitleBar {
+  display: flex;
+  justify-content: space-between; /* Ensures the title and buttons are spaced out */
+  align-items: center; /* Align items vertically */
+  margin-top: 10px; /* Top margin */
+  margin-bottom: 10px; /* Bottom margin */
+}
+
+/* Title styling */
+.Title {
+  font-size: 55px; /* Font size */
+  padding-left: 20px; /* Left padding */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* Font family */
+  margin: 0; /* Remove default margin */
+  position: absolute; /* Positioning */
+}
+
+/* Container for the buttons */
+.TitleBarButtons {
+  display: flex;
+  justify-content: center; /* Center buttons */
+  align-items: center; /* Align items vertically */
+  width: 100%; /* Full width */
+}
+
+/* Individual button styling */
+.TitleBarButton {
+  background-color: transparent; /* Transparent background */
+  border: 2px solid transparent; /* Set the initial border to transparent */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding */
+  text-align: center; /* Text alignment */
+  text-decoration: none; /* Text decoration */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  width: 150px; /* Button width */
+  border-radius: 5px; /* Border radius */
+  margin: 0 5px; /* Margin */
+}
+
+/* Button hover state */
+.TitleBarButton:hover {
+  border-color: white; /* Change border color on hover */
+  background-color: rgba(255, 255, 255, 0.3); /* Transparent white background on hover */
+}
+
+/* Spacer to push buttons to the right */
+.Spacer {
+  flex-grow: 1; /* Pushes buttons to the right */
+}
+
+/* Styling for icons in the title bar */
+.TitleBarIcon {
+  position: absolute; /* Positioning */
+  height: 95px; /* Height */
+  margin-left: auto; /* Auto margin */
+  margin-left: 92%; /* Adjusted margin */
+}
+
+.AppBackground {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-image: url('../../../public/background-image-1.jpg');
+  background-size: cover; 
+  /* background-size: contain; */
+  background-repeat: no-repeat; 
 }

@@ -10,52 +10,46 @@ import TitleBar from '../components/TitleBar/TitleBar'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <TitleBar hideOptions>
-        <Home />
-      </TitleBar>
-    ),
-  },
-  {
-    path: '/register',
-    element: (
-      <TitleBar hideOptions>
-        <Register />
-      </TitleBar>
-    ),
-  },
-  {
-    path: '/play/instructions',
-    element: (
-      <TitleBar>
-        <QuizInstructions />
-      </TitleBar>
-    ),
-  },
-  {
-    path: '/play/quiz',
-    element: (
-      <TitleBar>
-        <Play />
-      </TitleBar>
-    ),
-  },
-  {
-    path: 'play/quizSummary',
-    element: (
-      <TitleBar>
-        <QuizSummary />
-      </TitleBar>
-    ),
-  },
-  {
-    path: '/leaderboard',
-    element: (
-      <TitleBar>
-        <Leaderboard />
-      </TitleBar>
-    ),
-  },
+    element: <TitleBar />,
+    children: [
+      {
+        path: '/',
+        element: (
+          <Home />
+        ),
+      },
+      {
+        path: '/register',
+        element: (
+          <Register />
+        ),
+      },
+      {
+        path: '/play/instructions',
+        element: (
+          <QuizInstructions />
+        ),
+      },
+      {
+        path: '/play/quiz',
+        element: (
+          <Play />
+        ),
+      },
+      {
+        path: 'play/quizSummary',
+        element: (
+          <QuizSummary />
+        ),
+      },
+      {
+        path: '/leaderboard',
+        element: (
+          <Leaderboard />
+        ),
+      },
+    ]
+  }
 ])
 
 export default router

@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import questions from '../../questions/QuizQuestions'
-import { Button } from '@mui/material'
 
 const componentId = 'scenario-popup'
 
