@@ -14,7 +14,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
   if (!open) return null
   return (
     <PopUp id={componentId} title={'Settings'} onClose={onClose}>
-      <div data-testid='settings-popup-text' className="PopUpTextSettings">
+      <div data-testid="settings-popup-text" className="PopUpTextSettings">
         <ul>
           <li>
             <FormControlLabel
