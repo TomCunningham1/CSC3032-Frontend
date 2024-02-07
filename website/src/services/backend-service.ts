@@ -6,32 +6,6 @@ class BackendServiceClass {
     return await axios.get(`${BACKEND_IP}/health`)
   }
 
-  loginUser = async (email: string, password: string) => {
-    const data = {
-      email: email,
-      password: password,
-    }
-    return await axios.post(`${BACKEND_IP}/login`, data, {
-      withCredentials: false,
-    })
-  }
-
-  registerUser = async (
-    username: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    email: string
-  ) => {
-    return await axios.post(`${BACKEND_IP}/register`, {
-      username: username,
-      password: password,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-    })
-  }
-
   emailResults = async (
     target: string,
     score: number,
