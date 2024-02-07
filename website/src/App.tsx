@@ -5,9 +5,7 @@ import router from './config/routes'
 function App() {
   document.title = 'Hack Attack'
 
-  return (
-    <RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

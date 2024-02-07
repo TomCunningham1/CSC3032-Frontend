@@ -1,11 +1,11 @@
 import './PopUp.css'
 
 interface PopUpTitleInterface {
-    title: string;
+  title: string
 }
 
-const PopUpTitle = ({title}: PopUpTitleInterface) => {
-    return <h1 className="PopUpTitle">{title}</h1>
+const PopUpTitle = ({ title }: PopUpTitleInterface) => {
+  return <h1 className="PopUpTitle">{title}</h1>
 }
 
-export default PopUpTitle;
+export default PopUpTitle

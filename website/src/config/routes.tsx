@@ -14,42 +14,30 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          <Home />
-        ),
+        element: <Home />,
       },
       {
         path: '/register',
-        element: (
-          <Register />
-        ),
+        element: <Register />,
       },
       {
         path: '/play/instructions',
-        element: (
-          <QuizInstructions />
-        ),
+        element: <QuizInstructions />,
       },
       {
         path: '/play/quiz',
-        element: (
-          <Play />
-        ),
+        element: <Play />,
       },
       {
         path: 'play/quizSummary',
-        element: (
-          <QuizSummary />
-        ),
+        element: <QuizSummary />,
       },
       {
         path: '/leaderboard',
-        element: (
-          <Leaderboard />
-        ),
+        element: <Leaderboard />,
       },
-    ]
-  }
+    ],
+  },
 ])
 
 export default router
