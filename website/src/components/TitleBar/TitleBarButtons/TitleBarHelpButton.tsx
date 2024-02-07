@@ -1,4 +1,4 @@
-import HelpPopUp from '../../PopUps/HelpPopUp'
+import HelpPopUp from '../../popups/HelpPopUp'
 import TitleBarButton from './TitleBarButton'
 import { useState } from 'react'
 

@@ -1,25 +1,64 @@
 import React from 'react';
 import { RenderResult, fireEvent, render } from '@testing-library/react';
-import TitleBar from '../../../src/components/TitleBar/TitleBar';
-import { MemoryRouter } from 'react-router-dom';
+import TitleBarHelpButton from '../../../../src/components/TitleBar/TitleBarButtons/TitleBarHelpButton';
 
-describe('Tests for the TitleBar', () => {
+describe('TitleBarHelpButton', () => {
 
     let output: RenderResult;
 
     const renderComponent = () => {
         return render (
-            <MemoryRouter>
-                <TitleBar />
-            </MemoryRouter>
+            <TitleBarHelpButton />
         )
     }
 
-    it(' Should display the login box', () => {
+    it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const title = output.getByTestId('main-menu-navigation-help');
+        const button = output.getByTestId('main-menu-navigation-help')
 
-        expect(title).toBeTruthy();
-    });
+        expect(button).toBeTruthy()
+    })
+
+    
+    it('should have the correct className', () => {
+        output = renderComponent();
+
+        const button = output.getByTestId('main-menu-navigation-help')
+
+        expect(button.className).toBe('TitleBarButton')
+    })
+
+    it('should contain the button label', () => {
+        output = renderComponent();
+
+        const button = output.getByTestId('main-menu-navigation-help')
+
+        expect(button.innerHTML).toBe('Help')
+    })
+
+    it('should open the pop up when the button is clicked', () => {
+        output = renderComponent();
+
+        const button = output.getByTestId('main-menu-navigation-help')
+
+        fireEvent.click(button)
+
+        const popup = output.getByTestId('help-popup') 
+        const popupText = output.getByTestId('help-popup-text') 
+
+        expect(popup).toBeTruthy()
+        expect(popupText).toBeTruthy()
+    })
+
+    it('should close the pop up when the button is not clicked', () => {
+        output = renderComponent();
+
+        const button = output.getByTestId('main-menu-navigation-help')
+
+        const popup = output.queryByTestId('help-popup')
+
+        expect(popup).toBeFalsy()
+    })
 });
+

@@ -6,6 +6,8 @@ module.exports = {
     },
     collectCoverageFrom: [
       "**/*.{ts,tsx}",
-      "!**/node_modules/**"
+      "!**/node_modules/**",
+      "!assets.d.ts",
+      "!setupTests.ts"
     ],  
   };
