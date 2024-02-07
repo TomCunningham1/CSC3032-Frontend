@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707315353935" clover="3.2.0">
-  <project timestamp="1707315353935" name="All files">
-    <metrics statements="494" coveredstatements="175" conditionals="90" coveredconditionals="5" methods="118" coveredmethods="33" elements="702" coveredelements="213" complexity="0" loc="494" ncloc="494" packages="16" files="36" classes="36"/>
+<coverage generated="1707316057890" clover="3.2.0">
+  <project timestamp="1707316057890" name="All files">
+    <metrics statements="422" coveredstatements="139" conditionals="86" coveredconditionals="4" methods="98" coveredmethods="23" elements="606" coveredelements="166" complexity="0" loc="422" ncloc="422" packages="15" files="31" classes="31"/>
     <package name="website">
       <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="assets.d.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/assets.d.ts">
@@ -109,155 +109,136 @@
         <line num="14" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="website.src.components.TextInput">
-      <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="TextInput.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TextInput/TextInput.tsx">
-        <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-      </file>
-    </package>
     <package name="website.src.components.TitleBar">
       <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="TitleBar.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBar.tsx">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
       </file>
       <file name="TitleBarIcon.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarIcon.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
       </file>
     </package>
     <package name="website.src.components.TitleBar.TitleBarButtons">
       <metrics statements="38" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="5"/>
       <file name="TitleBarButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarButton.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
       </file>
       <file name="TitleBarHelpButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarHelpButton.tsx">
         <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-      </file>
-      <file name="TitleBarHomeButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarHomeButton.tsx">
-        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-      </file>
-      <file name="TitleBarLeaderboardButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarLeaderboardButton.tsx">
-        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-      </file>
-      <file name="TitleBarSettingsButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarSettingsButton.tsx">
-        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="website.src.components.popups">
-      <metrics statements="33" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="5"/>
-      <file name="HelpPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/HelpPopUp.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="42" count="2" type="stmt"/>
-      </file>
-      <file name="PopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/PopUp.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="11" count="6" type="stmt"/>
-        <line num="12" count="6" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-      </file>
-      <file name="PopUpButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/PopUpButton.tsx">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="8" count="6" type="stmt"/>
-        <line num="9" count="6" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-      </file>
-      <file name="PopUpTitle.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/PopUpTitle.tsx">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="7" count="6" type="stmt"/>
-        <line num="8" count="6" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-      </file>
-      <file name="SettingsPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/SettingsPopUp.tsx">
-        <metrics statements="13" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="8" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="15" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="63" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+      <file name="TitleBarHomeButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarHomeButton.tsx">
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+      <file name="TitleBarLeaderboardButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarLeaderboardButton.tsx">
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+      </file>
+      <file name="TitleBarSettingsButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/TitleBar/TitleBarButtons/TitleBarSettingsButton.tsx">
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="website.src.components.popups">
+      <metrics statements="32" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="5"/>
+      <file name="HelpPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/HelpPopUp.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+      </file>
+      <file name="PopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/PopUp.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+      </file>
+      <file name="PopUpButton.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/PopUpButton.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+      </file>
+      <file name="PopUpTitle.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/PopUpTitle.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+      </file>
+      <file name="SettingsPopUp.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/components/popups/SettingsPopUp.tsx">
+        <metrics statements="12" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
       </file>
     </package>
     <package name="website.src.components.quiz">
@@ -495,28 +476,15 @@
       </file>
     </package>
     <package name="website.src.config">
-      <metrics statements="12" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="constants.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/src/config/constants.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-      </file>
-      <file name="routes.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/config/routes.tsx">
-        <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
       </file>
     </package>
     <package name="website.src.pages">
-      <metrics statements="84" coveredstatements="38" conditionals="12" coveredconditionals="0" methods="28" coveredmethods="9"/>
+      <metrics statements="35" coveredstatements="5" conditionals="10" coveredconditionals="0" methods="10" coveredmethods="1"/>
       <file name="Home.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Home.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -558,64 +526,6 @@
         <line num="107" count="0" type="stmt"/>
         <line num="127" count="0" type="stmt"/>
       </file>
-      <file name="Login.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Login.tsx">
-        <metrics statements="20" coveredstatements="18" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="7"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="5" type="stmt"/>
-        <line num="8" count="5" type="stmt"/>
-        <line num="10" count="5" type="stmt"/>
-        <line num="12" count="5" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="16" count="5" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-      </file>
-      <file name="Register.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Register.tsx">
-        <metrics statements="26" coveredstatements="15" conditionals="1" coveredconditionals="0" methods="10" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="101" count="1" type="stmt"/>
-      </file>
-      <file name="Splash.tsx" path="/Users/tomcunningham/Projects/team11-frontend/website/src/pages/Splash.tsx">
-        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-      </file>
     </package>
     <package name="website.src.questions">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -630,26 +540,26 @@
       </file>
     </package>
     <package name="website.src.services">
-      <metrics statements="17" coveredstatements="14" conditionals="7" coveredconditionals="3" methods="8" coveredmethods="5"/>
+      <metrics statements="17" coveredstatements="12" conditionals="7" coveredconditionals="2" methods="8" coveredmethods="3"/>
       <file name="backend-service.ts" path="/Users/tomcunningham/Projects/team11-frontend/website/src/services/backend-service.ts">
-        <metrics statements="17" coveredstatements="14" conditionals="7" coveredconditionals="3" methods="8" coveredmethods="5"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="4" count="6" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
+        <metrics statements="17" coveredstatements="12" conditionals="7" coveredconditionals="2" methods="8" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
         <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="3" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="35" count="3" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
         <line num="45" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="56" count="3" type="stmt"/>
-        <line num="58" count="3" type="stmt"/>
-        <line num="60" count="3" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
       </file>
     </package>
   </project>
