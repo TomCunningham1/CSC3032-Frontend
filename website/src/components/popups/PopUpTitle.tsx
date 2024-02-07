@@ -5,7 +5,7 @@ interface PopUpTitleInterface {
 }
 
 const PopUpTitle = ({ title }: PopUpTitleInterface) => {
-  return <h1 className="PopUpTitle">{title}</h1>
+  return <h1 data-testid='pop-up-title' className="PopUpTitle">{title}</h1>
 }
 
 export default PopUpTitle

@@ -30,9 +30,21 @@ describe('help popups test', () => {
         const popup = output.getByTestId('settings-popup');
         expect(popup).toBeTruthy();
 
-        // expect(popup.innerHTML).toContain("Settings")
-        // expect(popup.innerHTML).toContain("Pick Text Size")
+        const popupText = output.getByTestId('settings-popup-text')
+
+        expect(popupText).toBeTruthy()
+
+        //TODO - Add tests for different settings
     });
+
+    it('Should contain the pop up title', () => {
+        output = renderComponent()
+
+        const popupTitle = output.getByTestId('pop-up-title')
+        
+        expect(popupTitle).toBeTruthy()
+        expect(popupTitle.innerHTML).toBe('Settings')
+    })
 
     it('Should display the settings popup', () => {
         output = renderComponent();
