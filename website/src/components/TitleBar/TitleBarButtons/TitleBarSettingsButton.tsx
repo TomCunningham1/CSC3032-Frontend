@@ -1,4 +1,4 @@
-import SettingsPopUp from '../../popups/SettingsPopUp'
+import SettingsPopUp from '../../PopUps/SettingsPopUp'
 import TitleBarButton from './TitleBarButton'
 import { useState } from 'react'
 
