@@ -22,12 +22,12 @@ const HelpPopUp = ({ open, onClose }: any) => {
             </ul>
           </li>
           <li>
-            To change your settings, click the settings button on the navigation
+            To change your settings, click the Settings button on the navigation
             bar at the top of the screen.{' '}
           </li>
           <li>
             To view how other players have done, view the leaderboards, by
-            clicking the leaderboard button at the top of the screen.
+            clicking the Leaderboard button at the top of the screen.
           </li>
           <li>
             To close pop ups, click the "Back" button at the bottom of the pop
