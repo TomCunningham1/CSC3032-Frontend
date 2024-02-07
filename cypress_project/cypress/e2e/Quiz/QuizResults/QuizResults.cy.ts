@@ -7,7 +7,6 @@ describe('Quiz Instructions Page', () => {
 
     beforeEach(() => {
         cy.visit(`${environment.frontendURL}`)
-        cy.contains('Scenarios').click()
         cy.contains('Cross Site Scripting').click()
         cy.contains('Play Quiz').click()
         cy.contains('When user is asked for input username').click()
