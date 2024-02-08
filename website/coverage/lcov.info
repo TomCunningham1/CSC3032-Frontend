@@ -1,5 +1,5 @@
 TN:
-SF:src\App.tsx
+SF:src/App.tsx
 FN:5,App
 FNF:1
 FNH:0
@@ -16,7 +16,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\index.tsx
+SF:src/index.tsx
 FNF:0
 FNH:0
 DA:1,0
@@ -31,7 +31,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\QuestionCard.tsx
+SF:src/components/QuestionCard.tsx
 FN:12,(anonymous_2)
 FN:26,(anonymous_3)
 FNF:2
@@ -54,7 +54,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\LoadingClock\LoadingClock.tsx
+SF:src/components/LoadingClock/LoadingClock.tsx
 FN:7,(anonymous_1)
 FNF:1
 FNH:1
@@ -69,7 +69,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\MainMenu\MainMenuButton.tsx
+SF:src/components/MainMenu/MainMenuButton.tsx
 FN:9,(anonymous_2)
 FNF:1
 FNH:1
@@ -84,7 +84,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\MainMenu\MainMenuContainer.tsx
+SF:src/components/MainMenu/MainMenuContainer.tsx
 FN:5,(anonymous_3)
 FN:10,(anonymous_4)
 FN:11,(anonymous_5)
@@ -109,7 +109,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\Router\Router.tsx
+SF:src/components/Router/Router.tsx
 FN:3,withRouter
 FN:4,ComponentWithRouterProp
 FNF:2
@@ -129,7 +129,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBar.tsx
+SF:src/components/TitleBar/TitleBar.tsx
 FN:12,(anonymous_3)
 FNF:1
 FNH:1
@@ -153,7 +153,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBarIcon.tsx
+SF:src/components/TitleBar/TitleBarIcon.tsx
 FN:3,(anonymous_0)
 FNF:1
 FNH:1
@@ -168,7 +168,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBarButtons\TitleBarButton.tsx
+SF:src/components/TitleBar/TitleBarButtons/TitleBarButton.tsx
 FN:9,(anonymous_2)
 FNF:1
 FNH:1
@@ -183,7 +183,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBarButtons\TitleBarHelpButton.tsx
+SF:src/components/TitleBar/TitleBarButtons/TitleBarHelpButton.tsx
 FN:5,(anonymous_1)
 FN:13,(anonymous_2)
 FN:17,(anonymous_3)
@@ -207,7 +207,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBarButtons\TitleBarHomeButton.tsx
+SF:src/components/TitleBar/TitleBarButtons/TitleBarHomeButton.tsx
 FN:4,(anonymous_1)
 FN:7,(anonymous_2)
 FNF:2
@@ -228,7 +228,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBarButtons\TitleBarLeaderboardButton.tsx
+SF:src/components/TitleBar/TitleBarButtons/TitleBarLeaderboardButton.tsx
 FN:4,(anonymous_1)
 FN:7,(anonymous_2)
 FNF:2
@@ -249,7 +249,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\TitleBar\TitleBarButtons\TitleBarSettingsButton.tsx
+SF:src/components/TitleBar/TitleBarButtons/TitleBarSettingsButton.tsx
 FN:5,(anonymous_1)
 FN:13,(anonymous_2)
 FN:17,(anonymous_3)
@@ -273,7 +273,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\popups\HelpPopUp.tsx
+SF:src/components/popups/HelpPopUp.tsx
 FN:6,(anonymous_3)
 FNF:1
 FNH:1
@@ -292,7 +292,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src\components\popups\PopUp.tsx
+SF:src/components/popups/PopUp.tsx
 FN:11,(anonymous_3)
 FNF:1
 FNH:1
@@ -308,7 +308,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\popups\PopUpButton.tsx
+SF:src/components/popups/PopUpButton.tsx
 FN:8,(anonymous_2)
 FNF:1
 FNH:1
@@ -323,7 +323,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\popups\PopUpTitle.tsx
+SF:src/components/popups/PopUpTitle.tsx
 FN:7,(anonymous_2)
 FNF:1
 FNH:1
@@ -338,7 +338,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\popups\SettingsPopUp.tsx
+SF:src/components/popups/SettingsPopUp.tsx
 FN:8,(anonymous_3)
 FN:10,(anonymous_4)
 FNF:2
@@ -364,7 +364,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src\components\quiz\Play.tsx
+SF:src/components/quiz/Play.tsx
 FN:41,(anonymous_15)
 FN:50,Play
 FN:94,(anonymous_17)
@@ -668,7 +668,7 @@ BRF:48
 BRH:0
 end_of_record
 TN:
-SF:src\components\quiz\QuizInstructions.tsx
+SF:src/components/quiz/QuizInstructions.tsx
 FN:5,(anonymous_2)
 FNF:1
 FNH:0
@@ -686,7 +686,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\quiz\QuizSummary.tsx
+SF:src/components/quiz/QuizSummary.tsx
 FN:23,(anonymous_9)
 FN:24,QuizSummary
 FN:37,(anonymous_11)
@@ -752,7 +752,7 @@ BRF:19
 BRH:0
 end_of_record
 TN:
-SF:src\components\quiz\SendEmail.tsx
+SF:src/components/quiz/SendEmail.tsx
 FN:15,(anonymous_3)
 FN:26,(anonymous_4)
 FN:32,(anonymous_5)
@@ -784,7 +784,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\config\constants.ts
+SF:src/config/constants.ts
 FNF:0
 FNH:0
 DA:1,2
@@ -795,7 +795,25 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\pages\Home.tsx
+SF:src/config/routes.tsx
+FNF:0
+FNH:0
+DA:1,0
+DA:2,0
+DA:3,0
+DA:4,0
+DA:5,0
+DA:6,0
+DA:7,0
+DA:9,0
+DA:38,0
+LF:9
+LH:0
+BRF:0
+BRH:0
+end_of_record
+TN:
+SF:src/pages/Home.tsx
 FN:4,(anonymous_3)
 FNF:1
 FNH:1
@@ -811,7 +829,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\pages\Leaderboard.tsx
+SF:src/pages/Leaderboard.tsx
 FN:9,(anonymous_3)
 FN:24,(anonymous_4)
 FN:33,changeSort
@@ -878,7 +896,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:src\questions\QuizQuestions.ts
+SF:src/questions/QuizQuestions.ts
 FNF:0
 FNH:0
 DA:1,1
@@ -893,7 +911,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\services\backend-service.ts
+SF:src/services/backend-service.ts
 FN:4,(anonymous_14)
 FN:5,(anonymous_16)
 FN:9,(anonymous_19)
