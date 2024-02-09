@@ -3,12 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 const QuizInstructions = () => {
-  const navigate = useNavigate()
   const location = useLocation()
-
-  const toQuiz = () => {
-    navigate('/test', location.state)
-  }
 
   return (
     <Fragment>

@@ -4,6 +4,7 @@ stages:
   - lint
   - test
   - deploy
+  - post_deploy
 
 build_job:
   stage: build
@@ -70,3 +71,9 @@ deployment_production:
     - cdk synth
     - cdk deploy --require-approval never
   
+cypress_testing:
+  stage: post_deploy
+  script:
+    - cd cypress_project
+    - npm install
+    - npx cypress run

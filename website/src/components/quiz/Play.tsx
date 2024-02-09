@@ -7,7 +7,7 @@ import correctNotification from '../../assets/audio/correct-answer.mp3'
 import wrongNotification from '../../assets/audio/wrong-answer.mp3'
 import buttonSound from '../../assets/audio/button-sound.mp3'
 import '../../styles/styles.scss'
-import withRouter from '../Router'
+import withRouter from '../Router/Router'
 
 interface PlayPropsInterface {
   state?: any
@@ -423,7 +423,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   endGame = () => {
-    alert('Quiz has eneded!')
     const { state } = this
     const playerStats = {
       score: state.score,

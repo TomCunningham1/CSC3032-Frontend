@@ -26,14 +26,10 @@ const SendEmail = ({
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log(e)
-
     setEmail(e.target.value)
   }
 
   const handleSubmit = () => {
-    console.log('send')
-
     BackendService.emailResults(
       email,
       score,
@@ -48,10 +44,11 @@ const SendEmail = ({
 
   return (
     <div data-testid={'send-email-container'}>
-      <TextField
+      <input
         onChange={handleChange}
         data-testid={'send-email-text-input'}
-      ></TextField>
+        value={email}
+      />
       <button onClick={handleSubmit} data-testid={'send-email-button'}>
         Send Email
       </button>
