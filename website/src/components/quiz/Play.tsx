@@ -433,7 +433,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       fiftyFiftyUsed: 2 - state.fiftyFifty,
       hintsUsed: 5 - state.hints,
       minutes: state.time.minutes,
-      seconds: state.time.seconds
+      seconds: state.time.seconds,
     }
     setTimeout(() => {
       console.log(playerStats)

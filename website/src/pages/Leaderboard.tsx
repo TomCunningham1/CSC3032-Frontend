@@ -1,37 +1,41 @@
-import React, { MouseEventHandler, useCallback, useEffect, useState } from 'react'
+import React, {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import '../styles/styles.scss'
 import '../App.css'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
-import LoadingClock from '../components/LoadingClock/LoadingClock';
-import CustomClockLoader from '../components/LoadingClock/LoadingClock';
+import LoadingClock from '../components/LoadingClock/LoadingClock'
+import CustomClockLoader from '../components/LoadingClock/LoadingClock'
 
 interface ResultsTypes {
-  Username: String;
-  Score: number;
-  NumberOfQuestions: number;
-  NumberOfAnsweredQuestions: number;
-  CorrectAnswers: number;
-  WrongAnswers: number;
-  HintsUsed:number;
-  FiftyFiftyUsed:number;
+  Username: String
+  Score: number
+  NumberOfQuestions: number
+  NumberOfAnsweredQuestions: number
+  CorrectAnswers: number
+  WrongAnswers: number
+  HintsUsed: number
+  FiftyFiftyUsed: number
 }
 
 const Leaderboard = () => {
-    const [top10, setTop10] = useState([]); 
-    const [loading, isLoading] = useState(true);
+  const [top10, setTop10] = useState([])
+  const [loading, isLoading] = useState(true)
 
+  const callBackend = async () => {
+    isLoading(true)
+    const allResults = await BackendService.getResults(scenarioName.scenario)
+    setTop10(allResults.data.slice(0, 10))
+    isLoading(false)
+  }
 
-    const callBackend = async () => {
-      isLoading(true);
-      const allResults = await BackendService.getResults(scenarioName.scenario);
-      setTop10(allResults.data.slice(0,10))
-      isLoading(false);
-    }
-
-    useEffect(() => {    
-      callBackend();
-  }, []);
+  useEffect(() => {
+    callBackend()
+  }, [])
 
   type SortKeys = keyof ResultsTypes
   type SortOrder = 'ascending' | 'descending'
@@ -109,34 +113,44 @@ const Leaderboard = () => {
     )
   }
 
-  function sqlButton(){
-    scenarioName.scenario="SQL Injection"
-    callBackend()    
+  function sqlButton() {
+    scenarioName.scenario = 'SQL Injection'
+    callBackend()
   }
 
-  function ddosButton(){
-    scenarioName.scenario="Distributed Denial of Service"
-    callBackend()   
+  function ddosButton() {
+    scenarioName.scenario = 'Distributed Denial of Service'
+    callBackend()
   }
 
-  function xssButton(){
-    scenarioName.scenario="Cross Site Scripting"
-    callBackend() 
+  function xssButton() {
+    scenarioName.scenario = 'Cross Site Scripting'
+    callBackend()
   }
 
-  function boButton(){
-    scenarioName.scenario="Buffer Overflow"
-    callBackend() 
+  function boButton() {
+    scenarioName.scenario = 'Buffer Overflow'
+    callBackend()
   }
 
-  return (
-    loading ? <CustomClockLoader loading={loading}/> : <div className="background" data-testid={'app-wrapper'}>
+  return loading ? (
+    <CustomClockLoader loading={loading} />
+  ) : (
+    <div className="background" data-testid={'app-wrapper'}>
       <div>
         <h2>Leaderboard</h2>
-        <button className='scenario-button' onClick={sqlButton}>SQL Injection</button>
-        <button className='scenario-button' onClick={ddosButton}>Distributed Denial of Service</button>
-        <button className='scenario-button' onClick={xssButton}>Cross Site Scripting</button>
-        <button className='scenario-button' onClick={boButton}>Buffer Overflow</button>
+        <button className="scenario-button" onClick={sqlButton}>
+          SQL Injection
+        </button>
+        <button className="scenario-button" onClick={ddosButton}>
+          Distributed Denial of Service
+        </button>
+        <button className="scenario-button" onClick={xssButton}>
+          Cross Site Scripting
+        </button>
+        <button className="scenario-button" onClick={boButton}>
+          Buffer Overflow
+        </button>
         <table>
           <thead>
             <tr>
@@ -173,7 +187,7 @@ const Leaderboard = () => {
           </tbody>
         </table>
       </div>
-    </div>    
+    </div>
   )
 }
 export default Leaderboard

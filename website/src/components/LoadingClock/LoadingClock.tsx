@@ -7,7 +7,12 @@ interface CustomClockLoaderInterface {
 }
 
 const CustomClockLoader = ({ loading }: CustomClockLoaderInterface) => {
-  return <div className="background" > <ClockLoader color={'#F37A24'} loading={loading} size={50}/> </div>
+  return (
+    <div className="background">
+      {' '}
+      <ClockLoader color={'#F37A24'} loading={loading} size={50} />{' '}
+    </div>
+  )
 }
 
 export default CustomClockLoader

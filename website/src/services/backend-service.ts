@@ -50,14 +50,14 @@ class BackendServiceClass {
       wrongAnswers: wrongAnswers,
       hintsUsed: hintsUsed,
       fiftyFiftyUsed: fiftyFiftyUsed,
-      time: time
+      time: time,
     })
   }
 
-  getResults = async (
-    scenarioName: string,  
-  ) => {
-    return await axios.post(`${BACKEND_IP}/get-results?scenarioName=${scenarioName}`, )
+  getResults = async (scenarioName: string) => {
+    return await axios.post(
+      `${BACKEND_IP}/get-results?scenarioName=${scenarioName}`
+    )
   }
 }
 

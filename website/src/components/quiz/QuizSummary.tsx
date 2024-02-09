@@ -38,7 +38,7 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
       hintsUsed: 0,
       fiftyFiftyUsed: 0,
       minutes: '',
-      seconds: ''
+      seconds: '',
     }
   }
 
@@ -66,7 +66,6 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
       this.state.hintsUsed,
       this.state.fiftyFiftyUsed,
       calculateSeconds(this.state.minutes, this.state.seconds)
-      
     )
   }
 
@@ -82,7 +81,7 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
         hintsUsed: state.hintsUsed,
         fiftyFiftyUsed: state.fiftyFiftyUsed,
         minutes: state.minutes,
-        seconds: state.seconds
+        seconds: state.seconds,
       })
     }
   }
@@ -134,7 +133,9 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
             <span className="right">{this.state.fiftyFiftyUsed}</span>
             <br />
             <span className="stat left">Time: </span>
-            <span className="right">{this.state.minutes}:{this.state.seconds}</span>
+            <span className="right">
+              {this.state.minutes}:{this.state.seconds}
+            </span>
           </div>
           <section>
             <ul>
@@ -162,7 +163,10 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
                   wrongAnswers={this.state.wrongAnswers}
                   hintsUsed={this.state.hintsUsed}
                   fiftyFiftyUsed={this.state.fiftyFiftyUsed}
-                  time = {calculateSeconds(this.state.minutes, this.state.seconds)}
+                  time={calculateSeconds(
+                    this.state.minutes,
+                    this.state.seconds
+                  )}
                 />
               </li>
               <li>

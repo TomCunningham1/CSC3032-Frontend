@@ -22,7 +22,7 @@ const SaveResults = ({
   wrongAnswers,
   hintsUsed,
   fiftyFiftyUsed,
-  time
+  time,
 }: SaveResultsInterface) => {
   const [username, setUsername] = useState('')
 
@@ -47,7 +47,8 @@ const SaveResults = ({
       wrongAnswers,
       hintsUsed,
       fiftyFiftyUsed,
-      time)
+      time
+    )
   }
 
   return (
