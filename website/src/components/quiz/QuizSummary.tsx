@@ -3,6 +3,10 @@ import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import withRouter from '../Router/Router'
 import SendEmail from './SendEmail'
+import SaveResults from './SaveResults'
+import scenarioName from '../../config/scenarioName'
+import calculateSeconds from '../../utils/calculateSeconds'
+import BackendService from '../../services/backend-service'
 
 interface QuizSummaryProps {
   router?: any
@@ -18,6 +22,8 @@ interface QuizSummaryState {
   wrongAnswers: number
   hintsUsed: number
   fiftyFiftyUsed: number
+  minutes: string
+  seconds: string
 }
 
 class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
@@ -31,7 +37,36 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
       wrongAnswers: 0,
       hintsUsed: 0,
       fiftyFiftyUsed: 0,
+      minutes: '',
+      seconds: '',
     }
+  }
+
+  handleEmail() {
+    BackendService.emailResults(
+      'tom.c22@hotmail.co.uk',
+      this.state.score,
+      this.state.numberOfQuestions,
+      this.state.numberOfAnsweredQuestions,
+      this.state.correctAnswers,
+      this.state.wrongAnswers,
+      this.state.hintsUsed,
+      this.state.fiftyFiftyUsed
+    )
+  }
+  handleResults() {
+    BackendService.saveResults(
+      'TestNew',
+      scenarioName.scenario,
+      this.state.score,
+      this.state.numberOfQuestions,
+      this.state.numberOfAnsweredQuestions,
+      this.state.correctAnswers,
+      this.state.wrongAnswers,
+      this.state.hintsUsed,
+      this.state.fiftyFiftyUsed,
+      calculateSeconds(this.state.minutes, this.state.seconds)
+    )
   }
 
   componentDidMount() {
@@ -45,6 +80,8 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
         wrongAnswers: state.wrongAnswers,
         hintsUsed: state.hintsUsed,
         fiftyFiftyUsed: state.fiftyFiftyUsed,
+        minutes: state.minutes,
+        seconds: state.seconds,
       })
     }
   }
@@ -94,6 +131,11 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
             <br />
             <span className="stat left">50-50 Used: </span>
             <span className="right">{this.state.fiftyFiftyUsed}</span>
+            <br />
+            <span className="stat left">Time: </span>
+            <span className="right">
+              {this.state.minutes}:{this.state.seconds}
+            </span>
           </div>
           <section>
             <ul>
@@ -108,6 +150,23 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
                   wrongAnswers={this.state.wrongAnswers}
                   hintsUsed={this.state.hintsUsed}
                   fiftyFiftyUsed={this.state.fiftyFiftyUsed}
+                />
+              </li>
+              <li>
+                <SaveResults
+                  score={this.state.score}
+                  numberOfQuestions={this.state.numberOfQuestions}
+                  numberOfAnsweredQuestions={
+                    this.state.numberOfAnsweredQuestions
+                  }
+                  correctAnswers={this.state.correctAnswers}
+                  wrongAnswers={this.state.wrongAnswers}
+                  hintsUsed={this.state.hintsUsed}
+                  fiftyFiftyUsed={this.state.fiftyFiftyUsed}
+                  time={calculateSeconds(
+                    this.state.minutes,
+                    this.state.seconds
+                  )}
                 />
               </li>
               <li>
