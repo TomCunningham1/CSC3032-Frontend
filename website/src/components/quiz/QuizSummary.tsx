@@ -6,6 +6,7 @@ import SendEmail from './SendEmail'
 import SaveResults from './SaveResults'
 import scenarioName from '../../config/scenarioName'
 import calculateSeconds from '../../utils/calculateSeconds'
+import BackendService from '../../services/backend-service'
 
 interface QuizSummaryProps {
   router?: any
