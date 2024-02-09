@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import withRouter from '../Router'
+import withRouter from '../Router/Router'
 import SendEmail from './SendEmail'
 
 interface QuizSummaryProps {
