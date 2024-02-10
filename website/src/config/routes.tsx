@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Register from '../pages/Register'
 import Play from '../components/quiz/Play'
 import QuizInstructions from '../components/quiz/QuizInstructions'
 import QuizSummary from '../components/quiz/QuizSummary'
@@ -15,10 +14,6 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-      },
-      {
-        path: '/register',
-        element: <Register />,
       },
       {
         path: '/play/instructions',
