@@ -64,7 +64,9 @@ export class Team11FrontendStack extends Stack {
       this,
       `team11-${environment.environmentName}-s3-environment-variables-deployment`,
       {
-        sources: [aws_s3_deployment.Source.jsonData('env', environmentVariables)],
+        sources: [
+          aws_s3_deployment.Source.jsonData('env', environmentVariables),
+        ],
         destinationBucket: frontEndBucket,
         destinationKeyPrefix: 'env',
         metadata: {
