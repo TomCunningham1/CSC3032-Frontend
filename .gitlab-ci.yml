@@ -49,6 +49,7 @@ deployment_test:
     - npm install
     - cd website
     - npm install
+    - echo "BACKEND_URL=$BACKEND_URL" >> .env
     - npm run build
     - cd ..
     - cdk synth
