@@ -70,7 +70,7 @@ export class Team11FrontendStack extends Stack {
         destinationBucket: frontEndBucket,
         destinationKeyPrefix: 'env',
         metadata: {
-          'Content-Type:': 'text/plain',
+          'content-type:': 'text/plain',
         },
       }
     )
