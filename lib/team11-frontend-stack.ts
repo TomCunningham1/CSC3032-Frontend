@@ -46,10 +46,6 @@ export class Team11FrontendStack extends Stack {
       }
     )
 
-    const environmentVariables = {
-      BACKEND_URL: process.env.BACKEND_URL,
-    }
-
     const deployment = new aws_s3_deployment.BucketDeployment(
       this,
       `team11-${environment.environmentName}-s3-deployment`,
@@ -57,21 +53,6 @@ export class Team11FrontendStack extends Stack {
         sources: [aws_s3_deployment.Source.asset(`website/build`)],
         destinationBucket: frontEndBucket,
         distribution: dist,
-      }
-    )
-
-    const env_variables = new aws_s3_deployment.BucketDeployment(
-      this,
-      `team11-${environment.environmentName}-s3-environment-variables-deployment`,
-      {
-        sources: [
-          aws_s3_deployment.Source.jsonData('env', environmentVariables),
-        ],
-        destinationBucket: frontEndBucket,
-        destinationKeyPrefix: 'env',
-        metadata: {
-          'content-type:': 'text/plain',
-        },
       }
     )
   }
