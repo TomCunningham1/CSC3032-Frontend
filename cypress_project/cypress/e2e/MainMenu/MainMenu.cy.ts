@@ -9,26 +9,26 @@ describe('Test Main Menu', () => {
 
   it('Should visit page and check the title is valid', () => {
     cy.visit(environment.frontendURL)
-    cy.title().should('eq','React App')
+    cy.title().should('eq','Hack Attack')
   })
 
-  it('Should contain a button for the scenario page', () => {
-    cy.contains('Scenario')
-  });
-
-  it('Should contain a button for help', () => {
-    cy.contains('Help')
+  it('Should contain button for SQL Injection', () => {
+    cy.contains("SQL Injection")
   })
 
-  it('Should contain a button for Leaderboard', () => {
-    cy.contains('Leaderboard')
+  it('Should contain button for Buffer Overflow', () => {
+    cy.contains("Buffer Overflow")
   })
 
-  it('Should contain a button for settings', () => {
-    cy.contains('Settings')
+  it('Should contain button for DDOS Attacks', () => {
+    cy.contains("Distributed Denial Of Service")
+  })
+
+  it('Should contain button for Cross Site Scripting', () => {
+    cy.contains("Cross Site Scripting")
   })
 
   it('Should contain the game title in the title bar', () => {
-    cy.contains('Hack-Attack')
+    cy.contains('Hack Attack')
   })
 })
