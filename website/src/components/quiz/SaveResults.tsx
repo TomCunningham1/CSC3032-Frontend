@@ -29,14 +29,10 @@ const SaveResults = ({
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log(e)
-
     setUsername(e.target.value)
   }
 
   const handleSubmit = () => {
-    console.log('send')
-
     BackendService.saveResults(
       username,
       scenarioName.scenario,

@@ -42,33 +42,6 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
     }
   }
 
-  handleEmail() {
-    BackendService.emailResults(
-      'tom.c22@hotmail.co.uk',
-      this.state.score,
-      this.state.numberOfQuestions,
-      this.state.numberOfAnsweredQuestions,
-      this.state.correctAnswers,
-      this.state.wrongAnswers,
-      this.state.hintsUsed,
-      this.state.fiftyFiftyUsed
-    )
-  }
-  handleResults() {
-    BackendService.saveResults(
-      'TestNew',
-      scenarioName.scenario,
-      this.state.score,
-      this.state.numberOfQuestions,
-      this.state.numberOfAnsweredQuestions,
-      this.state.correctAnswers,
-      this.state.wrongAnswers,
-      this.state.hintsUsed,
-      this.state.fiftyFiftyUsed,
-      calculateSeconds(this.state.minutes, this.state.seconds)
-    )
-  }
-
   componentDidMount() {
     const { state }: any = this.props.router.location
     if (state) {
