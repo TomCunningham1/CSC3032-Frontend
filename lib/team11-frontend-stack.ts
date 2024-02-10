@@ -10,7 +10,7 @@ import {
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
 import environment from './config/environment'
-import path = require('path');
+import path = require('path')
 
 export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -47,7 +47,7 @@ export class Team11FrontendStack extends Stack {
     )
 
     const environmentVariables = {
-      BACKEND_URL: process.env.BACKEND_URL
+      BACKEND_URL: process.env.BACKEND_URL,
     }
 
     const deployment = new aws_s3_deployment.BucketDeployment(
@@ -68,8 +68,8 @@ export class Team11FrontendStack extends Stack {
         destinationBucket: frontEndBucket,
         destinationKeyPrefix: 'env',
         metadata: {
-          'Content-Type:': 'text/plain'
-        }
+          'Content-Type:': 'text/plain',
+        },
       }
     )
   }
