@@ -6,6 +6,11 @@ stages:
   - deploy
   - post_deploy
 
+cache:
+  paths:
+    - node_modules/   # Cache node_modules directory
+    - website/node_modules/  # Cache website's node_modules directory
+
 build_job:
   stage: build
   script:
@@ -18,8 +23,6 @@ build_job:
     paths:
       - website/build
       - dist
-      - node_modules
-      - website/node_modules
 
 format_job:
   stage: lint
