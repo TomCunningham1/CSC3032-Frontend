@@ -10,7 +10,6 @@ import {
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
 import environment from './config/environment'
-import environment from '../cypress_project/config/environment';
 import path = require('path');
 
 export class Team11FrontendStack extends Stack {
