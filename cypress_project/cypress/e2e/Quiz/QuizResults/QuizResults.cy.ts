@@ -52,7 +52,7 @@ describe('Quiz Instructions Page', () => {
       })
   
       it('should send email results to the user', () => {
-        cy.get('input').type('tom.c22@hotmail.co.uk')
+        cy.get('[data-testid="send-email-text-input"]').type('tom.c22@hotmail.co.uk')
   
         cy.contains('Send Email').click()
       })
