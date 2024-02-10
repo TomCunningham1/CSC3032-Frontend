@@ -65,6 +65,7 @@ deployment_production:
     - echo "Deploying to '$ENVIRONMENT' Environment"
     - npm install
     - cd website
+    - echo "BACKEND_URL=$BACKEND_URL" >> .env
     - npm install
     - npm run build
     - cd ..
