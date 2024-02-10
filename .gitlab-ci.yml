@@ -8,8 +8,8 @@ stages:
 
 cache:
   paths:
-    - node_modules/   # Cache node_modules directory
-    - website/node_modules/  # Cache website's node_modules directory
+    - node_modules/ 
+    - website/node_modules/ 
 
 build_job:
   stage: build
@@ -39,10 +39,8 @@ format_job:
 unit_test_job:
   stage: test
   script:
-    # - npm install
     - npm run test
     - cd website
-    # - npm install
     - npm run test
 
   
@@ -55,11 +53,8 @@ deployment_test:
     - main
   script:
     - echo "Deploying to '$ENVIRONMENT' Environment"
-    # - npm install
     - cd website
-    # - npm install
     - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
-    # - npm run build
     - cd ..
     - cdk synth
     - cdk deploy --require-approval never
@@ -73,11 +68,8 @@ deployment_production:
     - main
   script:
     - echo "Deploying to '$ENVIRONMENT' Environment"
-    # - npm install
     - cd website
     - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
-    # - npm install
-    # - npm run build
     - cd ..
     - cdk synth
     - cdk deploy --require-approval never
