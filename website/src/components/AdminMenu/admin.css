@@ -1,0 +1,7 @@
+.admin-button-container {
+    display: flex;
+}
+
+.admin-scenario-edit-box {
+    resize: vertical;
+}
