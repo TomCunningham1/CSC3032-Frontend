@@ -8,6 +8,10 @@ import wrongNotification from '../../assets/audio/wrong-answer.mp3'
 import buttonSound from '../../assets/audio/button-sound.mp3'
 import '../../styles/styles.scss'
 import withRouter from '../Router'
+import PhoneIcon from '@mui/icons-material/Phone';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+
 
 interface PlayPropsInterface {
   state?: any
@@ -466,16 +470,16 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             <p>
               <span
                 onClick={this.handleFiftyFifty}
-                className="mdi mdi-cellphone-basic mdi-24px lifeline-icon"
-              >
+                className="Phone Icon" 
+              > <LiveHelpIcon color="primary" />
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
             <p>
               <span
                 onClick={this.handleHints}
-                className="mdi mdi-puzzle mdi-24px lifeline-icon"
-              >
+                className="mdi mdi-lightlub-on-outline mdi-24px lifeline-icon"
+              > <PhoneIcon color="primary" />
                 <span className="lifeline">{hints}</span>
               </span>
             </p>
@@ -492,7 +496,9 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 })}
               >
                 {time.minutes}:{time.seconds}
-                <span className="mdi mdi-clock mdi-24px"></span>
+                <span className="mdi mdi-clock-outline mdi-24px">
+                  <AccessTimeIcon />
+                </span>
               </span>
             </p>
           </div>
