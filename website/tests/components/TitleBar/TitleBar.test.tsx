@@ -18,20 +18,8 @@ describe('Tests for the TitleBar', () => {
     it(' Should display the login box', () => {
         output = renderComponent();
 
-        const title = output.getByTestId('titlebar-title');
+        const title = output.getByTestId('main-menu-navigation-help');
 
         expect(title).toBeTruthy();
-    });
-
-    it('Should output the drop down menu when clicked', () => {
-        output = renderComponent();
-
-        const menuIcon = output.getByTestId('titlebar-menu-button');
-
-        fireEvent.click(menuIcon);
-
-        const menuOption = output.getByTestId('titlebar-menu-item-Settings');
-
-        expect(menuOption).toBeTruthy();
     });
 });

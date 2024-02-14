@@ -432,6 +432,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       wrongAnswers: state.wrongAnswers,
       fiftyFiftyUsed: 2 - state.fiftyFifty,
       hintsUsed: 5 - state.hints,
+      minutes: state.time.minutes,
+      seconds: state.time.seconds,
     }
     setTimeout(() => {
       console.log(playerStats)

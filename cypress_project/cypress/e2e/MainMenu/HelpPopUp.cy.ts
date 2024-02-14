@@ -13,18 +13,22 @@ describe('Test Help Pop Up', () => {
   })
 
   it('Should containg message to help the user understand how to use the page', () => {
-    cy.contains("To pick a game scenario, click scenario")
-    cy.contains("To change your settings, click settings")
-    cy.contains("To logout, click logout")
-    cy.contains("To close pop ups, click the x")
+    cy.contains("To pick a game scenario, select one of the options on the home page.")
+    cy.contains("Current Scenario options are:")
+    cy.contains("SQL Injection")
+    cy.contains("Distributed Denial of Service")
+    cy.contains("Buffer Overflow")
+    cy.contains("To change your settings, click the Settings button on the navigation bar at the top of the screen")
+    cy.contains("To view how other players have done, view the leaderboards, by clicking the Leaderboard button at the top of the screen.")
+    cy.contains('To close pop ups, click the "Back" button at the bottom of the pop up.')
   })
 
-  it('Should contain the X button to close the pop-up', () => {
-    cy.contains('X')
+  it('Should contain the Back button to close the pop-up', () => {
+    cy.contains('Back')
   })
 
-  it('Should click the X button and check that the pop-up is closed', () => {
-    cy.contains('X').click()
+  it('Should click the Back button and check that the pop-up is closed', () => {
+    cy.contains('Back').click()
 
     cy.get('popup').should('not.exist')
   })

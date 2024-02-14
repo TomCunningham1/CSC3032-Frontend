@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Register from '../pages/Register'
 import Play from '../components/quiz/Play'
 import QuizInstructions from '../components/quiz/QuizInstructions'
 import QuizSummary from '../components/quiz/QuizSummary'
@@ -14,42 +13,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          <Home />
-        ),
-      },
-      {
-        path: '/register',
-        element: (
-          <Register />
-        ),
+        element: <Home />,
       },
       {
         path: '/play/instructions',
-        element: (
-          <QuizInstructions />
-        ),
+        element: <QuizInstructions />,
       },
       {
         path: '/play/quiz',
-        element: (
-          <Play />
-        ),
+        element: <Play />,
       },
       {
         path: 'play/quizSummary',
-        element: (
-          <QuizSummary />
-        ),
+        element: <QuizSummary />,
       },
       {
         path: '/leaderboard',
-        element: (
-          <Leaderboard />
-        ),
+        element: <Leaderboard />,
       },
-    ]
-  }
+    ],
+  },
 ])
 
 export default router
