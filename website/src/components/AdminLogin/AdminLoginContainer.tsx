@@ -1,16 +1,36 @@
+import { useNavigate } from 'react-router'
+import './admin-login.css'
+
 const AdminLoginContainer = () => {
+  const navigate = useNavigate()
 
-    return (
-        <div className="menu-container" data-testid={'admin-login-wrapper'}>
+  const validate = () => {
+    navigate('/admin-menu')
+  }
 
-            <p>Login</p>
+  return (
+    <div
+      className="admin-login-menu-container"
+      data-testid={'admin-login-wrapper'}
+    >
+      <h1 className="admin-login-title">Admin Users</h1>
 
-            <p>Username</p>
+      {/* Login Fields */}
+      <div className="admin-login-fields">
+        <h4 className="admin-login-field-spacer">Username</h4>
 
-            <p>Password</p>
+        <input />
 
-        </div>
-    )
+        <h4 className="admin-login-field-spacer">Password</h4>
+
+        <input type="password" />
+      </div>
+
+      <button className="admin-login-menu-submit-button" onClick={validate}>
+        Login
+      </button>
+    </div>
+  )
 }
 
-export default AdminLoginContainer;
+export default AdminLoginContainer

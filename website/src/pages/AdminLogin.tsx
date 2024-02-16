@@ -1,12 +1,11 @@
-import AdminLoginContainer from "../components/AdminLogin/AdminLoginContainer";
+import AdminLoginContainer from '../components/AdminLogin/AdminLoginContainer'
 
 const AdminLogin = () => {
-
-    return (
-        <>
-            <AdminLoginContainer />
-        </>
-    )
+  return (
+    <>
+      <AdminLoginContainer />
+    </>
+  )
 }
 
-export default AdminLogin;
+export default AdminLogin

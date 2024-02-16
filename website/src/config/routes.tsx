@@ -36,16 +36,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin-login',
-        element: <AdminLogin />
+        element: <AdminLogin />,
       },
       {
         path: 'admin-menu',
-        element: <AdminMenu />
+        element: <AdminMenu />,
       },
       {
         path: 'admin-scenario',
-        element: <AdminScenarioEditor />
-      }
+        element: <AdminScenarioEditor />,
+      },
     ],
   },
 ])

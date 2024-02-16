@@ -1,9 +1,5 @@
 const AdminScenarioEditor = () => {
-    return (
-        <>
-            Admin ScenarioEditor
-        </>
-    )
+  return <>Admin ScenarioEditor</>
 }
 
 export default AdminScenarioEditor

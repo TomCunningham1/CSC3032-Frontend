@@ -3,16 +3,21 @@ import './PopUp.css'
 interface PopUpButtonInterface {
   id: string
   onClose: () => void
+  text?: string
 }
 
-const PopUpButton = ({ id: componentId, onClose }: PopUpButtonInterface) => {
+const PopUpButton = ({
+  id: componentId,
+  onClose,
+  text,
+}: PopUpButtonInterface) => {
   return (
     <button
       className="PopUpButton"
       data-testid={`${componentId}-close-button`}
       onClick={onClose}
     >
-      Back
+      {text ? text : 'Back'}
     </button>
   )
 }

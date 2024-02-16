@@ -1,12 +1,11 @@
-import AdminContainer from "../components/AdminMenu/AdminContainer"
+import AdminContainer from '../components/AdminMenu/AdminContainer'
 
 const AdminMenu = () => {
-    return (
-        <>
-            Admin Menu
-            <AdminContainer />
-        </>
-    )
+  return (
+    <>
+      <AdminContainer />
+    </>
+  )
 }
 
 export default AdminMenu
