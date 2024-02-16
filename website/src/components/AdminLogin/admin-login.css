@@ -47,3 +47,9 @@
     border-color: white; /* Change border color on hover */
     background-color: rgba(255, 255, 255, 0.3); /* Transparent white background on hover */
   }
+
+  .admin-login-menu-submit-button:disabled {
+    background-color: #ccc; /* Grey out background when disabled */
+    color: #999; /* Grey out text color when disabled */
+    cursor: not-allowed; /* Change cursor to not allowed when disabled */
+  }

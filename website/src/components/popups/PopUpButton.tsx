@@ -11,7 +11,7 @@ const PopUpButton = ({
   id: componentId,
   onClose,
   text,
-  disabled
+  disabled,
 }: PopUpButtonInterface) => {
   return (
     <button

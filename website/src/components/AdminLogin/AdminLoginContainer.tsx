@@ -1,11 +1,25 @@
 import { useNavigate } from 'react-router'
 import './admin-login.css'
+import { useState } from 'react'
 
 const AdminLoginContainer = () => {
   const navigate = useNavigate()
 
+  const [username, setUsername] = useState('')
+  const [pswrd, setPswrd] = useState('')
+
+  const disabled = username === '' || pswrd === ''
+
   const validate = () => {
     navigate('/admin-menu')
+  }
+
+  const handleChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value)
+  }
+
+  const handleChangePswrd = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPswrd(e.target.value)
   }
 
   return (
@@ -19,14 +33,18 @@ const AdminLoginContainer = () => {
       <div className="admin-login-fields">
         <h4 className="admin-login-field-spacer">Username</h4>
 
-        <input />
+        <input onChange={handleChangeUsername} />
 
         <h4 className="admin-login-field-spacer">Password</h4>
 
-        <input type="password" />
+        <input type="password" onChange={handleChangePswrd} />
       </div>
 
-      <button className="admin-login-menu-submit-button" onClick={validate}>
+      <button
+        className="admin-login-menu-submit-button"
+        onClick={validate}
+        disabled={disabled}
+      >
         Login
       </button>
     </div>
