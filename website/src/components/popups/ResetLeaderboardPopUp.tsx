@@ -1,8 +1,19 @@
+import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 
 const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   if (!open) return null
+
+  const [value, setValue] = useState('');
+
+  const expected = 'permanently delete'
+
+  const disabled = expected !== value;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }
 
   return (
     <PopUp
@@ -15,11 +26,11 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
         <br />
         To confirm enter <i>permanently delete</i> into the below text box.
         <br />
-        <input></input>
+        <input onChange={handleChange}></input>
         <br />
         *Deleting is permenant and cannot be undone
       </div>
-      <PopUpButton id="close" text={'Proceed'} onClose={onClose} />
+      <PopUpButton id="close" text={'Proceed'} onClose={onClose} disabled={disabled} />
     </PopUp>
   )
 }

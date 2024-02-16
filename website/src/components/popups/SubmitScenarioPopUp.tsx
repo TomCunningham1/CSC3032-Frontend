@@ -1,8 +1,26 @@
+import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
+import exp from 'constants';
 
 const SubmitScenarioPopup = ({ open, onClose }: any) => {
   if (!open) return null
+
+  const [value, setValue] = useState('');
+
+  const expected = 'confirm';
+
+  const disabled = expected !== value;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+  }
+
+  const onSubmit = () => {
+    onClose();
+  }
+
+  console.log(disabled);
 
   return (
     <PopUp
@@ -11,13 +29,13 @@ const SubmitScenarioPopup = ({ open, onClose }: any) => {
       onClose={onClose}
     >
       <div className="PopUpText">
-        Submitting the updated scenario will over-write any existing questions.
+        <p>Submitting the updated scenario will over-write any existing questions.</p>
         <br />
-        Enter the <i>title</i> of the scenario which you want to load.
+        <p>Enter <i>confirm</i> to confirm you want to update the scenario.</p>
         <br />
-        <input></input>
+        <input onChange={handleChange}></input>
       </div>
-      <PopUpButton id="close" text={'Proceed'} onClose={onClose} />
+      <PopUpButton id="close" text={'Proceed'} onClose={onSubmit} disabled={disabled} />
     </PopUp>
   )
 }
