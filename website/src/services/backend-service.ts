@@ -14,8 +14,8 @@ class BackendServiceClass {
   getHealth = async () => {
     return await axios.get(`${BACKEND_IP}/health`, {
       headers: {
-        'x-api-key': api_key
-      }
+        'x-api-key': api_key,
+      },
     })
   }
 
@@ -29,21 +29,24 @@ class BackendServiceClass {
     hintsUsed: number,
     fiftyFiftyUsed: number
   ) => {
-    return await axios.post(`${BACKEND_IP}/results/send-email`, {
-      target: target,
-      score: score,
-      numberOfQuestions: numberOfQuestions,
-      numberOfAnsweredQuestions: numberOfAnsweredQuestions,
-      correctAnswers: correctAnswers,
-      wrongAnswers: wrongAnswers,
-      hintsUsed: hintsUsed,
-      fiftyFiftyUsed: fiftyFiftyUsed,
-    },
-    {
-      headers: {
-        'x-api-key': api_key,
+    return await axios.post(
+      `${BACKEND_IP}/results/send-email`,
+      {
+        target: target,
+        score: score,
+        numberOfQuestions: numberOfQuestions,
+        numberOfAnsweredQuestions: numberOfAnsweredQuestions,
+        correctAnswers: correctAnswers,
+        wrongAnswers: wrongAnswers,
+        hintsUsed: hintsUsed,
+        fiftyFiftyUsed: fiftyFiftyUsed,
       },
-    })
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
   }
 
   saveResults = async (
