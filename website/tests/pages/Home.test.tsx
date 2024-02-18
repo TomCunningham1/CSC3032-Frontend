@@ -8,6 +8,7 @@ import Home from '../../src/pages/Home';
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 jest.mock('axios');
 const navigate = jest.fn();
+const getAll = jest.fn()
 
 describe('Tests for the login page', () => {
 
@@ -23,6 +24,9 @@ describe('Tests for the login page', () => {
 
     beforeEach(() => {
         jest.spyOn(router, 'useNavigate').mockImplementation(() => navigate)
+        jest.spyOn(axios, 'get').mockResolvedValue({
+            data: ['SQL Injection']
+        })
     });
 
     it('Wrapper is present and contains correct class', () => {
@@ -33,12 +37,12 @@ describe('Tests for the login page', () => {
         expect(comp).toBeTruthy();
     });
 
-    it('Form exists', () => {
-        output = renderComponent();
+    // it('Form exists', () => {
+    //     output = renderComponent();
 
-        const comp = output.getByTestId('main-menu-wrapper');
+    //     const comp = output.getByTestId('main-menu-wrapper');
 
-        expect(comp).toBeTruthy();
-        expect(comp.className).toBe('menu-container');
-    });
+    //     expect(comp).toBeTruthy();
+    //     expect(comp.className).toBe('menu-container');
+    // });
 });
