@@ -1,9 +1,13 @@
 .questions {
-  background-color: $off-white;
-  border-left: 5px solid $blue;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(65deg, rgba(41, 52, 196, 0.8), rgba(78, 120, 217, 0.8) 40%, rgba(41, 137, 196, 0.8));
+  border: 1px solid white;
+  border-radius: 10px;
   width: 80%;
-  margin: $lg auto 0 auto;
-  padding: $sm $md;
+  margin: 2rem auto 0 auto;
+  margin-top: 5%;
+  // padding: 1rem;
 
   h2 {
       text-align: center;
@@ -32,14 +36,16 @@
 
   h5 {
       font-size: 1.2rem;
-      margin-bottom: lg;
+      margin-bottom: 2rem;
       line-height: 1.5;
       text-align: center;
   }
 
   .options-container {
-      display: inline-block;
-      width: 50%;
+    display: flex;
+    justify-content: space-between; /* Ensure equal spacing between buttons */
+    gap: 10px; /* Add a 10px gap between buttons */
+    width: 100%;
   }
 
   .option {
@@ -58,6 +64,16 @@
       background-color: darken($blue, 20%);
   }
 }
+
+@media screen and (min-width: 600px) {
+  .questions {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+}
+
 
 .button-container {
   display: flex;

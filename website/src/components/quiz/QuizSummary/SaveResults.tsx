@@ -1,7 +1,6 @@
-import { TextField } from '@mui/material'
 import { useState } from 'react'
-import BackendService from '../../services/backend-service'
-import scenarioName from '../../config/scenarioName'
+import BackendService from '../../../services/backend-service'
+import scenarioName from '../../../config/scenarioName'
 
 interface SaveResultsInterface {
   score: number
@@ -48,13 +47,20 @@ const SaveResults = ({
   }
 
   return (
-    <div data-testid={'send-email-container'}>
-      <TextField
+    <div
+      data-testid={'send-email-container'}
+      className={'quiz-summary-button-container'}
+    >
+      <input
         placeholder="Enter Username"
         onChange={handleChange}
         data-testid={'send-email-text-input'}
-      ></TextField>
-      <button onClick={handleSubmit} data-testid={'send-email-button'}>
+      ></input>
+      <button
+        className={'quiz-summary-button'}
+        onClick={handleSubmit}
+        data-testid={'send-email-button'}
+      >
         Save Results
       </button>
     </div>

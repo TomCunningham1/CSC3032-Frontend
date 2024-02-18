@@ -1,12 +1,7 @@
-import { RouteObject, createBrowserRouter } from 'react-router-dom'
-import Play from '../components/quiz/Play'
-import QuizInstructions from '../components/quiz/QuizInstructions'
-import QuizSummary from '../components/quiz/QuizSummary'
+import { createBrowserRouter } from 'react-router-dom'
 import Home from '../pages/Home'
 import Leaderboard from '../pages/Leaderboard'
 import TitleBar from '../components/TitleBar/TitleBar'
-import AdminLogin from '../pages/AdminLogin'
-import AdminMenu from '../pages/AdminMenu'
 import { AccountContext } from '../auth/Account'
 import { useContext } from 'react'
 

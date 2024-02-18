@@ -30,7 +30,12 @@ const MainMenuContainer = () => {
             const navigateToQuiz = async () => {
               setLoading(true)
               const response = await BackendService.readScenario(playthrough)
-              navigate('/play/instructions', { state: { questions: response.data.questions, title: playthrough } })
+              navigate('/play/instructions', {
+                state: {
+                  questions: response.data.questions,
+                  title: playthrough,
+                },
+              })
             }
 
             return (

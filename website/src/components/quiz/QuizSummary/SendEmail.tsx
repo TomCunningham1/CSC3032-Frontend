@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material'
 import { useState } from 'react'
-import BackendService from '../../services/backend-service'
+import BackendService from '../../../services/backend-service'
+import './quiz-summary.css'
 
 interface SendEmailInterface {
   score: number
@@ -43,13 +44,21 @@ const SendEmail = ({
   }
 
   return (
-    <div data-testid={'send-email-container'}>
+    <div
+      data-testid={'send-email-container'}
+      className={'quiz-summary-button-container'}
+    >
       <input
         onChange={handleChange}
+        placeholder="Enter an email"
         data-testid={'send-email-text-input'}
         value={email}
       />
-      <button onClick={handleSubmit} data-testid={'send-email-button'}>
+      <button
+        className={'quiz-summary-button'}
+        onClick={handleSubmit}
+        data-testid={'send-email-button'}
+      >
         Send Email
       </button>
     </div>
