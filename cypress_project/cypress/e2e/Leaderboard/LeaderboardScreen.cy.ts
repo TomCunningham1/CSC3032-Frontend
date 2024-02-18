@@ -11,13 +11,27 @@ describe('Leaderboard page', () => {
         cy.contains("Leaderboard")
     })
 
+    describe('Should verify that all the scenario attempt', () => {
+        it('Should contain SQL Injection', () => {
+            cy.contains('SQL Injection')
+        })
+
+        it('Should contain Distributed Denial of Service', () => {
+            cy.contains('Distributed Denial of Service')
+        })
+
+        it('Should contain Cross Site Scripting', () => {
+            cy.contains('Cross Site Scripting')
+        })
+
+        it('Should contain Buffer Overflow', () => {
+            cy.contains('Buffer Overflow')
+        })
+    })
+
     describe('Should verify that all of column headers are present', () => {
         it('Should verify that Nickname is present', () => {
             cy.contains("Nickname")
-        })
-
-        it('Should verify that Scenario is present', () => {
-            cy.contains("Scenario")
         })
 
         it('Should verify that Score is present', () => {

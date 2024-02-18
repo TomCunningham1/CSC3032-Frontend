@@ -46,19 +46,6 @@ const MainMenuContainer = () => {
               />
             )
           })}
-          {/* {sc.map((playthrough: { title: string; questions: object }) => {
-        const navigateToQuiz = () => {
-          navigate('/play/instructions', { state: playthrough.questions })
-        }
-
-        return (
-          <MainMenuButton
-            id={playthrough.title}
-            method={navigateToQuiz}
-            text={playthrough.title}
-          />
-        )
-      })} */}
         </div>
       )}
     </>
