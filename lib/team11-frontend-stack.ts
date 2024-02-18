@@ -10,8 +10,7 @@ import {
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
 import environment from './config/environment'
-import environment from '../cypress_project/config/environment';
-import path = require('path');
+import path = require('path')
 
 export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -47,10 +46,6 @@ export class Team11FrontendStack extends Stack {
       }
     )
 
-    const environmentVariables = {
-      BACKEND_URL: process.env.BACKEND_URL
-    }
-
     const deployment = new aws_s3_deployment.BucketDeployment(
       this,
       `team11-${environment.environmentName}-s3-deployment`,
@@ -58,19 +53,6 @@ export class Team11FrontendStack extends Stack {
         sources: [aws_s3_deployment.Source.asset(`website/build`)],
         destinationBucket: frontEndBucket,
         distribution: dist,
-      }
-    )
-
-    const env_variables = new aws_s3_deployment.BucketDeployment(
-      this,
-      `team11-${environment.environmentName}-s3-environment-variables-deployment`,
-      {
-        sources: [aws_s3_deployment.Source.asset(path.join(__dirname, 'env'))],
-        destinationBucket: frontEndBucket,
-        destinationKeyPrefix: 'env',
-        metadata: {
-          'Content-Type:': 'text/plain'
-        }
       }
     )
   }

@@ -7,7 +7,7 @@ node_modules
 
 ./website/node_modules
 website/coverage
-./website/dist
+./website/build
 # CDK asset staging directory
 .cdk.staging
 cdk.out
