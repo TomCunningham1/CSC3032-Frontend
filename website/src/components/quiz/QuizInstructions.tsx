@@ -7,9 +7,6 @@ const QuizInstructions = () => {
 
   return (
     <Fragment>
-      <Helmet>
-        <title>Quiz Instructions - Quiz App</title>
-      </Helmet>
       <div className="instructions container">
         <h1>How to Play Hack Attack</h1>
         <p>Ensure you read this guide from start to finish.</p>
