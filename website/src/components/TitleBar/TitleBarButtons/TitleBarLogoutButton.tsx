@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router'
 import TitleBarButton from './TitleBarButton'
 import { useState } from 'react'
 
-const TitleBarLogoutButton = ({method}: any) => {
+const TitleBarLogoutButton = ({ method }: any) => {
   const [openHelpPopUp, setOpenHelpPopUp] = useState(false)
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     method()
@@ -13,11 +13,7 @@ const TitleBarLogoutButton = ({method}: any) => {
   }
   return (
     <>
-      <TitleBarButton
-        id={'logout'}
-        text={'Logout'}
-        method={handleLogout}
-      />
+      <TitleBarButton id={'logout'} text={'Logout'} method={handleLogout} />
     </>
   )
 }

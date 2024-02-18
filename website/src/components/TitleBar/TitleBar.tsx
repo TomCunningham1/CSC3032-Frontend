@@ -37,8 +37,12 @@ const TitleBar = () => {
               <TitleBarHomeButton />
               <TitleBarLeaderboardButton />
               <TitleBarSettingsButton />
-              { status ? <TitleBarScenarioButton /> : <TitleBarHelpButton /> }
-              { status ? <TitleBarLogoutButton method={logout} /> : <TitleBarLoginButton />}
+              {status ? <TitleBarScenarioButton /> : <TitleBarHelpButton />}
+              {status ? (
+                <TitleBarLogoutButton method={logout} />
+              ) : (
+                <TitleBarLoginButton />
+              )}
             </div>
             <TitleBarIcon />
           </Toolbar>

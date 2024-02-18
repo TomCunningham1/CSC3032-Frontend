@@ -37,11 +37,7 @@ const RenderRoutes = () => {
         {routes.map((route, index) => {
           if (route.isPrivate && !authenticated) {
             return (
-              <Route
-                key={index}
-                path={route.path}
-                element={<LoadingClock/>}
-              />
+              <Route key={index} path={route.path} element={<LoadingClock />} />
             )
           }
           return <Route key={index} path={route.path} element={route.element} />

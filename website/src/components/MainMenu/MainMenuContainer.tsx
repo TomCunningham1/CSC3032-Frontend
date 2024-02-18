@@ -22,24 +22,26 @@ const MainMenuContainer = () => {
 
   return (
     <>
-        {loading ? <LoadingClock /> : 
-    <div className="menu-container" data-testid={'main-menu-wrapper'}>
-      {scenarios.map((playthrough) => {
-        const navigateToQuiz = async () => {
-          setLoading(true)
-          const response = await BackendService.readScenario(playthrough)
-          navigate('/play/instructions', { state: response.data.questions })
-        }
+      {loading ? (
+        <LoadingClock />
+      ) : (
+        <div className="menu-container" data-testid={'main-menu-wrapper'}>
+          {scenarios.map((playthrough) => {
+            const navigateToQuiz = async () => {
+              setLoading(true)
+              const response = await BackendService.readScenario(playthrough)
+              navigate('/play/instructions', { state: response.data.questions })
+            }
 
-        return (
-          <MainMenuButton
-            id={playthrough}
-            method={navigateToQuiz}
-            text={playthrough}
-          />
-        )
-      })}
-            {/* {sc.map((playthrough: { title: string; questions: object }) => {
+            return (
+              <MainMenuButton
+                id={playthrough}
+                method={navigateToQuiz}
+                text={playthrough}
+              />
+            )
+          })}
+          {/* {sc.map((playthrough: { title: string; questions: object }) => {
         const navigateToQuiz = () => {
           navigate('/play/instructions', { state: playthrough.questions })
         }
@@ -52,10 +54,10 @@ const MainMenuContainer = () => {
           />
         )
       })} */}
-    </div>
-  }
-    </>)
-
+        </div>
+      )}
+    </>
+  )
 }
 
 export default MainMenuContainer

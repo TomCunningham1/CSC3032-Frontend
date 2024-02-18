@@ -111,30 +111,31 @@ class BackendServiceClass {
   }
 
   deleteScenario = async (scenarioName: string) => {
-    return await axios.get(`${BACKEND_IP}/admin/delete?scenarioName=${scenarioName}`, {
-      headers: {
-        'x-api-key': api_key
+    return await axios.get(
+      `${BACKEND_IP}/admin/delete?scenarioName=${scenarioName}`,
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
       }
-    })
+    )
   }
 
   resetLeaderboard = async () => {
     return await axios.get(`${BACKEND_IP}/admin/reset-leaderboard`, {
       headers: {
-        'x-api-key': api_key
-      }
+        'x-api-key': api_key,
+      },
     })
   }
 
   getAllScenarios = async () => {
     return await axios.get(`${BACKEND_IP}/admin/get-all`, {
       headers: {
-        'x-api-key': api_key
-      }
+        'x-api-key': api_key,
+      },
     })
   }
-
-  
 }
 
 const BackendService = new BackendServiceClass()

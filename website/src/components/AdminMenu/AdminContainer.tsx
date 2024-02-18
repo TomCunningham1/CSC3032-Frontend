@@ -97,8 +97,8 @@ const AdminOptionButton = ({
 const SubmitButton = ({ scenario }: { scenario: string }) => {
   const [openPopup, setOpenPopup] = useState(false)
 
-  const disabled = isJSON(scenario) ? false : true;
-  
+  const disabled = isJSON(scenario) ? false : true
+
   return (
     <>
       <SubmitScenarioPopup
@@ -132,7 +132,6 @@ const AdminOptionsContainer = ({ setScenario }: any) => (
 let initialValue =
   '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t}\n\t]\n}'
 
-
 const AdminContainer = () => {
   const [scenario, setScenario] = useState('')
   const [value, setValue] = useState('')
@@ -154,9 +153,9 @@ const AdminContainer = () => {
 
 const isJSON = (str: string) => {
   try {
-      return (JSON.parse(str) && !!str);
+    return JSON.parse(str) && !!str
   } catch (e) {
-      return false;
+    return false
   }
 }
 

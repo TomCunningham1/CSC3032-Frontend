@@ -2,12 +2,11 @@ import { useNavigate } from 'react-router'
 import TitleBarButton from './TitleBarButton'
 
 const TitleBarScenarioButton = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate()
-
-    const handleClick = () => {
-        navigate('admin-menu')
-    }
+  const handleClick = () => {
+    navigate('admin-menu')
+  }
 
   return (
     <>

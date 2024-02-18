@@ -13,11 +13,7 @@ const TitleBarLoginButton = () => {
 
   return (
     <>
-      <TitleBarButton
-        id={'login'}
-        text={'Admin Login'}
-        method={handleClick}
-      />
+      <TitleBarButton id={'login'} text={'Admin Login'} method={handleClick} />
     </>
   )
 }
