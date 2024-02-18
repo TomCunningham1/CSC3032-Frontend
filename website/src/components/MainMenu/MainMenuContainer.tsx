@@ -1,13 +1,45 @@
+import { useEffect, useState } from 'react'
 import questions from '../../questions/QuizQuestions'
 import MainMenuButton from './MainMenuButton'
 import { useNavigate } from 'react-router'
+import BackendService from '../../services/backend-service'
+import LoadingClock from '../LoadingClock/LoadingClock'
 
 const MainMenuContainer = () => {
   const navigate = useNavigate()
 
+  const [loading, setLoading] = useState(true)
+  const [scenarios, setScenarios] = useState([])
+
+  useEffect(() => {
+    const getScenarios = async () => {
+      const scenarios = await BackendService.getAllScenarios()
+      setScenarios(scenarios.data)
+      setLoading(false)
+    }
+    getScenarios()
+  }, [])
+
   return (
+    <>
+        {loading ? <LoadingClock /> : 
     <div className="menu-container" data-testid={'main-menu-wrapper'}>
-      {questions.map((playthrough: { title: string; questions: object }) => {
+      {scenarios.map((playthrough) => {
+        const navigateToQuiz = async () => {
+          setLoading(true)
+          const response = await BackendService.readScenario(playthrough)
+          navigate('/play/instructions', { state: response.data.questions })
+        }
+
+        return (
+          <MainMenuButton
+            id={playthrough}
+            method={navigateToQuiz}
+            text={playthrough}
+          />
+        )
+      })}
+            {/* {sc.map((playthrough: { title: string; questions: object }) => {
         const navigateToQuiz = () => {
           navigate('/play/instructions', { state: playthrough.questions })
         }
@@ -19,9 +51,11 @@ const MainMenuContainer = () => {
             text={playthrough.title}
           />
         )
-      })}
+      })} */}
     </div>
-  )
+  }
+    </>)
+
 }
 
 export default MainMenuContainer

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
+import BackendService from '../../services/backend-service'
 
-const ViewScenarioPopUp = ({ open, onClose }: any) => {
+const ViewScenarioPopUp = ({ open, onClose, setScenario }: any) => {
   if (!open) return null
 
   const [title, setTitle] = useState('')
@@ -11,6 +12,13 @@ const ViewScenarioPopUp = ({ open, onClose }: any) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
+  }
+
+  const handleProceed = async () => {
+    const response = await BackendService.readScenario(title)
+    console.log(response)
+    setScenario(JSON.stringify(response.data, null, 2))
+    onClose()
   }
 
   return (
@@ -25,7 +33,7 @@ const ViewScenarioPopUp = ({ open, onClose }: any) => {
       <PopUpButton
         id="close"
         text={'Proceed'}
-        onClose={onClose}
+        onClose={handleProceed}
         disabled={disabled}
       />
     </PopUp>

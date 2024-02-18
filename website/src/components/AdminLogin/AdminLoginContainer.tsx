@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router'
 import './admin-login.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AccountContext } from '../../auth/Account'
 
 const AdminLoginContainer = () => {
   const navigate = useNavigate()
+
+  const { authenticate } = useContext(AccountContext)
 
   const [username, setUsername] = useState('')
   const [pswrd, setPswrd] = useState('')
@@ -11,6 +14,8 @@ const AdminLoginContainer = () => {
   const disabled = username === '' || pswrd === ''
 
   const validate = () => {
+    authenticate(username, pswrd)
+
     navigate('/admin-menu')
   }
 

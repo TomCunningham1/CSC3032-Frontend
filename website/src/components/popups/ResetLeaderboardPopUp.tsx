@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
+import BackendService from '../../services/backend-service'
 
 const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   if (!open) return null
@@ -13,6 +14,11 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
+  }
+
+  const handleClick = async () => {
+    const response = await BackendService.resetLeaderboard()
+    onClose()
   }
 
   return (
@@ -33,7 +39,7 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
       <PopUpButton
         id="close"
         text={'Proceed'}
-        onClose={onClose}
+        onClose={handleClick}
         disabled={disabled}
       />
     </PopUp>

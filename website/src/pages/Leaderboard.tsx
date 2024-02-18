@@ -133,7 +133,7 @@ const Leaderboard = () => {
   }
 
   return loading ? (
-    <CustomClockLoader loading={loading} />
+    <CustomClockLoader />
   ) : (
     <div className="background" data-testid={'app-wrapper'}>
       <div>

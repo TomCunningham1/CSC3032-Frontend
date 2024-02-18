@@ -34,7 +34,7 @@ const DeleteScenarioButton = () => {
   )
 }
 
-const ViewScenarioButton = () => {
+const ViewScenarioButton = ({ setScenario }: any) => {
   const [openPopup, setOpenPopup] = useState(false)
 
   return (
@@ -48,6 +48,7 @@ const ViewScenarioButton = () => {
       />
       <ViewScenarioPopUp
         open={openPopup}
+        setScenario={setScenario}
         onClose={() => {
           setOpenPopup(false)
         }}
@@ -93,12 +94,15 @@ const AdminOptionButton = ({
   )
 }
 
-const SubmitButton = () => {
+const SubmitButton = ({ scenario }: { scenario: string }) => {
   const [openPopup, setOpenPopup] = useState(false)
 
+  const disabled = isJSON(scenario) ? false : true;
+  
   return (
     <>
       <SubmitScenarioPopup
+        scenario={scenario}
         open={openPopup}
         onClose={() => {
           setOpenPopup(false)
@@ -109,6 +113,7 @@ const SubmitButton = () => {
         onClick={() => {
           setOpenPopup(true)
         }}
+        disabled={disabled}
       >
         Submit Scenario
       </button>
@@ -116,22 +121,43 @@ const SubmitButton = () => {
   )
 }
 
-const AdminOptionsContainer = () => (
+const AdminOptionsContainer = ({ setScenario }: any) => (
   <div className={'admin-menu-options'}>
     <DeleteScenarioButton />
-    <ViewScenarioButton />
+    <ViewScenarioButton setScenario={setScenario} />
     <ResetLeaderboardButton />
   </div>
 )
 
+let initialValue =
+  '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t}\n\t]\n}'
+
+
 const AdminContainer = () => {
+  const [scenario, setScenario] = useState('')
+  const [value, setValue] = useState('')
+
   return (
     <div className="admin-menu-container" data-testid={'admin-menu-wrapper'}>
-      <AdminOptionsContainer />
-      <AddUpdateScenario />
-      <SubmitButton />
+      <AdminOptionsContainer setScenario={setScenario} />
+      <AddUpdateScenario
+        scenario={scenario}
+        setScenario={setScenario}
+        value={value}
+        setValue={setValue}
+      />
+      {isJSON(scenario) ? <>Valid JSON</> : <>Invalid JSON</>}
+      <SubmitButton scenario={scenario} />
     </div>
   )
+}
+
+const isJSON = (str: string) => {
+  try {
+      return (JSON.parse(str) && !!str);
+  } catch (e) {
+      return false;
+  }
 }
 
 export default AdminContainer

@@ -1,3 +1,4 @@
+import { ChangeEventHandler, useEffect, useState } from 'react'
 import './admin.css'
 
 const AddUpdateInstructions = () => {
@@ -20,9 +21,21 @@ const AddUpdateInstructions = () => {
     </div>
   )
 }
-const AddUpdateScenario = () => {
-  let value =
-    '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t}\n\t]\n}'
+
+let initialValue =
+  '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t}\n\t]\n}'
+
+
+const AddUpdateScenario = ({ scenario, setScenario, value, setValue }: any) => {
+  
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setScenario(e.target.value)
+    setValue(e.target.value)
+  }
+
+  useEffect(() => {
+    setValue(scenario)
+  }, [scenario])
 
   return (
     <div className="scenario-wrapper">
@@ -30,10 +43,13 @@ const AddUpdateScenario = () => {
         <AddUpdateInstructions />
 
         <textarea
+          defaultValue={initialValue}
+          placeholder={initialValue}
           className={'admin-scenario-edit-box'}
           cols={12}
           rows={24}
-          defaultValue={value}
+          onChange={handleChange}
+          value={value}
         ></textarea>
       </div>
     </div>

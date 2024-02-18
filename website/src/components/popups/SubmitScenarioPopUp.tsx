@@ -2,11 +2,17 @@ import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import exp from 'constants'
+import BackendService from '../../services/backend-service'
 
-const SubmitScenarioPopup = ({ open, onClose }: any) => {
+const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   if (!open) return null
 
   const [value, setValue] = useState('')
+
+  const parsedScenario = JSON.parse(scenario)
+
+  const title = parsedScenario.title
+  const questions = parsedScenario.questions
 
   const expected = 'confirm'
 
@@ -17,6 +23,7 @@ const SubmitScenarioPopup = ({ open, onClose }: any) => {
   }
 
   const onSubmit = () => {
+    BackendService.writeScenario(title, questions)
     onClose()
   }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
+import BackendService from '../../services/backend-service'
 
 const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   if (!open) return null
@@ -17,6 +18,12 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
 
   const handleChangeCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckValue(e.target.value)
+  }
+
+  const handleClick = async () => {
+    const deleteSuccessful = await BackendService.deleteScenario(titleValue)
+    console.log(deleteSuccessful)
+    onClose()
   }
 
   return (
@@ -41,7 +48,7 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
       <PopUpButton
         id="close"
         text={'Proceed'}
-        onClose={onClose}
+        onClose={handleClick}
         disabled={disabled}
       />
     </PopUp>
