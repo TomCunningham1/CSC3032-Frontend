@@ -48,13 +48,13 @@ const SaveResults = ({
   }
 
   return (
-    <div data-testid={'send-email-container'}>
+    <div data-testid={'send-results-container'}>
       <TextField
         placeholder="Enter Username"
         onChange={handleChange}
-        data-testid={'send-email-text-input'}
+        data-testid={'send-results-text-input'}
       ></TextField>
-      <button onClick={handleSubmit} data-testid={'send-email-button'}>
+      <button onClick={handleSubmit} data-testid={'send-results-button'}>
         Save Results
       </button>
     </div>
