@@ -1,5 +1,5 @@
 import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
-import SendEmail from '../../../src/components/quiz/SendEmail';
+import SendEmail from '../../../src/components/quiz/QuizSummary/SendEmail';
 import axios from 'axios';
 import React from 'react';
 

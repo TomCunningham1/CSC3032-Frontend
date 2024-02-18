@@ -12,7 +12,11 @@ const api_key =
 
 class BackendServiceClass {
   getHealth = async () => {
-    return await axios.get(`${BACKEND_IP}/health`)
+    return await axios.get(`${BACKEND_IP}/health`, {
+      headers: {
+        'x-api-key': api_key
+      }
+    })
   }
 
   emailResults = async (
@@ -34,8 +38,10 @@ class BackendServiceClass {
       wrongAnswers: wrongAnswers,
       hintsUsed: hintsUsed,
       fiftyFiftyUsed: fiftyFiftyUsed,
+    },
+    {
       headers: {
-        ...headers,
+        'x-api-key': api_key,
       },
     })
   }
@@ -68,7 +74,7 @@ class BackendServiceClass {
       },
       {
         headers: {
-          ...headers,
+          'x-api-key': api_key,
         },
       }
     )
