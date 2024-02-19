@@ -7,7 +7,8 @@
             "optionB": "When user is asked for input captcha",
             "optionC": "When user is asked for input password",
             "optionD": "When user is asked to logout",
-            "answer": "When user is asked for input username"
+            "answer": "When user is asked for input username",
+            "stage": "Reconnaissence: The attacker gathers information about the target system, identifying potential vulnerabilities or weak points in the security measures."
         },
 
         {
@@ -16,7 +17,9 @@
             "optionB": "It deletes data",
             "optionC": "It updates data",
             "optionD": "All the above",
-            "answer": "All the above"
+            "answer": "All the above",
+            "stage": "Weaponization: The attacker creates a malicious SQL query that can exploit the identified vulnerabilities."
+            
         },
 
         {
@@ -25,7 +28,8 @@
             "optionB": "Export valuable data",
             "optionC": "Obtain user details",
             "optionD": "All the above",
-            "answer": "All the above"
+            "answer": "All the above",
+            "stage": "Delivery: The attacker delivers the malicious SQL query to the target system. This could be through a form input on a website, for example"
         },
 
         {
@@ -34,7 +38,8 @@
             "optionB": "Access Privileges should be restricted for for users",
             "optionC": "Sanitize user input before login for validation",
             "optionD": "All the above",
-            "answer": "All the above"
+            "answer": "All the above",
+            "stage": "Exploitation: The malicious SQL query is executed on the target system, exploiting the vulnerability"
         },
 
         {
