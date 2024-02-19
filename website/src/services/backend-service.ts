@@ -31,9 +31,30 @@ class BackendServiceClass {
       email: email,
     })
   }
+
+  emailResults = async (
+    target: string,
+    score: number,
+    numberOfQuestions: number,
+    numberOfAnsweredQuestions: number,
+    correctAnswers: number,
+    wrongAnswers: number,
+    hintsUsed: number,
+    fiftyFiftyUsed: number
+  ) => {
+    return await axios.post(`${BACKEND_IP}/send-email`, {
+      target: target,
+      score: score,
+      numberOfQuestions: numberOfQuestions,
+      numberOfAnsweredQuestions: numberOfAnsweredQuestions,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers,
+      hintsUsed: hintsUsed,
+      fiftyFiftyUsed: fiftyFiftyUsed,
+    })
+  }
 }
 
 const BackendService = new BackendServiceClass()
 
-// module.exports = BackendService;
 export default BackendService

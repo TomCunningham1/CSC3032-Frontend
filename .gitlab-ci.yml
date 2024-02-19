@@ -4,8 +4,9 @@ stages:
   - lint
   - test
   - deploy
+  - post_deploy
 
-build_stack:
+build_job:
   stage: build
   script:
     - npm install
@@ -14,39 +15,65 @@ build_stack:
     - npm install
     - npm run build
 
-format_test_stack:
+format_job:
   stage: lint
   script:
     - node -v
     - npm install -g prettier
     - prettier --check  "lib/**/*.ts"
     - prettier --check  "bin/**/*.ts"
-
-format_test_website:
-  stage: lint
-  script:
     - cd website
     - npm install -g prettier
     - prettier --check  "src/**/*.ts"
     - prettier --check  "src/**/*.tsx"
 
-unit_test_stack:
+unit_test_job:
   stage: test
   script:
     - npm install
     - npm run test
-
-unit_test_website:
-  stage: test
-  script:
     - cd website
     - npm install
     - npm run test
+
   
-deployment:
+deployment_test:
   stage: deploy
+  variables:
+    ENVIRONMENT: "non-prod"
+    BACKEND_URL: "https://txmsvbvz70.execute-api.eu-west-1.amazonaws.com/prod"
+  except:
+    - main
   script:
+    - echo "Deploying to '$ENVIRONMENT' Environment"
     - npm install
+    - cd website
+    - npm install
+    - npm run build
+    - cd ..
     - cdk synth
-    - cdk deploy
+    - cdk deploy --require-approval never
+
+deployment_production:
+  stage: deploy
+  variables:
+    ENVIRONMENT: "prod"
+    BACKEND_URL: "https://tycus2kfid.execute-api.eu-west-1.amazonaws.com/prod"
+  only:
+    - main
+  script:
+    - echo "Deploying to '$ENVIRONMENT' Environment"
+    - npm install
+    - cd website
+    - npm install
+    - npm run build
+    - cd ..
+    - cdk synth
+    - cdk deploy --require-approval never
   
+cypress_testing:
+  stage: post_deploy
+  script:
+    - cd cypress_project
+    - npm install
+    - npx cypress run

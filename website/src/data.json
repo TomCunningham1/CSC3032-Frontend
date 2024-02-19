@@ -1,0 +1,70 @@
+[
+    {
+        "nickname": "Bob",
+        "scenario": "SQL",
+        "score": 7,
+        "numberOfQuestions": 10,
+        "numberOfAnsweredQuestions": 10,
+        "correctAnswers": 7,
+        "wrongAnswers": 3,
+        "hintsUsed": 0,
+        "fiftyFiftyUsed": 0
+    },
+    {
+        "nickname": "Sam",
+        "scenario": "DDos",
+        "score": 4,
+        "numberOfQuestions": 10,
+        "numberOfAnsweredQuestions": 10,
+        "correctAnswers": 4,
+        "wrongAnswers": 6,
+        "hintsUsed": 0,
+        "fiftyFiftyUsed": 0
+    },
+    {
+        "nickname": "Mary",
+        "scenario": "Cross Site Scripting",
+        "score": 11,
+        "numberOfQuestions": 15,
+        "numberOfAnsweredQuestions": 15,
+        "correctAnswers": 11,
+        "wrongAnswers": 4,
+        "hintsUsed": 3,
+        "fiftyFiftyUsed": 1
+        
+    },
+    {
+        "nickname": "Sophie",
+        "scenario": "Buffer Overflow",
+        "score": 3,
+        "numberOfQuestions": 10,
+        "numberOfAnsweredQuestions": 10,
+        "correctAnswers": 3,
+        "wrongAnswers": 7,
+        "hintsUsed": 0,
+        "fiftyFiftyUsed": 0
+        
+    },
+    {
+        "nickname": "Claire",
+        "scenario": "SQL",
+        "score": 10,
+        "numberOfQuestions": 10,
+        "numberOfAnsweredQuestions": 10,
+        "correctAnswers": 10,
+        "wrongAnswers": 0,
+        "hintsUsed": 2,
+        "fiftyFiftyUsed": 2
+    },
+    {
+        "nickname": "Mark",
+        "scenario": "DDos",
+        "score": 8,
+        "numberOfQuestions": 10,
+        "numberOfAnsweredQuestions": 10,
+        "correctAnswers": 8,
+        "wrongAnswers": 2,
+        "hintsUsed": 1,
+        "fiftyFiftyUsed": 0
+    }
+]

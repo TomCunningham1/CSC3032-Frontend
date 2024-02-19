@@ -493,7 +493,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   endGame = () => {
-    alert('Quiz has ended!')
+    
     const { state } = this
     const playerStats = {
       score: state.score,

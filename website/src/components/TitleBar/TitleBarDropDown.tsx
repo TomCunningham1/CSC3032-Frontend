@@ -23,7 +23,7 @@ const TitleBarDropDown = () => {
       },
     },
     {
-      title: 'Log Out',
+      title: 'Home',
       settingsMethod: () => {
         navigate('/')
       },

@@ -2,6 +2,7 @@ import { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import withRouter from '../Router'
+import SendEmail from './SendEmail'
 
 interface QuizSummaryProps {
   router?: any
@@ -35,7 +36,6 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
 
   componentDidMount() {
     const { state }: any = this.props.router.location
-    console.log(state)
     if (state) {
       this.setState({
         score: (state.score / state.numberOfQuestions) * 100,
@@ -97,6 +97,19 @@ class QuizSummary extends Component<QuizSummaryProps, QuizSummaryState> {
           </div>
           <section>
             <ul>
+              <li>
+                <SendEmail
+                  score={this.state.score}
+                  numberOfQuestions={this.state.numberOfQuestions}
+                  numberOfAnsweredQuestions={
+                    this.state.numberOfAnsweredQuestions
+                  }
+                  correctAnswers={this.state.correctAnswers}
+                  wrongAnswers={this.state.wrongAnswers}
+                  hintsUsed={this.state.hintsUsed}
+                  fiftyFiftyUsed={this.state.fiftyFiftyUsed}
+                />
+              </li>
               <li>
                 <Link to="/play/quiz">Play Again</Link>
               </li>

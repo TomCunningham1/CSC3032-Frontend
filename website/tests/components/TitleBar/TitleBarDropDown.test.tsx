@@ -54,7 +54,7 @@ describe('Tests for the TitleBar', () => {
         expect(navigate).toHaveBeenCalledWith('/help');
 
 
-        const menuOptionLogOut = output.getByTestId('titlebar-menu-button-Log Out');
+        const menuOptionLogOut = output.getByTestId('titlebar-menu-button-Home');
 
         expect(menuOptionLogOut).toBeTruthy();
 

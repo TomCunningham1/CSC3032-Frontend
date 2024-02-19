@@ -1,4 +1,3 @@
-const BACKEND_IP =
-  'https://ddz2nb34ci.execute-api.eu-west-1.amazonaws.com/prod/team11'
+const BACKEND_IP = process.env.BACKEND_URL
 
 export { BACKEND_IP }
