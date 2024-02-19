@@ -1,5 +1,6 @@
 import PopUpButton from './PopUpButton'
 import PopUpTitle from './PopUpTitle'
+import "./PopUp.css"
 
 interface PopUpInterface {
   id: string

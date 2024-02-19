@@ -132,7 +132,7 @@ const LeaderboardPopUp = ({ open, onClose }: any) => {
 
   if (!open) return null
   return loading ? (
-    <CustomClockLoader loading={loading} />
+    <CustomClockLoader />
   ) : ( 
     <PopUp id={componentId} title={'Leaderboard'} name="menu-container-solid Leaderboard" onClose={onClose}>
         <div data-testid="leaderboard-popup-text" className="PopUpTextLeaderboard">
