@@ -1,9 +1,16 @@
 import { BACKEND_IP } from '../config/constants'
 import axios from 'axios'
 
+const api_key =
+  process.env.API_KEY || 'NnGBE2fNCr8tALXHxgk0o6uwFCYScSFf7ImzTjgN'
+
 class BackendServiceClass {
   getHealth = async () => {
-    return await axios.get(`${BACKEND_IP}/health`)
+    return await axios.get(`${BACKEND_IP}/health`, {
+      headers: {
+        'x-api-key': api_key,
+      },
+    })
   }
 
   emailResults = async (
@@ -16,16 +23,24 @@ class BackendServiceClass {
     hintsUsed: number,
     fiftyFiftyUsed: number
   ) => {
-    return await axios.post(`${BACKEND_IP}/send-email`, {
-      target: target,
-      score: score,
-      numberOfQuestions: numberOfQuestions,
-      numberOfAnsweredQuestions: numberOfAnsweredQuestions,
-      correctAnswers: correctAnswers,
-      wrongAnswers: wrongAnswers,
-      hintsUsed: hintsUsed,
-      fiftyFiftyUsed: fiftyFiftyUsed,
-    })
+    return await axios.post(
+      `${BACKEND_IP}/results/send-email`,
+      {
+        target: target,
+        score: score,
+        numberOfQuestions: numberOfQuestions,
+        numberOfAnsweredQuestions: numberOfAnsweredQuestions,
+        correctAnswers: correctAnswers,
+        wrongAnswers: wrongAnswers,
+        hintsUsed: hintsUsed,
+        fiftyFiftyUsed: fiftyFiftyUsed,
+      },
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
   }
 
   saveResults = async (
@@ -40,24 +55,89 @@ class BackendServiceClass {
     fiftyFiftyUsed: number,
     time: number
   ) => {
-    return await axios.post(`${BACKEND_IP}/save-results`, {
-      username: username,
-      scenarioName: scenarioName,
-      score: score,
-      numberOfQuestions: numberOfQuestions,
-      numberOfAnsweredQuestions: numberOfAnsweredQuestions,
-      correctAnswers: correctAnswers,
-      wrongAnswers: wrongAnswers,
-      hintsUsed: hintsUsed,
-      fiftyFiftyUsed: fiftyFiftyUsed,
-      time: time,
-    })
+    return await axios.post(
+      `${BACKEND_IP}/results/save-results`,
+      {
+        username: username,
+        scenarioName: scenarioName,
+        score: score,
+        numberOfQuestions: numberOfQuestions,
+        numberOfAnsweredQuestions: numberOfAnsweredQuestions,
+        correctAnswers: correctAnswers,
+        wrongAnswers: wrongAnswers,
+        hintsUsed: hintsUsed,
+        fiftyFiftyUsed: fiftyFiftyUsed,
+        time: time,
+      },
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
   }
 
   getResults = async (scenarioName: string) => {
     return await axios.post(
-      `${BACKEND_IP}/get-results?scenarioName=${scenarioName}`
+      `${BACKEND_IP}/results/get-results?scenarioName=${scenarioName}`,
+      {},
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
     )
+  }
+
+  writeScenario = async (scenarioName: string, scenarioQuestions: string) => {
+    console.info(scenarioQuestions)
+    return await axios.post(
+      `${BACKEND_IP}/admin/write?scenarioName=${scenarioName}`,
+      { questions: scenarioQuestions },
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
+  }
+
+  readScenario = async (scenarioName: string) => {
+    return await axios.get(
+      `${BACKEND_IP}/admin/read?scenarioName=${scenarioName}`,
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
+  }
+
+  deleteScenario = async (scenarioName: string) => {
+    return await axios.get(
+      `${BACKEND_IP}/admin/delete?scenarioName=${scenarioName}`,
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
+  }
+
+  resetLeaderboard = async () => {
+    return await axios.get(`${BACKEND_IP}/admin/reset-leaderboard`, {
+      headers: {
+        'x-api-key': api_key,
+      },
+    })
+  }
+
+  getAllScenarios = async () => {
+    return await axios.get(`${BACKEND_IP}/admin/get-all`, {
+      headers: {
+        'x-api-key': api_key,
+      },
+    })
   }
 }
 

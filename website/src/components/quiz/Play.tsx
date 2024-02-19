@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { Helmet } from 'react-helmet'
 import M from 'materialize-css'
 import classnames from 'classnames'
 import isEmpty from '../../utils/is-empty'
@@ -7,6 +6,9 @@ import correctNotification from '../../assets/audio/correct-answer.mp3'
 import wrongNotification from '../../assets/audio/wrong-answer.mp3'
 import buttonSound from '../../assets/audio/button-sound.mp3'
 import '../../styles/styles.scss'
+import PhoneIcon from '@mui/icons-material/Phone'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
 
 interface PlayPropsInterface {
@@ -17,6 +19,11 @@ interface PlayPropsInterface {
 }
 
 interface PlayStateInterface {
+  //stages: any[]
+  //currentStage: any
+  //nextStage: any
+  //previousStage: any
+  //numberOfStages: number
   questions: any[]
   currentQuestion: any
   nextQuestion: any
@@ -50,10 +57,14 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   constructor(props: PlayPropsInterface) {
     super(props)
     this.state = {
-      questions: this.props.router.location.state,
+      questions: this.props.router.location.state.questions,
+      title: this.props.router.location.state.title,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
+      //currentStage: {},
+      //nextStage: {},
+      //previousStage: {},
       answer: '',
       numberOfQuestions: 0,
       numberOfAnsweredQuestions: 0,
@@ -76,13 +87,25 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   componentDidMount() {
-    const { questions, currentQuestion, nextQuestion, previousQuestion } =
-      this.state
+    const {
+      questions,
+      currentQuestion,
+      nextQuestion,
+      previousQuestion,
+      //stages,
+      //currentStage,
+      //nextStage,
+      //previousStage,
+    } = this.state
     this.displayQuestions(
       questions,
       currentQuestion,
       nextQuestion,
       previousQuestion
+      //stages,
+      //currentStage,
+      //nextStage,
+      //previousStage
     )
     this.startTimer()
   }
@@ -91,18 +114,42 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     clearInterval(this.interval)
   }
 
+  displayStages = (
+    stages = this.state.stages,
+    currentStage: any,
+    nextStage: any,
+    previousStage: any
+  ) => {
+    let { currentStageIndex } = this.state
+    if (!isEmpty(this.state.questions.stages)) {
+      const answer = currentStage.answer
+      this.setState({}, () => {
+        this.showOptions()
+        this.handleDisableButton()
+      })
+    }
+  }
+
   displayQuestions = (
     questions = this.state.questions,
     currentQuestion: any,
     nextQuestion: any,
     previousQuestion: any
+    //stages = this.state.stages,
+    //currentStage: any,
+    // nextStage: any,
+    //previousStage: any
   ) => {
-    let { currentQuestionIndex } = this.state
-    if (!isEmpty(this.state.questions)) {
+    let { currentQuestionIndex, currentStageIndex } = this.state
+    if (!isEmpty(this.state.questions /*&& this.state.questions.stage*/)) {
       questions = this.state.questions
       currentQuestion = questions[currentQuestionIndex]
       nextQuestion = questions[currentQuestionIndex + 1]
       previousQuestion = questions[currentQuestionIndex - 1]
+      /*stages = this.state.questions.stages
+      currentStage = stages[currentStageIndex]
+      nextStage = stages[currentStageIndex + 1]
+      previousStage = stages[currentStageIndex - 1]*/
       const answer = currentQuestion.answer
       this.setState(
         {
@@ -110,6 +157,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           nextQuestion,
           previousQuestion,
           numberOfQuestions: questions.length,
+          //currentStage,
+          //nextStage,
+          //previousStage,
+          //numberOfStages: stages.length,
           answer,
           previousRandomNumbers: [],
         },
@@ -137,17 +188,22 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
   handleNextButtonClick = () => {
     this.playButtonSound()
-    if (this.state.nextQuestion !== undefined) {
+    if (this.state.nextQuestion !== undefined && this.state.nextStage) {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex + 1,
+          /* currentStage: prevState.currentStage + 1, */
         }),
         () => {
           this.displayQuestions(
-            this.state.state,
+            this.state.questions,
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
+            /*this.state.stages,
+            this.state.currentStage,
+            this.state.nextStage,
+            this.state.previousStage*/
           )
         }
       )
@@ -156,17 +212,25 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
   handlePreviousButtonClick = () => {
     this.playButtonSound()
-    if (this.state.previousQuestion !== undefined) {
+    if (
+      this.state.previousQuestion !== undefined &&
+      this.state.previousStage !== undefined
+    ) {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex - 1,
+          /* currentStage: prevState.currentStage - 1, */
         }),
         () => {
           this.displayQuestions(
-            this.state.state,
+            this.state.questions,
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
+            /* this.state.stages,
+            this.state.currentStage,
+            this.state.nextStage,
+            this.state.previousStage */
           )
         }
       )
@@ -225,6 +289,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
+            /* this.state.stages,
+            this.state.currentStage,
+            this.state.nextStage,
+            this.state.previousStage */
           )
         }
       }
@@ -253,6 +321,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
+            /* this.state.stages,
+            this.state.currentStage,
+            this.state.nextStage,
+            this.state.previousStage */
           )
         }
       }
@@ -445,6 +517,9 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     const {
       currentQuestion,
       currentQuestionIndex,
+      /*currentStage,
+      currentStageIndex,
+      numberOfStages, */
       fiftyFifty,
       hints,
       numberOfQuestions,
@@ -453,30 +528,26 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>Quiz Page</title>
-        </Helmet>
         <Fragment>
           <audio ref={this.correctSound} src={correctNotification}></audio>
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
         <div className="questions">
-          <h2>Quiz Mode</h2>
+          <h2>{this.state.title}</h2>
+          <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
             <p>
-              <span
-                onClick={this.handleFiftyFifty}
-                className="mdi mdi-cellphone-basic mdi-24px lifeline-icon"
-              >
+              <span onClick={this.handleFiftyFifty} className="Phone Icon">
+                {' '}
+                <LiveHelpIcon style={{ color: 'white' }} />
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
             <p>
-              <span
-                onClick={this.handleHints}
-                className="mdi mdi-puzzle mdi-24px lifeline-icon"
-              >
+              <span onClick={this.handleHints} className="Hint Icon">
+                {' '}
+                <PhoneIcon color="primary" style={{ color: 'white' }} />
                 <span className="lifeline">{hints}</span>
               </span>
             </p>
@@ -493,7 +564,9 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 })}
               >
                 {time.minutes}:{time.seconds}
-                <span className="mdi mdi-clock mdi-24px"></span>
+                <span className="Time Icon">
+                  <AccessTimeIcon style={{ color: 'white' }} />
+                </span>
               </span>
             </p>
           </div>
@@ -514,9 +587,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               {currentQuestion.optionD}
             </p>
           </div>
-
           <div className="button-container">
-            <button
+            {/* <button
               className={classnames('', {
                 disable: this.state.previousButtonDisabled,
               })}
@@ -524,7 +596,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               onClick={this.handleButtonClick}
             >
               Previous
-            </button>
+            </button> */}
             <button
               className={classnames('', {
                 disable: this.state.nextButtonDisabled,
@@ -532,11 +604,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               id="next-button"
               onClick={this.handleButtonClick}
             >
-              Next
+              Skip
             </button>
-            <button id="quit-button" onClick={this.handleButtonClick}>
+            {/* <button id="quit-button" onClick={this.handleButtonClick}>
               Quit
-            </button>
+            </button> */}
           </div>
         </div>
       </Fragment>

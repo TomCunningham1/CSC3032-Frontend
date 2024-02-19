@@ -6,6 +6,11 @@ stages:
   - deploy
   - post_deploy
 
+cache:
+  paths:
+    - node_modules/ 
+    - website/node_modules/ 
+
 build_job:
   stage: build
   script:
@@ -14,6 +19,10 @@ build_job:
     - cd website
     - npm install
     - npm run build
+  artifacts:
+    paths:
+      - website/build
+      - dist
 
 format_job:
   stage: lint
@@ -30,10 +39,8 @@ format_job:
 unit_test_job:
   stage: test
   script:
-    - npm install
     - npm run test
     - cd website
-    - npm install
     - npm run test
 
   
@@ -41,15 +48,14 @@ deployment_test:
   stage: deploy
   variables:
     ENVIRONMENT: "non-prod"
-    BACKEND_URL: "https://6oxgkmkwh9.execute-api.eu-west-1.amazonaws.com/prod"
+    API_KEY: $NON_PRODUCTION_API_KEY
+    BACKEND_URL: $NON_PRODUCTION_URL
   except:
     - main
   script:
     - echo "Deploying to '$ENVIRONMENT' Environment"
-    - npm install
     - cd website
-    - npm install
-    - npm run build
+    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
     - cd ..
     - cdk synth
     - cdk deploy --require-approval never
@@ -58,15 +64,14 @@ deployment_production:
   stage: deploy
   variables:
     ENVIRONMENT: "prod"
-    BACKEND_URL: "https://rbgnxzirae.execute-api.eu-west-1.amazonaws.com/prod"
+    API_KEY: $PRODUCTION_API_KEY
+    BACKEND_URL: $PRODUCTION_URL
   only:
     - main
   script:
     - echo "Deploying to '$ENVIRONMENT' Environment"
-    - npm install
     - cd website
-    - npm install
-    - npm run build
+    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
     - cd ..
     - cdk synth
     - cdk deploy --require-approval never

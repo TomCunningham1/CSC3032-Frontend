@@ -1,38 +1,51 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Play from '../components/quiz/Play'
-import QuizInstructions from '../components/quiz/QuizInstructions'
-import QuizSummary from '../components/quiz/QuizSummary'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
-import Leaderboard from '../pages/Leaderboard'
 import TitleBar from '../components/TitleBar/TitleBar'
+import Play from '../components/quiz/Play'
+import QuizInstructions from '../components/quiz/QuizInstructions/QuizInstructions'
+import QuizSummary from '../components/quiz/QuizSummary/QuizSummary'
+import AdminLogin from '../pages/AdminLogin'
+import AdminMenu from '../pages/AdminMenu'
+import Leaderboard from '../pages/Leaderboard'
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
+import { useContext } from 'react'
+import { AccountContext } from '../auth/Account'
+import LoadingClock from '../components/LoadingClock/LoadingClock'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <TitleBar />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/play/instructions',
-        element: <QuizInstructions />,
-      },
-      {
-        path: '/play/quiz',
-        element: <Play />,
-      },
-      {
-        path: 'play/quizSummary',
-        element: <QuizSummary />,
-      },
-      {
-        path: '/leaderboard',
-        element: <Leaderboard />,
-      },
-    ],
-  },
-])
+interface RouteConfig {
+  path: string
+  element: ReactJSXElement
+  isPrivate?: boolean
+}
 
-export default router
+const routes: RouteConfig[] = [
+  { path: '/', element: <Home /> },
+  { path: '/play/instructions', element: <QuizInstructions /> },
+  { path: '/play/quiz', element: <Play /> },
+  { path: '/play/quizSummary', element: <QuizSummary /> },
+  { path: '/leaderboard', element: <Leaderboard /> },
+  { path: '/admin-login', element: <AdminLogin /> },
+  { path: '/admin-menu', element: <AdminMenu />, isPrivate: true },
+]
+
+const RenderRoutes = () => {
+  const { authenticated } = useContext(AccountContext)
+
+  return (
+    <Routes>
+      <Route path="/" element={<TitleBar />}>
+        {routes.map((route, index) => {
+          if (route.isPrivate && !authenticated) {
+            return (
+              <Route key={index} path={route.path} element={<LoadingClock />} />
+            )
+          }
+          return <Route key={index} path={route.path} element={route.element} />
+        })}
+      </Route>
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  )
+}
+
+export default RenderRoutes

@@ -8,7 +8,6 @@ import '../styles/styles.scss'
 import '../App.css'
 import BackendService from '../services/backend-service'
 import scenarioName from '../config/scenarioName'
-import LoadingClock from '../components/LoadingClock/LoadingClock'
 import CustomClockLoader from '../components/LoadingClock/LoadingClock'
 
 interface ResultsTypes {
@@ -134,7 +133,7 @@ const Leaderboard = () => {
   }
 
   return loading ? (
-    <CustomClockLoader loading={loading} />
+    <CustomClockLoader />
   ) : (
     <div className="background" data-testid={'app-wrapper'}>
       <div>
