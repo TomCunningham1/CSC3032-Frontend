@@ -4,14 +4,15 @@ import PopUpTitle from './PopUpTitle'
 interface PopUpInterface {
   id: string
   title: string
+  name?: string
   onClose: () => void
   children: any
 }
 
-const PopUp = ({ id, title, onClose, children }: PopUpInterface) => {
+const PopUp = ({ id, title, name, onClose, children }: PopUpInterface) => {
   return (
     <div className="popup" data-testid={id}>
-      <div className="menu-container-solid">
+      <div className={name ? name : "menu-container-solid"}>
         <PopUpTitle title={title} />
         {children}
         <PopUpButton id={id} onClose={onClose} />
