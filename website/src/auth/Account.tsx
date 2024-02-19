@@ -42,33 +42,38 @@ const Account = (props: any) => {
   // Will authenticate the user by checking the username and password entered are correct
   const authenticate = async (Username: string, Password: string) => {
     return await new Promise((resolve, reject) => {
-      const user = new CognitoUser({
-        Username: Username,
-        Pool: userPool,
-      })
+      try {
+        const user = new CognitoUser({
+          Username: Username,
+          Pool: userPool,
+        })
+  
+        const authDetails = new AuthenticationDetails({
+          Username: Username,
+          Password: Password,
+        })
+  
+        // Handle success, failure and password change required
+        user.authenticateUser(authDetails, {
+          onSuccess: (data) => {
+            console.log('onSuccess: ', data)
+            setAuthenticated(true)
+            resolve(data)
+          },
+          onFailure: (err) => {
+            console.error('onFailure: ', err)
+            reject(err)
+          },
+          newPasswordRequired: (data) => {
+            console.log('newPasswordRequired: ', data)
+            setAuthenticated(false)
+            resolve(data)
+          },
+        })
+      } catch (e) {
+        reject(e)
+      }
 
-      const authDetails = new AuthenticationDetails({
-        Username: Username,
-        Password: Password,
-      })
-
-      // Handle success, failure and password change required
-      user.authenticateUser(authDetails, {
-        onSuccess: (data) => {
-          console.log('onSuccess: ', data)
-          setAuthenticated(true)
-          resolve(data)
-        },
-        onFailure: (err) => {
-          console.error('onFailure: ', err)
-          reject(err)
-        },
-        newPasswordRequired: (data) => {
-          console.log('newPasswordRequired: ', data)
-          setAuthenticated(false)
-          resolve(data)
-        },
-      })
     })
   }
 

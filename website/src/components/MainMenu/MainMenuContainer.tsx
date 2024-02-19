@@ -4,6 +4,7 @@ import MainMenuButton from './MainMenuButton'
 import { useNavigate } from 'react-router'
 import BackendService from '../../services/backend-service'
 import LoadingClock from '../LoadingClock/LoadingClock'
+import toast, {Toaster} from 'react-hot-toast'
 
 const MainMenuContainer = () => {
   const navigate = useNavigate()
@@ -13,15 +14,19 @@ const MainMenuContainer = () => {
 
   useEffect(() => {
     const getScenarios = async () => {
-      const scenarios = await BackendService.getAllScenarios()
-      setScenarios(scenarios.data)
-      setLoading(false)
+      await BackendService.getAllScenarios().then((scenarios) => {
+        setScenarios(scenarios.data)
+        setLoading(false)
+      }).catch((err) => {
+        toast.error(err.message)
+      })
     }
     getScenarios()
   }, [])
 
   return (
     <>
+      <Toaster />
       {loading ? (
         <LoadingClock />
       ) : (
@@ -29,13 +34,15 @@ const MainMenuContainer = () => {
           {scenarios.map((playthrough) => {
             const navigateToQuiz = async () => {
               setLoading(true)
-              const response = await BackendService.readScenario(playthrough)
-              navigate('/play/instructions', {
-                state: {
-                  questions: response.data.questions,
-                  title: playthrough,
-                },
-              })
+              await BackendService.readScenario(playthrough).then((response) => {
+                navigate('/play/instructions', {
+                  state: {
+                    questions: response.data.questions,
+                    title: playthrough,
+                  },
+                })
+              }).catch((err) => {toast.error('Unable to retrieve questions')})
+
             }
 
             return (

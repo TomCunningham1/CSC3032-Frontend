@@ -5,6 +5,7 @@ import DeleteScenarioPopUp from '../popups/DeleteScenarioPopUp'
 import ResetLeaderboardPopup from '../popups/ResetLeaderboardPopUp'
 import ViewScenarioPopUp from '../popups/ViewScenarioPopUp'
 import SubmitScenarioPopup from '../popups/SubmitScenarioPopUp'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface AdminOptionButtonInterface {
   id: string
@@ -128,9 +129,6 @@ const AdminOptionsContainer = ({ setScenario }: any) => (
     <ResetLeaderboardButton />
   </div>
 )
-
-let initialValue =
-  '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t}\n\t]\n}'
 
 const AdminContainer = () => {
   const [scenario, setScenario] = useState('')

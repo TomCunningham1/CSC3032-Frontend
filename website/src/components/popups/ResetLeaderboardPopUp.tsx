@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
+import toast, { Toaster } from 'react-hot-toast'
 
 const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   if (!open) return null
@@ -17,8 +18,11 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   }
 
   const handleClick = async () => {
-    const response = await BackendService.resetLeaderboard()
-    onClose()
+    await BackendService.resetLeaderboard().then(() => {
+      onClose()
+    }).catch((err) => {
+      toast.error(err.message)
+    })
   }
 
   return (
@@ -27,6 +31,7 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
       title="Delete Scenario"
       onClose={onClose}
     >
+      <Toaster />
       <div className="PopUpText">
         This will empty the results from the database removing all user results.
         <br />

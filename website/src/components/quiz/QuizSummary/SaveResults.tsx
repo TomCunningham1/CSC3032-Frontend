@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import BackendService from '../../../services/backend-service'
 import scenarioName from '../../../config/scenarioName'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface SaveResultsInterface {
   score: number
@@ -43,7 +44,12 @@ const SaveResults = ({
       hintsUsed,
       fiftyFiftyUsed,
       time
-    )
+    ).then(() => {
+      toast.success('Your results have been saved!')
+    }).catch((err) => {
+      console.log(err.message)
+      toast.error('Error saving your results, please try again later!')
+    })
   }
 
   return (
@@ -63,6 +69,7 @@ const SaveResults = ({
       >
         Save Results
       </button>
+      <Toaster />
     </div>
   )
 }

@@ -1,14 +1,8 @@
 import { BACKEND_IP } from '../config/constants'
 import axios from 'axios'
-import scenarioName from '../config/scenarioName'
-
-const headers = {
-  'x-api-key':
-    process.env.API_KEY || 'QJoaYqImX42W68e9eHBSD47Uw3Pcw7644f2sPQVA',
-}
 
 const api_key =
-  process.env.API_KEY || 'QJoaYqImX42W68e9eHBSD47Uw3Pcw7644f2sPQVA'
+  process.env.API_KEY || 'NnGBE2fNCr8tALXHxgk0o6uwFCYScSFf7ImzTjgN'
 
 class BackendServiceClass {
   getHealth = async () => {
@@ -30,7 +24,7 @@ class BackendServiceClass {
     fiftyFiftyUsed: number
   ) => {
     return await axios.post(
-      `${BACKEND_IP}/results/send-email`,
+      `${BACKEND_IP}/results/send-emadil`,
       {
         target: target,
         score: score,

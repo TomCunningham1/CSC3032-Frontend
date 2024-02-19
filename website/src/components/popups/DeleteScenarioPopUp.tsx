@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
+import toast, { Toaster } from 'react-hot-toast'
 
 const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   if (!open) return null
@@ -21,9 +22,12 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   }
 
   const handleClick = async () => {
-    const deleteSuccessful = await BackendService.deleteScenario(titleValue)
-    console.log(deleteSuccessful)
-    onClose()
+    await BackendService.deleteScenario(titleValue).then((deleteSuccessful) => {
+      console.log(deleteSuccessful)
+      onClose()
+    }).catch((err) => {
+      toast.error(err.message)
+    })
   }
 
   return (
@@ -32,6 +36,7 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
       title="Delete Scenario"
       onClose={onClose}
     >
+      <Toaster />
       <div className="PopUpText">
         <p>
           Enter the <i>title</i> of the scenario which you want to delete.*

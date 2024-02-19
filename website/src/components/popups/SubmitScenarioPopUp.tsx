@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
-import exp from 'constants'
 import BackendService from '../../services/backend-service'
+import toast, { Toaster } from 'react-hot-toast'
 
 const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   if (!open) return null
@@ -22,9 +22,13 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
     setValue(e.target.value)
   }
 
-  const onSubmit = () => {
-    BackendService.writeScenario(title, questions)
-    onClose()
+  const onSubmit = async () => {
+    await BackendService.writeScenario(title, questions).then(() => {
+      toast.success('Successfully deleted')
+      onClose()
+    }).catch((err) => {
+      toast.error(err.message)
+    })
   }
 
   console.log(disabled)
@@ -35,6 +39,7 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
       title="Submit Scenario"
       onClose={onClose}
     >
+      <Toaster />
       <div className="PopUpText">
         <p>
           Submitting the updated scenario will over-write any existing

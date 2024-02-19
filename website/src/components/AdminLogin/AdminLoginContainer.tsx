@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router'
 import './admin-login.css'
 import { useContext, useState } from 'react'
 import { AccountContext } from '../../auth/Account'
+import toast, { Toaster } from 'react-hot-toast'
 
 // Creates the login form for admin users
 const AdminLoginContainer = () => {
@@ -10,7 +11,7 @@ const AdminLoginContainer = () => {
   const navigate = useNavigate()
 
   // Importing authentication config to validate any users
-  const { authenticate } = useContext(AccountContext)
+  const { authenticate, authenticated } = useContext(AccountContext)
 
   // Constant to store values from text boxes
   const [username, setUsername] = useState('')
@@ -20,9 +21,13 @@ const AdminLoginContainer = () => {
   const disabled = username === '' || pswrd === ''
 
   // function to handle validating the user when the button is clicked
-  const validate = () => {
-    authenticate(username, pswrd)
-    navigate('/admin-menu')
+  const validate = async () => {
+    await authenticate(username, pswrd).then(()=>{
+      toast.success('Logging in')
+      navigate('/admin-menu')
+    }).catch((err) => {
+      toast.error(err.message)
+    })
   }
 
   // functions to handle user inputs in text fields
@@ -62,6 +67,7 @@ const AdminLoginContainer = () => {
       >
         Login
       </button>
+      <Toaster />
     </div>
   )
 }
