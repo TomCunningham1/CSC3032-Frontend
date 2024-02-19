@@ -1,8 +1,7 @@
 import './index.css'
-import { BrowserRouter, RouterProvider } from 'react-router-dom'
-import router from './config/routes'
+import { BrowserRouter } from 'react-router-dom'
 import { Account } from './auth/Account'
-import RenderRoutes from './config/newRoutes'
+import RenderRoutes from './config/routes'
 
 function App() {
   document.title = 'Hack Attack'

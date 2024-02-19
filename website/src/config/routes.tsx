@@ -1,115 +1,51 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
-import Leaderboard from '../pages/Leaderboard'
 import TitleBar from '../components/TitleBar/TitleBar'
-import { AccountContext } from '../auth/Account'
+import Play from '../components/quiz/Play'
+import QuizInstructions from '../components/quiz/QuizInstructions/QuizInstructions'
+import QuizSummary from '../components/quiz/QuizSummary/QuizSummary'
+import AdminLogin from '../pages/AdminLogin'
+import AdminMenu from '../pages/AdminMenu'
+import Leaderboard from '../pages/Leaderboard'
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import { useContext } from 'react'
+import { AccountContext } from '../auth/Account'
+import LoadingClock from '../components/LoadingClock/LoadingClock'
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    element: <Home />,
-    isPrivate: false,
-  },
-  {
-    path: '/leaderboard',
-    name: 'Leaderboard',
-    element: <Leaderboard />,
-    isPrivate: true,
-  },
+interface RouteConfig {
+  path: string
+  element: ReactJSXElement
+  isPrivate?: boolean
+}
+
+const routes: RouteConfig[] = [
+  { path: '/', element: <Home /> },
+  { path: '/play/instructions', element: <QuizInstructions /> },
+  { path: '/play/quiz', element: <Play /> },
+  { path: '/play/quizSummary', element: <QuizSummary /> },
+  { path: '/leaderboard', element: <Leaderboard /> },
+  { path: '/admin-login', element: <AdminLogin /> },
+  { path: '/admin-menu', element: <AdminMenu />, isPrivate: true },
 ]
 
 const RenderRoutes = () => {
-  const { getSession, logout } = useContext(AccountContext)
+  const { authenticated } = useContext(AccountContext)
 
-  const authenticated = getSession().then((session) => true)
-
-  return routes.map((r, i) => {
-    if (r.isPrivate && !authenticated) {
-      return
-    }
-    return {
-      path: r.path,
-      element: r.element,
-    }
-  })
+  return (
+    <Routes>
+      <Route path="/" element={<TitleBar />}>
+        {routes.map((route, index) => {
+          if (route.isPrivate && !authenticated) {
+            return (
+              <Route key={index} path={route.path} element={<LoadingClock />} />
+            )
+          }
+          return <Route key={index} path={route.path} element={route.element} />
+        })}
+      </Route>
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  )
 }
 
-console.log(RenderRoutes())
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <TitleBar />,
-    children: [],
-
-    // {
-    //   path: '/',
-    //   element: <Home />,
-    // },
-    // {
-    //   path: '/play/instructions',
-    //   element: <QuizInstructions />,
-    // },
-    // {
-    //   path: '/play/quiz',
-    //   element: <Play />,
-    // },
-    // {
-    //   path: 'play/quizSummary',
-    //   element: <QuizSummary />,
-    // },
-    // {
-    //   path: '/leaderboard',
-    //   element: <Leaderboard />,
-    // },
-    // {
-    //   path: '/admin-login',
-    //   element: <AdminLogin />,
-    // },
-    // {
-    //   path: 'admin-menu',
-    //   element: <AdminMenu />,
-    // },
-    // {
-    //   path: 'admin-scenario',
-    //   element: <AdminScenarioEditor />,
-    // },,
-  },
-])
-
-export default router
-
-// {
-//   path: '/',
-//   element: <Home />,
-// },
-// {
-//   path: '/play/instructions',
-//   element: <QuizInstructions />,
-// },
-// {
-//   path: '/play/quiz',
-//   element: <Play />,
-// },
-// {
-//   path: 'play/quizSummary',
-//   element: <QuizSummary />,
-// },
-// {
-//   path: '/leaderboard',
-//   element: <Leaderboard />,
-// },
-// {
-//   path: '/admin-login',
-//   element: <AdminLogin />,
-// },
-// {
-//   path: 'admin-menu',
-//   element: <AdminMenu />,
-// },
-// {
-//   path: 'admin-scenario',
-//   element: <AdminScenarioEditor />,
-// },
+export default RenderRoutes

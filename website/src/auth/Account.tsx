@@ -1,8 +1,8 @@
 import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js'
 import { createContext, useState } from 'react'
 import userPool from './userPool'
-import usePagination from '@mui/material/usePagination/usePagination'
 
+// Account Context object - stores initial values for authentication context
 const AccountContext = createContext({
   authenticate: async (
     Username: string,
@@ -17,9 +17,11 @@ const AccountContext = createContext({
   authenticated: false,
 })
 
+// Account object - contains methods to authenticate the user
 const Account = (props: any) => {
   const [authenticated, setAuthenticated] = useState(false)
 
+  // Will get the current session of the user from the user pool
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
       const user = userPool.getCurrentUser()
@@ -37,6 +39,7 @@ const Account = (props: any) => {
     })
   }
 
+  // Will authenticate the user by checking the username and password entered are correct
   const authenticate = async (Username: string, Password: string) => {
     return await new Promise((resolve, reject) => {
       const user = new CognitoUser({
@@ -49,6 +52,7 @@ const Account = (props: any) => {
         Password: Password,
       })
 
+      // Handle success, failure and password change required
       user.authenticateUser(authDetails, {
         onSuccess: (data) => {
           console.log('onSuccess: ', data)
@@ -68,6 +72,7 @@ const Account = (props: any) => {
     })
   }
 
+  // Handle the logout method
   const logout = () => {
     const user = userPool.getCurrentUser()
     if (user) {
@@ -76,6 +81,7 @@ const Account = (props: any) => {
     }
   }
 
+  // Create the account context and create all children with the context
   return (
     <AccountContext.Provider
       value={{ authenticate, getSession, logout, authenticated }}
