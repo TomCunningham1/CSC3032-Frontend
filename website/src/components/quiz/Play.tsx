@@ -23,7 +23,7 @@ interface PlayStateInterface {
   //currentStage: any
   //nextStage: any
   //previousStage: any
- //numberOfStages: number
+  //numberOfStages: number
   questions: any[]
   currentQuestion: any
   nextQuestion: any
@@ -101,7 +101,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       questions,
       currentQuestion,
       nextQuestion,
-      previousQuestion,
+      previousQuestion
       //stages,
       //currentStage,
       //nextStage,
@@ -137,7 +137,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     previousQuestion: any
     //stages = this.state.stages,
     //currentStage: any,
-   // nextStage: any,
+    // nextStage: any,
     //previousStage: any
   ) => {
     let { currentQuestionIndex, currentStageIndex } = this.state
@@ -199,7 +199,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.questions,
             this.state.currentQuestion,
             this.state.nextQuestion,
-            this.state.previousQuestion,
+            this.state.previousQuestion
             /*this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
@@ -226,8 +226,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.questions,
             this.state.currentQuestion,
             this.state.nextQuestion,
-            this.state.previousQuestion,
-           /* this.state.stages,
+            this.state.previousQuestion
+            /* this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
             this.state.previousStage */
@@ -288,8 +288,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.questions,
             this.state.currentQuestion,
             this.state.nextQuestion,
-            this.state.previousQuestion,
-           /* this.state.stages,
+            this.state.previousQuestion
+            /* this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
             this.state.previousStage */
@@ -320,7 +320,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.questions,
             this.state.currentQuestion,
             this.state.nextQuestion,
-            this.state.previousQuestion,
+            this.state.previousQuestion
             /* this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
@@ -541,7 +541,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               <span onClick={this.handleFiftyFifty} className="Phone Icon">
                 {' '}
                 <LiveHelpIcon style={{ color: 'white' }} />
-
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
