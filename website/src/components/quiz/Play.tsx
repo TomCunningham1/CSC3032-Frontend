@@ -8,11 +8,10 @@ import wrongNotification from '../../assets/audio/wrong-answer.mp3'
 import buttonSound from '../../assets/audio/button-sound.mp3'
 import '../../styles/styles.scss'
 import withRouter from '../Router'
-import PhoneIcon from '@mui/icons-material/Phone';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import PhoneIcon from '@mui/icons-material/Phone'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import KillChain from './sql-injection.json'
-
 
 interface PlayPropsInterface {
   state?: any
@@ -24,8 +23,8 @@ interface PlayPropsInterface {
 interface PlayStateInterface {
   stages: any[]
   currentStage: any
-  nextStage:any
-  previousStage:any
+  nextStage: any
+  previousStage: any
   numberOfStages: number
   questions: any[]
   currentQuestion: any
@@ -86,8 +85,16 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   componentDidMount() {
-    const { questions, currentQuestion, nextQuestion, previousQuestion, stages, currentStage, nextStage, previousStage} =
-      this.state
+    const {
+      questions,
+      currentQuestion,
+      nextQuestion,
+      previousQuestion,
+      stages,
+      currentStage,
+      nextStage,
+      previousStage,
+    } = this.state
     this.displayQuestions(
       questions,
       currentQuestion,
@@ -109,21 +116,15 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     stages = this.state.stages,
     currentStage: any,
     nextStage: any,
-    previousStage: any,
+    previousStage: any
   ) => {
     let { currentStageIndex } = this.state
-    if(!isEmpty(this.state.questions.stages)){
-
+    if (!isEmpty(this.state.questions.stages)) {
       const answer = currentStage.answer
-      this.setState(
-        {
-
-        },
-        () => {
-          this.showOptions()
-          this.handleDisableButton()
-        }
-      )
+      this.setState({}, () => {
+        this.showOptions()
+        this.handleDisableButton()
+      })
     }
   }
 
@@ -135,7 +136,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     stages = this.state.stages,
     currentStage: any,
     nextStage: any,
-    previousStage: any,
+    previousStage: any
   ) => {
     let { currentQuestionIndex, currentStageIndex } = this.state
     if (!isEmpty(this.state.questions && this.state.questions.stage)) {
@@ -200,7 +201,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
-            this.state.previousStage,
+            this.state.previousStage
           )
         }
       )
@@ -209,7 +210,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
   handlePreviousButtonClick = () => {
     this.playButtonSound()
-    if (this.state.previousQuestion !== undefined && this.state.previousStage !== undefined) {
+    if (
+      this.state.previousQuestion !== undefined &&
+      this.state.previousStage !== undefined
+    ) {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex - 1,
@@ -224,7 +228,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
-            this.state.previousStage,
+            this.state.previousStage
           )
         }
       )
@@ -286,7 +290,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
-            this.state.previousStage,
+            this.state.previousStage
           )
         }
       }
@@ -318,7 +322,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.stages,
             this.state.currentStage,
             this.state.nextStage,
-            this.state.previousStage,
+            this.state.previousStage
           )
         }
       }
@@ -539,18 +543,16 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           </div>
           <div className="lifeline-container">
             <p>
-              <span
-                onClick={this.handleFiftyFifty}
-                className="Phone Icon" 
-              > <LiveHelpIcon color="primary" />
+              <span onClick={this.handleFiftyFifty} className="Phone Icon">
+                {' '}
+                <LiveHelpIcon color="primary" />
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
             <p>
-              <span
-                onClick={this.handleHints}
-                className="Hint Icon"
-              > <PhoneIcon color="primary" />
+              <span onClick={this.handleHints} className="Hint Icon">
+                {' '}
+                <PhoneIcon color="primary" />
                 <span className="lifeline">{hints}</span>
               </span>
             </p>
