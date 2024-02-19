@@ -48,6 +48,7 @@ deployment_test:
   stage: deploy
   variables:
     ENVIRONMENT: "non-prod"
+    API_KEY: $NON_PRODUCTION_API_KEY
     BACKEND_URL: $NON_PRODUCTION_URL
   except:
     - main
@@ -63,6 +64,7 @@ deployment_production:
   stage: deploy
   variables:
     ENVIRONMENT: "prod"
+    API_KEY: $PRODUCTION_API_KEY
     BACKEND_URL: $PRODUCTION_URL
   only:
     - main

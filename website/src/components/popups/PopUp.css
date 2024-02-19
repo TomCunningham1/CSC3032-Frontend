@@ -33,9 +33,14 @@
     font-weight: bold;
     align-self: center;
     margin-top: 20px;
-  }
+}
   
-  .PopUpButton:hover {
+.PopUpButton:hover {
     border-color: #14228c; /* Dark outline color on hover */
-  }
+}
   
+.PopUpButton:disabled {
+    background-color: #ccc; 
+    color: #999;
+    cursor: not-allowed; 
+}

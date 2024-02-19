@@ -12,3 +12,4 @@ website/coverage
 .cdk.staging
 cdk.out
 dist
+website/.env

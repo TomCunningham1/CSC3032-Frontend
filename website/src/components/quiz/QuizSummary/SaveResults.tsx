@@ -1,7 +1,7 @@
-import { TextField } from '@mui/material'
 import { useState } from 'react'
-import BackendService from '../../services/backend-service'
-import scenarioName from '../../config/scenarioName'
+import BackendService from '../../../services/backend-service'
+import scenarioName from '../../../config/scenarioName'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface SaveResultsInterface {
   score: number
@@ -45,18 +45,33 @@ const SaveResults = ({
       fiftyFiftyUsed,
       time
     )
+      .then(() => {
+        toast.success('Your results have been saved!')
+      })
+      .catch((err) => {
+        console.log(err.message)
+        toast.error('Error saving your results, please try again later!')
+      })
   }
 
   return (
-    <div data-testid={'send-results-container'}>
-      <TextField
+    <div
+      data-testid={'send-email-container'}
+      className={'quiz-summary-button-container'}
+    >
+      <input
         placeholder="Enter Username"
         onChange={handleChange}
-        data-testid={'send-results-text-input'}
-      ></TextField>
-      <button onClick={handleSubmit} data-testid={'send-results-button'}>
+        data-testid={'send-email-text-input'}
+      ></input>
+      <button
+        className={'quiz-summary-button'}
+        onClick={handleSubmit}
+        data-testid={'send-email-button'}
+      >
         Save Results
       </button>
+      <Toaster />
     </div>
   )
 }

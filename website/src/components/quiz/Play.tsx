@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { Helmet } from 'react-helmet'
 import M from 'materialize-css'
 import classnames from 'classnames'
 import isEmpty from '../../utils/is-empty'
@@ -50,7 +49,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   constructor(props: PlayPropsInterface) {
     super(props)
     this.state = {
-      questions: this.props.router.location.state,
+      questions: this.props.router.location.state.questions,
+      title: this.props.router.location.state.title,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
@@ -453,16 +453,13 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>Quiz Page</title>
-        </Helmet>
         <Fragment>
           <audio ref={this.correctSound} src={correctNotification}></audio>
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
         <div className="questions">
-          <h2>Quiz Mode</h2>
+          <h2>{this.state.title}</h2>
           <div className="lifeline-container">
             <p>
               <span
@@ -514,9 +511,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               {currentQuestion.optionD}
             </p>
           </div>
-
           <div className="button-container">
-            <button
+            {/* <button
               className={classnames('', {
                 disable: this.state.previousButtonDisabled,
               })}
@@ -524,7 +520,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               onClick={this.handleButtonClick}
             >
               Previous
-            </button>
+            </button> */}
             <button
               className={classnames('', {
                 disable: this.state.nextButtonDisabled,
@@ -532,11 +528,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               id="next-button"
               onClick={this.handleButtonClick}
             >
-              Next
+              Skip
             </button>
-            <button id="quit-button" onClick={this.handleButtonClick}>
+            {/* <button id="quit-button" onClick={this.handleButtonClick}>
               Quit
-            </button>
+            </button> */}
           </div>
         </div>
       </Fragment>

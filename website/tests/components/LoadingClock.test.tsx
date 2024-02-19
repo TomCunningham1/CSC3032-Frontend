@@ -4,7 +4,7 @@ import CustomClockLoader from '../../src/components/LoadingClock/LoadingClock';
 
 describe('Tests for the login page', () => {
     it(' Should update something', () => {
-        const clock = render(<CustomClockLoader loading={true} />);
+        const clock = render(<CustomClockLoader />);
         expect(clock).toBeTruthy();
     });
 });

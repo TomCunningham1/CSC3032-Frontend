@@ -18,6 +18,10 @@
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(65deg, rgba(41, 52, 196), rgba(78, 120, 217) 40%, rgba(41, 137, 196));
+  position: fixed;
+  top: 100px; 
+  left: 50%; 
+  transform: translateX(-50%);
 }
 
 @media screen and (min-width: 600px) {
@@ -25,9 +29,7 @@
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
-    margin: 0.5rem;
     width: 400px;
-    margin-top: 100px;
   }
 }
 
@@ -89,7 +91,7 @@ input {
   text-decoration: underline;
 }
 
-.popup{
+.popup {
   display: flex;
   flex-direction: column;
   padding-top: 30%;
@@ -98,8 +100,10 @@ input {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgba(0,0,0,0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
-  height: 100%;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

@@ -1,36 +1,56 @@
 import { Fragment } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import './quiz-instructions.css'
+
+const QuizInstructionsHeader = ({ title }: { title: string }) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <h3 className={'text-formatting'}>How to play</h3>
+    </div>
+  )
+}
 
 const QuizInstructions = () => {
   const location = useLocation()
 
+  console.log(location.state)
+  console.log(location.state.questions)
+
+  const navigate = useNavigate()
+
+  const handleStartQuiz = () => {
+    navigate('/play/quiz', {
+      state: {
+        questions: location.state.questions,
+        title: location.state.title,
+      },
+    })
+  }
+
+  const handleReturnToMain = () => {
+    navigate('/')
+  }
+
   return (
     <Fragment>
-      <Helmet>
-        <title>Quiz Instructions - Quiz App</title>
-      </Helmet>
-      <div className="instructions container">
-        <h1>How to Play Hack Attack</h1>
-        <p>Ensure you read this guide from start to finish.</p>
-        <ul className="browser-default" id="main-list">
+      <div className="menu-container">
+        <QuizInstructionsHeader title={location.state.title} />
+        <ul className="text-formatting" id="main-list">
           <li>
             The scenerio has a duration of 6 minutes and ends as soon the time
             ends.
           </li>
           <li>Each game consists of 5 questions.</li>
+          <li>Each question has 4 options.</li>
           <li>
-            Each question has 4 options.
-            {/* <img src= alt="Quiz App options example" /> */}
-          </li>
-          <li>
-            Select the option which you believe answers the question most
-            accurately by clicking on it.
-            {/* <img src= alt="Quiz App answer example" /> */}
+            Select the option which you believe answerstext-indent the question
+            most accurately by clicking on it.
           </li>
           <li>
             Each game has 2 lifelines:
-            <ul id="sublist">
+            <ul className="text-indent">
               <li>1 50/50 Chance</li>
               <li>2 Hints</li>
             </ul>
@@ -52,17 +72,14 @@ const QuizInstructions = () => {
             at the end
           </li>
           <li>The timer starts as soon as the game loads.</li>
-          <li>Do you think you have what it takes?</li>
         </ul>
-        <div>
-          <span className="left">
-            <Link to="/">Take me back to the main menu</Link>
-          </span>
-          <span className="right">
-            <Link to={'/play/quiz'} state={location.state}>
-              Play Quiz
-            </Link>
-          </span>
+        <div className="quiz-button-container">
+          <button className="quiz-button" onClick={handleReturnToMain}>
+            Back to main menu
+          </button>
+          <button className="quiz-button" onClick={handleStartQuiz}>
+            Start the quiz
+          </button>
         </div>
       </div>
     </Fragment>
