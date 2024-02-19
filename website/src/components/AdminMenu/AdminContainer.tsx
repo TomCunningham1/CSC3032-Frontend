@@ -5,7 +5,6 @@ import DeleteScenarioPopUp from '../popups/DeleteScenarioPopUp'
 import ResetLeaderboardPopup from '../popups/ResetLeaderboardPopUp'
 import ViewScenarioPopUp from '../popups/ViewScenarioPopUp'
 import SubmitScenarioPopup from '../popups/SubmitScenarioPopUp'
-import toast, { Toaster } from 'react-hot-toast'
 
 interface AdminOptionButtonInterface {
   id: string
