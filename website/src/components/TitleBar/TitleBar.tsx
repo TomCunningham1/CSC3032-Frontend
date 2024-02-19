@@ -1,41 +1,58 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
 import './TitleBar.css'
-import { Avatar, Tooltip } from '@mui/material'
-import TitleBarDropDown from './TitleBarDropDown'
+import TitleBarIcon from './TitleBarIcon'
+import { Outlet } from 'react-router'
+import TitleBarHomeButton from './TitleBarButtons/TitleBarHomeButton'
+import TitleBarLeaderboardButton from './TitleBarButtons/TitleBarLeaderboardButton'
+import TitleBarHelpButton from './TitleBarButtons/TitleBarHelpButton'
+import TitleBarSettingsButton from './TitleBarButtons/TitleBarSettingsButton'
+import { useContext, useEffect, useState } from 'react'
+import { AccountContext } from '../../auth/Account'
+import TitleBarLogoutButton from './TitleBarButtons/TitleBarLogoutButton'
+import TitleBarLoginButton from './TitleBarButtons/TitleBarLoginButton'
+import TitleBarScenarioButton from './TitleBarButtons/TitleBarScenarioButton'
 
-const ButtonAppBar = ({ children, hideOptions }: any) => {
+const TitleBar = () => {
+  const [status, setStatus] = useState(false)
+
+  const { authenticated, logout } = useContext(AccountContext)
+
+  useEffect(() => {
+    if (authenticated) {
+      setStatus(true)
+    } else {
+      setStatus(false)
+    }
+  }, [authenticated])
+
   return (
     <>
       <Box className={'TitleBarBox'}>
         <AppBar position="fixed">
-          <Toolbar>
-            {!hideOptions && <TitleBarDropDown />}
-
-            <Typography
-              variant="h6"
-              component="div"
-              className="Typography"
-              data-testid="titlebar-title"
-            >
-              Hack-Attack
-            </Typography>
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-            </Box>
+          <Toolbar className={'TitleBar'}>
+            <h1 className={'Title'}>Hack Attack</h1>
+            <div className={'TitleBarButtons'}>
+              <TitleBarHomeButton />
+              <TitleBarLeaderboardButton />
+              <TitleBarSettingsButton />
+              {status ? <TitleBarScenarioButton /> : <TitleBarHelpButton />}
+              {status ? (
+                <TitleBarLogoutButton method={logout} />
+              ) : (
+                <TitleBarLoginButton />
+              )}
+            </div>
+            <TitleBarIcon />
           </Toolbar>
         </AppBar>
       </Box>
-      {children}
+      <div className={'AppBackground'}>
+        <Outlet />
+      </div>
     </>
   )
 }
 
-export default ButtonAppBar
+export default TitleBar

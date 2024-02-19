@@ -1,22 +1,17 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import CustomClockLoader from './components/LoadingClock/LoadingClock'
-import Login from './pages/Login'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom'
+import { Account } from './auth/Account'
+import RenderRoutes from './config/routes'
 
 function App() {
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }, [])
+  document.title = 'Hack Attack'
 
   return (
-    <div className="background">
-      {loading ? <CustomClockLoader loading={loading} /> : <Login />}
-    </div>
+    <Account>
+      <BrowserRouter>
+        <RenderRoutes />
+      </BrowserRouter>
+    </Account>
   )
 }
 

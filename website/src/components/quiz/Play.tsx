@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { Helmet } from 'react-helmet'
 import M from 'materialize-css'
 import classnames from 'classnames'
 import isEmpty from '../../utils/is-empty'
@@ -7,11 +6,10 @@ import correctNotification from '../../assets/audio/correct-answer.mp3'
 import wrongNotification from '../../assets/audio/wrong-answer.mp3'
 import buttonSound from '../../assets/audio/button-sound.mp3'
 import '../../styles/styles.scss'
-import withRouter from '../Router'
 import PhoneIcon from '@mui/icons-material/Phone'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
-import KillChain from './sql-injection.json'
+import withRouter from '../Router/Router'
 
 interface PlayPropsInterface {
   state?: any
@@ -59,10 +57,14 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   constructor(props: PlayPropsInterface) {
     super(props)
     this.state = {
-      questions: this.props.router.location.state,
+      questions: this.props.router.location.state.questions,
+      title: this.props.router.location.state.title,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
+      currentStage: {},
+      nextStage: {},
+      previousStage: {},
       answer: '',
       numberOfQuestions: 0,
       numberOfAnsweredQuestions: 0,
@@ -493,7 +495,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   endGame = () => {
-    
     const { state } = this
     const playerStats = {
       score: state.score,
@@ -503,6 +504,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       wrongAnswers: state.wrongAnswers,
       fiftyFiftyUsed: 2 - state.fiftyFifty,
       hintsUsed: 5 - state.hints,
+      minutes: state.time.minutes,
+      seconds: state.time.seconds,
     }
     setTimeout(() => {
       console.log(playerStats)
@@ -525,16 +528,13 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>SQL Injection Scenario</title>
-        </Helmet>
         <Fragment>
           <audio ref={this.correctSound} src={correctNotification}></audio>
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
         <div className="questions">
-          <h2>SQL Injection Scenario</h2>
+          <h2>{this.state.title}</h2>
           <h3>{currentStage.stage}</h3>
           <div className="stages-container">
             <p onClick={this.handleOptionClick} className="stage">
@@ -592,9 +592,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               {currentQuestion.optionD}
             </p>
           </div>
-
           <div className="button-container">
-            <button
+            {/* <button
               className={classnames('', {
                 disable: this.state.previousButtonDisabled,
               })}
@@ -602,7 +601,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               onClick={this.handleButtonClick}
             >
               Previous
-            </button>
+            </button> */}
             <button
               className={classnames('', {
                 disable: this.state.nextButtonDisabled,
@@ -610,11 +609,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               id="next-button"
               onClick={this.handleButtonClick}
             >
-              Next
+              Skip
             </button>
-            <button id="quit-button" onClick={this.handleButtonClick}>
+            {/* <button id="quit-button" onClick={this.handleButtonClick}>
               Quit
-            </button>
+            </button> */}
           </div>
         </div>
       </Fragment>

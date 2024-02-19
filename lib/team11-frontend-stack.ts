@@ -10,6 +10,7 @@ import {
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
 import environment from './config/environment'
+import path = require('path')
 
 export class Team11FrontendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
