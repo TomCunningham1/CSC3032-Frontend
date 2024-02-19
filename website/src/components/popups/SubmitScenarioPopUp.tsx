@@ -23,12 +23,14 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   }
 
   const onSubmit = async () => {
-    await BackendService.writeScenario(title, questions).then(() => {
-      toast.success('Successfully deleted')
-      onClose()
-    }).catch((err) => {
-      toast.error(err.message)
-    })
+    await BackendService.writeScenario(title, questions)
+      .then(() => {
+        toast.success('Successfully deleted')
+        onClose()
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
   }
 
   console.log(disabled)

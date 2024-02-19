@@ -18,11 +18,13 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   }
 
   const handleClick = async () => {
-    await BackendService.resetLeaderboard().then(() => {
-      onClose()
-    }).catch((err) => {
-      toast.error(err.message)
-    })
+    await BackendService.resetLeaderboard()
+      .then(() => {
+        onClose()
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
   }
 
   return (

@@ -6,7 +6,6 @@ import toast, { Toaster } from 'react-hot-toast'
 
 // Creates the login form for admin users
 const AdminLoginContainer = () => {
-  
   // Navigate hook to allow navigation away from the page
   const navigate = useNavigate()
 
@@ -22,12 +21,14 @@ const AdminLoginContainer = () => {
 
   // function to handle validating the user when the button is clicked
   const validate = async () => {
-    await authenticate(username, pswrd).then(()=>{
-      toast.success('Logging in')
-      navigate('/admin-menu')
-    }).catch((err) => {
-      toast.error(err.message)
-    })
+    await authenticate(username, pswrd)
+      .then(() => {
+        toast.success('Logging in')
+        navigate('/admin-menu')
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
   }
 
   // functions to handle user inputs in text fields
@@ -40,7 +41,7 @@ const AdminLoginContainer = () => {
   }
 
   return (
-    // Login container 
+    // Login container
     <div
       className="admin-login-menu-container"
       data-testid={'admin-login-wrapper'}

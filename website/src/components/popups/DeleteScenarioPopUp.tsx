@@ -22,12 +22,14 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   }
 
   const handleClick = async () => {
-    await BackendService.deleteScenario(titleValue).then((deleteSuccessful) => {
-      console.log(deleteSuccessful)
-      onClose()
-    }).catch((err) => {
-      toast.error(err.message)
-    })
+    await BackendService.deleteScenario(titleValue)
+      .then((deleteSuccessful) => {
+        console.log(deleteSuccessful)
+        onClose()
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
   }
 
   return (

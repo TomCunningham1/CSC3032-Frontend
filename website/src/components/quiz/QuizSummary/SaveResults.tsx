@@ -44,12 +44,14 @@ const SaveResults = ({
       hintsUsed,
       fiftyFiftyUsed,
       time
-    ).then(() => {
-      toast.success('Your results have been saved!')
-    }).catch((err) => {
-      console.log(err.message)
-      toast.error('Error saving your results, please try again later!')
-    })
+    )
+      .then(() => {
+        toast.success('Your results have been saved!')
+      })
+      .catch((err) => {
+        console.log(err.message)
+        toast.error('Error saving your results, please try again later!')
+      })
   }
 
   return (

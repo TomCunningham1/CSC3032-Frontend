@@ -47,12 +47,12 @@ const Account = (props: any) => {
           Username: Username,
           Pool: userPool,
         })
-  
+
         const authDetails = new AuthenticationDetails({
           Username: Username,
           Password: Password,
         })
-  
+
         // Handle success, failure and password change required
         user.authenticateUser(authDetails, {
           onSuccess: (data) => {
@@ -73,7 +73,6 @@ const Account = (props: any) => {
       } catch (e) {
         reject(e)
       }
-
     })
   }
 

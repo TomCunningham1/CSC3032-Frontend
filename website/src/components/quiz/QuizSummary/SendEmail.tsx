@@ -2,7 +2,7 @@ import { Alert, TextField } from '@mui/material'
 import { useContext, useState } from 'react'
 import BackendService from '../../../services/backend-service'
 import './quiz-summary.css'
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast'
 
 interface SendEmailInterface {
   score: number
@@ -41,11 +41,13 @@ const SendEmail = ({
       wrongAnswers,
       hintsUsed,
       fiftyFiftyUsed
-    ).then(() => {
-      toast.success('Results have been sent')
-    }).catch((err) => {
-      toast.error('Unable to send email')
-    })
+    )
+      .then(() => {
+        toast.success('Results have been sent')
+      })
+      .catch((err) => {
+        toast.error('Unable to send email')
+      })
   }
 
   return (

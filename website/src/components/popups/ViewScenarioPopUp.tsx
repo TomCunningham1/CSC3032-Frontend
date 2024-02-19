@@ -16,14 +16,16 @@ const ViewScenarioPopUp = ({ open, onClose, setScenario }: any) => {
   }
 
   const handleProceed = async () => {
-    const response = await BackendService.readScenario(title).then((response) => {
-      console.log(response)
-      setScenario(JSON.stringify(response.data, null, 2))
-      toast.success('Scenario successfully retrieved')
-      onClose()
-    }).catch((err) => {
-      toast.error(err.message)
-    })
+    const response = await BackendService.readScenario(title)
+      .then((response) => {
+        console.log(response)
+        setScenario(JSON.stringify(response.data, null, 2))
+        toast.success('Scenario successfully retrieved')
+        onClose()
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
   }
 
   return (
