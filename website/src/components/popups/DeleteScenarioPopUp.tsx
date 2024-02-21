@@ -4,7 +4,13 @@ import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
 
-const DeleteScenarioPopUp = ({ open, onClose }: any) => {
+interface DeleteScenarioPopUpProps {
+  scenarios: string[]
+  open: boolean;
+  onClose: () => void;
+}
+
+const DeleteScenarioPopUp = ({ scenarios, open, onClose }: DeleteScenarioPopUpProps) => {
   if (!open) return null
 
   const [checkValue, setCheckValue] = useState('')
@@ -13,7 +19,7 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   const expected = 'permanently delete'
   const disabled = expected !== checkValue || titleValue === ''
 
-  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTitleValue(e.target.value)
   }
 
@@ -43,7 +49,15 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
         <p>
           Enter the <i>title</i> of the scenario which you want to delete.*
         </p>
-        <input onChange={handleChangeTitle}></input>
+        {/* <input onChange={handleChangeTitle}></input> */}
+        <select onChange={handleChangeTitle}>
+          <option value={''}></option>
+          {scenarios.map((scenario) => {
+            return (
+              <option value={scenario}>{scenario}</option>
+            )
+          })}
+        </select>
         <br />
         <p>
           To confirm enter <i>permanently delete</i> into the below text box.

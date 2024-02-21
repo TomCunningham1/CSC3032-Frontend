@@ -1,9 +1,10 @@
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react'
+import { MouseEventHandler, useCallback, useContext, useEffect, useState } from 'react'
 import PopUp from './PopUp'
 import './PopUp.css'
 import BackendService from '../../services/backend-service'
 import CustomClockLoader from '../LoadingClock/LoadingClock'
 import toast, { Toaster } from 'react-hot-toast'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 const componentId = 'leaderboard-popup'
 
@@ -20,24 +21,25 @@ interface ResultsTypes {
 
 const LeaderboardPopUp = ({ onClose }: any) => {
   const [top10, setTop10] = useState([])
-  const [loading, setLoading] = useState(true)
   const [scenarios, setScenarios] = useState([])
+
+  const { updateLoading } = useContext(LoadingContext)
 
   // Function to swap between different scenarios
   const getScenarioResults = async (scenario: string) => {
-    setLoading(true)
+    updateLoading(true)
     await BackendService.getResults(scenario).then((resp) => {
       setTop10(resp.data.slice(0,10))
     }).catch((err: any) => {
       toast.error(err.message)
     })
-    setLoading(false)
+    updateLoading(false)
   }
 
   // initial call to getAllScenarios to generate the buttons
   // as well as calling the default results table option
   const pageSetup = async () => {
-    setLoading(true)
+    updateLoading(true)
     await BackendService.getAllScenarios().then( async (resp) => {
       setScenarios(resp.data)
 
@@ -61,7 +63,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
       toast.error(err.message)
     })
     
-    setLoading(false)
+    updateLoading(false)
   }
 
   useEffect(() => {
@@ -146,10 +148,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
 
   return ( 
   <>
-    <Toaster />
-  {loading ? (
-    <CustomClockLoader />
-  ) : (
+    <Toaster />(
     <PopUp
       id={componentId}
       title={'Leaderboard'}
@@ -212,7 +211,6 @@ const LeaderboardPopUp = ({ onClose }: any) => {
         </div>
       </div>
     </PopUp>
-  )}
     </>)
 }
 

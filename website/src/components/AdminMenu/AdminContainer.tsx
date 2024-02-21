@@ -1,98 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AddUpdateScenario from './AddUpdateScenario'
 import './admin.css'
-import DeleteScenarioPopUp from '../popups/DeleteScenarioPopUp'
-import ResetLeaderboardPopup from '../popups/ResetLeaderboardPopUp'
-import ViewScenarioPopUp from '../popups/ViewScenarioPopUp'
 import SubmitScenarioPopup from '../popups/SubmitScenarioPopUp'
-
-interface AdminOptionButtonInterface {
-  id: string
-  title: string
-  method?: () => void
-}
-
-const DeleteScenarioButton = () => {
-  const [openDeleteScenarioPopUp, setOpenDeleteScenarioPopUp] = useState(false)
-
-  return (
-    <>
-      <DeleteScenarioPopUp
-        open={openDeleteScenarioPopUp}
-        onClose={() => {
-          setOpenDeleteScenarioPopUp(false)
-        }}
-      />
-      <AdminOptionButton
-        method={() => {
-          setOpenDeleteScenarioPopUp(true)
-        }}
-        id="delete-scenario"
-        title="Delete a Scenario"
-      />
-    </>
-  )
-}
-
-const ViewScenarioButton = ({ setScenario }: any) => {
-  const [openPopup, setOpenPopup] = useState(false)
-
-  return (
-    <>
-      <AdminOptionButton
-        id="view-scenario"
-        title="View Scenario"
-        method={() => {
-          setOpenPopup(true)
-        }}
-      />
-      <ViewScenarioPopUp
-        open={openPopup}
-        setScenario={setScenario}
-        onClose={() => {
-          setOpenPopup(false)
-        }}
-      />
-    </>
-  )
-}
-
-const ResetLeaderboardButton = () => {
-  const [openPopup, setOpenPopup] = useState(false)
-
-  return (
-    <>
-      <AdminOptionButton
-        id="reset-leaderboard"
-        title="Reset the leaderbard"
-        method={() => setOpenPopup(true)}
-      />
-      <ResetLeaderboardPopup
-        open={openPopup}
-        onClose={() => {
-          setOpenPopup(false)
-        }}
-      />
-    </>
-  )
-}
-
-const AdminOptionButton = ({
-  id,
-  title,
-  method,
-}: AdminOptionButtonInterface) => {
-  return (
-    <button
-      className="admin-menu-button"
-      onClick={method}
-      id={id}
-      data-testid={id}
-    >
-      {title}
-    </button>
-  )
-}
+import DeleteScenarioButton from './AdminMenuButtons/DeleteScenarioButton'
+import ResetLeaderboardButton from './AdminMenuButtons/ResetLeaderboardButton'
+import ViewScenarioButton from './AdminMenuButtons/ViewScenarioButton'
+import toast, { Toaster } from 'react-hot-toast'
+import LoadingClock from '../LoadingClock/LoadingClock'
+import BackendService from '../../services/backend-service'
 
 const SubmitButton = ({ scenario }: { scenario: string }) => {
   const [openPopup, setOpenPopup] = useState(false)
@@ -121,9 +36,9 @@ const SubmitButton = ({ scenario }: { scenario: string }) => {
   )
 }
 
-const AdminOptionsContainer = ({ setScenario }: any) => (
+const AdminOptionsContainer = ({ setScenario, scenarios }: any) => (
   <div className={'admin-menu-options'}>
-    <DeleteScenarioButton />
+    <DeleteScenarioButton scenarios={scenarios}/>
     <ViewScenarioButton setScenario={setScenario} />
     <ResetLeaderboardButton />
   </div>
@@ -132,19 +47,39 @@ const AdminOptionsContainer = ({ setScenario }: any) => (
 const AdminContainer = () => {
   const [scenario, setScenario] = useState('')
   const [value, setValue] = useState('')
+  const [loading, isLoading] = useState(true)
+  const [scenarios, setScenarios] = useState([])
+
+  useEffect(() => {
+    isLoading(true)
+    const getScenarios = async () => {
+      await BackendService.getAllScenarios().then((resp) => {
+        setScenarios(resp.data)
+      }).catch((err) => {
+        toast.error(err)
+      })
+    }
+    getScenarios()
+    isLoading(false)
+  }, [])
 
   return (
-    <div className="admin-menu-container" data-testid={'admin-menu-wrapper'}>
-      <AdminOptionsContainer setScenario={setScenario} />
-      <AddUpdateScenario
-        scenario={scenario}
-        setScenario={setScenario}
-        value={value}
-        setValue={setValue}
-      />
-      {isJSON(scenario) ? <>Valid JSON</> : <>Invalid JSON</>}
-      <SubmitButton scenario={scenario} />
-    </div>
+    <>
+      <Toaster />
+      { loading ? <LoadingClock /> : 
+          <div className="admin-menu-container" data-testid={'admin-menu-wrapper'}>
+          <AdminOptionsContainer setScenario={setScenario} scenarios={scenarios}/>
+          <AddUpdateScenario
+            scenario={scenario}
+            setScenario={setScenario}
+            value={value}
+            setValue={setValue}
+          />
+          {isJSON(scenario) ? <>Valid JSON</> : <>Invalid JSON</>}
+          <SubmitButton scenario={scenario} />
+        </div>}
+    </>
+
   )
 }
 
