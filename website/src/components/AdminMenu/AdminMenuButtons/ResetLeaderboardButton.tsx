@@ -1,25 +1,25 @@
-import { useState } from "react";
-import ResetLeaderboardPopup from "../../popups/ResetLeaderboardPopUp";
-import AdminOptionButton from "./AdminOptionButton";
+import { useState } from 'react'
+import ResetLeaderboardPopup from '../../popups/ResetLeaderboardPopUp'
+import AdminOptionButton from './AdminOptionButton'
 
 const ResetLeaderboardButton = () => {
-    const [openPopup, setOpenPopup] = useState(false)
-  
-    return (
-      <>
-        <AdminOptionButton
-          id="reset-leaderboard"
-          title="Reset the leaderbard"
-          method={() => setOpenPopup(true)}
-        />
-        <ResetLeaderboardPopup
-          open={openPopup}
-          onClose={() => {
-            setOpenPopup(false)
-          }}
-        />
-      </>
-    )
-  }
+  const [openPopup, setOpenPopup] = useState(false)
 
-export default ResetLeaderboardButton;
+  return (
+    <>
+      <AdminOptionButton
+        id="reset-leaderboard"
+        title="Reset the leaderbard"
+        method={() => setOpenPopup(true)}
+      />
+      <ResetLeaderboardPopup
+        open={openPopup}
+        onClose={() => {
+          setOpenPopup(false)
+        }}
+      />
+    </>
+  )
+}
+
+export default ResetLeaderboardButton

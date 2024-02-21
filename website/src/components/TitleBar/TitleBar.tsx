@@ -52,9 +52,7 @@ const TitleBar = () => {
         </AppBar>
       </Box>
       <div className={'AppBackground'}>
-        <>
-          { loading && <CustomClockLoader />}
-        </>
+        <>{loading && <CustomClockLoader />}</>
         <Outlet />
       </div>
     </>

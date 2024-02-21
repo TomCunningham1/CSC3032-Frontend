@@ -1,16 +1,21 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 interface DeleteScenarioPopUpProps {
   scenarios: string[]
-  open: boolean;
-  onClose: () => void;
+  open: boolean
+  onClose: () => void
 }
 
-const DeleteScenarioPopUp = ({ scenarios, open, onClose }: DeleteScenarioPopUpProps) => {
+const DeleteScenarioPopUp = ({
+  scenarios,
+  open,
+  onClose,
+}: DeleteScenarioPopUpProps) => {
   if (!open) return null
 
   const [checkValue, setCheckValue] = useState('')
@@ -18,6 +23,8 @@ const DeleteScenarioPopUp = ({ scenarios, open, onClose }: DeleteScenarioPopUpPr
 
   const expected = 'permanently delete'
   const disabled = expected !== checkValue || titleValue === ''
+
+  const { updateLoading } = useContext(LoadingContext)
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTitleValue(e.target.value)
@@ -28,6 +35,7 @@ const DeleteScenarioPopUp = ({ scenarios, open, onClose }: DeleteScenarioPopUpPr
   }
 
   const handleClick = async () => {
+    updateLoading(true)
     await BackendService.deleteScenario(titleValue)
       .then((deleteSuccessful) => {
         console.log(deleteSuccessful)
@@ -36,6 +44,7 @@ const DeleteScenarioPopUp = ({ scenarios, open, onClose }: DeleteScenarioPopUpPr
       .catch((err) => {
         toast.error(err.message)
       })
+    updateLoading(false)
   }
 
   return (
@@ -50,12 +59,10 @@ const DeleteScenarioPopUp = ({ scenarios, open, onClose }: DeleteScenarioPopUpPr
           Enter the <i>title</i> of the scenario which you want to delete.*
         </p>
         {/* <input onChange={handleChangeTitle}></input> */}
-        <select onChange={handleChangeTitle}>
+        <select className={'PopUpSelect'} onChange={handleChangeTitle}>
           <option value={''}></option>
           {scenarios.map((scenario) => {
-            return (
-              <option value={scenario}>{scenario}</option>
-            )
+            return <option value={scenario}>{scenario}</option>
           })}
         </select>
         <br />

@@ -16,9 +16,7 @@ const Loader = (props: any) => {
   }
   // Create the account context and create all children with the context
   return (
-    <LoadingContext.Provider
-      value={{ loading, updateLoading }}
-    >
+    <LoadingContext.Provider value={{ loading, updateLoading }}>
       {props.children}
     </LoadingContext.Provider>
   )

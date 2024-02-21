@@ -36,10 +36,17 @@ const SubmitButton = ({ scenario }: { scenario: string }) => {
   )
 }
 
-const AdminOptionsContainer = ({ setScenario, scenarios }: any) => (
+interface AdminOptionsContainerProps {
+  setScenario: React.Dispatch<React.SetStateAction<string>>
+  scenarios: string[]
+}
+const AdminOptionsContainer = ({
+  setScenario,
+  scenarios,
+}: AdminOptionsContainerProps) => (
   <div className={'admin-menu-options'}>
-    <DeleteScenarioButton scenarios={scenarios}/>
-    <ViewScenarioButton setScenario={setScenario} />
+    <DeleteScenarioButton scenarios={scenarios} />
+    <ViewScenarioButton setScenario={setScenario} scenarios={scenarios} />
     <ResetLeaderboardButton />
   </div>
 )
@@ -53,11 +60,13 @@ const AdminContainer = () => {
   useEffect(() => {
     isLoading(true)
     const getScenarios = async () => {
-      await BackendService.getAllScenarios().then((resp) => {
-        setScenarios(resp.data)
-      }).catch((err) => {
-        toast.error(err)
-      })
+      await BackendService.getAllScenarios()
+        .then((resp) => {
+          setScenarios(resp.data)
+        })
+        .catch((err) => {
+          toast.error(err)
+        })
     }
     getScenarios()
     isLoading(false)
@@ -66,9 +75,17 @@ const AdminContainer = () => {
   return (
     <>
       <Toaster />
-      { loading ? <LoadingClock /> : 
-          <div className="admin-menu-container" data-testid={'admin-menu-wrapper'}>
-          <AdminOptionsContainer setScenario={setScenario} scenarios={scenarios}/>
+      {loading ? (
+        <LoadingClock />
+      ) : (
+        <div
+          className="admin-menu-container"
+          data-testid={'admin-menu-wrapper'}
+        >
+          <AdminOptionsContainer
+            setScenario={setScenario}
+            scenarios={scenarios}
+          />
           <AddUpdateScenario
             scenario={scenario}
             setScenario={setScenario}
@@ -77,9 +94,9 @@ const AdminContainer = () => {
           />
           {isJSON(scenario) ? <>Valid JSON</> : <>Invalid JSON</>}
           <SubmitButton scenario={scenario} />
-        </div>}
+        </div>
+      )}
     </>
-
   )
 }
 

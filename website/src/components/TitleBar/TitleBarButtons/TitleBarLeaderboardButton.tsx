@@ -15,7 +15,7 @@ const TitleBarLeaderboardButton = () => {
           setOpenPopUp(true)
         }}
       />
-      { openPopUp && <LeaderboardPopUp onClose={() => setOpenPopUp(false)} />}
+      {openPopUp && <LeaderboardPopUp onClose={() => setOpenPopUp(false)} />}
     </>
   )
 }
