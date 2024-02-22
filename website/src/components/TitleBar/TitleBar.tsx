@@ -13,11 +13,14 @@ import { AccountContext } from '../../auth/Account'
 import TitleBarLogoutButton from './TitleBarButtons/TitleBarLogoutButton'
 import TitleBarLoginButton from './TitleBarButtons/TitleBarLoginButton'
 import TitleBarScenarioButton from './TitleBarButtons/TitleBarScenarioButton'
+import CustomClockLoader from '../LoadingClock/LoadingClock'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 const TitleBar = () => {
   const [status, setStatus] = useState(false)
 
   const { authenticated, logout } = useContext(AccountContext)
+  const { loading } = useContext(LoadingContext)
 
   useEffect(() => {
     if (authenticated) {
@@ -49,6 +52,7 @@ const TitleBar = () => {
         </AppBar>
       </Box>
       <div className={'AppBackground'}>
+        <>{loading && <CustomClockLoader />}</>
         <Outlet />
       </div>
     </>

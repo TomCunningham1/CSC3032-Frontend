@@ -1,9 +1,16 @@
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react'
-import scenarioName from '../../config/scenarioName'
+import {
+  MouseEventHandler,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import PopUp from './PopUp'
 import './PopUp.css'
 import BackendService from '../../services/backend-service'
 import CustomClockLoader from '../LoadingClock/LoadingClock'
+import toast, { Toaster } from 'react-hot-toast'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 const componentId = 'leaderboard-popup'
 
@@ -18,19 +25,58 @@ interface ResultsTypes {
   FiftyFiftyUsed: number
 }
 
-const LeaderboardPopUp = ({ open, onClose }: any) => {
+const LeaderboardPopUp = ({ onClose }: any) => {
   const [top10, setTop10] = useState([])
-  const [loading, isLoading] = useState(true)
+  const [scenarios, setScenarios] = useState([])
 
-  const callBackend = async () => {
-    isLoading(true)
-    const allResults = await BackendService.getResults(scenarioName.scenario)
-    setTop10(allResults.data.slice(0, 10))
-    isLoading(false)
+  const { updateLoading } = useContext(LoadingContext)
+
+  // Function to swap between different scenarios
+  const getScenarioResults = async (scenario: string) => {
+    updateLoading(true)
+    await BackendService.getResults(scenario)
+      .then((resp) => {
+        setTop10(resp.data.slice(0, 10))
+      })
+      .catch((err: any) => {
+        toast.error(err.message)
+      })
+    updateLoading(false)
+  }
+
+  // initial call to getAllScenarios to generate the buttons
+  // as well as calling the default results table option
+  const pageSetup = async () => {
+    updateLoading(true)
+    await BackendService.getAllScenarios()
+      .then(async (resp) => {
+        setScenarios(resp.data)
+
+        // Checks there is a scenario to request results from
+        if (!resp.data[0]) {
+          return
+        }
+
+        // Requests results from the first element in the list
+        await BackendService.getResults(resp.data[0])
+          .then((resp) => {
+            setTop10(resp.data.slice(0, 10))
+          })
+          .catch((err) => {
+            // Outputs a toast if an error occurs in this request
+            toast.error(err.message)
+          })
+      })
+      .catch((err) => {
+        // Outputs a toast if an error occurs in this request
+        toast.error(err.message)
+      })
+
+    updateLoading(false)
   }
 
   useEffect(() => {
-    callBackend()
+    pageSetup()
   }, [])
 
   type SortKeys = keyof ResultsTypes
@@ -109,91 +155,75 @@ const LeaderboardPopUp = ({ open, onClose }: any) => {
     )
   }
 
-  function sqlButton() {
-    scenarioName.scenario = 'SQL Injection'
-    callBackend()
-  }
-
-  function ddosButton() {
-    scenarioName.scenario = 'Distributed Denial of Service'
-    callBackend()
-  }
-
-  function xssButton() {
-    scenarioName.scenario = 'Cross Site Scripting'
-    callBackend()
-  }
-
-  function boButton() {
-    scenarioName.scenario = 'Buffer Overflow'
-    callBackend()
-  }
-
-  if (!open) return null
-  return loading ? (
-    <CustomClockLoader />
-  ) : (
-    <PopUp
-      id={componentId}
-      title={'Leaderboard'}
-      name="menu-container-solid Leaderboard"
-      onClose={onClose}
-    >
-      <div
-        data-testid="leaderboard-popup-text"
-        className="PopUpTextLeaderboard"
+  return (
+    <>
+      <Toaster />(
+      <PopUp
+        id={componentId}
+        title={'Leaderboard'}
+        name="menu-container-solid Leaderboard"
+        onClose={onClose}
       >
-        <div>
-          <button className="scenario-button" onClick={sqlButton}>
-            SQL Injection
-          </button>
-          <button className="scenario-button" onClick={ddosButton}>
-            Distributed Denial of Service
-          </button>
-          <button className="scenario-button" onClick={xssButton}>
-            Cross Site Scripting
-          </button>
-          <button className="scenario-button" onClick={boButton}>
-            Buffer Overflow
-          </button>
-          <table>
-            <thead>
-              <tr>
-                {headers.map((row) => {
+        <div
+          data-testid="leaderboard-popup-text"
+          className="PopUpTextLeaderboard"
+        >
+          <div>
+            {
+              // Updated to map from the list returned by "getAllScenarios"
+              scenarios.map((scenario) => {
+                return (
+                  // Maps out buttons and passes in selected scenario
+                  <button
+                    className="scenario-button"
+                    onClick={() => {
+                      getScenarioResults(scenario)
+                    }}
+                  >
+                    {scenario}
+                  </button>
+                )
+              })
+            }
+            <table>
+              <thead>
+                <tr>
+                  {headers.map((row) => {
+                    return (
+                      <td key={row.key}>
+                        {row.label}
+                        <SortButton
+                          columnKey={row.key}
+                          onClick={() => changeSort(row.key)}
+                          sortOrder={sortOrder}
+                          sortKey={sortKey}
+                        />
+                      </td>
+                    )
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {sortedData().map((user: any, index: number) => {
                   return (
-                    <td key={row.key}>
-                      {row.label}
-                      <SortButton
-                        columnKey={row.key}
-                        onClick={() => changeSort(row.key)}
-                        sortOrder={sortOrder}
-                        sortKey={sortKey}
-                      />
-                    </td>
+                    <tr key={user.Username + index}>
+                      <td>{user.Username}</td>
+                      <td>{user.Score}</td>
+                      <td>{user.NumberOfQuestions}</td>
+                      <td>{user.NumberOfAnsweredQuestions}</td>
+                      <td>{user.CorrectAnswers}</td>
+                      <td>{user.WrongAnswers}</td>
+                      <td>{user.HintsUsed}</td>
+                      <td>{user.FiftyFiftyUsed}</td>
+                    </tr>
                   )
                 })}
-              </tr>
-            </thead>
-            <tbody>
-              {sortedData().map((user: any) => {
-                return (
-                  <tr key={user.score}>
-                    <td>{user.Username}</td>
-                    <td>{user.Score}</td>
-                    <td>{user.NumberOfQuestions}</td>
-                    <td>{user.NumberOfAnsweredQuestions}</td>
-                    <td>{user.CorrectAnswers}</td>
-                    <td>{user.WrongAnswers}</td>
-                    <td>{user.HintsUsed}</td>
-                    <td>{user.FiftyFiftyUsed}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </PopUp>
+      </PopUp>
+    </>
   )
 }
 

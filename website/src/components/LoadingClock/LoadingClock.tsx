@@ -1,9 +1,15 @@
 import ClockLoader from 'react-spinners/ClockLoader'
 import '../../styles/styles.scss'
-import '../../App.css'
+import './loading-clock.css'
 
 const CustomClockLoader = () => {
-  return <ClockLoader color={'#F37A24'} loading={true} size={50} />
+  return (
+    <div className="loading-clock-wrapper">
+      <div className="loading-clock-container">
+        <ClockLoader color={'#F37A24'} loading={true} size={50} />
+      </div>
+    </div>
+  )
 }
 
 export default CustomClockLoader

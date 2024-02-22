@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import questions from '../../questions/QuizQuestions'
+// import questions from '../../questions/QuizQuestions'
 import { Button } from '@mui/material'
 import scenarioName from '../../config/scenarioName'
 
@@ -20,7 +20,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
       >
         X
       </button>
-      {questions.map((playthrough: { title: string; questions: object }) => {
+      {/* {questions.map((playthrough: { title: string; questions: object }) => {
         const navigateToQuiz = () => {
           navigate('/play/instructions', { state: playthrough.questions })
           scenarioName.scenario = playthrough.title
@@ -36,7 +36,7 @@ const ScenarioPopUp = ({ open, onClose }: any) => {
             {playthrough.title}
           </button>
         )
-      })}
+      })} */}
     </div>
   )
 }
