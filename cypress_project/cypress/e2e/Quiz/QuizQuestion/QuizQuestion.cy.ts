@@ -8,23 +8,15 @@ describe('Quiz Instructions Page', () => {
     beforeEach(() => {
       cy.visit(environment.frontendURL)
       cy.contains('SQL Injection').click()
-      cy.contains('Play Quiz').click()
+      cy.contains('Start the quiz').click()
     })
 
     it('Should contain the page title', () => {
-        cy.contains('Quiz Mode')
+        cy.contains('SQL Injection')
     })
 
-    it('Should contain a previous button', () => {
-        cy.contains('Previous')
-    })
-
-    it('Should contain a Next page button', () => {
-        cy.contains('Next')
-    })
-
-    it('Should have a quit button', () => {
-        cy.contains('Quit')
+    it('Should contain the skip button', () => {
+        cy.contains('Skip')
     })
 
     it('Should contain 4 options', () => {

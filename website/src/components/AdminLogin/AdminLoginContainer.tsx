@@ -53,15 +53,16 @@ const AdminLoginContainer = () => {
       <div className="admin-login-fields">
         <h4 className="admin-login-field-spacer">Username</h4>
 
-        <input onChange={handleChangeUsername} />
+        <input id='username-input' onChange={handleChangeUsername} />
 
         <h4 className="admin-login-field-spacer">Password</h4>
 
-        <input type="password" onChange={handleChangePswrd} />
+        <input id='password-input' type="password" onChange={handleChangePswrd} />
       </div>
 
       {/* Login Button */}
       <button
+        id='admin-login-submit-button'
         className="admin-login-menu-submit-button"
         onClick={validate}
         disabled={disabled}
