@@ -41,6 +41,7 @@ const AddUpdateScenario = ({ scenario, setScenario, value, setValue }: any) => {
         <AddUpdateInstructions />
 
         <textarea
+          id={'admin-menu-json-editor'}
           defaultValue={initialValue}
           placeholder={initialValue}
           className={'admin-scenario-edit-box'}

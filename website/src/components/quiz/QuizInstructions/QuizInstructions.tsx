@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './quiz-instructions.css'
 
 const QuizInstructionsHeader = ({ title }: { title: string }) => {
@@ -45,7 +44,7 @@ const QuizInstructions = () => {
           <li>Each game consists of 5 questions.</li>
           <li>Each question has 4 options.</li>
           <li>
-            Select the option which you believe answerstext-indent the question
+            Select the option which you believe answers the question
             most accurately by clicking on it.
           </li>
           <li>

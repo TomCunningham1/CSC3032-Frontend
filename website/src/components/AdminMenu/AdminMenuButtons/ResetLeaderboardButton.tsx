@@ -9,7 +9,7 @@ const ResetLeaderboardButton = () => {
     <>
       <AdminOptionButton
         id="reset-leaderboard"
-        title="Reset the leaderbard"
+        title="Reset the leaderboard"
         method={() => setOpenPopup(true)}
       />
       <ResetLeaderboardPopup

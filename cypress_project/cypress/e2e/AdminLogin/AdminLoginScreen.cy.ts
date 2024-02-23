@@ -2,6 +2,10 @@
 import { ADMIN_LOGIN, SCREEN_SIZE } from "../../../config/constants"
 import environment from "../../../config/environment"
 
+const usernameInputId = '#username-input'
+const passwordInputId = '#password-input'
+const submitButtonId = '#admin-login-submit-button'
+
 describe('Admin Login page', () => {
     beforeEach(()=> {
         cy.visit(environment.frontendURL)
@@ -19,7 +23,7 @@ describe('Admin Login page', () => {
         })
 
         it('Should contain the username input', () => {
-            cy.get('#username-input')
+            cy.get(usernameInputId)
         })
 
         it('Should contain the password prompt', () => {
@@ -27,7 +31,7 @@ describe('Admin Login page', () => {
         })
 
         it('Should contain the password input', () => {
-            cy.get('#password-input')
+            cy.get(passwordInputId)
         })
 
         it('Should contain the button for logging in', () => {
@@ -37,29 +41,48 @@ describe('Admin Login page', () => {
 
     describe('Verify validation', () => {
         it('Login button should be disabled until the user has typed in a username and password', () => {
-            cy.get('#admin-login-submit-button').should('be.disabled')
+            cy.get(submitButtonId).should('be.disabled')
         })
 
         it('login button should be disabled if the user has only typed in a password', () => {
-            cy.get('#username-input').type(ADMIN_LOGIN.email)
-            cy.get('#admin-login-submit-button').should('be.disabled')
+            cy.get(usernameInputId).type(ADMIN_LOGIN.email)
+            cy.get(submitButtonId).should('be.disabled')
         })
 
         it('login button should be disabled if the user has only typed in a password', () => {
-            cy.get('#password-input').type(ADMIN_LOGIN.password)
-            cy.get('#admin-login-submit-button')
+            cy.get(passwordInputId).type(ADMIN_LOGIN.password)
+            cy.get(submitButtonId)
         })
 
         it('login button should be enabled when the user has entered a username and password', () => {
-            cy.get('#username-input').type(ADMIN_LOGIN.email)
-            cy.get('#password-input').type(ADMIN_LOGIN.password)
-            cy.get('#admin-login-submit-button').should('be.enabled')
+            cy.get(usernameInputId).type(ADMIN_LOGIN.email)
+            cy.get(passwordInputId).type(ADMIN_LOGIN.password)
+            cy.get(submitButtonId).should('be.enabled')
         })
     })
 
     describe('User authentication', () => {
         it('Should block a user with valid password but invalid username', () => {
+            cy.get(usernameInputId).type("Test")
+            cy.get(passwordInputId).type(ADMIN_LOGIN.password)
+            cy.get(submitButtonId).click()
+            cy.contains('Incorrect Username or Password')
+        })
 
+        it('Should block a user with valid username and invalid password', () => {
+            cy.get(usernameInputId).type(ADMIN_LOGIN.email)
+            cy.get(passwordInputId).type('invalid')
+            cy.get(submitButtonId).click()
+            cy.contains('Incorrect Username or Password')
+        })
+
+        it('Should allow access when a user logs in with a valid username and password', () => {
+            cy.get(usernameInputId).type(ADMIN_LOGIN.email)
+            cy.get(passwordInputId).type(ADMIN_LOGIN.password)
+            cy.get(submitButtonId).click()
+            cy.contains('Delete a Scenario')
+            cy.contains('View Scenario')
+            cy.contains('Reset the leaderboard')
         })
     })
 })

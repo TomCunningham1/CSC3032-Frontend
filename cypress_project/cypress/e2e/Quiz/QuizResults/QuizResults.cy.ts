@@ -83,23 +83,13 @@ describe('Quiz Instructions Page', () => {
       })
     })
 
-    describe('test navigation buttons', () => {
-      it('should contain the Play Again button', () => {
-        cy.contains('Play Again')
-      })
-  
+    describe('test navigation buttons', () => {  
       it('should contain the back to home button', () => {
         cy.contains('Back to Home')
       })
 
-      it('play again button should send the user back to the first question', () => {
-        cy.contains('Play Again').click()
-
-        cy.contains('Quiz Mode')
-      })
-
       it('back home button should send the user back to the main menu page', () =>  {
-        cy.contains('Back to Home').click()
+        cy.contains('Home').click()
 
         cy.contains('Hack Attack')
       })

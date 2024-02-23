@@ -11,7 +11,7 @@ const SCREEN_SIZE = {
 
 const ADMIN_LOGIN = {
   email: 'tcunningham12@qub.ac.uk',
-  password: process.env.ADMIN_PASSWORD || 'test'
+  password: process.env.ADMIN_PASSWORD || 'Passw()rd-1'
 }
 
 const PRODUCTION_ENVIRONMENT = {
