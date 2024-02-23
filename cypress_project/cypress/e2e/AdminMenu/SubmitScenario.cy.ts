@@ -5,9 +5,10 @@ import environment from "../../../config/environment"
 const usernameInputId = '#username-input'
 const passwordInputId = '#password-input'
 const submitButtonId = '#admin-login-submit-button'
-const selectId = '#scenario-select'
+const adminMenuTextareaId = '#admin-menu-json-editor'
+const submitInputId = '#input-submit-check'
 
-describe('Admin Login page', () => {
+describe('Submit Scenario Pop Up', () => {
     beforeEach(()=> {
         cy.visit(environment.frontendURL)
         cy.viewport(SCREEN_SIZE.width, SCREEN_SIZE.height)
@@ -15,22 +16,29 @@ describe('Admin Login page', () => {
         cy.get(usernameInputId).type(ADMIN_LOGIN.email)
         cy.get(passwordInputId).type(ADMIN_LOGIN.password)
         cy.get(submitButtonId).click()
-        cy.contains('View Scenario').click()
+        cy.get(adminMenuTextareaId).type('{}')
+        cy.contains('Valid JSON')
+        cy.contains('Submit Scenario').click()
     })
 
-    describe('Verify popup contents', () => {
- 
-        it('Should contain the popup title', () => {
-            cy.contains('View Scenario')
+    describe('Verify page content', () => {
+
+        it('Should contain delete a scenario button', () => {
+            cy.contains('Delete a Scenario')
         })
 
-        it('Should contain the title of the scenario which you want to load', () => {
-            cy.contains('Enter the title of the scenario which you want to load.')
+        it('should contain prompt for the user about submitting', () => {
+            cy.contains('Submitting the updated scenario will over-write any existing questions.')
         })
 
-        it('Should contain the dropdown', () => {
-            cy.get(selectId)
+        it('should contain a prompt to confirm the scenario', () => {
+            cy.contains('Enter confirm to confirm you want to update the scenario.')
         })
+
+        it('should contain the check input', () => {
+            cy.get(submitInputId)
+        })
+
     })
 
     describe('Verify validation', () => {
@@ -39,7 +47,7 @@ describe('Admin Login page', () => {
         })
 
         it('Proceed button should be disabled until a scenario is selected', () => {
-            cy.get(selectId).select('SQL Injection')
+            cy.get(submitInputId).type('confirm')
             cy.contains('Proceed').should('be.enabled')
         })
     })

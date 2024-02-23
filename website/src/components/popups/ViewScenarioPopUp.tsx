@@ -46,7 +46,7 @@ const ViewScenarioPopUp = ({ open, onClose, setScenario, scenarios }: any) => {
           Enter the <i>title</i> of the scenario which you want to load.
         </p>
         <br />
-        <select className={'PopUpSelect'} onChange={handleChange}>
+        <select id='scenario-select' className={'PopUpSelect'} onChange={handleChange}>
           <option value={''}></option>
           {scenarios.map((scenario: string) => {
             return <option value={scenario}>{scenario}</option>

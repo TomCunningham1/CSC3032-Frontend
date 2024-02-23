@@ -36,7 +36,7 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   return (
     <PopUp
       id={'delete-scenario-popup'}
-      title="Delete Scenario"
+      title="Reset Leaderboard"
       onClose={onClose}
     >
       <Toaster />
@@ -45,9 +45,9 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
         <br />
         To confirm enter <i>permanently delete</i> into the below text box.
         <br />
-        <input onChange={handleChange}></input>
+        <input id='reset-leader-board-check-input' onChange={handleChange}></input>
         <br />
-        *Deleting is permenant and cannot be undone
+        *Deleting is permanent and cannot be undone
       </div>
       <PopUpButton
         id="close"

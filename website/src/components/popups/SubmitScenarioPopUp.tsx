@@ -57,7 +57,7 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
           Enter <i>confirm</i> to confirm you want to update the scenario.
         </p>
         <br />
-        <input onChange={handleChange}></input>
+        <input id='input-submit-check' onChange={handleChange}></input>
       </div>
       <PopUpButton
         id="close"

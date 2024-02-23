@@ -5,9 +5,7 @@ import environment from "../../../config/environment"
 const usernameInputId = '#username-input'
 const passwordInputId = '#password-input'
 const submitButtonId = '#admin-login-submit-button'
-const adminMenuTextareaId = '#admin-menu-json-editor'
-const scenarioSelectDropDownId = '#scenario-select'
-const confirmationInputId = '#confirmation-input'
+const resetLeaderboardCheckInputId = '#reset-leader-board-check-input'
 
 describe('Admin Login page', () => {
     beforeEach(()=> {
@@ -22,63 +20,41 @@ describe('Admin Login page', () => {
 
     describe('Verify popup contents', () => {
         it('Should contain the popup title', () => {
-            cy.contains('Delete Scenario')
+            cy.contains('Reset Leaderboard')
         })
 
-        it('Should contain a prompt for the user to use the dropdown to select a scenario', () => {
-            cy.contains('Enter the title of the scenario which you want to delete.*')
+        it('should contain the prompt for the user', () => {
+            cy.contains('This will empty the results from the database removing all user results')
         })
 
-        it('Should contain the drop down options', () => {
-            cy.get(scenarioSelectDropDownId)
+        it('Should contain prompt for the check', () => {
+            cy.contains('To confirm enter permanently delete into the below text box')
         })
 
-        it('Should contain the confirmation text input', () => {
-            cy.get(confirmationInputId)
+        it('Should contain a deletion warning', () => {
+            cy.contains('*Deleting is permanent and cannot be undone')
         })
 
-        it('Should contain prompt to enter the confirmation text', () => {
-            cy.contains('To confirm enter permanently delete into the below text box.')
-        })
-
-        it('Should contain the permanently delete warning', () => {
-            cy.contains('*Deleting is permenant and cannot be undone')
-        })
-
-        it('Should contain the proceed button', () => {
-            cy.contains('Proceed')
-        })
-
-        it('Should contain back button', () => {
-            cy.contains('Back')
+        it('contains the input', () => {
+            cy.get(resetLeaderboardCheckInputId)
         })
     })
 
-    describe('Validate proceed validation', () => {
-        it('Proceed button should be disabled if Select is empty and confirmation check is empty', () => {
-            cy.contains('Proceed').should('be.disabled')
+    describe('Verify the navigation', () => {
+        it('should navigate the user back to the admin menu', () => {
+            cy.contains('Back').click()
+            cy.contains('Delete a Scenario')
         })
+    })
 
-        it('Proceed should be disabled if the select is not empty but the confirmation check is empty', () => {
-            cy.get(scenarioSelectDropDownId).select('SQL Injection')
-            cy.contains('Proceed').should('be.disabled')
-        })
-
-        it('Proceed should be disabled if the select is empty but the confirmation check has been entered', () => {
-            cy.get(confirmationInputId).type('Permanently Delete')
-            cy.contains('Proceed').should('be.disabled')
-        })
-
-        it('Proceed should be enabled if the select is not empty and the confirmation check has been entered', () => {
-            cy.get(scenarioSelectDropDownId).select('SQL Injection')
-            cy.get(confirmationInputId).type('permanently delete')
+    describe('verify validation', () => {
+        it('proceed button should be disabled if check is not entered', () => {
+            cy.get(resetLeaderboardCheckInputId).type('permanently delete')
             cy.contains('Proceed').should('be.enabled')
         })
-    })
-
-    describe('Navigation Tests', () => {
-        it('Should bring the user back to the admin menu', () => {
-            cy.contains('Back').click()
+        
+        it('proceed button should be disabled if check is not entered', () => {
+            cy.contains('Proceed').should('be.disabled')
         })
     })
 })

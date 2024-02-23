@@ -62,7 +62,7 @@ const Account = (props: any) => {
           },
           onFailure: (err) => {
             console.error('onFailure: ', err)
-            reject('Incorrect Username or Password')
+            reject(err)
           },
           newPasswordRequired: (data) => {
             console.log('newPasswordRequired: ', data)

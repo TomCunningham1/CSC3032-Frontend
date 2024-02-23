@@ -17,7 +17,7 @@ describe('Admin Login page', () => {
         cy.get(usernameInputId).type(ADMIN_LOGIN.email)
         cy.get(passwordInputId).type(ADMIN_LOGIN.password)
         cy.get(submitButtonId).click()
-        cy.contains('Delete a Scenario').click()
+        cy.get('#delete-scenario').click()
     })
 
     describe('Verify popup contents', () => {

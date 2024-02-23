@@ -20,7 +20,7 @@ describe('Admin Login page', () => {
     describe('Verify page content', () => {
 
         it('Should contain delete a scenario button', () => {
-            cy.contains('Delete a scenario')
+            cy.contains('Delete a Scenario')
         })
 
         it('Should contain the view scenario button', () => {

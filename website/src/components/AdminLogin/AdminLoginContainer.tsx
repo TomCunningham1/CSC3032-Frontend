@@ -27,7 +27,7 @@ const AdminLoginContainer = () => {
         navigate('/admin-menu')
       })
       .catch((err) => {
-        toast.error(err.message)
+        toast.error("Incorrect Username or Password")
       })
   }
 
