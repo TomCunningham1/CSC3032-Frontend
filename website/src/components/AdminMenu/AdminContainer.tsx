@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AddUpdateScenario from './AddUpdateScenario'
 import './admin.css'
 import SubmitScenarioPopup from '../popups/SubmitScenarioPopUp'
@@ -8,6 +8,7 @@ import ViewScenarioButton from './AdminMenuButtons/ViewScenarioButton'
 import toast, { Toaster } from 'react-hot-toast'
 import LoadingClock from '../LoadingClock/LoadingClock'
 import BackendService from '../../services/backend-service'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 const SubmitButton = ({ scenario }: { scenario: string }) => {
   const [openPopup, setOpenPopup] = useState(false)
@@ -25,6 +26,7 @@ const SubmitButton = ({ scenario }: { scenario: string }) => {
       />
       <button
         className="admin-menu-button-right"
+        data-testid="admin-submit-button"
         onClick={() => {
           setOpenPopup(true)
         }}
@@ -44,7 +46,10 @@ const AdminOptionsContainer = ({
   setScenario,
   scenarios,
 }: AdminOptionsContainerProps) => (
-  <div className={'admin-menu-options'}>
+  <div
+    data-testid={'admin-menu-options-container'}
+    className={'admin-menu-options'}
+  >
     <DeleteScenarioButton scenarios={scenarios} />
     <ViewScenarioButton setScenario={setScenario} scenarios={scenarios} />
     <ResetLeaderboardButton />
@@ -54,48 +59,42 @@ const AdminOptionsContainer = ({
 const AdminContainer = () => {
   const [scenario, setScenario] = useState('')
   const [value, setValue] = useState('')
-  const [loading, isLoading] = useState(true)
   const [scenarios, setScenarios] = useState([])
 
+  const { updateLoading } = useContext(LoadingContext)
+
   useEffect(() => {
-    isLoading(true)
+    updateLoading(true)
     const getScenarios = async () => {
       await BackendService.getAllScenarios()
         .then((resp) => {
           setScenarios(resp.data)
         })
         .catch((err) => {
-          toast.error(err)
+          toast.error(err.message)
         })
     }
     getScenarios()
-    isLoading(false)
+    updateLoading(false)
   }, [])
 
   return (
     <>
       <Toaster />
-      {loading ? (
-        <LoadingClock />
-      ) : (
-        <div
-          className="admin-menu-container"
-          data-testid={'admin-menu-wrapper'}
-        >
-          <AdminOptionsContainer
-            setScenario={setScenario}
-            scenarios={scenarios}
-          />
-          <AddUpdateScenario
-            scenario={scenario}
-            setScenario={setScenario}
-            value={value}
-            setValue={setValue}
-          />
-          {isJSON(scenario) ? <>Valid JSON</> : <>Invalid JSON</>}
-          <SubmitButton scenario={scenario} />
-        </div>
-      )}
+      <div className="admin-menu-container" data-testid={'admin-menu-wrapper'}>
+        <AdminOptionsContainer
+          setScenario={setScenario}
+          scenarios={scenarios}
+        />
+        <AddUpdateScenario
+          scenario={scenario}
+          setScenario={setScenario}
+          value={value}
+          setValue={setValue}
+        />
+        {isJSON(scenario) ? <>Valid JSON</> : <>Invalid JSON</>}
+        <SubmitButton scenario={scenario} />
+      </div>
     </>
   )
 }

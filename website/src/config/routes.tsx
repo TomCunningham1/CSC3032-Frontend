@@ -6,7 +6,6 @@ import QuizInstructions from '../components/quiz/QuizInstructions/QuizInstructio
 import QuizSummary from '../components/quiz/QuizSummary/QuizSummary'
 import AdminLogin from '../pages/AdminLogin'
 import AdminMenu from '../pages/AdminMenu'
-import Leaderboard from '../pages/Leaderboard'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import { useContext } from 'react'
 import { AccountContext } from '../auth/Account'
@@ -23,7 +22,6 @@ const routes: RouteConfig[] = [
   { path: '/play/instructions', element: <QuizInstructions /> },
   { path: '/play/quiz', element: <Play /> },
   { path: '/play/quizSummary', element: <QuizSummary /> },
-  { path: '/leaderboard', element: <Leaderboard /> },
   { path: '/admin-login', element: <AdminLogin /> },
   { path: '/admin-menu', element: <AdminMenu />, isPrivate: true },
 ]

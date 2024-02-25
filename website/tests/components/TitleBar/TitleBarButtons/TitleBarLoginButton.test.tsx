@@ -2,17 +2,20 @@ import React from 'react';
 import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import * as router from 'react-router';
-import TitleBarLeaderboardButton from '../../../../src/components/TitleBar/TitleBarButtons/TitleBarLeaderboardButton';
+import TitleBarLoginButton from '../../../../src/components/TitleBar/TitleBarButtons/TitleBarLoginButton';
 
 const navigate = jest.fn();
+
 describe('TitleBarLeaderboardButton', () => {
+
+    const buttonId = 'main-menu-navigation-login'
 
     let output: RenderResult;
 
     const renderComponent = () => {
         return render (
             <MemoryRouter>
-                <TitleBarLeaderboardButton />
+                <TitleBarLoginButton />
             </MemoryRouter>
         )
     }
@@ -24,7 +27,7 @@ describe('TitleBarLeaderboardButton', () => {
     it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-leaderboard')
+        const button = output.getByTestId(buttonId)
 
         expect(button).toBeTruthy()
     })
@@ -33,7 +36,7 @@ describe('TitleBarLeaderboardButton', () => {
     it('should have the correct className', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-leaderboard')
+        const button = output.getByTestId(buttonId)
 
         expect(button.className).toBe('TitleBarButton')
     })
@@ -41,28 +44,19 @@ describe('TitleBarLeaderboardButton', () => {
     it('should contain the button label', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-leaderboard')
+        const button = output.getByTestId(buttonId)
 
-        expect(button.innerHTML).toBe('Leaderboard')
+        expect(button.innerHTML).toBe('Admin Login')
     })
 
-    it('should navigate to the home page if clicked', async () => {
-        output = renderComponent();
+    it('should navigate to the admin login page', () => {
+        output = renderComponent()
 
-        const button = output.getByTestId('main-menu-navigation-leaderboard')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 
-        await waitFor(() => {
-            expect(output.queryByTestId('leaderboard-popup')).toBeTruthy()
-        })
-
-        const closeButton = output.getByTestId('leaderboard-popup-close-button')
-
-        fireEvent.click(closeButton)
-
-        await waitFor(() => {
-            expect(output.queryByTestId('leaderboard-popup')).toBeFalsy()
-        })
+        expect(navigate).toHaveBeenCalled()
+        expect(navigate).toHaveBeenCalledWith('/admin-login')
     })
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RenderResult, fireEvent, render } from '@testing-library/react';
+import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
 import TitleBarHelpButton from '../../../../src/components/TitleBar/TitleBarButtons/TitleBarHelpButton';
 
 describe('TitleBarHelpButton', () => {
@@ -51,14 +51,22 @@ describe('TitleBarHelpButton', () => {
         expect(popupText).toBeTruthy()
     })
 
-    it('should close the pop up when the button is not clicked', () => {
+    it('should close the pop up when the button is not clicked', async () => {
         output = renderComponent();
 
         const button = output.getByTestId('main-menu-navigation-help')
 
+        fireEvent.click(button)
+
         const popup = output.queryByTestId('help-popup')
 
-        expect(popup).toBeFalsy()
+        const popupCloseButton = output.getByTestId('help-popup-close-button')
+
+        fireEvent.click(popupCloseButton)
+
+        await waitFor(() => {
+            expect(output.queryByTestId('help-popup'))
+        })
     })
 });
 

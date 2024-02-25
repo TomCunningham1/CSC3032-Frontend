@@ -2,7 +2,6 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { RenderResult, fireEvent, render } from '@testing-library/react';
 import HelpPopUp from '../../../src/components/popups/HelpPopUp';
-import exp from 'constants';
 
 describe('help popups test', () => {
 

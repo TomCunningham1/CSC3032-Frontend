@@ -8,7 +8,6 @@ import {
 import PopUp from './PopUp'
 import './PopUp.css'
 import BackendService from '../../services/backend-service'
-import CustomClockLoader from '../LoadingClock/LoadingClock'
 import toast, { Toaster } from 'react-hot-toast'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
 

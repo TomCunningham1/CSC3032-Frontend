@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router'
 import TitleBarButton from './TitleBarButton'
 
-const TitleBarScenarioButton = () => {
+const TitleBarAdminMenuButton = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('admin-menu')
+    navigate('/admin-menu')
   }
 
   return (
@@ -19,4 +19,4 @@ const TitleBarScenarioButton = () => {
   )
 }
 
-export default TitleBarScenarioButton
+export default TitleBarAdminMenuButton

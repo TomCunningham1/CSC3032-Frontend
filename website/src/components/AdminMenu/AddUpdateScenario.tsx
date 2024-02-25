@@ -3,7 +3,10 @@ import './admin.css'
 
 const AddUpdateInstructions = () => {
   return (
-    <div className="admin-instructions">
+    <div
+      data-testid={'admin-scenario-instructions'}
+      className="admin-instructions"
+    >
       <h4>Instructions</h4>
       <ul>
         <li>
@@ -36,13 +39,13 @@ const AddUpdateScenario = ({ scenario, setScenario, value, setValue }: any) => {
   }, [scenario])
 
   return (
-    <div className="scenario-wrapper">
-      <div className="scenario-container">
+    <div data-testid={'scenario-wrapper'} className="scenario-wrapper">
+      <div data-testid={'scenario-container'} className="scenario-container">
         <AddUpdateInstructions />
 
         <textarea
           id={'admin-menu-json-editor'}
-          // defaultValue={initialValue}
+          data-testid={'admin-menu-json-editor'}
           placeholder={initialValue}
           className={'admin-scenario-edit-box'}
           cols={12}
