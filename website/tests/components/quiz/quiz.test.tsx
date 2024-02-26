@@ -36,7 +36,15 @@ describe('Tests for the quiz page', () => {
                 optionC: 'optionC',
                 optionD: 'optionD',
                 answer: 'optionA',
-                question: 'question',
+                question: 'question1',
+                stage: "test"
+            },{
+                optionA: 'optionA',
+                optionB: 'optionB',
+                optionC: 'optionC',
+                optionD: 'optionD',
+                answer: 'optionA',
+                question: 'question2',
                 stage: "test"
             }]
         }
@@ -119,10 +127,49 @@ describe('Tests for the quiz page', () => {
         const optionB = output.getByTestId('option-b') as HTMLParagraphElement
         const optionC = output.getByTestId('option-c') as HTMLParagraphElement
         const optionD = output.getByTestId('option-d') as HTMLParagraphElement
-        
-        console.log(optionA)
-        console.log(optionB)
-        console.log(optionC)
-        console.log(optionD)
+
+        const optionList = [optionA, optionB, optionC, optionD]
+        const filteredOptions = optionList.filter(option => option.style.visibility === 'hidden')
+
+        expect(filteredOptions.length).toBe(2)
+    })
+
+    it('should handle hint', () => {
+        const fiftyFiftyButton = output.getByTestId('hint-button')
+    
+        act(() => {
+            fireEvent.click(fiftyFiftyButton)
+        })
+
+        const optionA = output.getByTestId('option-a') as HTMLParagraphElement
+        const optionB = output.getByTestId('option-b') as HTMLParagraphElement
+        const optionC = output.getByTestId('option-c') as HTMLParagraphElement
+        const optionD = output.getByTestId('option-d') as HTMLParagraphElement
+
+        const optionList = [optionA, optionB, optionC, optionD]
+        const filteredOptions = optionList.filter(option => option.style.visibility === 'hidden')
+
+        expect(filteredOptions.length).toBe(1)
+    })
+
+    it('should handle displaying the next question', async () => {
+        const optionA = output.getByTestId('option-a') as HTMLParagraphElement
+
+        act(() => {
+            fireEvent.click(optionA)
+        })
+
+        const question1 = output.queryByText('question1')
+
+        await waitFor(() => {
+            expect(question1).toBeFalsy()
+        })
+
+        const question2 = output.queryByText('question2')
+
+        await waitFor(() => {
+            expect(question2).toBeTruthy()
+        })
+
     })
 });

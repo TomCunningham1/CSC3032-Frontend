@@ -35,8 +35,8 @@ const TitleBar = () => {
       <Box className={'TitleBarBox'}>
         <AppBar position="fixed">
           <Toolbar className={'TitleBar'}>
-            <h1 className={'Title'}>Hack Attack</h1>
-            <div className={'TitleBarButtons'}>
+            <h1 data-testid='titlebar-title' className={'Title'}>Hack Attack</h1>
+            <div data-testid='titlebar-button-container' className={'TitleBarButtons'}>
               <TitleBarHomeButton />
               <TitleBarLeaderboardButton />
               <TitleBarSettingsButton />

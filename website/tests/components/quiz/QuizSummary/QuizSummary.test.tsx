@@ -1,4 +1,4 @@
-import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
+import { RenderResult, act, fireEvent, render, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
@@ -41,7 +41,7 @@ describe('Tests for the login page', () => {
         jest.spyOn(axios, 'post').mockImplementation(mockPost)
         jest.spyOn(toast, 'success').mockImplementation(mockSuccess)
         jest.spyOn(toast, 'error').mockImplementation(mockError)
-        jest.spyOn(router, 'useNavigate').mockImplementation(mockNavigate)
+        jest.spyOn(router, 'useNavigate').mockReturnValue(mockNavigate)
         jest.spyOn(router, 'useLocation').mockImplementation(mockLocation)
     });
 
@@ -49,12 +49,31 @@ describe('Tests for the login page', () => {
         return render(<QuizSummary />)
     }
 
-    it('verifies that the component renders', async () => {
+    beforeEach(() => {
         output = renderComponent()
+    })
+
+    it('verifies that the component renders', async () => {
 
         const table = output.getByTestId('results-table')
 
         expect(table).toBeTruthy()
+    })
+
+    it('verifies that the page navigates away when the home button is clicked', async () => {
+        const button = output.getByTestId('summary-home-button')
+
+        act(() => {
+            fireEvent.click(button)
+        })
+
+        await waitFor(() => {
+            expect(mockNavigate).toHaveBeenCalledWith('/')
+        })
+    })
+
+    it('verifies that the remark is calculated depending on score', () => {
+        
     })
 
 

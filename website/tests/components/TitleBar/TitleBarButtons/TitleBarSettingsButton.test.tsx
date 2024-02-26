@@ -4,6 +4,8 @@ import TitleBarSettingsButton from '../../../../src/components/TitleBar/TitleBar
 
 describe('title bar settings button', () => {
 
+    const buttonId = 'title-bar-navigation-settings'
+
     let output: RenderResult;
 
     const renderComponent = () => {
@@ -15,7 +17,7 @@ describe('title bar settings button', () => {
     it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         expect(button).toBeTruthy()
     })
@@ -24,7 +26,7 @@ describe('title bar settings button', () => {
     it('should have the correct className', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         expect(button.className).toBe('TitleBarButton')
     })
@@ -32,7 +34,7 @@ describe('title bar settings button', () => {
     it('should contain the button label', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         expect(button.innerHTML).toBe('Settings')
     })
@@ -40,7 +42,7 @@ describe('title bar settings button', () => {
     it('should open the pop up when the button is clicked', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 
@@ -54,7 +56,7 @@ describe('title bar settings button', () => {
     it('should close the pop up when the close button is clicked', async () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 

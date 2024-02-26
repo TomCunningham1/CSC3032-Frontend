@@ -9,7 +9,7 @@ const mockFunction = jest.fn();
 
 describe('TitleBarLeaderboardButton', () => {
 
-    const buttonId = 'main-menu-navigation-logout'
+    const buttonId = 'title-bar-navigation-logout'
 
     let output: RenderResult;
 

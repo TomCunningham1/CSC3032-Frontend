@@ -6,6 +6,8 @@ describe('TitleBarHelpButton', () => {
 
     let output: RenderResult;
 
+    const buttonId = 'title-bar-navigation-help'
+
     const renderComponent = () => {
         return render (
             <TitleBarHelpButton />
@@ -15,7 +17,7 @@ describe('TitleBarHelpButton', () => {
     it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         expect(button).toBeTruthy()
     })
@@ -24,7 +26,7 @@ describe('TitleBarHelpButton', () => {
     it('should have the correct className', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         expect(button.className).toBe('TitleBarButton')
     })
@@ -32,7 +34,7 @@ describe('TitleBarHelpButton', () => {
     it('should contain the button label', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         expect(button.innerHTML).toBe('Help')
     })
@@ -40,7 +42,7 @@ describe('TitleBarHelpButton', () => {
     it('should open the pop up when the button is clicked', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 
@@ -54,7 +56,7 @@ describe('TitleBarHelpButton', () => {
     it('should close the pop up when the button is not clicked', async () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 

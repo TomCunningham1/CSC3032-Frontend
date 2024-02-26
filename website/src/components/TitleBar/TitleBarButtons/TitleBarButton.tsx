@@ -10,7 +10,7 @@ const TitleBarButton = ({ id, text, method }: TitleBarButton) => {
   return (
     <button
       className={'TitleBarButton'}
-      data-testid={`main-menu-navigation-${id}`}
+      data-testid={`title-bar-navigation-${id}`}
       onClick={method}
     >
       {text}

@@ -19,11 +19,6 @@ interface PlayPropsInterface {
 }
 
 interface PlayStateInterface {
-  //stages: any[]
-  //currentStage: any
-  //nextStage: any
-  //previousStage: any
-  //numberOfStages: number
   questions: any[]
   currentQuestion: any
   nextQuestion: any
@@ -62,9 +57,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
-      //currentStage: {},
-      //nextStage: {},
-      //previousStage: {},
       answer: '',
       numberOfQuestions: 0,
       numberOfAnsweredQuestions: 0,
@@ -92,20 +84,12 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       currentQuestion,
       nextQuestion,
       previousQuestion,
-      //stages,
-      //currentStage,
-      //nextStage,
-      //previousStage,
     } = this.state
     this.displayQuestions(
       questions,
       currentQuestion,
       nextQuestion,
       previousQuestion
-      //stages,
-      //currentStage,
-      //nextStage,
-      //previousStage
     )
     this.startTimer()
   }
@@ -114,42 +98,18 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     clearInterval(this.interval)
   }
 
-  displayStages = (
-    stages = this.state.stages,
-    currentStage: any,
-    nextStage: any,
-    previousStage: any
-  ) => {
-    let { currentStageIndex } = this.state
-    if (!isEmpty(this.state.questions.stages)) {
-      const answer = currentStage.answer
-      this.setState({}, () => {
-        this.showOptions()
-        this.handleDisableButton()
-      })
-    }
-  }
-
   displayQuestions = (
     questions = this.state.questions,
     currentQuestion: any,
     nextQuestion: any,
     previousQuestion: any
-    //stages = this.state.stages,
-    //currentStage: any,
-    // nextStage: any,
-    //previousStage: any
   ) => {
     let { currentQuestionIndex, currentStageIndex } = this.state
-    if (!isEmpty(this.state.questions /*&& this.state.questions.stage*/)) {
+    if (!isEmpty(this.state.questions)) {
       questions = this.state.questions
       currentQuestion = questions[currentQuestionIndex]
       nextQuestion = questions[currentQuestionIndex + 1]
       previousQuestion = questions[currentQuestionIndex - 1]
-      /*stages = this.state.questions.stages
-      currentStage = stages[currentStageIndex]
-      nextStage = stages[currentStageIndex + 1]
-      previousStage = stages[currentStageIndex - 1]*/
       const answer = currentQuestion.answer
       this.setState(
         {
@@ -157,10 +117,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           nextQuestion,
           previousQuestion,
           numberOfQuestions: questions.length,
-          //currentStage,
-          //nextStage,
-          //previousStage,
-          //numberOfStages: stages.length,
           answer,
           previousRandomNumbers: [],
         },
@@ -192,7 +148,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex + 1,
-          /* currentStage: prevState.currentStage + 1, */
         }),
         () => {
           this.displayQuestions(
@@ -200,10 +155,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
-            /*this.state.stages,
-            this.state.currentStage,
-            this.state.nextStage,
-            this.state.previousStage*/
           )
         }
       )
@@ -219,7 +170,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex - 1,
-          /* currentStage: prevState.currentStage - 1, */
         }),
         () => {
           this.displayQuestions(
@@ -227,10 +177,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
-            /* this.state.stages,
-            this.state.currentStage,
-            this.state.nextStage,
-            this.state.previousStage */
           )
         }
       )
@@ -289,10 +235,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
-            /* this.state.stages,
-            this.state.currentStage,
-            this.state.nextStage,
-            this.state.previousStage */
           )
         }
       }
@@ -321,10 +263,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             this.state.currentQuestion,
             this.state.nextQuestion,
             this.state.previousQuestion
-            /* this.state.stages,
-            this.state.currentStage,
-            this.state.nextStage,
-            this.state.previousStage */
           )
         }
       }
@@ -431,6 +369,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       }))
     }
   }
+  
   //Timer code
   startTimer = () => {
     const countDownTime = Date.now() + 180000
@@ -508,7 +447,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       seconds: state.time.seconds,
     }
     setTimeout(() => {
-      console.log(playerStats)
       this.props.router.navigate('/play/quizSummary', { state: playerStats })
     }, 1000)
   }
@@ -517,9 +455,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     const {
       currentQuestion,
       currentQuestionIndex,
-      /*currentStage,
-      currentStageIndex,
-      numberOfStages, */
       fiftyFifty,
       hints,
       numberOfQuestions,
@@ -545,7 +480,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               </span>
             </p>
             <p>
-              <span onClick={this.handleHints} className="Hint Icon">
+              <span data-testid='hint-button' onClick={this.handleHints} className="Hint Icon">
                 {' '}
                 <PhoneIcon color="primary" style={{ color: 'white' }} />
                 <span className="lifeline">{hints}</span>
@@ -588,15 +523,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             </p>
           </div>
           <div className="button-container">
-            {/* <button
-              className={classnames('', {
-                disable: this.state.previousButtonDisabled,
-              })}
-              id="previous-button"
-              onClick={this.handleButtonClick}
-            >
-              Previous
-            </button> */}
             <button
               className={classnames('', {
                 disable: this.state.nextButtonDisabled,
@@ -606,9 +532,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             >
               Skip
             </button>
-            {/* <button id="quit-button" onClick={this.handleButtonClick}>
-              Quit
-            </button> */}
           </div>
         </div>
       </Fragment>

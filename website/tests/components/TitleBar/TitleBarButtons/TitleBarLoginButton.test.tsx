@@ -8,7 +8,7 @@ const navigate = jest.fn();
 
 describe('TitleBarLeaderboardButton', () => {
 
-    const buttonId = 'main-menu-navigation-login'
+    const buttonId = 'title-bar-navigation-login'
 
     let output: RenderResult;
 

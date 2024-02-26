@@ -8,7 +8,7 @@ const navigate = jest.fn();
 
 describe('Admin Menu button', () => {
 
-    const buttonId = 'main-menu-navigation-admin-menu'
+    const buttonId = 'title-bar-navigation-admin-menu'
 
     let output: RenderResult;
 
