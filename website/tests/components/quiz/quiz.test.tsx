@@ -1,4 +1,4 @@
-import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
+import { RenderResult, act, fireEvent, render, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
@@ -26,6 +26,7 @@ describe('Tests for the quiz page', () => {
     const mockSuccess = jest.fn().mockResolvedValue({})
     const mockError = jest.fn()
     const mockNavigate = jest.fn()
+
     const mockLocation = jest.fn().mockReturnValue({
         state: {
             title: 'Test',
@@ -34,7 +35,7 @@ describe('Tests for the quiz page', () => {
                 optionB: 'optionB',
                 optionC: 'optionC',
                 optionD: 'optionD',
-                answer: 'answer',
+                answer: 'optionA',
                 question: 'question',
                 stage: "test"
             }]
@@ -59,11 +60,69 @@ describe('Tests for the quiz page', () => {
         )
     }
 
-    it('should verify that the component renders', () => {
+    beforeEach(() => {
         output = renderComponent();
+    })
 
-        // const title = output.getByTestId('main-menu-navigation-help');
-
+    it('should verify that the component renders', () => {
         expect(output).toBeTruthy();
     });
+
+    it('should verify that the questions container renders', () => {
+        const container = output.getByTestId('questions-container')
+        expect(container).toBeTruthy()
+    })
+
+    describe('verify that the options are displayed correctly', () => {
+        it('should display option A', () => {
+            const optionA = output.getByTestId('option-a')
+            expect(optionA.innerHTML).toBe('optionA')
+        })
+
+        it('should display option B', () => {
+            const optionB = output.getByTestId('option-b')
+            expect(optionB.innerHTML).toBe('optionB')
+        })
+
+        it('should display option C', () => {
+            const optionC = output.getByTestId('option-c')
+            expect(optionC.innerHTML).toBe('optionC')
+        })
+
+        it('should display option D', () => {
+            const optionD = output.getByTestId('option-d')
+            expect(optionD.innerHTML).toBe('optionD')
+        })
+    })
+
+    it('should inform the user if the answer is correct or not', async () => {
+        const optionA = output.getByTestId('option-a')
+        
+        act(() => {
+            fireEvent.click(optionA)
+        })
+
+        const alert = output.getByText('Correct Answer!')
+        await waitFor(() => {
+            expect(alert).toBeTruthy()
+        })
+    })
+
+    it('should handle fifty fifty', () => {
+        const fiftyFiftyButton = output.getByTestId('fiftyfifty-button')
+    
+        act(() => {
+            fireEvent.click(fiftyFiftyButton)
+        })
+
+        const optionA = output.getByTestId('option-a') as HTMLParagraphElement
+        const optionB = output.getByTestId('option-b') as HTMLParagraphElement
+        const optionC = output.getByTestId('option-c') as HTMLParagraphElement
+        const optionD = output.getByTestId('option-d') as HTMLParagraphElement
+        
+        console.log(optionA)
+        console.log(optionB)
+        console.log(optionC)
+        console.log(optionD)
+    })
 });

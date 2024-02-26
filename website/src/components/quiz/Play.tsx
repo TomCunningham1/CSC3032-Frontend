@@ -533,12 +533,12 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
-        <div className="questions">
+        <div data-testid='questions-container' className="questions">
           <h2>{this.state.title}</h2>
           <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
             <p>
-              <span onClick={this.handleFiftyFifty} className="Phone Icon">
+              <span data-testid='fiftyfifty-button' onClick={this.handleFiftyFifty} className="Phone Icon">
                 {' '}
                 <LiveHelpIcon style={{ color: 'white' }} />
                 <span className="lifeline">{fiftyFifty}</span>
@@ -572,18 +572,18 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           </div>
           <h5>{currentQuestion.question}</h5>
           <div className="options-container">
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-a' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionA}
             </p>
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-b' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionB}
             </p>
           </div>
           <div className="options-container">
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-c' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionC}
             </p>
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-d' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionD}
             </p>
           </div>

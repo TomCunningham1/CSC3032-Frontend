@@ -9,6 +9,7 @@ module.exports = {
       "**/*.{ts,tsx}",
       "!**/node_modules/**",
       "!assets.d.ts",
-      "!setupTests.ts"
+      "!setupTests.ts",
+      "!src/index.tsx"
     ],  
   };
