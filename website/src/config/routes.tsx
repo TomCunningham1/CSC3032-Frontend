@@ -11,6 +11,7 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import { useContext } from 'react'
 import { AccountContext } from '../auth/Account'
 import LoadingClock from '../components/LoadingClock/LoadingClock'
+import QuizContext from '../components/quiz/QuizContext/QuizContext'
 
 interface RouteConfig {
   path: string
@@ -21,6 +22,7 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   { path: '/', element: <Home /> },
   { path: '/play/instructions', element: <QuizInstructions /> },
+  { path: '/play/context', element: <QuizContext />},
   { path: '/play/quiz', element: <Play /> },
   { path: '/play/quizSummary', element: <QuizSummary /> },
   { path: '/leaderboard', element: <Leaderboard /> },

@@ -21,7 +21,7 @@ const QuizInstructions = () => {
   const navigate = useNavigate()
 
   const handleStartQuiz = () => {
-    navigate('/play/quiz', {
+    navigate('/play/context', {
       state: {
         questions: location.state.questions,
         title: location.state.title,
