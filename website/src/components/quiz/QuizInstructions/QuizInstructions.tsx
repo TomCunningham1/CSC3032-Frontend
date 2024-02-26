@@ -78,7 +78,7 @@ const QuizInstructions = () => {
             Back to main menu
           </button>
           <button className="quiz-button" onClick={handleStartQuiz}>
-            Start the quiz
+            Next
           </button>
         </div>
       </div>
