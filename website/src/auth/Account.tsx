@@ -25,10 +25,7 @@ const Account = (props: any) => {
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
       const user = userPool.getCurrentUser()
-      console.log(user)
-      console.log('user got')
       if (user) {
-        console.log(user)
         user.getSession((err: any, session: any) => {
           if (err) {
             reject(err)

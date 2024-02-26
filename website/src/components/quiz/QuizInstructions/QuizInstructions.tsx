@@ -5,7 +5,7 @@ import './quiz-instructions.css'
 const QuizInstructionsHeader = ({ title }: { title: string }) => {
   return (
     <div>
-      <h1 data-testid='quiz-header-title'>{title}</h1>
+      <h1 data-testid="quiz-header-title">{title}</h1>
       <h3 className={'text-formatting'}>How to play</h3>
     </div>
   )
@@ -31,7 +31,7 @@ const QuizInstructions = () => {
 
   return (
     <Fragment>
-      <div data-testid='menu-container' className="menu-container">
+      <div data-testid="menu-container" className="menu-container">
         <QuizInstructionsHeader title={location.state.title} />
         <ul className="text-formatting" id="main-list">
           <li>
@@ -70,10 +70,18 @@ const QuizInstructions = () => {
           <li>The timer starts as soon as the game loads.</li>
         </ul>
         <div className="quiz-button-container">
-          <button data-testid='quiz-nav-main-menu' className="quiz-button" onClick={handleReturnToMain}>
+          <button
+            data-testid="quiz-nav-main-menu"
+            className="quiz-button"
+            onClick={handleReturnToMain}
+          >
             Back to main menu
           </button>
-          <button data-testid='quiz-nav-quiz' className="quiz-button" onClick={handleStartQuiz}>
+          <button
+            data-testid="quiz-nav-quiz"
+            className="quiz-button"
+            onClick={handleStartQuiz}
+          >
             Start the quiz
           </button>
         </div>

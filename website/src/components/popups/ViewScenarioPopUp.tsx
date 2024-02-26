@@ -48,14 +48,18 @@ const ViewScenarioPopUp = ({ open, onClose, setScenario, scenarios }: any) => {
         </p>
         <br />
         <select
-          data-testid='scenario-select'
+          data-testid="scenario-select"
           id="scenario-select"
           className={'PopUpSelect'}
           onChange={handleChange}
         >
           <option value={''}></option>
           {scenarios.map((scenario: string) => {
-            return <option key={scenario} value={scenario}>{scenario}</option>
+            return (
+              <option key={scenario} value={scenario}>
+                {scenario}
+              </option>
+            )
           })}
         </select>
       </div>
