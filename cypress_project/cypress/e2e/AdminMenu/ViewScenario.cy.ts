@@ -25,7 +25,7 @@ describe('Admin Login page', () => {
         })
 
         it('Should contain the title of the scenario which you want to load', () => {
-            cy.contains('Enter the title of the scenario which you want to load.')
+            cy.contains('Select the title of the scenario which you want to load.')
         })
 
         it('Should contain the dropdown', () => {
