@@ -84,7 +84,11 @@ const QuizSummary = () => {
         />
       </div>
       <div className="summary-options">
-        <button data-testid='summary-home-button' className="quiz-button" onClick={handleHomeButton}>
+        <button
+          data-testid="summary-home-button"
+          className="quiz-button"
+          onClick={handleHomeButton}
+        >
           Home
         </button>
         {/* <button className='quiz-button'>Play Again</button> */}
