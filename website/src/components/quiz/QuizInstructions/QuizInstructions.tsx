@@ -17,7 +17,7 @@ const QuizInstructions = () => {
   const navigate = useNavigate()
 
   const handleStartQuiz = () => {
-    navigate('/play/quiz', {
+    navigate('/play/context', {
       state: {
         questions: location.state.questions,
         title: location.state.title,
@@ -77,12 +77,8 @@ const QuizInstructions = () => {
           >
             Back to main menu
           </button>
-          <button
-            data-testid="quiz-nav-quiz"
-            className="quiz-button"
-            onClick={handleStartQuiz}
-          >
-            Start the quiz
+          <button className="quiz-button" onClick={handleStartQuiz}>
+            Next
           </button>
         </div>
       </div>

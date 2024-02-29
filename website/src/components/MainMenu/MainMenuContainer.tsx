@@ -35,7 +35,7 @@ const MainMenuContainer = () => {
           {scenarios.map((playthrough) => {
             const navigateToQuiz = async () => {
               setLoading(true)
-              await BackendService.readScenario(playthrough)
+              await BackendService.getQuestions(playthrough)
                 .then((response) => {
                   navigate('/play/instructions', {
                     state: {

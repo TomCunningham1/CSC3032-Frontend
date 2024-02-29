@@ -113,6 +113,17 @@ class BackendServiceClass {
     )
   }
 
+  getQuestions = async (scenarioName: string) => {
+    return await axios.get(
+      `${BACKEND_IP}/admin/get-questions?scenarioName=${scenarioName}`,
+      {
+        headers: {
+          'x-api-key': api_key,
+        },
+      }
+    )
+  }
+
   deleteScenario = async (scenarioName: string) => {
     return await axios.get(
       `${BACKEND_IP}/admin/delete?scenarioName=${scenarioName}`,

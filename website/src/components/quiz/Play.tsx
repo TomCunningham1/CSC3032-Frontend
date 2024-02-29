@@ -10,6 +10,8 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
+import questions from '../../questions/QuizQuestions'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface PlayPropsInterface {
   state?: any
@@ -210,11 +212,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   correctAnswer = () => {
-    M.toast({
-      html: 'Correct Answer!',
-      classes: 'toast-valid',
-      displayLength: 1500,
-    })
+    toast.success(
+      `Correct Answer! - ${this.state.currentQuestion.explaination}`
+    )
+
     this.setState(
       (prevState) => ({
         score: prevState.score + 1,
@@ -239,11 +240,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
   wrongAnswer = () => {
     navigator.vibrate(1000)
-    M.toast({
-      html: 'Wrong Answer!',
-      classes: 'toast-invalid',
-      displayLength: 1500,
-    })
+    toast.error(`Wrong Answer! - ${this.state.currentQuestion.explaination}`)
     this.setState(
       (prevState) => ({
         wrongAnswers: prevState.wrongAnswers + 1,
@@ -552,6 +549,19 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
             >
               Skip
             </button>
+
+            <Toaster
+              position="bottom-center"
+              reverseOrder={false}
+              toastOptions={{
+                style: {
+                  width: 800,
+                },
+              }}
+            />
+            {/* <button id="quit-button" onClick={this.handleButtonClick}>
+              Quit
+            </button> */}
           </div>
         </div>
       </Fragment>
