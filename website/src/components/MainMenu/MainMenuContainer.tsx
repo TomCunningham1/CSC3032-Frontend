@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-// import questions from '../../questions/QuizQuestions'
 import MainMenuButton from './MainMenuButton'
 import { useNavigate } from 'react-router'
 import BackendService from '../../services/backend-service'

@@ -3,7 +3,6 @@ import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
-import { LOADIPHLPAPI } from 'dns'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 const ResetLeaderboardPopup = ({ open, onClose }: any) => {
@@ -35,8 +34,8 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
 
   return (
     <PopUp
-      id={'delete-scenario-popup'}
-      title="Delete Scenario"
+      id={'reset-leaderboard-popup'}
+      title="Reset Leaderboard"
       onClose={onClose}
     >
       <Toaster />
@@ -45,12 +44,16 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
         <br />
         To confirm enter <i>permanently delete</i> into the below text box.
         <br />
-        <input onChange={handleChange}></input>
+        <input
+          data-testid="reset-leaderboard-check-input"
+          id="reset-leader-board-check-input"
+          onChange={handleChange}
+        ></input>
         <br />
-        *Deleting is permenant and cannot be undone
+        *Deleting is permanent and cannot be undone
       </div>
       <PopUpButton
-        id="close"
+        id="proceed"
         text={'Proceed'}
         onClose={handleClick}
         disabled={disabled}

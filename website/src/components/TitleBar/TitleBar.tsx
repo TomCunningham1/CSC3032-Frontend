@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AccountContext } from '../../auth/Account'
 import TitleBarLogoutButton from './TitleBarButtons/TitleBarLogoutButton'
 import TitleBarLoginButton from './TitleBarButtons/TitleBarLoginButton'
-import TitleBarScenarioButton from './TitleBarButtons/TitleBarScenarioButton'
+import TitleBarAdminMenuButton from './TitleBarButtons/TitleBarAdminMenuButton'
 import CustomClockLoader from '../LoadingClock/LoadingClock'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
 
@@ -35,12 +35,17 @@ const TitleBar = () => {
       <Box className={'TitleBarBox'}>
         <AppBar position="fixed">
           <Toolbar className={'TitleBar'}>
-            <h1 className={'Title'}>Hack Attack</h1>
-            <div className={'TitleBarButtons'}>
+            <h1 data-testid="titlebar-title" className={'Title'}>
+              Hack Attack
+            </h1>
+            <div
+              data-testid="titlebar-button-container"
+              className={'TitleBarButtons'}
+            >
               <TitleBarHomeButton />
               <TitleBarLeaderboardButton />
               <TitleBarSettingsButton />
-              {status ? <TitleBarScenarioButton /> : <TitleBarHelpButton />}
+              {status ? <TitleBarAdminMenuButton /> : <TitleBarHelpButton />}
               {status ? (
                 <TitleBarLogoutButton method={logout} />
               ) : (

@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
+import { SCREEN_SIZE } from "../../../config/constants"
 import environment from "../../../config/environment"
 
 describe('Leaderboard page', () => {
     beforeEach(()=> {
         cy.visit(environment.frontendURL)
+        cy.viewport(SCREEN_SIZE.width, SCREEN_SIZE.height)
         cy.contains('Leaderboard').click()
     })
 

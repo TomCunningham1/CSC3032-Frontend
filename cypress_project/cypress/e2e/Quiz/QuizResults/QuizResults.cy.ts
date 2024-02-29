@@ -8,29 +8,50 @@ describe('Quiz Instructions Page', () => {
     beforeEach(() => {
         cy.visit(`${environment.frontendURL}`)
         cy.contains('Cross Site Scripting').click()
-        cy.contains('Play Quiz').click()
-        cy.contains('When user is asked for input username').click()
+        cy.contains('Start the quiz').click()
+        
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
+        cy.get('.option').should('exist').then((buttons: any) => {
+          buttons[0].click()
+        })
     })
     
     describe('display user results', () => {
       it('Should be true', () => {
-        cy.contains('Your Score')
+        cy.contains('Score')
       })
   
       it('should display the total number of questions', () => {
-        cy.contains('Total number of questions')
+        cy.contains('Number of Questions')
       })
   
       it('Should display the total number of attempted questions', () => {
-        cy.contains('Number of attempted questions:')
+        cy.contains('Number of Answered Questions:')
       })
   
       it('Should display the total number of correct answers', () => {
-        cy.contains('Number of Correct Answers:')
+        cy.contains('Correct Answers:')
       })
   
       it('Should display the number of Wrong Answers', () => {
-        cy.contains('Number of Wrong Answers:')
+        cy.contains('Wrong Answers:')
       })
   
       it('Should display the number of hints used', () => {
@@ -38,7 +59,11 @@ describe('Quiz Instructions Page', () => {
       })
   
       it('Should contain the number of 50-50 Used', () => {
-        cy.contains('50-50 Used:')
+        cy.contains('50/50 Used:')
+      })
+
+      it('Should contain the Time taken', () => {
+        cy.contains('Time Taken:')
       })
     })
 
@@ -58,23 +83,13 @@ describe('Quiz Instructions Page', () => {
       })
     })
 
-    describe('test navigation buttons', () => {
-      it('should contain the Play Again button', () => {
-        cy.contains('Play Again')
-      })
-  
+    describe('test navigation buttons', () => {  
       it('should contain the back to home button', () => {
         cy.contains('Back to Home')
       })
 
-      it('play again button should send the user back to the first question', () => {
-        cy.contains('Play Again').click()
-
-        cy.contains('Quiz Mode')
-      })
-
       it('back home button should send the user back to the main menu page', () =>  {
-        cy.contains('Back to Home').click()
+        cy.contains('Home').click()
 
         cy.contains('Hack Attack')
       })

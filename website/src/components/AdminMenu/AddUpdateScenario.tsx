@@ -3,7 +3,10 @@ import './admin.css'
 
 const AddUpdateInstructions = () => {
   return (
-    <div className="admin-instructions">
+    <div
+      data-testid={'admin-scenario-instructions'}
+      className="admin-instructions"
+    >
       <h4>Instructions</h4>
       <ul>
         <li>
@@ -23,7 +26,7 @@ const AddUpdateInstructions = () => {
 }
 
 let initialValue =
-  '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":"",\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":"",\n\t\t}\n\t]\n}'
+  '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":""\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":""\n\t\t}\n\t]\n}'
 
 const AddUpdateScenario = ({ scenario, setScenario, value, setValue }: any) => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,12 +39,13 @@ const AddUpdateScenario = ({ scenario, setScenario, value, setValue }: any) => {
   }, [scenario])
 
   return (
-    <div className="scenario-wrapper">
-      <div className="scenario-container">
+    <div data-testid={'scenario-wrapper'} className="scenario-wrapper">
+      <div data-testid={'scenario-container'} className="scenario-container">
         <AddUpdateInstructions />
 
         <textarea
-          defaultValue={initialValue}
+          id={'admin-menu-json-editor'}
+          data-testid={'admin-menu-json-editor'}
           placeholder={initialValue}
           className={'admin-scenario-edit-box'}
           cols={12}

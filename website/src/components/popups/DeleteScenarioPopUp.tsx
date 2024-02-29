@@ -59,22 +59,35 @@ const DeleteScenarioPopUp = ({
           Enter the <i>title</i> of the scenario which you want to delete.*
         </p>
         {/* <input onChange={handleChangeTitle}></input> */}
-        <select className={'PopUpSelect'} onChange={handleChangeTitle}>
-          <option value={''}></option>
+        <select
+          data-testid="scenario-select"
+          id="scenario-select"
+          className={'PopUpSelect'}
+          onChange={handleChangeTitle}
+        >
+          <option key={'null-value'} value={''}></option>
           {scenarios.map((scenario) => {
-            return <option value={scenario}>{scenario}</option>
+            return (
+              <option key={scenario} value={scenario}>
+                {scenario}
+              </option>
+            )
           })}
         </select>
         <br />
         <p>
           To confirm enter <i>permanently delete</i> into the below text box.
         </p>
-        <input onChange={handleChangeCheck}></input>
+        <input
+          data-testid="confirmation-input"
+          id="confirmation-input"
+          onChange={handleChangeCheck}
+        ></input>
         <br />
         <p>*Deleting is permenant and cannot be undone</p>
       </div>
       <PopUpButton
-        id="close"
+        id="proceed"
         text={'Proceed'}
         onClose={handleClick}
         disabled={disabled}

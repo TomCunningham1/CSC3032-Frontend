@@ -1,10 +1,12 @@
 import React from 'react';
-import { RenderResult, fireEvent, render } from '@testing-library/react';
+import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
 import TitleBarHelpButton from '../../../../src/components/TitleBar/TitleBarButtons/TitleBarHelpButton';
 
 describe('TitleBarHelpButton', () => {
 
     let output: RenderResult;
+
+    const buttonId = 'title-bar-navigation-help'
 
     const renderComponent = () => {
         return render (
@@ -15,7 +17,7 @@ describe('TitleBarHelpButton', () => {
     it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         expect(button).toBeTruthy()
     })
@@ -24,7 +26,7 @@ describe('TitleBarHelpButton', () => {
     it('should have the correct className', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         expect(button.className).toBe('TitleBarButton')
     })
@@ -32,7 +34,7 @@ describe('TitleBarHelpButton', () => {
     it('should contain the button label', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         expect(button.innerHTML).toBe('Help')
     })
@@ -40,7 +42,7 @@ describe('TitleBarHelpButton', () => {
     it('should open the pop up when the button is clicked', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 
@@ -51,14 +53,22 @@ describe('TitleBarHelpButton', () => {
         expect(popupText).toBeTruthy()
     })
 
-    it('should close the pop up when the button is not clicked', () => {
+    it('should close the pop up when the button is not clicked', async () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-help')
+        const button = output.getByTestId(buttonId)
+
+        fireEvent.click(button)
 
         const popup = output.queryByTestId('help-popup')
 
-        expect(popup).toBeFalsy()
+        const popupCloseButton = output.getByTestId('help-popup-close-button')
+
+        fireEvent.click(popupCloseButton)
+
+        await waitFor(() => {
+            expect(output.queryByTestId('help-popup'))
+        })
     })
 });
 
