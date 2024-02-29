@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
 const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   if (!open) return null
@@ -10,6 +11,8 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   const [value, setValue] = useState('')
 
   const parsedScenario = JSON.parse(scenario)
+
+  const { updateLoading } = useContext(LoadingContext)
 
   const title = parsedScenario.title
   const questions = parsedScenario.questions
@@ -23,14 +26,16 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   }
 
   const onSubmit = async () => {
+    updateLoading(true)
     await BackendService.writeScenario(title, questions)
       .then(() => {
-        toast.success('Successfully deleted')
+        toast.success('Successfully updated')
         onClose()
       })
       .catch((err) => {
         toast.error(err.message)
       })
+    updateLoading(false)
   }
 
   console.log(disabled)
@@ -52,10 +57,14 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
           Enter <i>confirm</i> to confirm you want to update the scenario.
         </p>
         <br />
-        <input onChange={handleChange}></input>
+        <input
+          data-testid="input-submit-check"
+          id="input-submit-check"
+          onChange={handleChange}
+        ></input>
       </div>
       <PopUpButton
-        id="close"
+        id="proceed"
         text={'Proceed'}
         onClose={onSubmit}
         disabled={disabled}

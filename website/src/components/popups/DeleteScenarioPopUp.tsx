@@ -1,10 +1,21 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import PopUp from './PopUp'
 import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
+import { LoadingContext } from '../LoadingContext/LoadingContext'
 
-const DeleteScenarioPopUp = ({ open, onClose }: any) => {
+interface DeleteScenarioPopUpProps {
+  scenarios: string[]
+  open: boolean
+  onClose: () => void
+}
+
+const DeleteScenarioPopUp = ({
+  scenarios,
+  open,
+  onClose,
+}: DeleteScenarioPopUpProps) => {
   if (!open) return null
 
   const [checkValue, setCheckValue] = useState('')
@@ -13,7 +24,9 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   const expected = 'permanently delete'
   const disabled = expected !== checkValue || titleValue === ''
 
-  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { updateLoading } = useContext(LoadingContext)
+
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTitleValue(e.target.value)
   }
 
@@ -22,6 +35,7 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
   }
 
   const handleClick = async () => {
+    updateLoading(true)
     await BackendService.deleteScenario(titleValue)
       .then((deleteSuccessful) => {
         console.log(deleteSuccessful)
@@ -30,6 +44,7 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
       .catch((err) => {
         toast.error(err.message)
       })
+    updateLoading(false)
   }
 
   return (
@@ -43,17 +58,36 @@ const DeleteScenarioPopUp = ({ open, onClose }: any) => {
         <p>
           Enter the <i>title</i> of the scenario which you want to delete.*
         </p>
-        <input onChange={handleChangeTitle}></input>
+        {/* <input onChange={handleChangeTitle}></input> */}
+        <select
+          data-testid="scenario-select"
+          id="scenario-select"
+          className={'PopUpSelect'}
+          onChange={handleChangeTitle}
+        >
+          <option key={'null-value'} value={''}></option>
+          {scenarios.map((scenario) => {
+            return (
+              <option key={scenario} value={scenario}>
+                {scenario}
+              </option>
+            )
+          })}
+        </select>
         <br />
         <p>
           To confirm enter <i>permanently delete</i> into the below text box.
         </p>
-        <input onChange={handleChangeCheck}></input>
+        <input
+          data-testid="confirmation-input"
+          id="confirmation-input"
+          onChange={handleChangeCheck}
+        ></input>
         <br />
         <p>*Deleting is permenant and cannot be undone</p>
       </div>
       <PopUpButton
-        id="close"
+        id="proceed"
         text={'Proceed'}
         onClose={handleClick}
         disabled={disabled}

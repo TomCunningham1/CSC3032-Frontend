@@ -1,7 +1,7 @@
 import './quiz-summary.css'
 
 const QuizSummaryTable = ({ results, remark }: any) => (
-  <table className="results-table">
+  <table data-testid="results-table" className="results-table">
     <tbody>
       <tr>
         <td>Scenario:</td>

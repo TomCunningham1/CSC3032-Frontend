@@ -10,7 +10,7 @@ const FiftyFiftyPopUp = ({ open, onClose }: any) => {
         data-testid={`${componentId}-close-button`}
         onClick={onClose}
       >
-        X
+        Back
       </button>
       <p>Please wait while a specialist assists you</p>
     </div>

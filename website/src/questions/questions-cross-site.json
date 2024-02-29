@@ -2,12 +2,137 @@
     "title": "Cross Site Scripting",
     "questions": [
         {
-            "question": "This is a sample Cross Site Scripting Question",
-            "optionA": "When user is asked for input username",
-            "optionB": "When user is asked for input captcha",
-            "optionC": "When user is asked for input password",
-            "optionD": "When user is asked to logout",
-            "answer": "When user is asked for input username"
+            "question": "Reconnaissance: Who could be the target of a Cross Site Scripting (XSS) attack?",
+            "optionA": "A random user of a website",
+            "optionB": "A frequent user of a website",
+            "optionC": "A user with privileged access",
+            "optionD": "All of the above",
+            "answer": "All of the above"
+        },
+
+        {
+            "question": "Reconnaissance: What might be vulnerable to a Cross Site Scripting (XSS) attack?",
+            "optionA": "Not validating input data",
+            "optionB": "Not encoding input data",
+            "optionC": "Both",
+            "optionD": "Neither",
+            "answer": "Both"
+        },
+
+        {
+            "question": "Weaponization: Which of these are not how a malicious script may try to evade detection?",
+            "optionA": "Obfuscating code in the script",
+            "optionB": "Encoding the script",
+            "optionC": "Filtering by web application or browser",
+            "optionD": "Zipping the script",
+            "answer": "Zipping the script"
+        },
+
+        {
+            "question": "Weaponization: What is the most common programming language used for XSS attacks?",
+            "optionA": "JavaScript",
+            "optionB": "HTML",
+            "optionC": "PHP",
+            "optionD": "Flash",
+            "answer": "JavaScript"
+        },
+
+        {
+            "question": "Delivery: Which XSS attack involves a malicious script being installed on a website's database?",
+            "optionA": "Reflected XSS",
+            "optionB": "Stored XSS",
+            "optionC": "Blind XSS",
+            "optionD": "DOM Based XSS",
+            "answer": "Stored XSS"
+        },
+
+        {
+            "question": "Delivery: Which XSS attack involves the user clicking a malicious link?",
+            "optionA": "Reflected XSS",
+            "optionB": "Stored XSS",
+            "optionC": "Blind XSS",
+            "optionD": "DOM Based XSS",
+            "answer": "Reflected XSS"
+        },
+
+        {
+            "question": "Delivery: Which XSS attack is also known as client-side XSS?",
+            "optionA": "Reflected XSS",
+            "optionB": "Stored XSS",
+            "optionC": "Blind XSS",
+            "optionD": "DOM Based XSS",
+            "answer": "DOM Based XSS"
+        },
+
+        {
+            "question": "Exploitation: What can an XSS attack do? ",
+            "optionA": "Read/Modify a web page's content",
+            "optionB": "Send requests to the web server",
+            "optionC": "Access the victim's cookies or local storage",
+            "optionD": "All of the above",
+            "answer": "All of the above"
+        },
+
+        {
+            "question": "Exploitation: Who/What executes the malicious script?",
+            "optionA": "The victim",
+            "optionB": "The attacker",
+            "optionC": "The victim's web browser",
+            "optionD": "All of the above",
+            "answer": "The victim's web browser"
+        },
+
+        {
+            "question": "Installation: Which of the following could an XSS script install?",
+            "optionA": "A keylogger",
+            "optionB": "Ransomware",
+            "optionC": "Spyware",
+            "optionD": "All of the above",
+            "answer": "All of the above"
+        },
+
+        {
+            "question": "Installation: What might an XSS attack install?",
+            "optionA": "A script that runs everytime the victim visits the web application",
+            "optionB": "A web shell that allows the attacker to remotely execute commands",
+            "optionC": "Both",
+            "optionD": "An XSS attack can't install anything",
+            "answer": "Both"
+        },
+
+        {
+            "question": "Command and Control (C2): How does the attacker communicate with the malicious code?",
+            "optionA": "Via a C2 server",
+            "optionB": "Via a web service",
+            "optionC": "DNS queries",
+            "optionD": "All of the above",
+            "answer": "All of the above"
+        },
+
+        {
+            "question": "Command and Control(C2): What can the attacker do after an attack is initiated?",
+            "optionA": "Send commands",
+            "optionB": "Receive feedback",
+            "optionC": "Collect data",
+            "optionD": "All of the above",
+            "answer": "All of the above"
+        },
+
+        {
+            "question": "Actions on Objectives: What might be the desired outcome of a successful attack?",
+            "optionA": "Gaining escalated privileges",
+            "optionB": "Remote control of the victim's web browser",
+            "optionC": "Stealing the victim's sensitive information",
+            "optionD": "All of the above",
+            "answer": "All of the above"
+        },
+        {
+            "question": "Actions on Objectives: Which is unlikely to be the goal of an XSS attack?",
+            "optionA": "Gaining escalated privileges",
+            "optionB": "Remote control of the victim's web browser",
+            "optionC": "Stealing the victim's sensitive information",
+            "optionD": "Taking the website offline",
+            "answer": "Taking the website offline"
         }
     ]
 }

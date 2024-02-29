@@ -23,11 +23,10 @@ const AdminLoginContainer = () => {
   const validate = async () => {
     await authenticate(username, pswrd)
       .then(() => {
-        toast.success('Logging in')
         navigate('/admin-menu')
       })
       .catch((err) => {
-        toast.error(err.message)
+        toast.error('Incorrect Username or Password')
       })
   }
 
@@ -44,24 +43,41 @@ const AdminLoginContainer = () => {
     // Login container
     <div
       className="admin-login-menu-container"
-      data-testid={'admin-login-wrapper'}
+      data-testid={'admin-login-container'}
     >
       {/* Title */}
-      <h1 className="admin-login-title">Admin Users</h1>
+      <h1 data-testid="admin-login-title" className="admin-login-title">
+        Admin Users
+      </h1>
 
       {/* Login Fields */}
       <div className="admin-login-fields">
-        <h4 className="admin-login-field-spacer">Username</h4>
+        <h4 data-testid="username-prompt" className="admin-login-field-spacer">
+          Username
+        </h4>
 
-        <input onChange={handleChangeUsername} />
+        <input
+          data-testid="username-input"
+          id="username-input"
+          onChange={handleChangeUsername}
+        />
 
-        <h4 className="admin-login-field-spacer">Password</h4>
+        <h4 data-testid="password-prompt" className="admin-login-field-spacer">
+          Password
+        </h4>
 
-        <input type="password" onChange={handleChangePswrd} />
+        <input
+          data-testid="password-input"
+          id="password-input"
+          type="password"
+          onChange={handleChangePswrd}
+        />
       </div>
 
       {/* Login Button */}
       <button
+        id="admin-login-submit-button"
+        data-testid="admin-login-submit-button"
         className="admin-login-menu-submit-button"
         onClick={validate}
         disabled={disabled}
