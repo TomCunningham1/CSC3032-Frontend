@@ -22,7 +22,7 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   { path: '/', element: <Home /> },
   { path: '/play/instructions', element: <QuizInstructions /> },
-  { path: '/play/context', element: <QuizContext />},
+  { path: '/play/context', element: <QuizContext /> },
   { path: '/play/quiz', element: <Play /> },
   { path: '/play/quizSummary', element: <QuizSummary /> },
   { path: '/leaderboard', element: <Leaderboard /> },
