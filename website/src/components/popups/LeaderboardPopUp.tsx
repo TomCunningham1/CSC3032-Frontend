@@ -1,11 +1,20 @@
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react'
+import {
+  MouseEventHandler,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import PopUp from './PopUp'
 import './PopUp.css'
 import '../../styles/styles.scss'
 import BackendService from '../../services/backend-service'
-import CustomClockLoader from '../LoadingClock/LoadingClock'
 import toast, { Toaster } from 'react-hot-toast'
-import scenarioName from '../../config/scenarioName'
+<<<<<<< website/src/components/popups/LeaderboardPopUp.tsx
+import scenarioName from '../../config/scenarioName' 
+=======
+import { LoadingContext } from '../LoadingContext/LoadingContext'
+>>>>>>> website/src/components/popups/LeaderboardPopUp.tsx
 
 const componentId = 'leaderboard-popup'
 
@@ -22,12 +31,17 @@ interface ResultsTypes {
 
 const LeaderboardPopUp = ({ onClose }: any) => {
   const [top10, setTop10] = useState([])
-  const [loading, setLoading] = useState(true)
   const [scenarios, setScenarios] = useState([])
+
+  const { updateLoading } = useContext(LoadingContext)
 
   // Function to swap between different scenarios
   const getScenarioResults = async (scenario: string) => {
+<<<<<<< website/src/components/popups/LeaderboardPopUp.tsx
     setLoading(true)
+=======
+    updateLoading(true)
+>>>>>>> website/src/components/popups/LeaderboardPopUp.tsx
     await BackendService.getResults(scenario)
       .then((resp) => {
         setTop10(resp.data.slice(0, 10))
@@ -35,13 +49,21 @@ const LeaderboardPopUp = ({ onClose }: any) => {
       .catch((err: any) => {
         toast.error(err.message)
       })
+<<<<<<< website/src/components/popups/LeaderboardPopUp.tsx
     setLoading(false)
+=======
+    updateLoading(false)
+>>>>>>> website/src/components/popups/LeaderboardPopUp.tsx
   }
 
   // initial call to getAllScenarios to generate the buttons
   // as well as calling the default results table option
   const pageSetup = async () => {
+<<<<<<< website/src/components/popups/LeaderboardPopUp.tsx
     setLoading(true)
+=======
+    updateLoading(true)
+>>>>>>> website/src/components/popups/LeaderboardPopUp.tsx
     await BackendService.getAllScenarios()
       .then(async (resp) => {
         setScenarios(resp.data)
@@ -66,7 +88,11 @@ const LeaderboardPopUp = ({ onClose }: any) => {
         toast.error(err.message)
       })
 
+<<<<<<< website/src/components/popups/LeaderboardPopUp.tsx
     setLoading(false)
+=======
+    updateLoading(false)
+>>>>>>> website/src/components/popups/LeaderboardPopUp.tsx
   }
 
   useEffect(() => {
@@ -149,6 +175,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
     )
   }
 
+<<<<<<< website/src/components/popups/LeaderboardPopUp.tsx
   const [displayedScenario, setDisplayedScenario] =
     useState('Select a Scenario')
   return (
@@ -225,6 +252,76 @@ const LeaderboardPopUp = ({ onClose }: any) => {
           </div>
         </PopUp>
       )}
+=======
+  return (
+    <>
+      <Toaster />(
+      <PopUp
+        id={componentId}
+        title={'Leaderboard'}
+        name="menu-container-solid Leaderboard"
+        onClose={onClose}
+      >
+        <div
+          data-testid="leaderboard-popup-text"
+          className="PopUpTextLeaderboard"
+        >
+          <div>
+            {
+              // Updated to map from the list returned by "getAllScenarios"
+              scenarios.map((scenario) => {
+                return (
+                  // Maps out buttons and passes in selected scenario
+                  <button
+                    className="scenario-button"
+                    onClick={() => {
+                      getScenarioResults(scenario)
+                    }}
+                  >
+                    {scenario}
+                  </button>
+                )
+              })
+            }
+            <table>
+              <thead>
+                <tr>
+                  {headers.map((row) => {
+                    return (
+                      <td key={row.key}>
+                        {row.label}
+                        <SortButton
+                          columnKey={row.key}
+                          onClick={() => changeSort(row.key)}
+                          sortOrder={sortOrder}
+                          sortKey={sortKey}
+                        />
+                      </td>
+                    )
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {sortedData().map((user: any, index: number) => {
+                  return (
+                    <tr key={user.Username + index}>
+                      <td>{user.Username}</td>
+                      <td>{user.Score}</td>
+                      <td>{user.NumberOfQuestions}</td>
+                      <td>{user.NumberOfAnsweredQuestions}</td>
+                      <td>{user.CorrectAnswers}</td>
+                      <td>{user.WrongAnswers}</td>
+                      <td>{user.HintsUsed}</td>
+                      <td>{user.FiftyFiftyUsed}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </PopUp>
+>>>>>>> website/src/components/popups/LeaderboardPopUp.tsx
     </>
   )
 }

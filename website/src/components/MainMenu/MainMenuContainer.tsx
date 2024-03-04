@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-// import questions from '../../questions/QuizQuestions'
 import MainMenuButton from './MainMenuButton'
 import { useNavigate } from 'react-router'
 import BackendService from '../../services/backend-service'
@@ -36,7 +35,7 @@ const MainMenuContainer = () => {
           {scenarios.map((playthrough) => {
             const navigateToQuiz = async () => {
               setLoading(true)
-              await BackendService.readScenario(playthrough)
+              await BackendService.getQuestions(playthrough)
                 .then((response) => {
                   navigate('/play/instructions', {
                     state: {

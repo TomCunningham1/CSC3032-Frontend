@@ -1,7 +1,8 @@
 import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
-import SendEmail from '../../../src/components/quiz/QuizSummary/SendEmail';
+import SendEmail from '../../../../src/components/quiz/QuizSummary/SendEmail';
 import axios from 'axios';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const testData = {
     score: 12,
@@ -13,16 +14,18 @@ const testData = {
     fiftyFiftyUsed: 5
 }
 
-const mockPost = jest.fn()
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-jest.mock('axios');
-
 describe('Tests for the login page', () => {
+
+    const mockPost = jest.fn()
+    const mockSuccess = jest.fn().mockResolvedValue({})
+    const mockError = jest.fn()
 
     let output: RenderResult;
 
     beforeEach(() => {
-        jest.spyOn(mockedAxios, 'post').mockImplementation(mockPost)
+        jest.spyOn(axios, 'post').mockImplementation(mockPost)
+        jest.spyOn(toast, 'success').mockImplementation(mockSuccess)
+        jest.spyOn(toast, 'error').mockImplementation(mockError)
     });
 
     const renderComponent = () => {
@@ -36,7 +39,6 @@ describe('Tests for the login page', () => {
             fiftyFiftyUsed={testData.fiftyFiftyUsed}
             />)
     }
-
 
     it('should render the email component', () => {
         output = renderComponent();
@@ -63,20 +65,34 @@ describe('Tests for the login page', () => {
 
         fireEvent.click(emailButton)
 
-        expect(mockPost).toHaveBeenCalled()
+        await waitFor(() => {
+            expect(mockPost).toHaveBeenCalled()
+            expect(mockSuccess).toHaveBeenCalled()
+        })
     })
 
-    // it('should allow the user to update text', () => {
-    //     output = renderComponent();
+    it('should call the backend service when an email is sent', async () => {
+        mockPost.mockRejectedValueOnce(new Error('Error'))
 
-    //     const container = output.getByTestId('send-email-container');
+        output = renderComponent();
 
-    //     expect(container).toBeTruthy()
+        const container = output.getByTestId('send-email-container');
 
-    //     const textEntry = output.getByTestId('send-email-text-input') as HTMLInputElement;
+        expect(container).toBeTruthy()
 
-    //     fireEvent.change(textEntry, { target: { value: 'Pass' }})
+        const textEntry = output.getByTestId('send-email-text-input') as HTMLInputElement;
 
-    //     expect(textEntry.value).toBe('Pass')
-    // })
+        fireEvent.change(textEntry, { target: { value: 'Pass' }})
+
+        expect(textEntry.value).toBe('Pass')
+
+        const emailButton = output.getByTestId('send-email-button')
+
+        fireEvent.click(emailButton)
+
+        await waitFor(() => {
+            expect(mockPost).toHaveBeenCalled()
+            expect(mockError).toHaveBeenCalled()
+        })
+    })
 });

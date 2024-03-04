@@ -1,8 +1,10 @@
 import React from 'react';
-import { RenderResult, fireEvent, render } from '@testing-library/react';
+import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
 import TitleBarSettingsButton from '../../../../src/components/TitleBar/TitleBarButtons/TitleBarSettingsButton';
 
-describe('TitleBarHelpButton', () => {
+describe('title bar settings button', () => {
+
+    const buttonId = 'title-bar-navigation-settings'
 
     let output: RenderResult;
 
@@ -15,7 +17,7 @@ describe('TitleBarHelpButton', () => {
     it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         expect(button).toBeTruthy()
     })
@@ -24,7 +26,7 @@ describe('TitleBarHelpButton', () => {
     it('should have the correct className', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         expect(button.className).toBe('TitleBarButton')
     })
@@ -32,7 +34,7 @@ describe('TitleBarHelpButton', () => {
     it('should contain the button label', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         expect(button.innerHTML).toBe('Settings')
     })
@@ -40,7 +42,7 @@ describe('TitleBarHelpButton', () => {
     it('should open the pop up when the button is clicked', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
         fireEvent.click(button)
 
@@ -51,14 +53,24 @@ describe('TitleBarHelpButton', () => {
         expect(popupText).toBeTruthy()
     })
 
-    it('should close the pop up when the button is not clicked', () => {
+    it('should close the pop up when the close button is clicked', async () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-settings')
+        const button = output.getByTestId(buttonId)
 
-        const popup = output.queryByTestId('settings-popup')
+        fireEvent.click(button)
 
-        expect(popup).toBeFalsy()
+        await waitFor(() => {
+            expect(output.getByTestId('settings-popup')).toBeTruthy()
+        })
+
+        const closeButton = output.getByTestId('settings-popup-close-button')
+
+        fireEvent.click(closeButton)
+
+        await waitFor(() => {
+            expect(output.queryByTestId('settings-popup')).toBeFalsy()
+        })
     })
 });
 

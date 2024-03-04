@@ -1,14 +1,5 @@
-import { RenderResult, fireEvent, render, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import * as router from 'react-router';
 import axios from 'axios';
-import React from 'react';
-import Home from '../../src/pages/Home';
 import BackendService from '../../src/services/backend-service';
-
-// const mockedAxios = axios as jest.Mocked<typeof axios>;
-// jest.mock('axios');
-// const navigate = jest.fn();
 
 describe('backend-services', () => {
 
@@ -52,5 +43,43 @@ describe('backend-services', () => {
 
         expect(result.status).toBe(200)
         expect(result.data).toBe('Message Sent Successfully')
+    })
+
+    it('saveResults', async () => {
+        mockPost.mockResolvedValue({
+            status: 200,
+            data: 'Results saved'
+        })
+
+        const response = await BackendService.saveResults('Tom','SQL Injection',13,4,3,4,5,3,5,3)
+
+        expect(response.status).toBe(200)
+        expect(response.data).toBe('Results saved')
+    })
+
+    it('getResults', async () => {
+        mockPost.mockResolvedValue({
+            status: 200,
+            data: {
+                name: 'Tom',
+                scenario: 'SQL Injection'
+            }
+        })
+
+        const response = await BackendService.getResults('SQL Injection')
+
+        expect(response.status).toBe(200)
+    })
+
+    it('writeScenario', async () => {
+        mockPost.mockResolvedValue({
+            status: 200,
+            data: 'successfully updated'
+        })
+
+        const response = await BackendService.writeScenario('Sql Injection', 'Questions')
+
+        expect(response.status).toBe(200)
+        expect(response.data).toBe('successfully updated')
     })
 });

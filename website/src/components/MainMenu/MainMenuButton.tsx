@@ -10,7 +10,9 @@ const MainMenuButton = ({ id, method, text }: MainMenuButton) => {
   return (
     <button
       className="main-menu-button"
-      data-testid={'help-button'}
+      data-testid={id}
+      id={id}
+      key={id}
       onClick={method}
     >
       {text}

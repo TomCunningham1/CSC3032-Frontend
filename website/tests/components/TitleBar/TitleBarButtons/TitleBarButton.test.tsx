@@ -17,7 +17,7 @@ describe('TitleBarButton', () => {
     it('Should generate a title bar button component', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-test')
+        const button = output.getByTestId('title-bar-navigation-test')
 
         expect(button).toBeTruthy()
     })
@@ -26,7 +26,7 @@ describe('TitleBarButton', () => {
     it('should have the correct className', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-test')
+        const button = output.getByTestId('title-bar-navigation-test')
 
         expect(button.className).toBe('TitleBarButton')
     })
@@ -34,7 +34,7 @@ describe('TitleBarButton', () => {
     it('should call the method when the button is clicked', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-test')
+        const button = output.getByTestId('title-bar-navigation-test')
 
         fireEvent.click(button)
 
@@ -44,7 +44,7 @@ describe('TitleBarButton', () => {
     it('should contain the button label', () => {
         output = renderComponent();
 
-        const button = output.getByTestId('main-menu-navigation-test')
+        const button = output.getByTestId('title-bar-navigation-test')
 
         expect(button.innerHTML).toBe('Test Button')
     })

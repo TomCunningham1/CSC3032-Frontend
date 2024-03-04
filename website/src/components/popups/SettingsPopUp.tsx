@@ -7,6 +7,7 @@ const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
   const [value, setValue] = React.useState<number>(30)
+
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number)
   }

@@ -33,8 +33,6 @@ describe('help popups test', () => {
         const popupText = output.getByTestId('settings-popup-text')
 
         expect(popupText).toBeTruthy()
-
-        //TODO - Add tests for different settings
     });
 
     it('Should contain the pop up title', () => {

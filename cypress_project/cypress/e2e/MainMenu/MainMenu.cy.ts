@@ -21,7 +21,7 @@ describe('Test Main Menu', () => {
   })
 
   it('Should contain button for DDOS Attacks', () => {
-    cy.contains("Distributed Denial Of Service")
+    cy.contains("Distributed Denial of Service")
   })
 
   it('Should contain button for Cross Site Scripting', () => {

@@ -31,8 +31,8 @@ const SendEmail = ({
     setEmail(e.target.value)
   }
 
-  const handleSubmit = () => {
-    BackendService.emailResults(
+  const handleSubmit = async () => {
+    await BackendService.emailResults(
       email,
       score,
       numberOfQuestions,

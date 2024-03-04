@@ -11,7 +11,8 @@ describe('Quiz Instructions Page', () => {
     })
 
     it('Should contain the page title', () => {
-      cy.contains('How to Play Hack Attack')
+      cy.contains('How to play')
+      cy.contains('SQL Injection')
     })
 
     it('Should contain instructions for the game', () => {
@@ -26,25 +27,24 @@ describe('Quiz Instructions Page', () => {
       cy.contains('Select a hint by clicking on the iconwill remove on wrong answer and leave three answers for you')
       cy.contains('Feel free to quit the scenerio at anytime. You will be given a score at the end')
       cy.contains('The timer starts as soon as the game loads.')
-      cy.contains('Do you think you have what it takes?')
     })
 
     it('Should contain a back button', () => {
-      cy.contains('Take me back to the main menu')
+      cy.contains('Back to main menu')
     })
 
     it('Back button should take the user back to the main menu page', () => {
-      cy.contains('Take me back to the main menu').click()
+      cy.contains('Back to main menu').click()
       cy.contains('Leaderboard')
     })
 
     it('Should contain a Play Quiz button', () => {
-      cy.contains('Play Quiz')
+      cy.contains('Start the quiz')
     })
 
     it('Play button should take the user to the first question of the game', () => {
-      cy.contains('Play Quiz').click()
-      cy.contains('Quiz Mode')
+      cy.contains('Start the quiz').click()
+      cy.contains('SQL Injection')
     })
 
   })
