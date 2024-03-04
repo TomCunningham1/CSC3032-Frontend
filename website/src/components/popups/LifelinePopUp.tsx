@@ -1,9 +1,9 @@
 import PopUp from './PopUp'
 import './PopUp.css'
 
-const componentId = 'fiftyfifty-popup'
+const componentId = 'lifeline-popup'
 
-const FiftyFiftyPopUp = ({ open, onClose }: any) => {
+const LifelinePopUp = ({ open, onClose }: any) => {
   if (!open) return null
   return (
     <PopUp id={componentId} title={'Help'} onClose={onClose}>
@@ -39,4 +39,4 @@ const FiftyFiftyPopUp = ({ open, onClose }: any) => {
   )
 }
 
-export default FiftyFiftyPopUp
+export default LifelinePopUp
