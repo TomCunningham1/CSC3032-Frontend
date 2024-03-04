@@ -80,12 +80,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   componentDidMount() {
-    const {
-      questions,
-      currentQuestion,
-      nextQuestion,
-      previousQuestion,
-    } = this.state
+    const { questions, currentQuestion, nextQuestion, previousQuestion } =
+      this.state
     this.displayQuestions(
       questions,
       currentQuestion,
