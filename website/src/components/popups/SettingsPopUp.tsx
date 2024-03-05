@@ -10,8 +10,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
   const [darkMode, setDarkMode] = useState(false)
   const [contrastMode, setContrastMode] = useState(false);
 
-  const { getStylePrefix, updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
-  const stylePrefix = getStylePrefix()
+  const { updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
 
   const [value, setValue] = React.useState<number>(30)
 
