@@ -1,15 +1,32 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import PopUp from './PopUp'
 import './PopUp.css'
 import { FormControlLabel, Slider, Switch } from '@mui/material'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
+  const [darkMode, setDarkMode] = useState(false)
+  const [contrastMode, setContrastMode] = useState(false);
+
+  const { getStylePrefix, updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
+  const stylePrefix = getStylePrefix()
+
   const [value, setValue] = React.useState<number>(30)
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number)
+  }
+
+  const toggleContrastMode = () => {
+    updateHighContrastMode(!contrastMode)
+    setContrastMode(!contrastMode)
+  }
+
+  const toggleDarkMode = () => {
+    updateDarkMode(!darkMode)
+    setDarkMode(!darkMode)
   }
 
   if (!open) return null
@@ -20,11 +37,14 @@ const SettingsPopUp = ({ open, onClose }: any) => {
           <li>
             <FormControlLabel
               label={'High Contrast Mode'}
-              control={<Switch />}
+              control={<Switch checked={contrastMode} onChange={toggleContrastMode}/>}
             />
           </li>
           <li>
-            <FormControlLabel label={'Dark Mode'} control={<Switch />} />
+            <FormControlLabel
+              label={'Dark Mode'}
+              control={<Switch checked={darkMode} onChange={toggleDarkMode} />}
+            />
           </li>
           <li>
             Text Size

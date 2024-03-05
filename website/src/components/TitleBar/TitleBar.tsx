@@ -15,12 +15,16 @@ import TitleBarLoginButton from './TitleBarButtons/TitleBarLoginButton'
 import TitleBarAdminMenuButton from './TitleBarButtons/TitleBarAdminMenuButton'
 import CustomClockLoader from '../LoadingClock/LoadingClock'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 const TitleBar = () => {
   const [status, setStatus] = useState(false)
 
   const { authenticated, logout } = useContext(AccountContext)
   const { loading } = useContext(LoadingContext)
+
+  const { getStylePrefix } = useContext(SettingsContext)
+  const stylePrefix = getStylePrefix()
 
   useEffect(() => {
     if (authenticated) {
@@ -33,7 +37,10 @@ const TitleBar = () => {
   return (
     <>
       <Box className={'TitleBarBox'}>
-        <AppBar position="fixed">
+        <AppBar
+          position="fixed"
+          className={`${stylePrefix}-titlebar-background`}
+        >
           <Toolbar className={'TitleBar'}>
             <h1 data-testid="titlebar-title" className={'Title'}>
               Hack Attack
