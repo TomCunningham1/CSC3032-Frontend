@@ -8,6 +8,7 @@ describe('Quiz Instructions Page', () => {
     beforeEach(() => {
       cy.visit(environment.frontendURL)
       cy.contains('SQL Injection').click()
+      cy.contains('Next').click()
       cy.contains('Start the quiz').click()
     })
 

@@ -1,7 +1,7 @@
 const NON_PRODUCTION_ENVIRONMENT = {
   environmentName: 'non-production',
   databaseName: 'team11_non_prod_db',
-  urlFrontend: "https://ddgobieowwepc.cloudfront.net"
+  urlFrontend: "https://d192363lqt7c2w.cloudfront.net/"
 }
 
 const SCREEN_SIZE = {

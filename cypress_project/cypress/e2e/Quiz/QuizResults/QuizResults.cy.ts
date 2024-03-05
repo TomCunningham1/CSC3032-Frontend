@@ -8,6 +8,7 @@ describe('Quiz Instructions Page', () => {
     beforeEach(() => {
         cy.visit(`${environment.frontendURL}`)
         cy.contains('Cross Site Scripting').click()
+        cy.contains('Next').click()
         cy.contains('Start the quiz').click()
         
         cy.get('.option').should('exist').then((buttons: any) => {
@@ -85,7 +86,7 @@ describe('Quiz Instructions Page', () => {
 
     describe('test navigation buttons', () => {  
       it('should contain the back to home button', () => {
-        cy.contains('Back to Home')
+        cy.contains('Home')
       })
 
       it('back home button should send the user back to the main menu page', () =>  {
