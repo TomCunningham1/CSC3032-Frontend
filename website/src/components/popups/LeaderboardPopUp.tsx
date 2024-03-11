@@ -31,9 +31,9 @@ const LeaderboardPopUp = ({ onClose }: any) => {
 
   const { updateLoading } = useContext(LoadingContext)
 
-    // Context for dark/light/high contrast mode.
-    const { getStylePrefix } = useContext(SettingsContext)
-    const prefix = getStylePrefix();
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
 
   // Function to swap between different scenarios
   const getScenarioResults = async (scenario: string) => {

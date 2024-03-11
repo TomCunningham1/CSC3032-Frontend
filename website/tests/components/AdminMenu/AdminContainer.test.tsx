@@ -58,7 +58,7 @@ describe('admin container', () => {
             const button = output.getByTestId('delete-scenario')
     
             expect(button).toBeTruthy()
-            expect(button.className).toBe('admin-menu-button')
+            expect(button.className).toBe('undefined-admin-menu-button')
         })
 
         it('should render the view scenario button', () => {
@@ -67,7 +67,7 @@ describe('admin container', () => {
             const button = output.getByTestId('view-scenario')
     
             expect(button).toBeTruthy()
-            expect(button.className).toBe('admin-menu-button')
+            expect(button.className).toBe('undefined-admin-menu-button')
         })
 
         it('should render the reset leaderboard button', () => {
@@ -76,7 +76,7 @@ describe('admin container', () => {
             const button = output.getByTestId('reset-leaderboard')
     
             expect(button).toBeTruthy()
-            expect(button.className).toBe('admin-menu-button')
+            expect(button.className).toBe('undefined-admin-menu-button')
         })
 
         it('should render the submit button', () => {
@@ -85,7 +85,7 @@ describe('admin container', () => {
             const button = output.getByTestId('admin-submit-button')
     
             expect(button).toBeTruthy()
-            expect(button.className).toBe('admin-menu-button-right')
+            expect(button.className).toBe('undefined-admin-menu-button-right')
         })
     })
 

@@ -20,7 +20,8 @@ import { SettingsContext } from '../SettingsContext/SettingsContext'
 const TitleBar = () => {
   const [status, setStatus] = useState(false)
 
-  const { authenticated, logout } = useContext(AccountContext)
+  const { isLoggedIn, logout } = useContext(AccountContext)
+  const authenticated = isLoggedIn()
   const { loading } = useContext(LoadingContext)
 
   const { getStylePrefix } = useContext(SettingsContext)
@@ -32,7 +33,7 @@ const TitleBar = () => {
     } else {
       setStatus(false)
     }
-  }, [authenticated])
+  }, [authenticated, isLoggedIn])
 
   return (
     <>
@@ -63,7 +64,7 @@ const TitleBar = () => {
           </Toolbar>
         </AppBar>
       </Box>
-      <div className={'AppBackground'}>
+      <div className={`${stylePrefix}-app-background`}>
         <>{loading && <CustomClockLoader />}</>
         <Outlet />
       </div>

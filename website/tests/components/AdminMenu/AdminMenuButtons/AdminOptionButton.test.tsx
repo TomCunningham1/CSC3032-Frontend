@@ -44,6 +44,6 @@ describe('admin add update scenario', () => {
 
         const button = output.getByText('Test Title')
 
-        expect(button.className).toBe('admin-menu-button')
+        expect(button.className).toBe('undefined-admin-menu-button')
     })
 });

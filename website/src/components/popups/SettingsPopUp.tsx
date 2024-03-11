@@ -3,12 +3,17 @@ import PopUp from './PopUp'
 import { FormControlLabel, Slider, Switch } from '@mui/material'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
 import '../../styles/styles.scss'
+import { load } from '../../utils/session-storage'
 
 const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
-  const [darkMode, setDarkMode] = useState(false)
-  const [contrastMode, setContrastMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    load('dark-mode') as unknown as boolean
+  )
+  const [contrastMode, setContrastMode] = useState(
+    load('high-contrast') as unknown as boolean
+  )
 
   const { updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
 
@@ -21,11 +26,13 @@ const SettingsPopUp = ({ open, onClose }: any) => {
   const toggleContrastMode = () => {
     updateHighContrastMode(!contrastMode)
     setContrastMode(!contrastMode)
+    setDarkMode(false)
   }
 
   const toggleDarkMode = () => {
     updateDarkMode(!darkMode)
     setDarkMode(!darkMode)
+    setContrastMode(false)
   }
 
   if (!open) return null
@@ -36,7 +43,9 @@ const SettingsPopUp = ({ open, onClose }: any) => {
           <li>
             <FormControlLabel
               label={'High Contrast Mode'}
-              control={<Switch checked={contrastMode} onChange={toggleContrastMode}/>}
+              control={
+                <Switch checked={contrastMode} onChange={toggleContrastMode} />
+              }
             />
           </li>
           <li>

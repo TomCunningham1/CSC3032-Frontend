@@ -3,6 +3,7 @@ import { useContext, useState } from 'react'
 import BackendService from '../../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
 import '../../../styles/styles.scss'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
 interface SendEmailInterface {
   score: number
@@ -24,6 +25,8 @@ const SendEmail = ({
   fiftyFiftyUsed,
 }: SendEmailInterface) => {
   const [email, setEmail] = useState('')
+
+  const prefix = useContext(SettingsContext).getStylePrefix()
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,7 +65,7 @@ const SendEmail = ({
         value={email}
       />
       <button
-        className={'quiz-summary-button'}
+        className={`${prefix}-quiz-summary-button`}
         onClick={handleSubmit}
         data-testid={'send-email-button'}
       >

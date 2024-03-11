@@ -29,7 +29,7 @@ const routes: RouteConfig[] = [
 ]
 
 const RenderRoutes = () => {
-  const { authenticated } = useContext(AccountContext)
+  const authenticated = useContext(AccountContext).isLoggedIn()
 
   return (
     <Routes>

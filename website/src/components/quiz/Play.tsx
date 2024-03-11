@@ -87,7 +87,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     const { questions, currentQuestion, nextQuestion, previousQuestion } =
       this.state
     // @ts-ignore
-    this.context.subscribe(this.handleContextChange);
+    this.context.subscribe(this.handleContextChange)
     this.displayQuestions(
       questions,
       currentQuestion,
@@ -101,14 +101,14 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     // @ts-ignore
     const prefix = this.context.getStylePrefix()
     this.setState({
-      prefix: prefix
+      prefix: prefix,
     })
-    console.log("called")
+    console.log('called')
   }
 
   componentWillUnmount() {
     // @ts-ignore
-    this.context.unsubscribe(this.handleContextChange);
+    this.context.unsubscribe(this.handleContextChange)
     clearInterval(this.interval)
   }
 
@@ -468,7 +468,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       hints,
       numberOfQuestions,
       time,
-      prefix
+      prefix,
     } = this.state
 
     return (
@@ -478,7 +478,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
-        <div data-testid="questions-container" className={`${prefix}-questions`}>
+        <div
+          data-testid="questions-container"
+          className={`${prefix}-questions`}
+        >
           <h2>{this.state.title}</h2>
           <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
@@ -586,6 +589,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 }
 
-Play.contextType = SettingsContext;
+Play.contextType = SettingsContext
 
 export default withRouter(Play)

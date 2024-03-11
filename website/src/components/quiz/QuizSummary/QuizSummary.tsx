@@ -42,7 +42,7 @@ const QuizSummary = () => {
   const navigate = useNavigate()
 
   const { getStylePrefix } = useContext(SettingsContext)
-  const prefix = getStylePrefix();
+  const prefix = getStylePrefix()
 
   const handleHomeButton = () => {
     navigate('/')

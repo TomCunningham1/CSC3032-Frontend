@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import AddUpdateScenario from './AddUpdateScenario'
-import '../../styles/styles.scss';
+import '../../styles/styles.scss'
 import SubmitScenarioPopup from '../popups/SubmitScenarioPopUp'
 import DeleteScenarioButton from './AdminMenuButtons/DeleteScenarioButton'
 import ResetLeaderboardButton from './AdminMenuButtons/ResetLeaderboardButton'
@@ -16,6 +16,8 @@ const SubmitButton = ({ scenario }: { scenario: string }) => {
 
   const disabled = isJSON(scenario) ? false : true
 
+  const prefix = useContext(SettingsContext).getStylePrefix()
+
   return (
     <>
       <SubmitScenarioPopup
@@ -26,7 +28,7 @@ const SubmitButton = ({ scenario }: { scenario: string }) => {
         }}
       />
       <button
-        className="admin-menu-button-right"
+        className={`${prefix}-admin-menu-button-right`}
         data-testid="admin-submit-button"
         onClick={() => {
           setOpenPopup(true)
@@ -67,7 +69,6 @@ const AdminContainer = () => {
   const { getStylePrefix } = useContext(SettingsContext)
   const stylePrefix = getStylePrefix()
 
-
   useEffect(() => {
     updateLoading(true)
     const getScenarios = async () => {
@@ -86,7 +87,10 @@ const AdminContainer = () => {
   return (
     <>
       <Toaster />
-      <div className={`${stylePrefix}-admin-menu-container`} data-testid={'admin-menu-wrapper'}>
+      <div
+        className={`${stylePrefix}-admin-menu-container`}
+        data-testid={'admin-menu-wrapper'}
+      >
         <AdminOptionsContainer
           setScenario={setScenario}
           scenarios={scenarios}

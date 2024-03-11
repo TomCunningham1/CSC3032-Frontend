@@ -22,7 +22,7 @@ describe('admin add update scenario', () => {
     const renderComponent = () => {
         return render(
             <MemoryRouter>
-                <AccountContext.Provider value={{authenticate: mockAuthenticate, authenticated: false, logout: jest.fn(), getSession: jest.fn()}} >
+                <AccountContext.Provider value={{authenticate: mockAuthenticate, logout: jest.fn(), getSession: jest.fn(), isLoggedIn: jest.fn()}} >
                     <AdminLoginContainer  />
                 </AccountContext.Provider>
             </MemoryRouter>

@@ -11,7 +11,7 @@ const AdminLoginContainer = () => {
   const navigate = useNavigate()
 
   // Importing authentication config to validate any users
-  const { authenticate, authenticated } = useContext(AccountContext)
+  const { authenticate } = useContext(AccountContext)
 
   // Constant to store values from text boxes
   const [username, setUsername] = useState('')
@@ -83,7 +83,7 @@ const AdminLoginContainer = () => {
       <button
         id="admin-login-submit-button"
         data-testid="admin-login-submit-button"
-        className="admin-login-menu-submit-button"
+        className={`${stylePrefix}-admin-login-menu-submit-button`}
         onClick={validate}
         disabled={disabled}
       >

@@ -15,9 +15,9 @@ const QuizInstructionsHeader = ({ title }: { title: string }) => {
 const QuizContext = () => {
   const location = useLocation()
 
-    // Context for dark/light/high contrast mode.
-    const { getStylePrefix } = useContext(SettingsContext)
-    const prefix = getStylePrefix();
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
 
   const navigate = useNavigate()
 

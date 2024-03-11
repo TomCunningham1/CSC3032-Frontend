@@ -20,7 +20,7 @@ describe('Tests for the TitleBar', () => {
                     {/* Mocks the user account context */}
                     <AccountContext.Provider value={{
                         authenticate: jest.fn(),
-                        authenticated: authenticated,
+                        isLoggedIn: jest.fn().mockReturnValue(authenticated),
                         getSession: jest.fn(),
                         logout: jest.fn()
                     }}>

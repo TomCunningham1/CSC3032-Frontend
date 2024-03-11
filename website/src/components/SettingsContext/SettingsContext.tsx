@@ -11,7 +11,7 @@ const SettingsContext = createContext({
   updateDarkMode: (value: boolean) => {},
   updateHighContrastMode: (value: boolean) => {},
   subscribe: (callback: any) => {},
-  unsubscribe: (callback: any) => {}
+  unsubscribe: (callback: any) => {},
 })
 
 // Settings object - contains methods to authenticate the user
@@ -20,7 +20,7 @@ const Settings = (props: any) => {
   const [highContrastMode, setHighContrastMode] = useState(false)
 
   // List of functions to call when a change is made
-  const subscribers = new Set();
+  const subscribers = new Set()
 
   const subscribe = (callback: any) => {
     subscribers.add(callback)
@@ -80,7 +80,13 @@ const Settings = (props: any) => {
   // Create the Settings context and create all children with the context
   return (
     <SettingsContext.Provider
-      value={{ updateDarkMode, updateHighContrastMode, getStylePrefix, subscribe, unsubscribe }}
+      value={{
+        updateDarkMode,
+        updateHighContrastMode,
+        getStylePrefix,
+        subscribe,
+        unsubscribe,
+      }}
     >
       {props.children}
     </SettingsContext.Provider>

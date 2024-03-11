@@ -1,8 +1,6 @@
 import { useContext } from 'react'
 import '../TitleBar.css'
-import {
-  SettingsContext,
-} from '../../SettingsContext/SettingsContext'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
 interface TitleBarButton {
   id: string

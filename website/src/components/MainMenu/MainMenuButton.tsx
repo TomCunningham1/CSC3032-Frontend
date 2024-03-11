@@ -9,7 +9,6 @@ interface MainMenuButton {
 }
 
 const MainMenuButton = ({ id, method, text }: MainMenuButton) => {
-
   const { getStylePrefix } = useContext(SettingsContext)
   const prefix = getStylePrefix()
 

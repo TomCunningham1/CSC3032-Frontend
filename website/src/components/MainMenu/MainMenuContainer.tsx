@@ -35,7 +35,10 @@ const MainMenuContainer = () => {
       {loading ? (
         <LoadingClock />
       ) : (
-        <div className={`${stylePrefix}-menu-container`} data-testid={'main-menu-wrapper'}>
+        <div
+          className={`${stylePrefix}-menu-container`}
+          data-testid={'main-menu-wrapper'}
+        >
           {scenarios.map((playthrough) => {
             const navigateToQuiz = async () => {
               setLoading(true)

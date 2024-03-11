@@ -13,9 +13,8 @@ interface PopUpInterface {
 }
 
 const PopUp = ({ id, title, name, onClose, children }: PopUpInterface) => {
-  
   const { getStylePrefix } = useContext(SettingsContext)
-  const prefix = getStylePrefix();
+  const prefix = getStylePrefix()
 
   console.log(prefix)
 
