@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import M from 'materialize-css'
 import classnames from 'classnames'
 import isEmpty from '../../utils/is-empty'
 import correctNotification from '../../assets/audio/correct-answer.mp3'
@@ -11,12 +10,14 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
 import toast, { Toaster } from 'react-hot-toast'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 interface PlayPropsInterface {
   state?: any
   history?: any
   router?: any
   location: any
+  style: any
 }
 
 interface PlayStateInterface {
@@ -33,6 +34,7 @@ interface PlayStateInterface {
   wrongAnswers: number
   hints: number
   fiftyFifty: number
+  prefix: string
   usedFiftyFifty: boolean
   nextButtonDisabled: boolean
   previousButtonDisabled: boolean
@@ -49,12 +51,14 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   interval: any
   wrongSound: any
   buttonSound: any
+  getStylePrefix: any
 
   constructor(props: PlayPropsInterface) {
     super(props)
     this.state = {
       questions: this.props.router.location.state.questions,
       title: this.props.router.location.state.title,
+      prefix: this.props.style.prefix,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
@@ -82,6 +86,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   componentDidMount() {
     const { questions, currentQuestion, nextQuestion, previousQuestion } =
       this.state
+    // @ts-ignore
+    this.context.subscribe(this.handleContextChange);
     this.displayQuestions(
       questions,
       currentQuestion,
@@ -91,7 +97,18 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     this.startTimer()
   }
 
+  handleContextChange = () => {
+    // @ts-ignore
+    const prefix = this.context.getStylePrefix()
+    this.setState({
+      prefix: prefix
+    })
+    console.log("called")
+  }
+
   componentWillUnmount() {
+    // @ts-ignore
+    this.context.unsubscribe(this.handleContextChange);
     clearInterval(this.interval)
   }
 
@@ -451,6 +468,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       hints,
       numberOfQuestions,
       time,
+      prefix
     } = this.state
 
     return (
@@ -460,7 +478,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
-        <div data-testid="questions-container" className="questions">
+        <div data-testid="questions-container" className={`${prefix}-questions`}>
           <h2>{this.state.title}</h2>
           <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
@@ -567,5 +585,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     )
   }
 }
+
+Play.contextType = SettingsContext;
 
 export default withRouter(Play)

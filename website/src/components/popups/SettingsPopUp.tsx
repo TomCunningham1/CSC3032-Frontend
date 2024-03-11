@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react'
 import PopUp from './PopUp'
-import './PopUp.css'
 import { FormControlLabel, Slider, Switch } from '@mui/material'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
+import '../../styles/styles.scss'
 
 const componentId = 'settings-popup'
 
@@ -31,7 +31,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
   if (!open) return null
   return (
     <PopUp id={componentId} title={'Settings'} onClose={onClose}>
-      <div data-testid="settings-popup-text" className="PopUpTextSettings">
+      <div data-testid="settings-popup-text" className="pop-up-text-settings">
         <ul>
           <li>
             <FormControlLabel

@@ -8,65 +8,29 @@
   background-image: linear-gradient(65deg, #2934c4, #4e78d9 40%, #2989c4);
 }
 
-.menu-container, .login-form, .register-form {
+.light-menu-container {
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(65deg, rgba(41, 52, 196, 0.8), rgba(78, 120, 217, 0.8) 40%, rgba(41, 137, 196, 0.8));
 }
 
-.light-menu-container-solid {
+.dark-menu-container {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(65deg, rgba(41, 52, 196), rgba(78, 120, 217) 40%, rgba(41, 137, 196));
-  position: fixed;
-  top: 5%; 
-  left: 50%; 
-  transform: translateX(-50%);
+  background-image: linear-gradient(65deg, rgba(28, 28, 28, 0.8), rgba(55, 55, 55, 0.8) 40%, rgba(41, 41, 41, 0.8));
 }
 
 @media screen and (min-width: 600px) {
-  .light-menu-container-solid {
+  .light-menu-container {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
     margin: 0.5rem;
-    width: 400px;
-    margin-top: 5% !important;
-  }
-
-  .Leaderboard{
-    width: 1340px;      
- }
-}
-
-/* Dark mode */
-.dark-menu-container-solid {
-  display: flex;
-  flex-direction: column;
-  background-color: #333333; /* Dark mode background color */
-  position: fixed;
-  top: 5%; 
-  left: 50%; 
-  transform: translateX(-50%);
-}
-
-@media screen and (min-width: 600px) {
-  .dark-menu-container-solid {
-    padding: 5rem;
-    border: 1px solid white;
-    border-radius: 10px;
-    margin: 0.5rem;
-    width: 400px;
-    margin-top: 5% !important;
-  }
-
-  .Leaderboard {
-    width: 1340px;      
   }
 }
 
 @media screen and (min-width: 600px) {
-  .menu-container {
+  .dark-menu-container {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;

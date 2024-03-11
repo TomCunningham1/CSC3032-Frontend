@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useEffect, useState } from 'react'
-import './admin.css'
+import '../../styles/styles.scss';
 
 const AddUpdateInstructions = () => {
   return (

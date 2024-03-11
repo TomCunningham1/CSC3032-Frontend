@@ -1,6 +1,6 @@
 import PopUpButton from './PopUpButton'
 import PopUpTitle from './PopUpTitle'
-import './PopUp.css'
+import '../../styles/styles.scss'
 import { useContext } from 'react'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
 

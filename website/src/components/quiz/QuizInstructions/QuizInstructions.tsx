@@ -1,6 +1,7 @@
-import { Fragment } from 'react'
+import { Fragment, useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import './quiz-instructions.css'
+import '../../../styles/styles.scss'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
 const QuizInstructionsHeader = ({ title }: { title: string }) => {
   return (
@@ -29,9 +30,13 @@ const QuizInstructions = () => {
     navigate('/')
   }
 
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix();
+
   return (
     <Fragment>
-      <div data-testid="menu-container" className="menu-container">
+      <div data-testid={"menu-container"} className={`${prefix}-menu-container`}>
         <QuizInstructionsHeader title={location.state.title} />
         <ul className="text-formatting" id="main-list">
           <li>

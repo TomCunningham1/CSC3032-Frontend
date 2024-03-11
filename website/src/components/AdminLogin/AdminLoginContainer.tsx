@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router'
-import './admin-login.css'
+import '../../styles/styles.scss'
 import { useContext, useState } from 'react'
 import { AccountContext } from '../../auth/Account'
 import toast, { Toaster } from 'react-hot-toast'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 // Creates the login form for admin users
 const AdminLoginContainer = () => {
@@ -15,6 +16,10 @@ const AdminLoginContainer = () => {
   // Constant to store values from text boxes
   const [username, setUsername] = useState('')
   const [pswrd, setPswrd] = useState('')
+
+  // Get dark/light/high contrast mode from context
+  const { getStylePrefix } = useContext(SettingsContext)
+  const stylePrefix = getStylePrefix()
 
   // Check to ensure that a value has been entered before enabling the submit button
   const disabled = username === '' || pswrd === ''
@@ -42,7 +47,7 @@ const AdminLoginContainer = () => {
   return (
     // Login container
     <div
-      className="admin-login-menu-container"
+      className={`${stylePrefix}-admin-login-menu-container`}
       data-testid={'admin-login-container'}
     >
       {/* Title */}

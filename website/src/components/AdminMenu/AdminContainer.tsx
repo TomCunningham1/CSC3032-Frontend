@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import AddUpdateScenario from './AddUpdateScenario'
-import './admin.css'
+import '../../styles/styles.scss';
 import SubmitScenarioPopup from '../popups/SubmitScenarioPopUp'
 import DeleteScenarioButton from './AdminMenuButtons/DeleteScenarioButton'
 import ResetLeaderboardButton from './AdminMenuButtons/ResetLeaderboardButton'
@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import LoadingClock from '../LoadingClock/LoadingClock'
 import BackendService from '../../services/backend-service'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 const SubmitButton = ({ scenario }: { scenario: string }) => {
   const [openPopup, setOpenPopup] = useState(false)
@@ -63,6 +64,10 @@ const AdminContainer = () => {
 
   const { updateLoading } = useContext(LoadingContext)
 
+  const { getStylePrefix } = useContext(SettingsContext)
+  const stylePrefix = getStylePrefix()
+
+
   useEffect(() => {
     updateLoading(true)
     const getScenarios = async () => {
@@ -81,7 +86,7 @@ const AdminContainer = () => {
   return (
     <>
       <Toaster />
-      <div className="admin-menu-container" data-testid={'admin-menu-wrapper'}>
+      <div className={`${stylePrefix}-admin-menu-container`} data-testid={'admin-menu-wrapper'}>
         <AdminOptionsContainer
           setScenario={setScenario}
           scenarios={scenarios}
