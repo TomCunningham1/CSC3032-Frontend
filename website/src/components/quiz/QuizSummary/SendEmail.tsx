@@ -1,8 +1,8 @@
 import { Alert, TextField } from '@mui/material'
 import { useContext, useState } from 'react'
 import BackendService from '../../../services/backend-service'
-import './quiz-summary.css'
 import toast, { Toaster } from 'react-hot-toast'
+import '../../../styles/styles.scss'
 
 interface SendEmailInterface {
   score: number

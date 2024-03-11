@@ -1,6 +1,7 @@
 import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js'
 import { unsubscribe } from 'diagnostics_channel'
 import { createContext, useState } from 'react'
+import { load, store } from '../../utils/session-storage'
 
 type StyleOptions = 'light' | 'dark' | 'contrast'
 
@@ -38,8 +39,11 @@ const Settings = (props: any) => {
   const updateDarkMode = (value: boolean) => {
     if (value === true) {
       setHighContrastMode(false)
+      store('dark-mode', true)
+      store('high-contrast', false)
       setDarkMode(true)
     } else {
+      store('dark-mode', false)
       setDarkMode(false)
     }
     updateValue()
@@ -49,17 +53,21 @@ const Settings = (props: any) => {
     if (value === true) {
       setHighContrastMode(true)
       setDarkMode(false)
+      store('dark-mode', false)
+      store('high-contrast', true)
     } else {
       setHighContrastMode(false)
+      store('high-contrast', false)
     }
     updateValue()
   }
 
   const getStylePrefix = () => {
-    if (darkMode) {
+    console.log(load('dark-mode'))
+    if (darkMode || load('dark-mode') === 'true') {
       return 'dark'
     }
-    if (highContrastMode) {
+    if (highContrastMode || load('high-contrast') === 'true') {
       return 'contrast'
     }
     if (!darkMode && !highContrastMode) {

@@ -1,10 +1,12 @@
 import { useLocation, useNavigate } from 'react-router'
-import './quiz-summary.css'
 import scenarioName from '../../../config/scenarioName'
 import SaveResults from './SaveResults'
 import calculateSeconds from '../../../utils/calculateSeconds'
 import SendEmail from './SendEmail'
 import QuizSummaryTable from './QuizSummaryTable'
+import '../../../styles/styles.scss'
+import { useContext } from 'react'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
 interface QuizSummaryState {
   scenario: string
@@ -39,6 +41,9 @@ const QuizSummary = () => {
 
   const navigate = useNavigate()
 
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix();
+
   const handleHomeButton = () => {
     navigate('/')
   }
@@ -59,7 +64,7 @@ const QuizSummary = () => {
   const remark: string = getRemark(results.score)
 
   return (
-    <div className="menu-container-summary">
+    <div className={`${prefix}-menu-container-summary`}>
       <h1>Your Summary</h1>
       <QuizSummaryTable results={results} remark={remark} />
       <div>

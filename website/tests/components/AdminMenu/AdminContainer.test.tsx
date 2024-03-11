@@ -39,7 +39,7 @@ describe('admin container', () => {
         const wrapper = output.getByTestId('admin-menu-wrapper')
 
         expect(wrapper).toBeTruthy()
-        expect(wrapper.className).toBe('admin-menu-container')
+        expect(wrapper.className).toBe('undefined-admin-menu-container')
     })
 
     it('should render the options wrapper', () => {

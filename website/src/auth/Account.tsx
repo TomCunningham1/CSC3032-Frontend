@@ -30,9 +30,11 @@ const Account = (props: any) => {
           if (err) {
             reject(err)
           } else {
+            console.log(session)
             resolve(session)
           }
         })
+        
       } else {
         reject()
       }

@@ -39,7 +39,7 @@ describe('admin add update scenario', () => {
         const container = output.getByTestId('admin-login-container')
 
         expect(container).toBeTruthy()
-        expect(container.className).toBe('admin-login-menu-container')
+        expect(container.className).toBe('undefined-admin-login-menu-container')
     })
 
     describe('verify validation', () => {

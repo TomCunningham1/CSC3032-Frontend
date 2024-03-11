@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import '../TitleBar.css'
 import {
-  Settings,
   SettingsContext,
 } from '../../SettingsContext/SettingsContext'
 
@@ -14,8 +13,6 @@ interface TitleBarButton {
 const TitleBarButton = ({ id, text, method }: TitleBarButton) => {
   const { getStylePrefix } = useContext(SettingsContext)
   const stylePrefix = getStylePrefix()
-
-  console.log(stylePrefix)
 
   return (
     <button

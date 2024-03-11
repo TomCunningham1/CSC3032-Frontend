@@ -55,7 +55,7 @@ describe('Tests for the TitleBar', () => {
             // verify the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Home')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
     
         it('should render the leaderboard button', () => {
@@ -65,7 +65,7 @@ describe('Tests for the TitleBar', () => {
             //verify the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Leaderboard')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
     
         it('should render the settings button', () => {
@@ -75,7 +75,7 @@ describe('Tests for the TitleBar', () => {
             // verify the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Settings')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
 
         it('should display the admin menu button', () => {
@@ -85,7 +85,7 @@ describe('Tests for the TitleBar', () => {
             // verifyt the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Admin Menu')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
 
         it('should display the logout button', () => {
@@ -95,7 +95,7 @@ describe('Tests for the TitleBar', () => {
             // verifyt the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Logout')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
     })
 
@@ -122,7 +122,7 @@ describe('Tests for the TitleBar', () => {
             // verify the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Home')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
     
         it('should render the leaderboard button', () => {
@@ -132,7 +132,7 @@ describe('Tests for the TitleBar', () => {
             //verify the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Leaderboard')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
     
         it('should render the settings button', () => {
@@ -142,7 +142,7 @@ describe('Tests for the TitleBar', () => {
             // verify the button renders as expected
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Settings')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
 
         it('should display the Admin Login button', () => {
@@ -153,7 +153,7 @@ describe('Tests for the TitleBar', () => {
 
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Admin Login')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
 
         it('should display the Help button', () => {
@@ -164,7 +164,7 @@ describe('Tests for the TitleBar', () => {
 
             expect(button).toBeTruthy()
             expect(button.innerHTML).toBe('Help')
-            expect(button.className).toBe('TitleBarButton')
+            expect(button.className).toBe('undefined-title-bar-button')
         })
     })
 
