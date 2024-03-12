@@ -21,7 +21,8 @@ class BackendServiceClass {
     correctAnswers: number,
     wrongAnswers: number,
     hintsUsed: number,
-    fiftyFiftyUsed: number
+    fiftyFiftyUsed: number,
+    time: number
   ) => {
     return await axios.post(
       `${BACKEND_IP}/results/send-email`,
@@ -34,6 +35,7 @@ class BackendServiceClass {
         wrongAnswers: wrongAnswers,
         hintsUsed: hintsUsed,
         fiftyFiftyUsed: fiftyFiftyUsed,
+        time: time
       },
       {
         headers: {

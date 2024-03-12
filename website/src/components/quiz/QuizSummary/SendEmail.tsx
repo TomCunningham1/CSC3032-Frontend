@@ -13,6 +13,7 @@ interface SendEmailInterface {
   wrongAnswers: number
   hintsUsed: number
   fiftyFiftyUsed: number
+  time: number
 }
 
 const SendEmail = ({
@@ -23,6 +24,7 @@ const SendEmail = ({
   wrongAnswers,
   hintsUsed,
   fiftyFiftyUsed,
+  time
 }: SendEmailInterface) => {
   const [email, setEmail] = useState('')
 
@@ -43,7 +45,8 @@ const SendEmail = ({
       correctAnswers,
       wrongAnswers,
       hintsUsed,
-      fiftyFiftyUsed
+      fiftyFiftyUsed,
+      time
     )
       .then(() => {
         toast.success('Results have been sent')

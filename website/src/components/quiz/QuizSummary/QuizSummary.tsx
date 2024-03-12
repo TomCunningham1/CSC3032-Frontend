@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router'
 import scenarioName from '../../../config/scenarioName'
 import SaveResults from './SaveResults'
-import calculateSeconds from '../../../utils/calculateSeconds'
+import calculateSeconds from '../../../utils/calculateSeconds';
 import SendEmail from './SendEmail'
 import QuizSummaryTable from './QuizSummaryTable'
 import '../../../styles/styles.scss'
@@ -76,6 +76,7 @@ const QuizSummary = () => {
           wrongAnswers={results.wrongAnswers}
           hintsUsed={results.hintsUsed}
           fiftyFiftyUsed={results.fiftyFiftyUsed}
+          time={calculateSeconds(results.minutes, results.seconds)}
         />
         <SaveResults
           score={results.score}
