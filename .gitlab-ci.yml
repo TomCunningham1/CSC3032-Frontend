@@ -78,6 +78,9 @@ deployment_production:
   
 cypress_testing_production:
   stage: post_deploy
+  variables:
+    FRONTEND_PRODUCTION_URL: $FRONTEND_PRODUCTION_URL
+    ADMIN_LOGIN: $ADMIN_LOGIN
   only:
     - main
   script:
@@ -87,6 +90,9 @@ cypress_testing_production:
 
 cypress_testing_non_production:
   stage: post_deploy
+  variables:
+    FRONTEND_NON_PRODUCTION_URL: $FRONTEND_NON_PRODUCTION_URL
+    ADMIN_LOGIN: $ADMIN_LOGIN
   except:
     - main
   script:
