@@ -30,7 +30,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
   const [top10, setTop10] = useState([])
   const [scenarios, setScenarios] = useState([])
 
-  const [ loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   // Function to swap between different scenarios
   const getScenarioResults = async (scenario: string) => {
@@ -160,12 +160,10 @@ const LeaderboardPopUp = ({ onClose }: any) => {
   const [displayedScenario, setDisplayedScenario] =
     useState('Select a Scenario')
 
-    return (
+  return (
     <>
       <Toaster />
-      {loading && (
-        <LoadingClock />
-      )}
+      {loading && <LoadingClock />}
       <PopUp
         id={componentId}
         title={'Leaderboard'}
