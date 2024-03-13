@@ -2,18 +2,19 @@ import PopUp from './PopUp'
 import '../../styles/styles.scss'
 import PhoneIcon from '@mui/icons-material/Phone'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
-import { useContext } from 'react'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
+import { useContext } from 'react'
 
 const componentId = 'help-popup'
 
 const HelpPopUp = ({ open, onClose }: any) => {
-  const { getStylePrefix } = useContext(SettingsContext)
-  const prefix = getStylePrefix() as unknown as string;
+    // Context for dark/light/high contrast mode.
+    const { getStylePrefix } = useContext(SettingsContext)
+    const prefix = getStylePrefix() as unknown as string
 
   if (!open) return null
   return (
-    <PopUp id={componentId} title={'Help'} onClose={onClose}>
+    <PopUp id={componentId} title={'Help'} name={`${prefix}-menu-container-solid Help`} onClose={onClose}>
       <div className="pop-up-text" data-testid="help-popup-text">
         <ul>
           <li>
