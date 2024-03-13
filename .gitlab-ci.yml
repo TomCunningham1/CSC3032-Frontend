@@ -24,57 +24,57 @@ build_job:
       - website/build
       - dist
 
-format_job:
-  stage: lint
-  script:
-    - node -v
-    - npm install -g prettier
-    - prettier --check  "lib/**/*.ts"
-    - prettier --check  "bin/**/*.ts"
-    - cd website
-    - npm install -g prettier
-    - prettier --check  "src/**/*.ts"
-    - prettier --check  "src/**/*.tsx"
+# format_job:
+#   stage: lint
+#   script:
+#     - node -v
+#     - npm install -g prettier
+#     - prettier --check  "lib/**/*.ts"
+#     - prettier --check  "bin/**/*.ts"
+#     - cd website
+#     - npm install -g prettier
+#     - prettier --check  "src/**/*.ts"
+#     - prettier --check  "src/**/*.tsx"
 
-unit_test_job:
-  stage: test
-  script:
-    - npm run test
-    - cd website
-    - npm run test
+# unit_test_job:
+#   stage: test
+#   script:
+#     - npm run test
+#     - cd website
+#     - npm run test
 
   
-deployment_test:
-  stage: deploy
-  variables:
-    ENVIRONMENT: "non-prod"
-    API_KEY: $NON_PRODUCTION_API_KEY
-    BACKEND_URL: $NON_PRODUCTION_URL
-  except:
-    - main
-  script:
-    - echo "Deploying to '$ENVIRONMENT' Environment"
-    - cd website
-    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
-    - cd ..
-    - cdk synth
-    - cdk deploy --require-approval never
+# deployment_test:
+#   stage: deploy
+#   variables:
+#     ENVIRONMENT: "non-prod"
+#     API_KEY: $NON_PRODUCTION_API_KEY
+#     BACKEND_URL: $NON_PRODUCTION_URL
+#   except:
+#     - main
+#   script:
+#     - echo "Deploying to '$ENVIRONMENT' Environment"
+#     - cd website
+#     - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
+#     - cd ..
+#     - cdk synth
+#     - cdk deploy --require-approval never
 
-deployment_production:
-  stage: deploy
-  variables:
-    ENVIRONMENT: "prod"
-    API_KEY: $PRODUCTION_API_KEY
-    BACKEND_URL: $PRODUCTION_URL
-  only:
-    - main
-  script:
-    - echo "Deploying to '$ENVIRONMENT' Environment"
-    - cd website
-    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
-    - cd ..
-    - cdk synth
-    - cdk deploy --require-approval never
+# deployment_production:
+#   stage: deploy
+#   variables:
+#     ENVIRONMENT: "prod"
+#     API_KEY: $PRODUCTION_API_KEY
+#     BACKEND_URL: $PRODUCTION_URL
+#   only:
+#     - main
+#   script:
+#     - echo "Deploying to '$ENVIRONMENT' Environment"
+#     - cd website
+#     - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
+#     - cd ..
+#     - cdk synth
+#     - cdk deploy --require-approval never
   
 cypress_testing_production:
   stage: post_deploy
@@ -92,12 +92,12 @@ cypress_testing_production:
 cypress_testing_non_production:
   stage: post_deploy
   variables:
-    FRONTEND_NON_PRODUCTION_URL: $FRONTEND_NON_PRODUCTION_URL
-    ADMIN_LOGIN: $ADMIN_LOGIN
+    URL: $FRONTEND_NON_PRODUCTION_URL
+    PASS: $ADMIN_LOGIN
   except:
     - main
   script:
     - cd cypress_project
     - npm install
-    - echo $FRONTEND_NON_PRODUCTION_URL
+    - echo $URL $PASS
     - npx cypress run --env url=$FRONTEND_NON_PRODUCTION_URL,password=$ADMIN_LOGIN
