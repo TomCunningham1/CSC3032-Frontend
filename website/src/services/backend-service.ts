@@ -35,7 +35,7 @@ class BackendServiceClass {
         wrongAnswers: wrongAnswers,
         hintsUsed: hintsUsed,
         fiftyFiftyUsed: fiftyFiftyUsed,
-        time: time
+        time: time,
       },
       {
         headers: {

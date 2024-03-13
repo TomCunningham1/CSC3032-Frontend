@@ -8,9 +8,7 @@ import { load } from '../../utils/session-storage'
 const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
-  const [darkMode, setDarkMode] = useState(
-    load('dark-mode') === 'true'
-  )
+  const [darkMode, setDarkMode] = useState(load('dark-mode') === 'true')
   const [contrastMode, setContrastMode] = useState(
     load('high-contrast') === 'true'
   )

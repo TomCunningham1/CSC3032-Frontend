@@ -24,7 +24,7 @@ const SendEmail = ({
   wrongAnswers,
   hintsUsed,
   fiftyFiftyUsed,
-  time
+  time,
 }: SendEmailInterface) => {
   const [email, setEmail] = useState('')
 

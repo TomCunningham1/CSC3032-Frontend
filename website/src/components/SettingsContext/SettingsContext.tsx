@@ -28,7 +28,7 @@ const Settings = (props: any) => {
   }
 
   const unsubscribe = (thisCallback: any) => {
-    setSubscribers(subscribers.filter(callback => callback !== thisCallback));
+    setSubscribers(subscribers.filter((callback) => callback !== thisCallback))
   }
 
   const updateValue = () => {

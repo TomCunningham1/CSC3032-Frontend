@@ -11,7 +11,7 @@ import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
 import toast, { Toaster } from 'react-hot-toast'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
-import { unsubscribe } from 'diagnostics_channel';
+import { unsubscribe } from 'diagnostics_channel'
 
 interface PlayPropsInterface {
   state?: any
@@ -85,7 +85,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   componentDidMount() {
-    console.log("sub")
+    console.log('sub')
     const { questions, currentQuestion, nextQuestion, previousQuestion } =
       this.state
     // @ts-ignore
@@ -443,7 +443,9 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 className="Phone Icon"
               >
                 {' '}
-                <LiveHelpIcon style={{ color: prefix === 'contrast' ? 'black' : 'white' }} />
+                <LiveHelpIcon
+                  style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+                />
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
@@ -454,7 +456,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 className="Hint Icon"
               >
                 {' '}
-                <PhoneIcon color="primary" style={{ color: prefix === 'contrast' ? 'black' : 'white' }} />
+                <PhoneIcon
+                  color="primary"
+                  style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+                />
                 <span className="lifeline">{hints}</span>
               </span>
             </p>

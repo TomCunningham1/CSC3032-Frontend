@@ -38,7 +38,11 @@ const RenderRoutes = () => {
           if (route.isPrivate && !authenticated) {
             // If the route is private and the user is not authenticated navigate back to home screen
             return (
-              <Route key={index} path={route.path} element={<Navigate to="/" />} />
+              <Route
+                key={index}
+                path={route.path}
+                element={<Navigate to="/" />}
+              />
             )
           }
           // Otherwise return the route
