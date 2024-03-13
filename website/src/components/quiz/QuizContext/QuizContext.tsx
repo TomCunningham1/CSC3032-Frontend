@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import './quiz-context.css'
 
-const QuizInstructionsHeader = ({ title }: { title: string }) => {
+const QuizContextHeader = ({ title }: { title: string }) => {
   return (
     <div>
       <h1>Context</h1>
@@ -36,7 +36,7 @@ const QuizContext = () => {
   return (
     <Fragment>
       <div className="menu-container">
-        <QuizInstructionsHeader title={location.state.title} />
+        <QuizContextHeader title={location.state.title} />
         <ul className="text-formatting" id="main-list">
           <li>
             The business in question used for each scenario is a global

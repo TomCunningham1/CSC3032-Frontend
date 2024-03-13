@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './quiz-instructions.css'
+import PhoneIcon from '@mui/icons-material/Phone'
+import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 
 const QuizInstructionsHeader = ({ title }: { title: string }) => {
   return (
@@ -35,39 +37,50 @@ const QuizInstructions = () => {
         <QuizInstructionsHeader title={location.state.title} />
         <ul className="text-formatting" id="main-list">
           <li>
-            The scenerio has a duration of 6 minutes and ends as soon the time
+            Each scenerio has a duration of 3 minutes and ends as soon the timer
             ends.
           </li>
-          <li>Each game consists of 5 questions.</li>
-          <li>Each question has 4 options.</li>
           <li>
-            Select the option which you believe answers the question most
-            accurately by clicking on it.
+            Each scenario consists of 7 questions with each question following
+            the Cyber Killchain in chronological order. These will be randomised
+            each time.
+          </li>
+          <li>Each question will have 4 options to choose from.</li>
+          <li>
+            Select the option you believe answers the question most accurately
+            by clicking on it. An explaination to the answer will be given if
+            you are right or wrong.
           </li>
           <li>
             Each game has 2 lifelines:
             <ul className="text-indent">
-              <li>1 50/50 Chance</li>
-              <li>2 Hints</li>
+              <li>2 50/50 Chance</li>
+              <li>5 Hints</li>
             </ul>
           </li>
           <li>
             Select a 50/50 lifeline by clicking on the icon
-            <span className="mdi mdi-cellphone-basic mdi-24px lifeline-icon"></span>
-            will leave 2 answers for you, one right and one wrong
-            {/* <img src= alt="Quiz App Fifty-Fifty example"/> */}
+            <LiveHelpIcon style={{ color: 'white' }} />
+            <span className="lifeline"></span>
           </li>
+          <ul className="text-indent">
+            <li>This will leave 2 answers for you, one right and one wrong</li>
+          </ul>
           <li>
             Select a hint by clicking on the icon
-            <span className="mdi mdi-puzzle mdi-24px lifeline-icon"></span>
-            will remove on wrong answer and leave three answers for you
-            {/* <img src= alt="Quiz App hints example" /> */}
+            <PhoneIcon color="primary" style={{ color: 'white' }} />
+            <span className="lifeline"></span>
           </li>
+          <ul className="text-indent">
+            <li>
+              This will remove on wrong answer and leave three answers for you
+            </li>
+          </ul>
           <li>
-            Feel free to quit the scenerio at anytime. You will be given a score
-            at the end
+            If you do not undertstand a question you can skip it using the
+            'Skip' button.
           </li>
-          <li>The timer starts as soon as the game loads.</li>
+          <li>The timer starts as soon as you are loaded into a scenario.</li>
         </ul>
         <div className="quiz-button-container">
           <button

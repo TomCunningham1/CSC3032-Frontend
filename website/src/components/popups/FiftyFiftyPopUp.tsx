@@ -6,33 +6,12 @@ const componentId = 'fiftyfifty-popup'
 const FiftyFiftyPopUp = ({ open, onClose }: any) => {
   if (!open) return null
   return (
-    <PopUp id={componentId} title={'Help'} onClose={onClose}>
+    <PopUp id={componentId} title={'FiftyFifty'} onClose={onClose}>
       <div className="PopUpText" data-testid="help-popup-text">
         <ul>
-          <li>
-            To pick a game scenario, select one of the options on the home page.
-          </li>
-          <li>
-            Current Scenario options are:
-            <ul>
-              <li>SQL Injection</li>
-              <li>Distributed Denial of Service</li>
-              <li>Cross Site Scripting</li>
-              <li>Buffer Overflow</li>
-            </ul>
-          </li>
-          <li>
-            To change your settings, click the Settings button on the navigation
-            bar at the top of the screen.{' '}
-          </li>
-          <li>
-            To view how other players have done, view the leaderboards, by
-            clicking the Leaderboard button at the top of the screen.
-          </li>
-          <li>
-            To close pop ups, click the "Back" button at the bottom of the pop
-            up.
-          </li>
+          <li>Contacting a cyber specialist now</li>
+          <li>Give us a few more seconds</li>
+          <li>We removed 2 wromg answers for you. Good Luck!</li>
         </ul>
       </div>
     </PopUp>
