@@ -33,13 +33,18 @@ const SettingsPopUp = ({ open, onClose }: any) => {
     setContrastMode(false)
   }
 
-   // Context for dark/light/high contrast mode.
-   const { getStylePrefix } = useContext(SettingsContext)
-   const prefix = getStylePrefix()
-   
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
+
   if (!open) return null
   return (
-    <PopUp id={componentId} title={'Settings'} name={`${prefix}-menu-container-solid Settings`} onClose={onClose}>
+    <PopUp
+      id={componentId}
+      title={'Settings'}
+      name={`${prefix}-menu-container-solid Settings`}
+      onClose={onClose}
+    >
       <div data-testid="settings-popup-text" className="pop-up-text-settings">
         <ul>
           <li>
