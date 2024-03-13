@@ -20,6 +20,8 @@
     border: 1px solid white;
     border-radius: 10px;
     margin: 0.5rem;
+    width: 400px;
+    margin-top: 4% !important;
   }
 }
 
@@ -27,6 +29,10 @@
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(65deg, rgba(28, 28, 28, 0.8), rgba(55, 55, 55, 0.8) 40%, rgba(41, 41, 41, 0.8));
+  .Leaderboard{
+    height: 60%;
+    width: 87%;      
+ }
 }
 
 @media screen and (min-width: 600px) {
