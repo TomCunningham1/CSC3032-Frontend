@@ -109,6 +109,7 @@ describe('Tests for the quiz page', () => {
         act(() => {
             fireEvent.click(optionA)
         })
+        
         await waitFor(() => {
             expect(mockSuccess).toHaveBeenCalled()
         })
