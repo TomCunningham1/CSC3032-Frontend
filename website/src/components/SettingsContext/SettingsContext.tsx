@@ -75,7 +75,6 @@ const Settings = (props: any) => {
     if (!darkMode && !highContrastMode) {
       return 'light'
     }
-
     return 'light'
   }
 
