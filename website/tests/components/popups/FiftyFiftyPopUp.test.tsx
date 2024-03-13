@@ -45,11 +45,11 @@ describe('delete scenario', () => {
     it('verify contents', () => {
         output = renderComponent(true)
 
-        const title = output.getByText('Help')
+        const title = output.getByText('FiftyFifty')
 
         expect(title).toBeTruthy()
 
-        const prompt = output.getByText('Please wait while a specialist assists you')
+        const prompt = output.getByText('Contacting a cyber specialist now')
 
         expect(prompt).toBeTruthy()
     })

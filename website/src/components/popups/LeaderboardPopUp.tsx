@@ -178,15 +178,17 @@ const LeaderboardPopUp = ({ onClose }: any) => {
           className="pop-up-text-leaderboard"
         >
           <div>
+            <div className="selected-scenario">{displayedScenario}</div>
             {
               // Updated to map from the list returned by "getAllScenarios"
               scenarios.map((scenario) => {
                 return (
                   // Maps out buttons and passes in selected scenario
                   <button
-                    className="scenario-button"
+                    className={`${prefix}-scenario-button`}
                     onClick={() => {
                       getScenarioResults(scenario)
+                      setDisplayedScenario(scenario)
                     }}
                   >
                     {scenario}

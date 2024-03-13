@@ -33,9 +33,18 @@ const SettingsPopUp = ({ open, onClose }: any) => {
     setContrastMode(false)
   }
 
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
+
   if (!open) return null
   return (
-    <PopUp id={componentId} title={'Settings'} onClose={onClose}>
+    <PopUp
+      id={componentId}
+      title={'Settings'}
+      name={`${prefix}-menu-container-solid Settings`}
+      onClose={onClose}
+    >
       <div data-testid="settings-popup-text" className="pop-up-text-settings">
         <ul>
           <li>
@@ -52,7 +61,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
               control={<Switch checked={darkMode} onChange={toggleDarkMode} />}
             />
           </li>
-          <li>
+          {/* <li>
             Text Size
             <Slider
               aria-label="Volume"
@@ -79,7 +88,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
               value={value}
               onChange={handleChange}
             />
-          </li>
+          </li> */}
         </ul>
       </div>
     </PopUp>
