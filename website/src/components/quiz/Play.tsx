@@ -10,7 +10,7 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
-import questions from '../../questions/QuizQuestions'
+//import questions from '../../questions/QuizQuestions'
 import toast, { Toaster } from 'react-hot-toast'
 
 interface PlayPropsInterface {

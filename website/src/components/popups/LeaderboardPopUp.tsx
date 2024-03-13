@@ -7,9 +7,11 @@ import {
 } from 'react'
 import PopUp from './PopUp'
 import './PopUp.css'
+import '../../styles/styles.scss'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
+import LoadingClock from '../LoadingClock/LoadingClock'
 
 const componentId = 'leaderboard-popup'
 
@@ -28,11 +30,11 @@ const LeaderboardPopUp = ({ onClose }: any) => {
   const [top10, setTop10] = useState([])
   const [scenarios, setScenarios] = useState([])
 
-  const { updateLoading } = useContext(LoadingContext)
+  const [loading, setLoading] = useState(true)
 
   // Function to swap between different scenarios
   const getScenarioResults = async (scenario: string) => {
-    updateLoading(true)
+    setLoading(true)
     await BackendService.getResults(scenario)
       .then((resp) => {
         setTop10(resp.data.slice(0, 10))
@@ -40,15 +42,16 @@ const LeaderboardPopUp = ({ onClose }: any) => {
       .catch((err: any) => {
         toast.error(err.message)
       })
-    updateLoading(false)
+    setLoading(false)
   }
 
   // initial call to getAllScenarios to generate the buttons
   // as well as calling the default results table option
   const pageSetup = async () => {
-    updateLoading(true)
+    setLoading(true)
     await BackendService.getAllScenarios()
       .then(async (resp) => {
+        console.log(resp)
         setScenarios(resp.data)
 
         // Checks there is a scenario to request results from
@@ -71,7 +74,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
         toast.error(err.message)
       })
 
-    updateLoading(false)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -154,9 +157,13 @@ const LeaderboardPopUp = ({ onClose }: any) => {
     )
   }
 
+  const [displayedScenario, setDisplayedScenario] =
+    useState('Select a Scenario')
+
   return (
     <>
-      <Toaster />(
+      <Toaster />
+      {loading && <LoadingClock />}
       <PopUp
         id={componentId}
         title={'Leaderboard'}

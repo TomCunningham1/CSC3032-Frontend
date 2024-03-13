@@ -22,8 +22,10 @@ table{
 
   .scenario-button{
     background-color: transparent;
-    border: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
     padding: 5px 10px;
+    margin-bottom: 10px;
     line-height: 1;
     height: 30px;
     width: 250px;
@@ -35,3 +37,12 @@ table{
   .sort-reverse{
     transform: rotate(180deg);
   }
+
+.selected-scenario{
+  margin-bottom: 10px;
+}
+
+.scenario-button:hover {
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.3); 
+}
