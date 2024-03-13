@@ -453,7 +453,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
             <p>
-              <span onClick={this.handleFiftyFifty} className="Phone Icon">
+              <span onClick={this.handleFiftyFifty} data-testid='fiftyfifty-button' className="Phone Icon">
                 {' '}
                 <LiveHelpIcon
                   style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
@@ -462,7 +462,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               </span>
             </p>
             <p>
-              <span onClick={this.handleHints} className="Hint Icon">
+              <span onClick={this.handleHints} data-testid='hint-button' className="Hint Icon">
                 {' '}
                 <PhoneIcon
                   color="primary"
@@ -492,18 +492,18 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           </div>
           <h5>{currentQuestion.question}</h5>
           <div className="options-container">
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-a' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionA}
             </p>
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-b' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionB}
             </p>
           </div>
           <div className="options-container">
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-c' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionC}
             </p>
-            <p onClick={this.handleOptionClick} className="option">
+            <p data-testid='option-d' onClick={this.handleOptionClick} className="option">
               {currentQuestion.optionD}
             </p>
           </div>
