@@ -8,24 +8,14 @@
   background-image: linear-gradient(65deg, #2934c4, #4e78d9 40%, #2989c4);
 }
 
-.menu-container, .login-form, .register-form {
+.light-menu-container {
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(65deg, rgba(41, 52, 196, 0.8), rgba(78, 120, 217, 0.8) 40%, rgba(41, 137, 196, 0.8));
 }
 
-.menu-container-solid {
-  display: flex;
-  flex-direction: column;
-  background-image: linear-gradient(65deg, rgba(41, 52, 196), rgba(78, 120, 217) 40%, rgba(41, 137, 196));
-  position: fixed;
-  top: 5%; 
-  left: 50%; 
-  transform: translateX(-50%);
-}
-
 @media screen and (min-width: 600px) {
-  .menu-container-solid {
+  .light-menu-container {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
@@ -33,7 +23,12 @@
     width: 400px;
     margin-top: 4% !important;
   }
+}
 
+.dark-menu-container {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(65deg, rgba(28, 28, 28, 0.8), rgba(55, 55, 55, 0.8) 40%, rgba(41, 41, 41, 0.8));
   .Leaderboard{
     height: 60%;
     width: 87%;      
@@ -41,7 +36,23 @@
 }
 
 @media screen and (min-width: 600px) {
-  .menu-container {
+  .dark-menu-container {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+}
+
+.contrast-menu-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+}
+
+@media screen and (min-width: 600px) {
+  .contrast-menu-container {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
@@ -61,7 +72,7 @@ h2 {
 input {
   margin: 0.5rem 0;
   padding: 1rem;
-  border: none;
+  border: 1px black solid;
   border-radius: 10px;
 }
 

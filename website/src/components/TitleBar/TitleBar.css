@@ -5,6 +5,21 @@
   align-items: center; /* Center content horizontally */
 }
 
+.light-titlebar-background {
+  background-color: #1976d2;
+}
+
+/* Dark mode */
+.dark-titlebar-background {
+  background-color: #2c2c2c !important; /* Dark mode background color */
+}
+
+/* high Contrast mode */
+.contrast-titlebar-background {
+  background-color: #ffffff !important; /* Dark mode background color */
+  color: black !important;
+}
+
 /* Container for the title and buttons */
 .TitleBar {
   display: flex;
@@ -32,7 +47,7 @@
 }
 
 /* Individual button styling */
-.TitleBarButton {
+.light-title-bar-button {
   background-color: transparent; /* Transparent background */
   border: 2px solid transparent; /* Set the initial border to transparent */
   color: white; /* Text color */
@@ -47,9 +62,52 @@
 }
 
 /* Button hover state */
-.TitleBarButton:hover {
+.light-title-bar-button:hover {
   border-color: white; /* Change border color on hover */
   background-color: rgba(255, 255, 255, 0.3); /* Transparent white background on hover */
+}
+
+/* Dark mode */
+.dark-title-bar-button {
+  background-color: transparent; /* Transparent background */
+  border: 2px solid transparent; /* Set the initial border to transparent */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding */
+  text-align: center; /* Text alignment */
+  text-decoration: none; /* Text decoration */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  width: 150px; /* Button width */
+  border-radius: 5px; /* Border radius */
+  margin: 0 5px; /* Margin */
+}
+
+/* Dark mode button hover state */
+.contrast-title-bar-button:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Transparent white background on hover */
+  color: black; /* Change text color on hover */
+}
+
+/* High Contrast mode */
+.contrast-title-bar-button {
+  background-color: transparent; /* Transparent background */
+  border: 2px solid black; /* Set the initial border to transparent */
+  color: black; /* Text color */
+  padding: 10px 20px; /* Padding */
+  text-align: center; /* Text alignment */
+  text-decoration: none; /* Text decoration */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  width: 150px; /* Button width */
+  border-radius: 5px; /* Border radius */
+  margin: 0 5px; /* Margin */
+}
+
+/* Dark mode button hover state */
+.dark-title-bar-button:hover {
+  border-color: black; /* Change border color on hover */
+  background-color: rgba(255, 255, 255, 0.3); /* Transparent white background on hover */
+  color: black; /* Change text color on hover */
 }
 
 /* Spacer to push buttons to the right */
@@ -65,7 +123,7 @@
   margin-left: 92%; /* Adjusted margin */
 }
 
-.AppBackground {
+.light-app-background {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -73,6 +131,32 @@
   justify-content: center;
   color: white;
   background-image: url('../../../public/background-image-1.jpg');
+  background-size: cover; 
+  /* background-size: contain; */
+  background-repeat: no-repeat; 
+}
+
+.dark-app-background {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-image: url('../../../public/background-image-1.jpg');
+  background-size: cover; 
+  /* background-size: contain; */
+  background-repeat: no-repeat; 
+}
+
+.contrast-app-background {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: black;
   background-size: cover; 
   /* background-size: contain; */
   background-repeat: no-repeat; 

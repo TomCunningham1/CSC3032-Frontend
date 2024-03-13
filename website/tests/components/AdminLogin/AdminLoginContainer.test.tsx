@@ -22,7 +22,7 @@ describe('admin add update scenario', () => {
     const renderComponent = () => {
         return render(
             <MemoryRouter>
-                <AccountContext.Provider value={{authenticate: mockAuthenticate, authenticated: false, logout: jest.fn(), getSession: jest.fn()}} >
+                <AccountContext.Provider value={{authenticate: mockAuthenticate, logout: jest.fn(), getSession: jest.fn(), isLoggedIn: jest.fn()}} >
                     <AdminLoginContainer  />
                 </AccountContext.Provider>
             </MemoryRouter>
@@ -39,7 +39,7 @@ describe('admin add update scenario', () => {
         const container = output.getByTestId('admin-login-container')
 
         expect(container).toBeTruthy()
-        expect(container.className).toBe('admin-login-menu-container')
+        expect(container.className).toBe('undefined-admin-login-menu-container')
     })
 
     describe('verify validation', () => {

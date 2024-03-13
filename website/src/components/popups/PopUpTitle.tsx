@@ -1,4 +1,4 @@
-import './PopUp.css'
+import '../../styles/styles.scss'
 
 interface PopUpTitleInterface {
   title: string
@@ -6,7 +6,7 @@ interface PopUpTitleInterface {
 
 const PopUpTitle = ({ title }: PopUpTitleInterface) => {
   return (
-    <h1 data-testid="pop-up-title" className="PopUpTitle">
+    <h1 data-testid="pop-up-title" className="pop-up-title">
       {title}
     </h1>
   )

@@ -28,7 +28,7 @@ describe('TitleBarButton', () => {
 
         const button = output.getByTestId('title-bar-navigation-test')
 
-        expect(button.className).toBe('TitleBarButton')
+        expect(button.className).toBe('undefined-title-bar-button')
     })
 
     it('should call the method when the button is clicked', () => {

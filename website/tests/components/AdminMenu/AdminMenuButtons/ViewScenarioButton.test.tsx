@@ -23,7 +23,7 @@ describe('view scenario', () => {
         const button = output.getByTestId('view-scenario')
 
         expect(button).toBeTruthy()
-        expect(button.className).toBe('admin-menu-button')
+        expect(button.className).toBe('undefined-admin-menu-button')
     })
 
     it('should display the popup', () => {

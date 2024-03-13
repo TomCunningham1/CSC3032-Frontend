@@ -39,12 +39,12 @@ describe('Quiz Instructions Page', () => {
     })
 
     it('Should contain a Play Quiz button', () => {
-      cy.contains('Start the quiz')
+      cy.contains('Next')
     })
 
     it('Play button should take the user to the first question of the game', () => {
-      cy.contains('Start the quiz').click()
-      cy.contains('SQL Injection')
+      cy.contains('Next').click()
+      cy.contains('Context')
     })
 
   })

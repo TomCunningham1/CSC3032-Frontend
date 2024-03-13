@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useEffect, useState } from 'react'
-import './admin.css'
+import '../../styles/styles.scss'
 
 const AddUpdateInstructions = () => {
   return (
@@ -26,7 +26,15 @@ const AddUpdateInstructions = () => {
 }
 
 let initialValue =
-  '{\n\t"title":""\n\t"questions":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":""\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":""\n\t\t}\n\t]\n}'
+  '{\n\t"title":""\n\t"reconnaissance":[\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",' +
+  '\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":""\n\t\t},\n\t\t{\n\t\t\t"question":"",\n\t\t\t"optionA":"",' +
+  '\n\t\t\t"optionB":"",\n\t\t\t"optionC":"",\n\t\t\t"optionD":"",\n\t\t\t"answer":"",\n\t\t\t"stage":"",\n\t\t\t"explaination":""\n\t\t}\n\t]' +
+  '\n\t"weaponisation":[],' +
+  '\n\t"delivery":[],' +
+  '\n\t"exploitation":[],' +
+  '\n\t"installation":[],' +
+  '\n\t"command":[],' +
+  '\n\t"actions":[]\n}'
 
 const AddUpdateScenario = ({ scenario, setScenario, value, setValue }: any) => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

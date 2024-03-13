@@ -1,4 +1,4 @@
-import './quiz-summary.css'
+import '../../../styles/styles.scss'
 
 const QuizSummaryTable = ({ results, remark }: any) => (
   <table data-testid="results-table" className="results-table">

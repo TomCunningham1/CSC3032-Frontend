@@ -38,7 +38,7 @@ describe('TitleBarLeaderboardButton', () => {
 
         const button = output.getByTestId(buttonId)
 
-        expect(button.className).toBe('TitleBarButton')
+        expect(button.className).toBe('undefined-title-bar-button')
     })
 
     it('should contain the button label', () => {

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import M from 'materialize-css'
 import classnames from 'classnames'
 import isEmpty from '../../utils/is-empty'
 import correctNotification from '../../assets/audio/correct-answer.mp3'
@@ -10,14 +9,16 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
-//import questions from '../../questions/QuizQuestions'
 import toast, { Toaster } from 'react-hot-toast'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
+import { unsubscribe } from 'diagnostics_channel'
 
 interface PlayPropsInterface {
   state?: any
   history?: any
   router?: any
   location: any
+  style: any
 }
 
 interface PlayStateInterface {
@@ -34,6 +35,7 @@ interface PlayStateInterface {
   wrongAnswers: number
   hints: number
   fiftyFifty: number
+  prefix: string
   usedFiftyFifty: boolean
   nextButtonDisabled: boolean
   previousButtonDisabled: boolean
@@ -50,12 +52,14 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   interval: any
   wrongSound: any
   buttonSound: any
+  getStylePrefix: any
 
   constructor(props: PlayPropsInterface) {
     super(props)
     this.state = {
       questions: this.props.router.location.state.questions,
       title: this.props.router.location.state.title,
+      prefix: this.props.style.prefix,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
@@ -81,8 +85,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   componentDidMount() {
+    console.log('sub')
     const { questions, currentQuestion, nextQuestion, previousQuestion } =
       this.state
+    // @ts-ignore
+    this.context.subscribe(this.handleContextChange)
     this.displayQuestions(
       questions,
       currentQuestion,
@@ -92,7 +99,15 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     this.startTimer()
   }
 
+  handleContextChange = (prefix: string) => {
+    this.setState({
+      prefix: prefix,
+    })
+  }
+
   componentWillUnmount() {
+    // @ts-ignore
+    this.context.unsubscribe(this.handleContextChange)
     clearInterval(this.interval)
   }
 
@@ -142,7 +157,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
 
   handleNextButtonClick = () => {
     this.playButtonSound()
-    if (this.state.nextQuestion !== undefined && this.state.nextStage) {
+    if (this.state.nextQuestion !== undefined) {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex + 1,
@@ -156,54 +171,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           )
         }
       )
-    }
-  }
-
-  handlePreviousButtonClick = () => {
-    this.playButtonSound()
-    if (
-      this.state.previousQuestion !== undefined &&
-      this.state.previousStage !== undefined
-    ) {
-      this.setState(
-        (prevState) => ({
-          currentQuestionIndex: prevState.currentQuestionIndex - 1,
-        }),
-        () => {
-          this.displayQuestions(
-            this.state.questions,
-            this.state.currentQuestion,
-            this.state.nextQuestion,
-            this.state.previousQuestion
-          )
-        }
-      )
-    }
-  }
-
-  handleQuitButtonClick = () => {
-    this.playButtonSound()
-    if (window.confirm('Are you sure you want to quit?')) {
-      this.props.router.navigate('/')
-    }
-  }
-
-  handleButtonClick = (e: any) => {
-    switch (e.target.id) {
-      case 'next-button':
-        this.handleNextButtonClick()
-        break
-
-      case 'previous-button':
-        this.handlePreviousButtonClick()
-        break
-
-      case 'quit-button':
-        this.handleQuitButtonClick()
-        break
-
-      default:
-        break
     }
   }
 
@@ -452,6 +419,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       hints,
       numberOfQuestions,
       time,
+      prefix,
     } = this.state
 
     return (
@@ -461,7 +429,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
-        <div data-testid="questions-container" className="questions">
+        <div
+          data-testid="questions-container"
+          className={`${prefix}-questions`}
+        >
           <h2>{this.state.title}</h2>
           <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
@@ -472,7 +443,9 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 className="Phone Icon"
               >
                 {' '}
-                <LiveHelpIcon style={{ color: 'white' }} />
+                <LiveHelpIcon
+                  style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+                />
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
@@ -483,7 +456,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 className="Hint Icon"
               >
                 {' '}
-                <PhoneIcon color="primary" style={{ color: 'white' }} />
+                <PhoneIcon
+                  color="primary"
+                  style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+                />
                 <span className="lifeline">{hints}</span>
               </span>
             </p>
@@ -545,7 +521,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
                 disable: this.state.nextButtonDisabled,
               })}
               id="next-button"
-              onClick={this.handleButtonClick}
+              onClick={this.handleNextButtonClick}
             >
               Skip
             </button>
@@ -568,5 +544,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     )
   }
 }
+
+Play.contextType = SettingsContext
 
 export default withRouter(Play)

@@ -1,30 +1,56 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import PopUp from './PopUp'
-import './PopUp.css'
 import { FormControlLabel, Slider, Switch } from '@mui/material'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
+import '../../styles/styles.scss'
+import { load } from '../../utils/session-storage'
 
 const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
+  const [darkMode, setDarkMode] = useState(load('dark-mode') === 'true')
+  const [contrastMode, setContrastMode] = useState(
+    load('high-contrast') === 'true'
+  )
+
+  const { updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
+
   const [value, setValue] = React.useState<number>(30)
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number)
   }
 
+  const toggleContrastMode = () => {
+    updateHighContrastMode(!contrastMode)
+    setContrastMode(!contrastMode)
+    setDarkMode(false)
+  }
+
+  const toggleDarkMode = () => {
+    updateDarkMode(!darkMode)
+    setDarkMode(!darkMode)
+    setContrastMode(false)
+  }
+
   if (!open) return null
   return (
     <PopUp id={componentId} title={'Settings'} onClose={onClose}>
-      <div data-testid="settings-popup-text" className="PopUpTextSettings">
+      <div data-testid="settings-popup-text" className="pop-up-text-settings">
         <ul>
           <li>
             <FormControlLabel
               label={'High Contrast Mode'}
-              control={<Switch />}
+              control={
+                <Switch checked={contrastMode} onChange={toggleContrastMode} />
+              }
             />
           </li>
           <li>
-            <FormControlLabel label={'Dark Mode'} control={<Switch />} />
+            <FormControlLabel
+              label={'Dark Mode'}
+              control={<Switch checked={darkMode} onChange={toggleDarkMode} />}
+            />
           </li>
           <li>
             Text Size

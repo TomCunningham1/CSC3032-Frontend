@@ -2,7 +2,7 @@ import { BACKEND_IP } from '../config/constants'
 import axios from 'axios'
 
 const api_key =
-  process.env.API_KEY || 'elpqKjh9OE4MOa1cStipc9VvwEpcQ00Y59fSgwrL'
+  process.env.REACT_APP_API_KEY || 'elpqKjh9OE4MOa1cStipc9VvwEpcQ00Y59fSgwrL'
 
 class BackendServiceClass {
   getHealth = async () => {
@@ -21,7 +21,8 @@ class BackendServiceClass {
     correctAnswers: number,
     wrongAnswers: number,
     hintsUsed: number,
-    fiftyFiftyUsed: number
+    fiftyFiftyUsed: number,
+    time: number
   ) => {
     return await axios.post(
       `${BACKEND_IP}/results/send-email`,
@@ -34,6 +35,7 @@ class BackendServiceClass {
         wrongAnswers: wrongAnswers,
         hintsUsed: hintsUsed,
         fiftyFiftyUsed: fiftyFiftyUsed,
+        time: time,
       },
       {
         headers: {
