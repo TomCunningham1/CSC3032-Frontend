@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router'
-import './admin-login.css'
+import '../../styles/styles.scss'
 import { useContext, useState } from 'react'
 import { AccountContext } from '../../auth/Account'
 import toast, { Toaster } from 'react-hot-toast'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 // Creates the login form for admin users
 const AdminLoginContainer = () => {
@@ -10,11 +11,15 @@ const AdminLoginContainer = () => {
   const navigate = useNavigate()
 
   // Importing authentication config to validate any users
-  const { authenticate, authenticated } = useContext(AccountContext)
+  const { authenticate } = useContext(AccountContext)
 
   // Constant to store values from text boxes
   const [username, setUsername] = useState('')
   const [pswrd, setPswrd] = useState('')
+
+  // Get dark/light/high contrast mode from context
+  const { getStylePrefix } = useContext(SettingsContext)
+  const stylePrefix = getStylePrefix()
 
   // Check to ensure that a value has been entered before enabling the submit button
   const disabled = username === '' || pswrd === ''
@@ -42,7 +47,7 @@ const AdminLoginContainer = () => {
   return (
     // Login container
     <div
-      className="admin-login-menu-container"
+      className={`${stylePrefix}-admin-login-menu-container`}
       data-testid={'admin-login-container'}
     >
       {/* Title */}
@@ -78,7 +83,7 @@ const AdminLoginContainer = () => {
       <button
         id="admin-login-submit-button"
         data-testid="admin-login-submit-button"
-        className="admin-login-menu-submit-button"
+        className={`${stylePrefix}-admin-login-menu-submit-button`}
         onClick={validate}
         disabled={disabled}
       >

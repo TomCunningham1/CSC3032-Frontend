@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import BackendService from '../../../services/backend-service'
 import scenarioName from '../../../config/scenarioName'
 import toast, { Toaster } from 'react-hot-toast'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
 interface SaveResultsInterface {
   score: number
@@ -25,6 +26,8 @@ const SaveResults = ({
   time,
 }: SaveResultsInterface) => {
   const [username, setUsername] = useState('')
+
+  const prefix = useContext(SettingsContext).getStylePrefix()
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -65,7 +68,7 @@ const SaveResults = ({
         data-testid={'send-email-text-input'}
       ></input>
       <button
-        className={'quiz-summary-button'}
+        className={`${prefix}-quiz-summary-button`}
         onClick={handleSubmit}
         data-testid={'send-email-button'}
       >

@@ -109,10 +109,9 @@ describe('Tests for the quiz page', () => {
         act(() => {
             fireEvent.click(optionA)
         })
-
-        const alert = output.getByText('Correct Answer!')
+        
         await waitFor(() => {
-            expect(alert).toBeTruthy()
+            expect(mockSuccess).toHaveBeenCalled()
         })
     })
 

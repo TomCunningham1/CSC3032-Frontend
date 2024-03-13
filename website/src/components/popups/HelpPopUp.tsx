@@ -1,5 +1,5 @@
 import PopUp from './PopUp'
-import './PopUp.css'
+import '../../styles/styles.scss'
 import PhoneIcon from '@mui/icons-material/Phone'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 
@@ -9,7 +9,7 @@ const HelpPopUp = ({ open, onClose }: any) => {
   if (!open) return null
   return (
     <PopUp id={componentId} title={'Help'} onClose={onClose}>
-      <div className="PopUpText" data-testid="help-popup-text">
+      <div className="pop-up-text" data-testid="help-popup-text">
         <ul>
           <li>
             To pick a game scenario, select one of the options on the home page.

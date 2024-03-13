@@ -37,6 +37,7 @@ describe('Tests for the login page', () => {
             wrongAnswers={testData.wrongAnswers}
             hintsUsed={testData.hintsUsed}
             fiftyFiftyUsed={testData.fiftyFiftyUsed}
+            time={23}
             />)
     }
 

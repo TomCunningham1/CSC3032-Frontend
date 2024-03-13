@@ -1,4 +1,4 @@
-import './PopUp.css'
+import '../../styles/styles.scss'
 
 interface PopUpButtonInterface {
   id: string
@@ -15,7 +15,7 @@ const PopUpButton = ({
 }: PopUpButtonInterface) => {
   return (
     <button
-      className="PopUpButton"
+      className="pop-up-button"
       data-testid={`${componentId}-close-button`}
       onClick={onClose}
       disabled={disabled}

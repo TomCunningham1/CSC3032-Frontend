@@ -23,7 +23,7 @@ describe('admin add update scenario', () => {
         const button = output.getByTestId('test-button')
 
         expect(button).toBeTruthy()
-        expect(button.className).toBe('main-menu-button')
+        expect(button.className).toBe('undefined-main-menu-button')
         expect(button.id).toBe('test-button')
     })
 

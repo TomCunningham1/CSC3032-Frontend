@@ -50,7 +50,7 @@ const ViewScenarioPopUp = ({ open, onClose, setScenario, scenarios }: any) => {
         <select
           data-testid="scenario-select"
           id="scenario-select"
-          className={'PopUpSelect'}
+          className={'pop-up-select'}
           onChange={handleChange}
         >
           <option value={''}></option>
