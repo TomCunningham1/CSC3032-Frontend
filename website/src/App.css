@@ -22,11 +22,12 @@
     margin: 0.5rem;
   }
   .Leaderboard{
-    height: 60%;
-    width: 87%;      
+    height: 55% !important;
+    width: 88% !important;      
  }
  .Help{
-  height: 60%;     
+  height: 55% !important;   
+  width: 40% !important;  
 }
 }
 
@@ -44,11 +45,12 @@
     margin: 0.5rem;
   }
   .Leaderboard{
-    height: 60%;
-    width: 87%;      
+    height: 55% !important;
+    width: 88% !important;      
  }
  .Help{
-  height: 60%;     
+  height: 55% !important;   
+  width: 40% !important;  
 }
 }
 
@@ -67,11 +69,12 @@
     margin: 0.5rem;
   }
   .Leaderboard{
-    height: 60%;
-    width: 87%;      
+    height: 55% !important;
+    width: 88% !important;      
  }
  .Help{
-  height: 60%;     
+  height: 55% !important;   
+  width: 40% !important;  
 }
 }
 
