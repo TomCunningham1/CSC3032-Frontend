@@ -92,4 +92,5 @@ cypress_testing_non_production:
   script:
     - cd cypress_project
     - npm install
+    - echo $FRONTEND_NON_PRODUCTION_URL
     - npx cypress run --env url=$FRONTEND_NON_PRODUCTION_URL,password=$ADMIN_LOGIN

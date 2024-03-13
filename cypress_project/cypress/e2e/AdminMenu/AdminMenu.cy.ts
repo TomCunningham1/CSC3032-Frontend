@@ -10,6 +10,7 @@ const adminMenuTextareaId = '#admin-menu-json-editor'
 describe('Admin Login page', () => {
     beforeEach(()=> {
         cy.visit(environment.frontendURL)
+        console.log(environment.frontendURL)
         cy.viewport(SCREEN_SIZE.width, SCREEN_SIZE.height)
         cy.contains('Admin Login').click()
         cy.get(usernameInputId).type(ADMIN_LOGIN.email)
