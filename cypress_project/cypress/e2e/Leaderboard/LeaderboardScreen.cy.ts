@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { SCREEN_SIZE } from "../../../config/constants"
+import { SCREEN_SIZE } from "../../../config/constants.cy"
 import environment from "../../../config/environment"
 
 describe('Leaderboard page', () => {

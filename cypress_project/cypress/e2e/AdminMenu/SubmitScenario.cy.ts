@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { ADMIN_LOGIN, SCREEN_SIZE } from "../../../config/constants"
+import { ADMIN_LOGIN, SCREEN_SIZE } from "../../../config/constants.cy"
 import environment from "../../../config/environment"
 
 const usernameInputId = '#username-input'

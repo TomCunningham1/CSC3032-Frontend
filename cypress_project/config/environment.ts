@@ -1,4 +1,4 @@
-import { NON_PRODUCTION_ENVIRONMENT, PRODUCTION_ENVIRONMENT } from './constants'
+import { NON_PRODUCTION_ENVIRONMENT, PRODUCTION_ENVIRONMENT } from './constants.cy'
 
 class Environment {
   environmentName: string
