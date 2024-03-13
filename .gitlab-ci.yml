@@ -76,9 +76,20 @@ deployment_production:
     - cdk synth
     - cdk deploy --require-approval never
   
-cypress_testing:
+cypress_testing_production:
   stage: post_deploy
+  only:
+    - main
   script:
     - cd cypress_project
     - npm install
-    - npx cypress run
+    - npx cypress run --env url=$PRODUCTION_URL,password=$ADMIN_LOGIN
+
+cypress_testing_non_production:
+  stage: post_deploy
+  except:
+    - main
+  script:
+    - cd cypress_project
+    - npm install
+    - npx cypress run --env url=$NON_PRODUCTION_URL,password=$ADMIN_LOGIN
