@@ -29,6 +29,9 @@
   height: 55% !important;   
   width: 40% !important;  
 }
+.Settings{
+  height: 55% !important;  
+}
 }
 
 .dark-menu-container {
@@ -51,6 +54,9 @@
  .Help{
   height: 55% !important;   
   width: 40% !important;  
+}
+.Settings{
+  height: 55% !important;  
 }
 }
 
@@ -75,6 +81,9 @@
  .Help{
   height: 55% !important;   
   width: 40% !important;  
+}
+.Settings{
+  height: 55% !important;  
 }
 }
 
