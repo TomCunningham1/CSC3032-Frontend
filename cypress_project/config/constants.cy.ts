@@ -1,7 +1,7 @@
 const NON_PRODUCTION_ENVIRONMENT = {
   environmentName: 'non-production',
   databaseName: 'team11_non_prod_db',
-  urlFrontend: process.env.NON_PRODUCTION_URL
+  urlFrontend: Cypress.env('url')
 }
 
 const SCREEN_SIZE = {
@@ -11,13 +11,13 @@ const SCREEN_SIZE = {
 
 const ADMIN_LOGIN = {
   email: 'tcunningham12@qub.ac.uk',
-  password: process.env.ADMIN_LOGIN
+  password: Cypress.env('password')
 }
 
 const PRODUCTION_ENVIRONMENT = {
   environmentName: 'production',
   databaseName: 'team11_prod_db',
-  urlFrontend: process.env.PRODUCTION_URL
+  urlFrontend: Cypress.env('url')
 }
 
 export { PRODUCTION_ENVIRONMENT, NON_PRODUCTION_ENVIRONMENT, SCREEN_SIZE, ADMIN_LOGIN }

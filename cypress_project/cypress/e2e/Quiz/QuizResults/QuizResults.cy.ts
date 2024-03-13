@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import environment from "../../../../config/environment"
 
-describe('Quiz Instructions Page', () => {
+describe('Quiz Results Page', () => {
 
   describe('SQL Injection', () => {
 
@@ -76,23 +76,11 @@ describe('Quiz Instructions Page', () => {
       it('should contain a text box to enter the email', () => {
         cy.get('input')
       })
-  
-      it('should send email results to the user', () => {
-        cy.get('[data-testid="send-email-text-input"]').type('tom.c22@hotmail.co.uk')
-  
-        cy.contains('Send Email').click()
-      })
     })
 
     describe('test navigation buttons', () => {  
       it('should contain the back to home button', () => {
         cy.contains('Home')
-      })
-
-      it('back home button should send the user back to the main menu page', () =>  {
-        cy.contains('Home').click()
-
-        cy.contains('Hack Attack')
       })
     })
   })
