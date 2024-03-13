@@ -20,19 +20,22 @@ const Settings = (props: any) => {
   const [highContrastMode, setHighContrastMode] = useState(false)
 
   // List of functions to call when a change is made
-  const subscribers = new Set()
+  const [subscribers, setSubscribers] = useState([])
 
   const subscribe = (callback: any) => {
-    subscribers.add(callback)
+    // @ts-ignore
+    setSubscribers([...subscribers, callback])
   }
 
-  const unsubscribe = (callback: any) => {
-    subscribers.delete(callback)
+  const unsubscribe = (thisCallback: any) => {
+    setSubscribers(subscribers.filter(callback => callback !== thisCallback));
   }
 
   const updateValue = () => {
     subscribers.forEach((callback: any) => {
-      callback()
+      const x = getStylePrefix()
+      console.log(x)
+      callback(x)
     })
   }
 
@@ -63,11 +66,10 @@ const Settings = (props: any) => {
   }
 
   const getStylePrefix = () => {
-    console.log(load('dark-mode'))
-    if (darkMode || load('dark-mode') === 'true') {
+    if (load('dark-mode') === 'true') {
       return 'dark'
     }
-    if (highContrastMode || load('high-contrast') === 'true') {
+    if (load('high-contrast') === 'true') {
       return 'contrast'
     }
     if (!darkMode && !highContrastMode) {

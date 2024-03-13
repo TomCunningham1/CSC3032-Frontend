@@ -9,7 +9,6 @@ function withRouter(Component: any) {
     let params = useParams()
     const { getStylePrefix } = useContext(SettingsContext)
     const prefix = getStylePrefix()
-    console.log(prefix)
     return (
       <Component
         {...props}

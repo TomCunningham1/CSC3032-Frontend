@@ -9,10 +9,10 @@ const componentId = 'settings-popup'
 
 const SettingsPopUp = ({ open, onClose }: any) => {
   const [darkMode, setDarkMode] = useState(
-    load('dark-mode') as unknown as boolean
+    load('dark-mode') === 'true'
   )
   const [contrastMode, setContrastMode] = useState(
-    load('high-contrast') as unknown as boolean
+    load('high-contrast') === 'true'
   )
 
   const { updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
