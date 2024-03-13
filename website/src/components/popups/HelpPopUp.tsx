@@ -8,13 +8,18 @@ import { useContext } from 'react'
 const componentId = 'help-popup'
 
 const HelpPopUp = ({ open, onClose }: any) => {
-    // Context for dark/light/high contrast mode.
-    const { getStylePrefix } = useContext(SettingsContext)
-    const prefix = getStylePrefix() as unknown as string
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix() as unknown as string
 
   if (!open) return null
   return (
-    <PopUp id={componentId} title={'Help'} name={`${prefix}-menu-container-solid Help`} onClose={onClose}>
+    <PopUp
+      id={componentId}
+      title={'Help'}
+      name={`${prefix}-menu-container-solid Help`}
+      onClose={onClose}
+    >
       <div className="pop-up-text" data-testid="help-popup-text">
         <ul>
           <li>
@@ -38,13 +43,19 @@ const HelpPopUp = ({ open, onClose }: any) => {
             clicking the Leaderboard button at the top of the screen.
           </li>
           <li>
-            <LiveHelpIcon style={{ color: prefix === 'contrast' ? 'black' : 'white' }} /> Represents the 'Call a
-            friend' option which removes one incorrect option from the
-            questions.
+            <LiveHelpIcon
+              style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+            />{' '}
+            Represents the 'Call a friend' option which removes one incorrect
+            option from the questions.
           </li>
           <li>
-            <PhoneIcon color="primary" style={{ color: prefix === 'contrast' ? 'black' : 'white' }} /> Represents
-            50/50 which can be used in the quiz to remove two options.
+            <PhoneIcon
+              color="primary"
+              style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+            />{' '}
+            Represents 50/50 which can be used in the quiz to remove two
+            options.
           </li>
           <li>
             To close pop ups, click the "Back" button at the bottom of the pop

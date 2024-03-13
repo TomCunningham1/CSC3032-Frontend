@@ -26,7 +26,7 @@
     width: 87%;      
  }
  .Help{
-  height: 60%;     
+  height: 40% !important;       
 }
 }
 
@@ -48,7 +48,7 @@
     width: 87%;      
  }
  .Help{
-  height: 60%;     
+  height: 40% !important;       
 }
 }
 
@@ -71,7 +71,7 @@
     width: 87%;      
  }
  .Help{
-  height: 60%;     
+  height: 40% !important;     
 }
 }
 
