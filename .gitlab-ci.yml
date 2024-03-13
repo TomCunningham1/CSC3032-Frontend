@@ -86,7 +86,8 @@ cypress_testing_production:
   script:
     - cd cypress_project
     - npm install
-    - npx cypress run --env url=$FRONTEND_PRODUCTION_URL,password=$ADMIN_LOGIN
+    - echo "$FRONTEND_PRODUCTION_URL"
+    - npx cypress run --env url="$FRONTEND_PRODUCTION_URL",password="$ADMIN_LOGIN"
 
 cypress_testing_non_production:
   stage: post_deploy
@@ -98,5 +99,5 @@ cypress_testing_non_production:
   script:
     - cd cypress_project
     - npm install
-    - echo $FRONTEND_NON_PRODUCTION_URL
-    - npx cypress run --env url=$FRONTEND_NON_PRODUCTION_URL,password=$ADMIN_LOGIN
+    - echo "$FRONTEND_NON_PRODUCTION_URL"
+    - npx cypress run --env url="$FRONTEND_NON_PRODUCTION_URL",password="$ADMIN_LOGIN"
