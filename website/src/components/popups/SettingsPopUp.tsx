@@ -52,7 +52,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
               control={<Switch checked={darkMode} onChange={toggleDarkMode} />}
             />
           </li>
-          <li>
+          {/* <li>
             Text Size
             <Slider
               aria-label="Volume"
@@ -79,7 +79,7 @@ const SettingsPopUp = ({ open, onClose }: any) => {
               value={value}
               onChange={handleChange}
             />
-          </li>
+          </li> */}
         </ul>
       </div>
     </PopUp>

@@ -185,7 +185,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
                 return (
                   // Maps out buttons and passes in selected scenario
                   <button
-                    className="scenario-button"
+                    className={`${prefix}-scenario-button`}
                     onClick={() => {
                       getScenarioResults(scenario)
                       setDisplayedScenario(scenario)
