@@ -32,10 +32,13 @@ const HelpPopUp = ({ open, onClose }: any) => {
             clicking the Leaderboard button at the top of the screen.
           </li>
           <li>
-            <LiveHelpIcon style={{ color: 'white' }} /> Represents the 'Call a friend' option which removes one incorrect option from the questions.
+            <LiveHelpIcon style={{ color: 'white' }} /> Represents the 'Call a
+            friend' option which removes one incorrect option from the
+            questions.
           </li>
           <li>
-            <PhoneIcon color="primary" style={{ color: 'white' }} /> Represents 50/50 which can be used in the quiz to remove two options.
+            <PhoneIcon color="primary" style={{ color: 'white' }} /> Represents
+            50/50 which can be used in the quiz to remove two options.
           </li>
           <li>
             To close pop ups, click the "Back" button at the bottom of the pop
