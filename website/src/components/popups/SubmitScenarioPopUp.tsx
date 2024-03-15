@@ -38,8 +38,6 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
     updateLoading(false)
   }
 
-  console.log(disabled)
-
   return (
     <PopUp
       id={'submit-scenario-popup'}

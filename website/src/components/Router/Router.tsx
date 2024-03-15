@@ -7,13 +7,15 @@ function withRouter(Component: any) {
     let location = useLocation()
     let navigate = useNavigate()
     let params = useParams()
-    const { getStylePrefix } = useContext(SettingsContext)
+    const { getStylePrefix, getMuted } = useContext(SettingsContext)
     const prefix = getStylePrefix()
+    const muted = getMuted()
     return (
       <Component
         {...props}
         router={{ location, navigate, params }}
         style={{ prefix }}
+        muted={{ muted }}
       />
     )
   }

@@ -13,7 +13,9 @@ const SettingsPopUp = ({ open, onClose }: any) => {
     load('high-contrast') === 'true'
   )
 
-  const { updateDarkMode, updateHighContrastMode } = useContext(SettingsContext)
+  const [muted, setMuted] = useState(load('muted') === 'true')
+
+  const { updateDarkMode, updateHighContrastMode, updateMuted } = useContext(SettingsContext)
 
   const [value, setValue] = React.useState<number>(30)
 
@@ -31,6 +33,11 @@ const SettingsPopUp = ({ open, onClose }: any) => {
     updateDarkMode(!darkMode)
     setDarkMode(!darkMode)
     setContrastMode(false)
+  }
+
+  const toggleMuted = () => {
+    updateMuted(!muted)
+    setMuted(!muted)
   }
 
   // Context for dark/light/high contrast mode.
@@ -74,11 +81,11 @@ const SettingsPopUp = ({ open, onClose }: any) => {
           </li>
           <li>
             <FormControlLabel label={'Text To Speech'} control={<Switch />} />
-          </li>
+            </li> */}
           <li>
-            <FormControlLabel label={'Mute'} control={<Switch />} />
+            <FormControlLabel label={'Mute'} control={<Switch checked={muted} onChange={toggleMuted}/>} />
           </li>
-          <li>
+          {/* <li>
             <b>Volume</b>
             <Slider
               aria-label="Volume"

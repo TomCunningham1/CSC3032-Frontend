@@ -12,12 +12,15 @@ const SettingsContext = createContext({
   updateHighContrastMode: (value: boolean) => {},
   subscribe: (callback: any) => {},
   unsubscribe: (callback: any) => {},
+  updateMuted: (value: boolean) => {},
+  getMuted: () => {}
 })
 
 // Settings object - contains methods to authenticate the user
 const Settings = (props: any) => {
   const [darkMode, setDarkMode] = useState(false)
   const [highContrastMode, setHighContrastMode] = useState(false)
+  const [muted, setMuted] = useState(false)
 
   // List of functions to call when a change is made
   const [subscribers, setSubscribers] = useState([])
@@ -31,10 +34,23 @@ const Settings = (props: any) => {
     setSubscribers(subscribers.filter((callback) => callback !== thisCallback))
   }
 
+  const updateMuted = (value: boolean) => {
+    const newState = value
+    setMuted(newState)
+    store('muted', newState)
+    updateValue()
+  }
+
+  const getMuted = () => {
+    return load('muted') === 'true'
+  }
+
   const updateValue = () => {
     subscribers.forEach((callback: any) => {
-      const x = getStylePrefix()
-      console.log(x)
+      const x = { 
+        prefix: getStylePrefix(),
+        muted: getMuted()
+      }
       callback(x)
     })
   }
@@ -87,6 +103,8 @@ const Settings = (props: any) => {
         getStylePrefix,
         subscribe,
         unsubscribe,
+        updateMuted,
+        getMuted
       }}
     >
       {props.children}
