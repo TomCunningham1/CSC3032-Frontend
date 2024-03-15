@@ -55,7 +55,7 @@ deployment_test:
   script:
     - echo "Deploying to '$ENVIRONMENT' Environment"
     - cd website
-    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
+    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL \n REACT_APP_API_KEY=$API_KEY" >> .env
     - cd ..
     - cdk synth
     - cdk deploy --require-approval never
@@ -71,7 +71,7 @@ deployment_production:
   script:
     - echo "Deploying to '$ENVIRONMENT' Environment"
     - cd website
-    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL" >> .env
+    - echo "REACT_APP_BACKEND_URL=$BACKEND_URL \n REACT_APP_API_KEY=$API_KEY" >> .env
     - cd ..
     - cdk synth
     - cdk deploy --require-approval never
