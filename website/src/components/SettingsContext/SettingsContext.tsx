@@ -13,7 +13,7 @@ const SettingsContext = createContext({
   subscribe: (callback: any) => {},
   unsubscribe: (callback: any) => {},
   updateMuted: (value: boolean) => {},
-  getMuted: () => {}
+  getMuted: () => {},
 })
 
 // Settings object - contains methods to authenticate the user
@@ -47,9 +47,9 @@ const Settings = (props: any) => {
 
   const updateValue = () => {
     subscribers.forEach((callback: any) => {
-      const x = { 
+      const x = {
         prefix: getStylePrefix(),
-        muted: getMuted()
+        muted: getMuted(),
       }
       callback(x)
     })
@@ -104,7 +104,7 @@ const Settings = (props: any) => {
         subscribe,
         unsubscribe,
         updateMuted,
-        getMuted
+        getMuted,
       }}
     >
       {props.children}

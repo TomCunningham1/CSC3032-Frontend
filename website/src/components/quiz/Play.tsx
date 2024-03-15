@@ -100,11 +100,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     this.startTimer()
   }
 
-  handleContextChange = (context: { prefix: string, muted: boolean }) => {
+  handleContextChange = (context: { prefix: string; muted: boolean }) => {
     console.log(context)
     this.setState({
       prefix: context.prefix,
-      muted: context.muted
+      muted: context.muted,
     })
   }
 
