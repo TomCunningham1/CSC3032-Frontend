@@ -33,7 +33,6 @@ const Account = (props: any) => {
           if (err) {
             reject(err)
           } else {
-            console.log(session)
             resolve(session)
           }
         })
@@ -64,8 +63,6 @@ const Account = (props: any) => {
         // Handle success, failure and password change required
         user.authenticateUser(authDetails, {
           onSuccess: (data) => {
-            console.log('onSuccess: ', data)
-
             const accessToken = data.getAccessToken().getJwtToken()
             const idToken = data.getIdToken().getJwtToken()
             const refreshToken = data.getIdToken().getJwtToken()
@@ -82,7 +79,6 @@ const Account = (props: any) => {
             reject(err)
           },
           newPasswordRequired: (data) => {
-            console.log('newPasswordRequired: ', data)
             setAuthenticated(false)
             resolve(data)
           },

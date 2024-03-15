@@ -11,7 +11,6 @@ import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
 import toast, { Toaster } from 'react-hot-toast'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
-import { unsubscribe } from 'diagnostics_channel'
 
 interface PlayPropsInterface {
   state?: any
@@ -19,6 +18,7 @@ interface PlayPropsInterface {
   router?: any
   location: any
   style: any
+  muted: any
 }
 
 interface PlayStateInterface {
@@ -38,6 +38,7 @@ interface PlayStateInterface {
   prefix: string
   usedFiftyFifty: boolean
   nextButtonDisabled: boolean
+  muted: any
   previousButtonDisabled: boolean
   previousRandomNumbers: any
   time: any
@@ -70,6 +71,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       score: 0,
       correctAnswers: 0,
       wrongAnswers: 0,
+      muted: this.props.muted.muted,
       hints: 5,
       fiftyFifty: 2,
       usedFiftyFifty: false,
@@ -85,7 +87,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   componentDidMount() {
-    console.log('sub')
     const { questions, currentQuestion, nextQuestion, previousQuestion } =
       this.state
     // @ts-ignore
@@ -99,9 +100,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     this.startTimer()
   }
 
-  handleContextChange = (prefix: string) => {
+  handleContextChange = (context: { prefix: string, muted: boolean }) => {
+    console.log(context)
     this.setState({
-      prefix: prefix,
+      prefix: context.prefix,
+      muted: context.muted
     })
   }
 
@@ -158,15 +161,20 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   handleOptionClick = (e: any) => {
+    const muted = this.state.muted
     if (e.target.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
-      this.correctTimeout = setTimeout(() => {
-        this.correctSound.current.play()
-      }, 500)
+      if (!muted) {
+        this.correctTimeout = setTimeout(() => {
+          this.correctSound.current.play()
+        }, 500)
+      }
       this.correctAnswer()
     } else {
-      this.wrongTimeout = setTimeout(() => {
-        this.wrongSound.current.play()
-      }, 500)
+      if (!muted) {
+        this.wrongTimeout = setTimeout(() => {
+          this.wrongSound.current.play()
+        }, 500)
+      }
       this.wrongAnswer()
     }
   }
@@ -191,7 +199,9 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   playButtonSound = () => {
-    this.buttonSound.current.play()
+    if (!this.state.muted) {
+      this.buttonSound.current.play()
+    }
   }
 
   correctAnswer = () => {
@@ -422,7 +432,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       seconds: state.time.seconds,
     }
     setTimeout(() => {
-      console.log(playerStats)
       this.props.router.navigate('/play/quizSummary', { state: playerStats })
     }, 1000)
   }
