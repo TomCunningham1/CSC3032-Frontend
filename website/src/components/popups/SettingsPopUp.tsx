@@ -15,7 +15,8 @@ const SettingsPopUp = ({ open, onClose }: any) => {
 
   const [muted, setMuted] = useState(load('muted') === 'true')
 
-  const { updateDarkMode, updateHighContrastMode, updateMuted } = useContext(SettingsContext)
+  const { updateDarkMode, updateHighContrastMode, updateMuted } =
+    useContext(SettingsContext)
 
   const [value, setValue] = React.useState<number>(30)
 
@@ -83,7 +84,10 @@ const SettingsPopUp = ({ open, onClose }: any) => {
             <FormControlLabel label={'Text To Speech'} control={<Switch />} />
             </li> */}
           <li>
-            <FormControlLabel label={'Mute'} control={<Switch checked={muted} onChange={toggleMuted}/>} />
+            <FormControlLabel
+              label={'Mute'}
+              control={<Switch checked={muted} onChange={toggleMuted} />}
+            />
           </li>
           {/* <li>
             <b>Volume</b>
