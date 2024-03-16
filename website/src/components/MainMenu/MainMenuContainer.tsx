@@ -23,6 +23,7 @@ const MainMenuContainer = () => {
           setLoading(false)
         })
         .catch((err) => {
+          console.log(err as string)
           toast.error(err.message)
         })
     }
