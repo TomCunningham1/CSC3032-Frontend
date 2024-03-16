@@ -36,15 +36,19 @@ export class Team11FrontendStack extends Stack {
       }
     )
 
-    const accessPolicy = new aws_s3.BucketPolicy(this, `team11-${environment.environmentName}-bucket-policy`, {
-      bucket: frontEndBucket
-    })
+    const accessPolicy = new aws_s3.BucketPolicy(
+      this,
+      `team11-${environment.environmentName}-bucket-policy`,
+      {
+        bucket: frontEndBucket,
+      }
+    )
 
     accessPolicy.document.addStatements(
       new aws_iam.PolicyStatement({
         actions: ['s3:GetObject'],
         resources: [frontEndBucket.arnForObjects('*')],
-        principals: [new aws_iam.AnyPrincipal()]
+        principals: [new aws_iam.AnyPrincipal()],
       })
     )
 
@@ -55,7 +59,6 @@ export class Team11FrontendStack extends Stack {
     //   principals: [new aws_iam.AnyPrincipal()],
     //   resources: [`${frontEndBucket.bucketArn}/*,${frontEndBucket.arnForObjects('*')}`],
     // })
-
 
     const dist = new aws_cloudfront.Distribution(
       this,
