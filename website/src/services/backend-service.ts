@@ -143,8 +143,6 @@ class BackendServiceClass {
   }
 
   getAllScenarios = async () => {
-    console.log(BACKEND_IP)
-    console.log(API_KEY)
     return await axios.get(`${BACKEND_IP}/admin/get-all`, {
       headers: {
         'x-api-key': API_KEY,

@@ -23,7 +23,6 @@ const MainMenuContainer = () => {
           setLoading(false)
         })
         .catch((err) => {
-          console.log(err as string)
           toast.error(err.message)
         })
     }
@@ -60,6 +59,7 @@ const MainMenuContainer = () => {
             return (
               <MainMenuButton
                 id={playthrough}
+                key={playthrough}
                 method={navigateToQuiz}
                 text={playthrough}
               />
