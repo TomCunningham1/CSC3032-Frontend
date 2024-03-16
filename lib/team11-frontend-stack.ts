@@ -21,6 +21,18 @@ export class Team11FrontendStack extends Stack {
       `team11-${environment.environmentName}-s3-bucket`,
       {
         removalPolicy: RemovalPolicy.DESTROY,
+        cors: [
+          {
+            allowedMethods: [
+              aws_s3.HttpMethods.GET,
+              aws_s3.HttpMethods.PUT,
+              aws_s3.HttpMethods.POST,
+              aws_s3.HttpMethods.DELETE,
+            ],
+            allowedOrigins: ['*'],
+            allowedHeaders: ['*'],
+          },
+        ],
       }
     )
 
