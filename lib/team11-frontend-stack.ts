@@ -41,9 +41,10 @@ export class Team11FrontendStack extends Stack {
       effect: aws_iam.Effect.ALLOW,
       actions: ['s3:GetObject'],
       principals: [new aws_iam.AnyPrincipal()],
-      resources: [`${frontEndBucket.bucketArn}/*,${frontEndBucket.arnForObjects('*')}`],
+      resources: [
+        `${frontEndBucket.bucketArn}/*,${frontEndBucket.arnForObjects('*')}`,
+      ],
     })
-
 
     const dist = new aws_cloudfront.Distribution(
       this,
