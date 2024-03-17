@@ -33,7 +33,6 @@ export class Team11FrontendStack extends Stack {
             allowedHeaders: ['*'],
           },
         ],
-        publicReadAccess: true,
       }
     )
 
@@ -58,6 +57,12 @@ export class Team11FrontendStack extends Stack {
           allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
         },
         defaultRootObject: 'index.html',
+        errorResponses: [
+          {
+            httpStatus: 403,
+            responsePagePath: '/index.html',
+          },
+        ],
       }
     )
 
