@@ -33,9 +33,8 @@ export class Team11FrontendStack extends Stack {
             allowedHeaders: ['*'],
           },
         ],
-        publicReadAccess: true
+        publicReadAccess: true,
       }
-      
     )
 
     const accessPolicy = new aws_iam.PolicyStatement({
