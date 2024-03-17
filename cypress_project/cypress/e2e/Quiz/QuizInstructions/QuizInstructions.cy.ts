@@ -16,7 +16,7 @@ describe('Quiz Instructions Page', () => {
     })
 
     it('Should contain instructions for the game', () => {
-      cy.contains('The scenerio has a duration of 3 minutes and ends as soon the time ends.')
+      cy.contains('Each scenerio has a duration of 3 minutes and ends as soon the time ends.')
       cy.contains('Each game consists of 5 questions.')
       cy.contains('Each question has 4 options.')
       cy.contains('Select the option which you believe answers the question most accurately by clicking on it.')
