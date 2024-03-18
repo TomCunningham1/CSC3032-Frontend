@@ -15,6 +15,7 @@ const PopUpButton = ({
 }: PopUpButtonInterface) => {
   return (
     <button
+      id="pop-up-close-button"
       className="pop-up-button"
       data-testid={`${componentId}-close-button`}
       onClick={onClose}

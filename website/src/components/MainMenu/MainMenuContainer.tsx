@@ -46,6 +46,7 @@ const MainMenuContainer = () => {
               scenarioName.scenario = playthrough
               await BackendService.getQuestions(playthrough)
                 .then((response) => {
+                  scenarioName.scenario = playthrough
                   navigate('/play/instructions', {
                     state: {
                       questions: response.data.questions,
@@ -61,6 +62,7 @@ const MainMenuContainer = () => {
             return (
               <MainMenuButton
                 id={playthrough}
+                key={playthrough}
                 method={navigateToQuiz}
                 text={playthrough}
               />

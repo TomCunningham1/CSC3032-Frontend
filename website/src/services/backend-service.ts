@@ -1,14 +1,11 @@
-import { BACKEND_IP } from '../config/constants'
+import { API_KEY, BACKEND_IP } from '../config/constants'
 import axios from 'axios'
-
-const api_key =
-  process.env.REACT_APP_API_KEY || 'k99ijIBj7a5V9yo4lz7sxJuO0myN5LR9GRitG62a'
 
 class BackendServiceClass {
   getHealth = async () => {
     return await axios.get(`${BACKEND_IP}/health`, {
       headers: {
-        'x-api-key': api_key,
+        'x-api-key': API_KEY,
       },
     })
   }
@@ -39,7 +36,7 @@ class BackendServiceClass {
       },
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -73,7 +70,7 @@ class BackendServiceClass {
       },
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -85,7 +82,7 @@ class BackendServiceClass {
       {},
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -98,7 +95,7 @@ class BackendServiceClass {
       { questions: scenarioQuestions },
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -109,7 +106,7 @@ class BackendServiceClass {
       `${BACKEND_IP}/admin/read?scenarioName=${scenarioName}`,
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -120,7 +117,7 @@ class BackendServiceClass {
       `${BACKEND_IP}/admin/get-questions?scenarioName=${scenarioName}`,
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -131,7 +128,7 @@ class BackendServiceClass {
       `${BACKEND_IP}/admin/delete?scenarioName=${scenarioName}`,
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -140,7 +137,7 @@ class BackendServiceClass {
   resetLeaderboard = async () => {
     return await axios.get(`${BACKEND_IP}/admin/reset-leaderboard`, {
       headers: {
-        'x-api-key': api_key,
+        'x-api-key': API_KEY,
       },
     })
   }
@@ -148,7 +145,7 @@ class BackendServiceClass {
   getAllScenarios = async () => {
     return await axios.get(`${BACKEND_IP}/admin/get-all`, {
       headers: {
-        'x-api-key': api_key,
+        'x-api-key': API_KEY,
       },
     })
   }

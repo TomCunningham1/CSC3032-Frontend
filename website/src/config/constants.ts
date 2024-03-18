@@ -1,5 +1,4 @@
-const BACKEND_IP =
-  process.env.REACT_APP_BACKEND_URL ||
-  'https://kaqd07nulk.execute-api.eu-west-1.amazonaws.com/prod'
+const BACKEND_IP = process.env.REACT_APP_BACKEND_URL
+const API_KEY = process.env.REACT_APP_API_KEY
 
-export { BACKEND_IP }
+export { BACKEND_IP, API_KEY }

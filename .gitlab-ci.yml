@@ -18,7 +18,7 @@ build_job:
     - npm run build
     - cd website
     - npm install
-    - npm run build
+    - REACT_APP_API_KEY=$NON_PRODUCTION_API_KEY REACT_APP_BACKEND_URL=$NON_PRODUCTION_URL npm run build
   artifacts:
     paths:
       - website/build

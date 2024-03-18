@@ -28,7 +28,7 @@ describe('Test Help Pop Up', () => {
   })
 
   it('Should click the Back button and check that the pop-up is closed', () => {
-    cy.contains('Back').click()
+    cy.get('#pop-up-close-button').click()
 
     cy.get('popup').should('not.exist')
   })
