@@ -117,10 +117,15 @@
 
 /* Styling for icons in the title bar */
 .TitleBarIcon {
+  background-image: url('../../../public/logo512.png');
+  background-size: cover;
   position: absolute; /* Positioning */
   height: 95px; /* Height */
   margin-left: auto; /* Auto margin */
+  background-repeat: no-repeat; 
   margin-left: 92%; /* Adjusted margin */
+  z-index: 9999;
+  width: 96px;
 }
 
 .light-app-background {

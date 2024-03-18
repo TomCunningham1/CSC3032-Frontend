@@ -57,6 +57,7 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
         id="proceed"
         text={'Proceed'}
         onClose={handleClick}
+        className="pop-up-button-proceed"
         disabled={disabled}
       />
     </PopUp>

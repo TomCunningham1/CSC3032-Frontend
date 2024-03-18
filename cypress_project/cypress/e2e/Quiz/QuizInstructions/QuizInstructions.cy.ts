@@ -17,16 +17,14 @@ describe('Quiz Instructions Page', () => {
 
     it('Should contain instructions for the game', () => {
       cy.contains('Each scenerio has a duration of 3 minutes and ends as soon the timer ends')
-      cy.contains('Each game consists of 5 questions.')
-      cy.contains('Each question has 4 options.')
-      cy.contains('Select the option which you believe answers the question most accurately by clicking on it.')
+      cy.contains('Each scenario consists of 7 questions')
+      cy.contains('Select the option you believe answers the question most accurately by clicking on it. An explaination to the answer will be given if you are right or wrong')
       cy.contains('Each game has 2 lifelines:')
-      cy.contains('1 50/50 Chance')
-      cy.contains('2 Hints')
-      cy.contains('Select a 50/50 lifeline by clicking on the iconwill leave 2 answers for you, one right and one wrong')
-      cy.contains('Select a hint by clicking on the iconwill remove on wrong answer and leave three answers for you')
-      cy.contains('Feel free to quit the scenerio at anytime. You will be given a score at the end')
-      cy.contains('The timer starts as soon as the game loads.')
+      cy.contains('2 50/50 Chance')
+      cy.contains('5 Hints')
+      cy.contains('Select a 50/50 lifeline by clicking on the icon')
+      cy.contains('Select a hint by clicking on the icon')
+      cy.contains('The timer starts as soon as you are loaded into a scenario.')
     })
 
     it('Should contain a back button', () => {

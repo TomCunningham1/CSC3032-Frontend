@@ -90,6 +90,7 @@ const DeleteScenarioPopUp = ({
         id="proceed"
         text={'Proceed'}
         onClose={handleClick}
+        className="pop-up-button-proceed"
         disabled={disabled}
       />
     </PopUp>

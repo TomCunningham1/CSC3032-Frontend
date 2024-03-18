@@ -64,6 +64,7 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
       <PopUpButton
         id="proceed"
         text={'Proceed'}
+        className="pop-up-button-proceed"
         onClose={onSubmit}
         disabled={disabled}
       />
