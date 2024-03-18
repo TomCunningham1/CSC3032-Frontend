@@ -2,10 +2,8 @@ import './TitleBar.css'
 
 const TitleBarIcon = () => {
   return (
-    <img
+    <div
       className="TitleBarIcon"
-      src={'./logo512.png'}
-      alt="Hack Attack Logo"
     />
   )
 }
