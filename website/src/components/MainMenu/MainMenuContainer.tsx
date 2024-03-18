@@ -43,6 +43,7 @@ const MainMenuContainer = () => {
           {scenarios.map((playthrough) => {
             const navigateToQuiz = async () => {
               setLoading(true)
+              scenarioName.scenario = playthrough
               await BackendService.getQuestions(playthrough)
                 .then((response) => {
                   scenarioName.scenario = playthrough
