@@ -542,7 +542,11 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           </div>
           <div className="button-container">
             <button
-              className={prefix !== 'contrast' ? 'normal-skip-button' : 'contrast-skip-button'}
+              className={
+                prefix !== 'contrast'
+                  ? 'normal-skip-button'
+                  : 'contrast-skip-button'
+              }
               id="next-button"
               onClick={this.handleNextButtonClick}
             >
