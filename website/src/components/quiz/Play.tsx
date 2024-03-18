@@ -551,9 +551,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
               Previous
             </button> */}
             <button
-              className={classnames('', {
-                disable: this.state.nextButtonDisabled,
-              })}
+              className={prefix !== 'contrast' ? 'normal-skip-button' : 'contrast-skip-button'}
               id="next-button"
               onClick={this.handleNextButtonClick}
             >

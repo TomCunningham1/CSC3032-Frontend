@@ -169,14 +169,26 @@
   padding: $xs $sm;
 }
 
-.button-container button:first-child {
+.normal-skip-button {
   background-color: darken($blue, 10%);
   box-shadow: $shadow;
   transition: 0.2s linear all;
 }
 
-.button-container button:first-child:hover {
+.normal-skip-button:hover {
   background-color: darken($blue, 20%);
+}
+
+.contrast-skip-button {
+  background-color: $white;
+  color: black !important;
+  border: 1px solid black !important;
+  box-shadow: $shadow;
+  transition: 0.2s linear all;
+}
+
+.contrast-skip-button:hover {
+  background-color: darken($white, 20%);
 }
 
 .button-container button:nth-child(2) {
