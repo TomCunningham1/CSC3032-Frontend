@@ -36,7 +36,7 @@ const QuizSummaryTable = ({ results, remark }: any) => (
         <td>{results.fiftyFiftyUsed}</td>
       </tr>
       <tr>
-        <td>Time Taken:</td>
+        <td>Time Left:</td>
         <td>
           {results.minutes}:{results.seconds}
         </td>

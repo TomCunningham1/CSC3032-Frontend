@@ -5,6 +5,7 @@ import BackendService from '../../services/backend-service'
 import LoadingClock from '../LoadingClock/LoadingClock'
 import toast, { Toaster } from 'react-hot-toast'
 import { SettingsContext } from '../SettingsContext/SettingsContext'
+import scenarioName from '../../config/scenarioName'
 
 const MainMenuContainer = () => {
   const navigate = useNavigate()
@@ -44,6 +45,7 @@ const MainMenuContainer = () => {
               setLoading(true)
               await BackendService.getQuestions(playthrough)
                 .then((response) => {
+                  scenarioName.scenario = playthrough
                   navigate('/play/instructions', {
                     state: {
                       questions: response.data.questions,
