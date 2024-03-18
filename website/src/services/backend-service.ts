@@ -2,7 +2,7 @@ import { BACKEND_IP } from '../config/constants'
 import axios from 'axios'
 
 const api_key =
-  process.env.REACT_APP_API_KEY || 'zG2y5I2mcS3QOLti7k1wWaWmbDNTXLBxaNNpWDbo'
+  process.env.REACT_APP_API_KEY || 'k99ijIBj7a5V9yo4lz7sxJuO0myN5LR9GRitG62a'
 
 class BackendServiceClass {
   getHealth = async () => {
