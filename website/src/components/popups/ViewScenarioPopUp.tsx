@@ -66,6 +66,7 @@ const ViewScenarioPopUp = ({ open, onClose, setScenario, scenarios }: any) => {
       <PopUpButton
         id="proceed"
         text={'Proceed'}
+        className="pop-up-button-proceed"
         onClose={handleProceed}
         disabled={disabled}
       />
