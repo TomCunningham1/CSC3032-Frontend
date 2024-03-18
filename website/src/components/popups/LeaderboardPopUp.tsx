@@ -160,8 +160,9 @@ const LeaderboardPopUp = ({ onClose }: any) => {
     )
   }
 
-  const [displayedScenario, setDisplayedScenario] =
-    useState('Displaying: SQL Injection')
+  const [displayedScenario, setDisplayedScenario] = useState(
+    'Displaying: SQL Injection'
+  )
 
   return (
     <>
@@ -188,7 +189,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
                     className={`${prefix}-scenario-button`}
                     onClick={() => {
                       getScenarioResults(scenario)
-                      setDisplayedScenario("Displaying: " + scenario)
+                      setDisplayedScenario('Displaying: ' + scenario)
                     }}
                   >
                     {scenario}
