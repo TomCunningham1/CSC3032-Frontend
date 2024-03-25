@@ -98,8 +98,10 @@ class BackendServiceClass {
     )
   }
 
-  writeScenario = async (scenarioName: string, scenarioQuestions: QuizQuestionsWrite) => {
-
+  writeScenario = async (
+    scenarioName: string,
+    scenarioQuestions: QuizQuestionsWrite
+  ) => {
     return await axios.post(
       `${BACKEND_IP}/admin/write?scenarioName=${scenarioName}`,
       {
@@ -109,7 +111,7 @@ class BackendServiceClass {
         exploitation: scenarioQuestions.exploitation || [],
         installation: scenarioQuestions.installation || [],
         command: scenarioQuestions.command || [],
-        actions: scenarioQuestions.actions || []
+        actions: scenarioQuestions.actions || [],
       },
       {
         headers: {
