@@ -78,7 +78,15 @@ describe('backend-services', () => {
             data: 'successfully updated'
         })
 
-        const response = await BackendService.writeScenario('Sql Injection', 'Questions')
+        const response = await BackendService.writeScenario('Sql Injection', {
+            reconnaissance: {},
+            actions: {},
+            weaponisation: {},
+            delivery: {},
+            command: {},
+            installation: {},
+            exploitation: {}
+        })
 
         expect(response.status).toBe(200)
         expect(response.data).toBe('successfully updated')

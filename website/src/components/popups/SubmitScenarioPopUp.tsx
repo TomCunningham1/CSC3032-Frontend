@@ -15,7 +15,7 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   const { updateLoading } = useContext(LoadingContext)
 
   const title = parsedScenario.title
-  const questions = parsedScenario.questions
+  const questions = parsedScenario
 
   const expected = 'confirm'
 

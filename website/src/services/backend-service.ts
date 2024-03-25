@@ -1,6 +1,16 @@
 import { API_KEY, BACKEND_IP } from '../config/constants'
 import axios from 'axios'
 
+interface QuizQuestionsWrite {
+  reconnaissance: object
+  weaponisation: object
+  delivery: object
+  exploitation: object
+  installation: object
+  command: object
+  actions: object
+}
+
 class BackendServiceClass {
   getHealth = async () => {
     return await axios.get(`${BACKEND_IP}/health`, {
@@ -88,11 +98,21 @@ class BackendServiceClass {
     )
   }
 
-  writeScenario = async (scenarioName: string, scenarioQuestions: string) => {
-    console.info(scenarioQuestions)
+  writeScenario = async (
+    scenarioName: string,
+    scenarioQuestions: QuizQuestionsWrite
+  ) => {
     return await axios.post(
       `${BACKEND_IP}/admin/write?scenarioName=${scenarioName}`,
-      { questions: scenarioQuestions },
+      {
+        reconnaissance: scenarioQuestions.reconnaissance || [],
+        weaponisation: scenarioQuestions.weaponisation || [],
+        delivery: scenarioQuestions.delivery || [],
+        exploitation: scenarioQuestions.exploitation || [],
+        installation: scenarioQuestions.installation || [],
+        command: scenarioQuestions.command || [],
+        actions: scenarioQuestions.actions || [],
+      },
       {
         headers: {
           'x-api-key': API_KEY,
