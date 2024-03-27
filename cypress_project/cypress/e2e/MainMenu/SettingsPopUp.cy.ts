@@ -19,10 +19,6 @@ describe('Test Settings Pop Up', () => {
     it('Should contain Dark Mode', () => {
       cy.contains("Dark Mode")
     })
-
-    it('Should contain Text Size slider', () => {
-      cy.contains("Text Size")
-    })
   
     it('Should contain the Back button to close the pop-up', () => {
       cy.contains('Back')

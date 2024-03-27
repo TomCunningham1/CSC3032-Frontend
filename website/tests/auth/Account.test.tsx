@@ -62,9 +62,15 @@ describe('tests for account context', () => {
         signOut: mockSignout
     })
 
-
     const authenticateUser = jest.fn().mockImplementation((auth: any, callback: any) => {
-        callback.onSuccess({data: 'Test'})
+        callback.onSuccess({
+            getAccessToken: jest.fn().mockReturnValue({
+                getJwtToken: jest.fn()
+            }),
+            getIdToken: jest.fn().mockReturnValue({
+                getJwtToken: jest.fn()
+            }),
+        })
     })
 
     mockUser.mockReturnValue({

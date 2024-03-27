@@ -6,12 +6,11 @@ import {
   useState,
 } from 'react'
 import PopUp from './PopUp'
-import './PopUp.css'
 import '../../styles/styles.scss'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
-import { LoadingContext } from '../LoadingContext/LoadingContext'
 import LoadingClock from '../LoadingClock/LoadingClock'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 const componentId = 'leaderboard-popup'
 
@@ -31,6 +30,10 @@ const LeaderboardPopUp = ({ onClose }: any) => {
   const [scenarios, setScenarios] = useState([])
 
   const [loading, setLoading] = useState(true)
+
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
 
   // Function to swap between different scenarios
   const getScenarioResults = async (scenario: string) => {
@@ -157,8 +160,9 @@ const LeaderboardPopUp = ({ onClose }: any) => {
     )
   }
 
-  const [displayedScenario, setDisplayedScenario] =
-    useState('Select a Scenario')
+  const [displayedScenario, setDisplayedScenario] = useState(
+    'Displaying: SQL Injection'
+  )
 
   return (
     <>
@@ -167,23 +171,25 @@ const LeaderboardPopUp = ({ onClose }: any) => {
       <PopUp
         id={componentId}
         title={'Leaderboard'}
-        name="menu-container-solid Leaderboard"
+        name={`${prefix}-menu-container-solid Leaderboard`}
         onClose={onClose}
       >
         <div
           data-testid="leaderboard-popup-text"
-          className="PopUpTextLeaderboard"
+          className="pop-up-text-leaderboard"
         >
           <div>
+            <div className="selected-scenario">{displayedScenario}</div>
             {
               // Updated to map from the list returned by "getAllScenarios"
               scenarios.map((scenario) => {
                 return (
                   // Maps out buttons and passes in selected scenario
                   <button
-                    className="scenario-button"
+                    className={`${prefix}-scenario-button`}
                     onClick={() => {
                       getScenarioResults(scenario)
+                      setDisplayedScenario('Displaying: ' + scenario)
                     }}
                   >
                     {scenario}

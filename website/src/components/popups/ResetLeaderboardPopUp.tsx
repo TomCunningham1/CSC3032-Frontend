@@ -4,6 +4,7 @@ import PopUpButton from './PopUpButton'
 import BackendService from '../../services/backend-service'
 import toast, { Toaster } from 'react-hot-toast'
 import { LoadingContext } from '../LoadingContext/LoadingContext'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 const ResetLeaderboardPopup = ({ open, onClose }: any) => {
   if (!open) return null
@@ -39,7 +40,7 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
       onClose={onClose}
     >
       <Toaster />
-      <div className="PopUpText">
+      <div className="pop-up-text">
         This will empty the results from the database removing all user results.
         <br />
         To confirm enter <i>permanently delete</i> into the below text box.
@@ -56,6 +57,7 @@ const ResetLeaderboardPopup = ({ open, onClose }: any) => {
         id="proceed"
         text={'Proceed'}
         onClose={handleClick}
+        className="pop-up-button-proceed"
         disabled={disabled}
       />
     </PopUp>

@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 import './main-menu.css'
 
 interface MainMenuButton {
@@ -7,9 +9,12 @@ interface MainMenuButton {
 }
 
 const MainMenuButton = ({ id, method, text }: MainMenuButton) => {
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
+
   return (
     <button
-      className="main-menu-button"
+      className={`${prefix}-main-menu-button`}
       data-testid={id}
       id={id}
       key={id}

@@ -1,21 +1,24 @@
-import './PopUp.css'
+import '../../styles/styles.scss'
 
 interface PopUpButtonInterface {
   id: string
   onClose: () => void
+  className?: string
   text?: string
   disabled?: boolean
 }
 
 const PopUpButton = ({
   id: componentId,
+  className,
   onClose,
   text,
   disabled,
 }: PopUpButtonInterface) => {
   return (
     <button
-      className="PopUpButton"
+      id="pop-up-close-button"
+      className={className ? className : 'pop-up-button'}
       data-testid={`${componentId}-close-button`}
       onClick={onClose}
       disabled={disabled}

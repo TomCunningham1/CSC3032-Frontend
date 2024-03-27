@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import M from 'materialize-css'
 import classnames from 'classnames'
 import isEmpty from '../../utils/is-empty'
 import correctNotification from '../../assets/audio/correct-answer.mp3'
@@ -10,14 +9,16 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import withRouter from '../Router/Router'
-//import questions from '../../questions/QuizQuestions'
 import toast, { Toaster } from 'react-hot-toast'
+import { SettingsContext } from '../SettingsContext/SettingsContext'
 
 interface PlayPropsInterface {
   state?: any
   history?: any
   router?: any
   location: any
+  style: any
+  muted: any
 }
 
 interface PlayStateInterface {
@@ -34,8 +35,10 @@ interface PlayStateInterface {
   wrongAnswers: number
   hints: number
   fiftyFifty: number
+  prefix: string
   usedFiftyFifty: boolean
   nextButtonDisabled: boolean
+  muted: any
   previousButtonDisabled: boolean
   previousRandomNumbers: any
   time: any
@@ -50,12 +53,14 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   interval: any
   wrongSound: any
   buttonSound: any
+  getStylePrefix: any
 
   constructor(props: PlayPropsInterface) {
     super(props)
     this.state = {
       questions: this.props.router.location.state.questions,
       title: this.props.router.location.state.title,
+      prefix: this.props.style.prefix,
       currentQuestion: {},
       nextQuestion: {},
       previousQuestion: {},
@@ -66,6 +71,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       score: 0,
       correctAnswers: 0,
       wrongAnswers: 0,
+      muted: this.props.muted.muted,
       hints: 5,
       fiftyFifty: 2,
       usedFiftyFifty: false,
@@ -83,6 +89,8 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   componentDidMount() {
     const { questions, currentQuestion, nextQuestion, previousQuestion } =
       this.state
+    // @ts-ignore
+    this.context.subscribe(this.handleContextChange)
     this.displayQuestions(
       questions,
       currentQuestion,
@@ -92,8 +100,34 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     this.startTimer()
   }
 
+  handleContextChange = (context: { prefix: string; muted: boolean }) => {
+    console.log(context)
+    this.setState({
+      prefix: context.prefix,
+      muted: context.muted,
+    })
+  }
+
   componentWillUnmount() {
+    // @ts-ignore
+    this.context.unsubscribe(this.handleContextChange)
     clearInterval(this.interval)
+  }
+
+  displayStages = (
+    stages = this.state.stages,
+    currentStage: any,
+    nextStage: any,
+    previousStage: any
+  ) => {
+    let { currentStageIndex } = this.state
+    if (!isEmpty(this.state.questions.stages)) {
+      const answer = currentStage.answer
+      this.setState({}, () => {
+        this.showOptions()
+        this.handleDisableButton()
+      })
+    }
   }
 
   displayQuestions = (
@@ -103,7 +137,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     previousQuestion: any
   ) => {
     let { currentQuestionIndex, currentStageIndex } = this.state
-    if (!isEmpty(this.state.questions)) {
+    if (!isEmpty(this.state.questions /*&& this.state.questions.stage*/)) {
       questions = this.state.questions
       currentQuestion = questions[currentQuestionIndex]
       nextQuestion = questions[currentQuestionIndex + 1]
@@ -127,22 +161,27 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
   }
 
   handleOptionClick = (e: any) => {
+    const muted = this.state.muted
     if (e.target.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
-      this.correctTimeout = setTimeout(() => {
-        this.correctSound.current.play()
-      }, 500)
+      if (!muted) {
+        this.correctTimeout = setTimeout(() => {
+          this.correctSound.current.play()
+        }, 500)
+      }
       this.correctAnswer()
     } else {
-      this.wrongTimeout = setTimeout(() => {
-        this.wrongSound.current.play()
-      }, 500)
+      if (!muted) {
+        this.wrongTimeout = setTimeout(() => {
+          this.wrongSound.current.play()
+        }, 500)
+      }
       this.wrongAnswer()
     }
   }
 
   handleNextButtonClick = () => {
     this.playButtonSound()
-    if (this.state.nextQuestion !== undefined && this.state.nextStage) {
+    if (this.state.nextQuestion !== undefined) {
       this.setState(
         (prevState) => ({
           currentQuestionIndex: prevState.currentQuestionIndex + 1,
@@ -159,56 +198,10 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     }
   }
 
-  handlePreviousButtonClick = () => {
-    this.playButtonSound()
-    if (
-      this.state.previousQuestion !== undefined &&
-      this.state.previousStage !== undefined
-    ) {
-      this.setState(
-        (prevState) => ({
-          currentQuestionIndex: prevState.currentQuestionIndex - 1,
-        }),
-        () => {
-          this.displayQuestions(
-            this.state.questions,
-            this.state.currentQuestion,
-            this.state.nextQuestion,
-            this.state.previousQuestion
-          )
-        }
-      )
-    }
-  }
-
-  handleQuitButtonClick = () => {
-    this.playButtonSound()
-    if (window.confirm('Are you sure you want to quit?')) {
-      this.props.router.navigate('/')
-    }
-  }
-
-  handleButtonClick = (e: any) => {
-    switch (e.target.id) {
-      case 'next-button':
-        this.handleNextButtonClick()
-        break
-
-      case 'previous-button':
-        this.handlePreviousButtonClick()
-        break
-
-      case 'quit-button':
-        this.handleQuitButtonClick()
-        break
-
-      default:
-        break
-    }
-  }
-
   playButtonSound = () => {
-    this.buttonSound.current.play()
+    if (!this.state.muted) {
+      this.buttonSound.current.play()
+    }
   }
 
   correctAnswer = () => {
@@ -362,7 +355,6 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       }))
     }
   }
-
   //Timer code
   startTimer = () => {
     const countDownTime = Date.now() + 180000
@@ -452,6 +444,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
       hints,
       numberOfQuestions,
       time,
+      prefix,
     } = this.state
 
     return (
@@ -461,29 +454,37 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           <audio ref={this.wrongSound} src={wrongNotification}></audio>
           <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
-        <div data-testid="questions-container" className="questions">
+        <div
+          data-testid="questions-container"
+          className={`${prefix}-questions`}
+        >
           <h2>{this.state.title}</h2>
           <h3>{currentQuestion.stage}</h3>
           <div className="lifeline-container">
             <p>
               <span
-                data-testid="fiftyfifty-button"
                 onClick={this.handleFiftyFifty}
+                data-testid="fiftyfifty-button"
                 className="Phone Icon"
               >
                 {' '}
-                <LiveHelpIcon style={{ color: 'white' }} />
+                <LiveHelpIcon
+                  style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+                />
                 <span className="lifeline">{fiftyFifty}</span>
               </span>
             </p>
             <p>
               <span
-                data-testid="hint-button"
                 onClick={this.handleHints}
+                data-testid="hint-button"
                 className="Hint Icon"
               >
                 {' '}
-                <PhoneIcon color="primary" style={{ color: 'white' }} />
+                <PhoneIcon
+                  color="primary"
+                  style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
+                />
                 <span className="lifeline">{hints}</span>
               </span>
             </p>
@@ -541,11 +542,13 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
           </div>
           <div className="button-container">
             <button
-              className={classnames('', {
-                disable: this.state.nextButtonDisabled,
-              })}
+              className={
+                prefix !== 'contrast'
+                  ? 'normal-skip-button'
+                  : 'contrast-skip-button'
+              }
               id="next-button"
-              onClick={this.handleButtonClick}
+              onClick={this.handleNextButtonClick}
             >
               Skip
             </button>
@@ -568,5 +571,7 @@ class Play extends Component<PlayPropsInterface, PlayStateInterface> {
     )
   }
 }
+
+Play.contextType = SettingsContext
 
 export default withRouter(Play)

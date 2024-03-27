@@ -1,6 +1,7 @@
 import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js'
 import { createContext, useState } from 'react'
 import userPool from './userPool'
+import { load, remove, store } from '../utils/session-storage'
 
 // Account Context object - stores initial values for authentication context
 const AccountContext = createContext({
@@ -14,7 +15,9 @@ const AccountContext = createContext({
     throw new Error('getSession function is not yet initialised')
   },
   logout: () => {},
-  authenticated: false,
+  isLoggedIn: (): boolean => {
+    return false
+  },
 })
 
 // Account object - contains methods to authenticate the user
@@ -39,6 +42,10 @@ const Account = (props: any) => {
     })
   }
 
+  const isLoggedIn = () => {
+    return !!load('accessToken')
+  }
+
   // Will authenticate the user by checking the username and password entered are correct
   const authenticate = async (Username: string, Password: string) => {
     return await new Promise((resolve, reject) => {
@@ -56,7 +63,14 @@ const Account = (props: any) => {
         // Handle success, failure and password change required
         user.authenticateUser(authDetails, {
           onSuccess: (data) => {
-            console.log('onSuccess: ', data)
+            const accessToken = data.getAccessToken().getJwtToken()
+            const idToken = data.getIdToken().getJwtToken()
+            const refreshToken = data.getIdToken().getJwtToken()
+
+            store('accessToken', accessToken)
+            store('idToken', idToken)
+            store('refreshToken', refreshToken)
+
             setAuthenticated(true)
             resolve(data)
           },
@@ -65,7 +79,6 @@ const Account = (props: any) => {
             reject(err)
           },
           newPasswordRequired: (data) => {
-            console.log('newPasswordRequired: ', data)
             setAuthenticated(false)
             resolve(data)
           },
@@ -82,13 +95,16 @@ const Account = (props: any) => {
     if (user) {
       setAuthenticated(false)
       user.signOut()
+      remove('accessToken')
+      remove('idToken')
+      remove('refreshToken')
     }
   }
 
   // Create the account context and create all children with the context
   return (
     <AccountContext.Provider
-      value={{ authenticate, getSession, logout, authenticated }}
+      value={{ authenticate, getSession, logout, isLoggedIn }}
     >
       {props.children}
     </AccountContext.Provider>

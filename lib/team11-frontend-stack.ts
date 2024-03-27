@@ -21,6 +21,18 @@ export class Team11FrontendStack extends Stack {
       `team11-${environment.environmentName}-s3-bucket`,
       {
         removalPolicy: RemovalPolicy.DESTROY,
+        cors: [
+          {
+            allowedMethods: [
+              aws_s3.HttpMethods.GET,
+              aws_s3.HttpMethods.PUT,
+              aws_s3.HttpMethods.POST,
+              aws_s3.HttpMethods.DELETE,
+            ],
+            allowedOrigins: ['*'],
+            allowedHeaders: ['*'],
+          },
+        ],
       }
     )
 
@@ -29,7 +41,9 @@ export class Team11FrontendStack extends Stack {
       effect: aws_iam.Effect.ALLOW,
       actions: ['s3:GetObject'],
       principals: [new aws_iam.AnyPrincipal()],
-      resources: [`${frontEndBucket.bucketArn}/*`],
+      resources: [
+        `${frontEndBucket.bucketArn}/*,${frontEndBucket.arnForObjects('*')}`,
+      ],
     })
 
     const dist = new aws_cloudfront.Distribution(
@@ -43,6 +57,12 @@ export class Team11FrontendStack extends Stack {
           allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
         },
         defaultRootObject: 'index.html',
+        errorResponses: [
+          {
+            httpStatus: 403,
+            responsePagePath: '/index.html',
+          },
+        ],
       }
     )
 

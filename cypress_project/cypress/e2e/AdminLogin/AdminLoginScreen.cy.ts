@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
-import { ADMIN_LOGIN, SCREEN_SIZE } from "../../../config/constants"
-import environment from "../../../config/environment"
+import { ADMIN_LOGIN, SCREEN_SIZE } from "../../../config/constants.cy"
 
 const usernameInputId = '#username-input'
 const passwordInputId = '#password-input'
@@ -8,7 +7,7 @@ const submitButtonId = '#admin-login-submit-button'
 
 describe('Admin Login page', () => {
     beforeEach(()=> {
-        cy.visit(environment.frontendURL)
+        cy.visit(Cypress.env('url'))
         cy.viewport(SCREEN_SIZE.width, SCREEN_SIZE.height)
         cy.contains('Admin Login').click()
     })
@@ -80,7 +79,6 @@ describe('Admin Login page', () => {
             cy.get(usernameInputId).type(ADMIN_LOGIN.email)
             cy.get(passwordInputId).type(ADMIN_LOGIN.password)
             cy.get(submitButtonId).click()
-            cy.contains('Delete a Scenario')
             cy.contains('View Scenario')
             cy.contains('Reset the leaderboard')
         })

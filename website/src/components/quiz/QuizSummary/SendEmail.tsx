@@ -1,8 +1,9 @@
 import { Alert, TextField } from '@mui/material'
 import { useContext, useState } from 'react'
 import BackendService from '../../../services/backend-service'
-import './quiz-summary.css'
 import toast, { Toaster } from 'react-hot-toast'
+import '../../../styles/styles.scss'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
 interface SendEmailInterface {
   score: number
@@ -12,6 +13,7 @@ interface SendEmailInterface {
   wrongAnswers: number
   hintsUsed: number
   fiftyFiftyUsed: number
+  time: number
 }
 
 const SendEmail = ({
@@ -22,8 +24,11 @@ const SendEmail = ({
   wrongAnswers,
   hintsUsed,
   fiftyFiftyUsed,
+  time,
 }: SendEmailInterface) => {
   const [email, setEmail] = useState('')
+
+  const prefix = useContext(SettingsContext).getStylePrefix()
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,7 +45,8 @@ const SendEmail = ({
       correctAnswers,
       wrongAnswers,
       hintsUsed,
-      fiftyFiftyUsed
+      fiftyFiftyUsed,
+      time
     )
       .then(() => {
         toast.success('Results have been sent')
@@ -62,7 +68,7 @@ const SendEmail = ({
         value={email}
       />
       <button
-        className={'quiz-summary-button'}
+        className={`${prefix}-quiz-summary-button`}
         onClick={handleSubmit}
         data-testid={'send-email-button'}
       >

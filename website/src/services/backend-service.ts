@@ -1,14 +1,21 @@
-import { BACKEND_IP } from '../config/constants'
+import { API_KEY, BACKEND_IP } from '../config/constants'
 import axios from 'axios'
 
-const api_key =
-  process.env.API_KEY || 'elpqKjh9OE4MOa1cStipc9VvwEpcQ00Y59fSgwrL'
+interface QuizQuestionsWrite {
+  reconnaissance: object
+  weaponisation: object
+  delivery: object
+  exploitation: object
+  installation: object
+  command: object
+  actions: object
+}
 
 class BackendServiceClass {
   getHealth = async () => {
     return await axios.get(`${BACKEND_IP}/health`, {
       headers: {
-        'x-api-key': api_key,
+        'x-api-key': API_KEY,
       },
     })
   }
@@ -21,7 +28,8 @@ class BackendServiceClass {
     correctAnswers: number,
     wrongAnswers: number,
     hintsUsed: number,
-    fiftyFiftyUsed: number
+    fiftyFiftyUsed: number,
+    time: number
   ) => {
     return await axios.post(
       `${BACKEND_IP}/results/send-email`,
@@ -34,10 +42,11 @@ class BackendServiceClass {
         wrongAnswers: wrongAnswers,
         hintsUsed: hintsUsed,
         fiftyFiftyUsed: fiftyFiftyUsed,
+        time: time,
       },
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -71,7 +80,7 @@ class BackendServiceClass {
       },
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -83,20 +92,30 @@ class BackendServiceClass {
       {},
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
   }
 
-  writeScenario = async (scenarioName: string, scenarioQuestions: string) => {
-    console.info(scenarioQuestions)
+  writeScenario = async (
+    scenarioName: string,
+    scenarioQuestions: QuizQuestionsWrite
+  ) => {
     return await axios.post(
       `${BACKEND_IP}/admin/write?scenarioName=${scenarioName}`,
-      { questions: scenarioQuestions },
+      {
+        reconnaissance: scenarioQuestions.reconnaissance || [],
+        weaponisation: scenarioQuestions.weaponisation || [],
+        delivery: scenarioQuestions.delivery || [],
+        exploitation: scenarioQuestions.exploitation || [],
+        installation: scenarioQuestions.installation || [],
+        command: scenarioQuestions.command || [],
+        actions: scenarioQuestions.actions || [],
+      },
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -107,7 +126,7 @@ class BackendServiceClass {
       `${BACKEND_IP}/admin/read?scenarioName=${scenarioName}`,
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -118,7 +137,7 @@ class BackendServiceClass {
       `${BACKEND_IP}/admin/get-questions?scenarioName=${scenarioName}`,
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -129,7 +148,7 @@ class BackendServiceClass {
       `${BACKEND_IP}/admin/delete?scenarioName=${scenarioName}`,
       {
         headers: {
-          'x-api-key': api_key,
+          'x-api-key': API_KEY,
         },
       }
     )
@@ -138,7 +157,7 @@ class BackendServiceClass {
   resetLeaderboard = async () => {
     return await axios.get(`${BACKEND_IP}/admin/reset-leaderboard`, {
       headers: {
-        'x-api-key': api_key,
+        'x-api-key': API_KEY,
       },
     })
   }
@@ -146,7 +165,7 @@ class BackendServiceClass {
   getAllScenarios = async () => {
     return await axios.get(`${BACKEND_IP}/admin/get-all`, {
       headers: {
-        'x-api-key': api_key,
+        'x-api-key': API_KEY,
       },
     })
   }

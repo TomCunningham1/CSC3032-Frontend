@@ -1,4 +1,4 @@
-import { NON_PRODUCTION_ENVIRONMENT, PRODUCTION_ENVIRONMENT } from './constants'
+import { NON_PRODUCTION_ENVIRONMENT, PRODUCTION_ENVIRONMENT } from './constants.cy'
 
 class Environment {
   environmentName: string
@@ -12,7 +12,7 @@ class Environment {
     }
     if (env === 'prod') {
       this.environmentName = PRODUCTION_ENVIRONMENT.environmentName
-      this.frontendURL = NON_PRODUCTION_ENVIRONMENT.urlFrontend
+      this.frontendURL = PRODUCTION_ENVIRONMENT.urlFrontend
     }
   }
 }

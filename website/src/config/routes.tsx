@@ -29,20 +29,27 @@ const routes: RouteConfig[] = [
 ]
 
 const RenderRoutes = () => {
-  const { authenticated } = useContext(AccountContext)
+  const authenticated = useContext(AccountContext).isLoggedIn()
 
   return (
     <Routes>
       <Route path="/" element={<TitleBar />}>
         {routes.map((route, index) => {
           if (route.isPrivate && !authenticated) {
+            // If the route is private and the user is not authenticated navigate back to home screen
             return (
-              <Route key={index} path={route.path} element={<LoadingClock />} />
+              <Route
+                key={index}
+                path={route.path}
+                element={<Navigate to="/" />}
+              />
             )
           }
+          // Otherwise return the route
           return <Route key={index} path={route.path} element={route.element} />
         })}
       </Route>
+      {/* Catch all for random routes -> Navigates back to home screen */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )

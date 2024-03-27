@@ -1,3 +1,6 @@
+import { useCallback, useContext } from 'react'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
+
 interface AdminOptionButtonInterface {
   id: string
   title: string
@@ -9,9 +12,11 @@ const AdminOptionButton = ({
   title,
   method,
 }: AdminOptionButtonInterface) => {
+  const prefix = useContext(SettingsContext).getStylePrefix()
+
   return (
     <button
-      className="admin-menu-button"
+      className={`${prefix}-admin-menu-button`}
       onClick={method}
       id={id}
       data-testid={id}

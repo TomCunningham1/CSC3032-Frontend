@@ -62,7 +62,7 @@ const DeleteScenarioPopUp = ({
         <select
           data-testid="scenario-select"
           id="scenario-select"
-          className={'PopUpSelect'}
+          className={'pop-up-select'}
           onChange={handleChangeTitle}
         >
           <option key={'null-value'} value={''}></option>
@@ -90,6 +90,7 @@ const DeleteScenarioPopUp = ({
         id="proceed"
         text={'Proceed'}
         onClose={handleClick}
+        className="pop-up-button-proceed"
         disabled={disabled}
       />
     </PopUp>

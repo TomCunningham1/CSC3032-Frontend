@@ -1,9 +1,9 @@
-import { Fragment } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
-import './quiz-context.css'
+import { Fragment, useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import '../../../styles/styles.scss'
+import { SettingsContext } from '../../SettingsContext/SettingsContext'
 
-const QuizInstructionsHeader = ({ title }: { title: string }) => {
+const QuizContextHeader = ({ title }: { title: string }) => {
   return (
     <div>
       <h1>Context</h1>
@@ -15,8 +15,9 @@ const QuizInstructionsHeader = ({ title }: { title: string }) => {
 const QuizContext = () => {
   const location = useLocation()
 
-  console.log(location.state)
-  console.log(location.state.questions)
+  // Context for dark/light/high contrast mode.
+  const { getStylePrefix } = useContext(SettingsContext)
+  const prefix = getStylePrefix()
 
   const navigate = useNavigate()
 
@@ -35,8 +36,8 @@ const QuizContext = () => {
 
   return (
     <Fragment>
-      <div className="menu-container">
-        <QuizInstructionsHeader title={location.state.title} />
+      <div className={`${prefix}-menu-container`}>
+        <QuizContextHeader title={location.state.title} />
         <ul className="text-formatting" id="main-list">
           <li>
             The business in question used for each scenario is a global

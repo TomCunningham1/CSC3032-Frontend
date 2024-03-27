@@ -15,7 +15,7 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
   const { updateLoading } = useContext(LoadingContext)
 
   const title = parsedScenario.title
-  const questions = parsedScenario.questions
+  const questions = parsedScenario
 
   const expected = 'confirm'
 
@@ -37,8 +37,6 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
       })
     updateLoading(false)
   }
-
-  console.log(disabled)
 
   return (
     <PopUp
@@ -66,6 +64,7 @@ const SubmitScenarioPopup = ({ scenario, open, onClose }: any) => {
       <PopUpButton
         id="proceed"
         text={'Proceed'}
+        className="pop-up-button-proceed"
         onClose={onSubmit}
         disabled={disabled}
       />

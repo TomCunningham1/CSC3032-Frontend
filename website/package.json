@@ -38,7 +38,7 @@
     "build": "react-scripts build",
     "test": "jest --coverage",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.tsx\" && prettier --write  \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.tsx\" && prettier --write  \"src/**/*.ts\" && prettier --write  \"src/**/*.scss\""
   },
   "eslintConfig": {
     "extends": [

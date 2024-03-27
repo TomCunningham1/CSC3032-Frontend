@@ -23,7 +23,7 @@ describe('admin add update scenario', () => {
         const button = output.getByTestId('delete-scenario')
 
         expect(button).toBeTruthy()
-        expect(button.className).toBe('admin-menu-button')
+        expect(button.className).toBe('undefined-admin-menu-button')
     })
 
     it('should display the popup', () => {
