@@ -10,6 +10,8 @@ The website folder contains a React application which once built is deployed int
 
 The system also includes Admin features which allow an Admin user to log in with an AWS Cognito account. The Admin may then update, remove or add Scenarios, as well as resetting the leaderboard.
 
+Deployed at: https://us-east-1.console.aws.amazon.com/cloudfront/v4/home?region=eu-west-1#/distributions/E3KIEMFY3H08T9
+
 ## Technology Used
 
 * Node JS - https://nodejs.org/en/
@@ -111,3 +113,4 @@ It will then allow you to view and execute each of the test classes.
 * `Main Menu`
 
 https://www.npmjs.com/package/aws-cdk
+
