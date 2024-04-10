@@ -23,6 +23,7 @@ interface ResultsTypes {
   WrongAnswers: number
   HintsUsed: number
   FiftyFiftyUsed: number
+  Time: number
 }
 
 const LeaderboardPopUp = ({ onClose }: any) => {
@@ -96,6 +97,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
     { key: 'WrongAnswers', label: 'Wrong Answers' },
     { key: 'HintsUsed', label: 'Hints Used' },
     { key: 'FiftyFiftyUsed', label: '50/50s Used' },
+    { key: 'Time', label: 'Time Taken'}
   ]
 
   const [sortKey, setSortKey] = useState<SortKeys>('Score')
@@ -227,6 +229,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
                       <td>{user.WrongAnswers}</td>
                       <td>{user.HintsUsed}</td>
                       <td>{user.FiftyFiftyUsed}</td>
+                      <td>{user.Time}</td>
                     </tr>
                   )
                 })}

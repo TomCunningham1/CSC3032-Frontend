@@ -46,16 +46,16 @@ const HelpPopUp = ({ open, onClose }: any) => {
             <LiveHelpIcon
               style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
             />{' '}
-            Represents the 'Call a friend' option which removes one incorrect
-            option from the questions.
+            Represents 50/50 which can be used in the quiz to remove two
+            options.
           </li>
           <li>
             <PhoneIcon
               color="primary"
               style={{ color: prefix === 'contrast' ? 'black' : 'white' }}
             />{' '}
-            Represents 50/50 which can be used in the quiz to remove two
-            options.
+            Represents the 'Call a friend' option which removes one incorrect
+            option from the questions.
           </li>
           <li>
             To close pop ups, click the "Back" button at the bottom of the pop
