@@ -61,7 +61,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
       .then(async (resp) => {
         console.log(resp)
         setScenarios(resp.data)
-        setDisplayedScenario('Displaying ' + scenarios[0])
+        setDisplayedScenario('Displaying: ' + resp.data[0])
         // Checks there is a scenario to request results from
         if (!resp.data[0]) {
           return
@@ -101,7 +101,7 @@ const LeaderboardPopUp = ({ onClose }: any) => {
     { key: 'WrongAnswers', label: 'Wrong Answers' },
     { key: 'HintsUsed', label: 'Hints Used' },
     { key: 'FiftyFiftyUsed', label: '50/50s Used' },
-    { key: 'Time', label: 'Time Taken' },
+    { key: 'Time', label: 'Time Taken (s)' },
   ]
 
   const [sortKey, setSortKey] = useState<SortKeys>('Score')
