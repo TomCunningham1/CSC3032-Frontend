@@ -1,0 +1,10 @@
+Known Bugs
+
+- Issue when playing the game if the user clicks through the scenarios too quickly
+- Submit Scenario functio in Admin Menu causes 400 response
+- Help popup icons are swapped
+
+Bugs fixed since handover
+
+- Submit Scenario functio in Admin Menu causes 400 response
+- Help popup icons are swapped
